@@ -1,3 +1,6 @@
+<!-- TODO: For the employer and user dashboards, be sure to reuse the same CSS templated
+           for each dashboard - keep that code as clean and readable as possible -->
+
 <!-- Login Page -->
 
 <!DOCTYPE html>
@@ -7,23 +10,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Login Page</title>
+    <title>Welcome - Select User Type</title>
 </head>
 <body>
     <div class="container">
         <div class="card">
             <ul>
-                <li><u>Login Page</u></li>
-                
-                <!-- TODO: Refactor as selection button, then another page for login for each -->
-                <form>
-                    <label for="admin">Admin</label><br>
-                    <input type="text" id="admin" name ="admin">
-                </form>
-                <form>
-                    <label for="user">User</label><br>
-                    <input type="text" id="user" name ="admin">
-                </form>
+                <li><u>User Type</u></li>
+
+                <a class="button" href="employer/index.html">Admin</a><br>
+                <a class="button" href="user/index.html">User</a>
             </ul>
         </div>
     </div>

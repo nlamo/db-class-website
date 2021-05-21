@@ -45,6 +45,80 @@ form {
 }
 
 
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    height: 850px;
+    width: 1800px;
+    border-radius: 2px;
+    background:  #F3FCF4;
+    border: 2px solid #499256;
+}
+
+
+/* TODO: Make a grid corresponding to some schema that could be likely used for the database project */
+/* NOTE: Potentially there will be the need to refactor this into separate dashboards for user and employer... depending on how large the differences are */
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 80%;
+    width: 95%;
+    border-radius: 2px;
+    background:  #bdd3bf;
+    border: 1px solid #499256;
+}
+
+/* Grid items for .dashboard */
+.item-1 {
+    padding: 20px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1; 
+    background: #86B68E;
+}
+
+
+.item-2 {
+    padding: 20px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3; 
+    background: #909b92;
+}
+
+.item-3 {
+    padding: 20px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 3; 
+    background: #d0d3d1;
+}
+
+.item-4 {
+    padding: 20px;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    background: #a8b8ad;
+}
+
+.item-5 {
+    padding: 20px;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    background: #cfd6d2;
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -73,16 +147,4 @@ form {
     border: 2px solid  #2F4858;
     filter: brightness(107%);
    
-}
-
-
-/* TODO: Make a grid corresponding to some schema that could be likely used for the database project */
-/* NOTE: Potentially there will be the need to refactor this into separate dashboards for user and employer... depending on how large the differences are */
-.dashboard {
-    display: grid;
-    height: 800px;
-    width: 1600px;
-    border-radius: 2px;
-    background:  #F3FCF4;
-    border: 2px solid #499256;
 }

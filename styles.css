@@ -58,65 +58,88 @@ form {
     border: 2px solid #499256;
 }
 
-
-/* TODO: Make a grid corresponding to some schema that could be likely used for the database project */
-/* NOTE: Potentially there will be the need to refactor this into separate dashboards for user and employer... depending on how large the differences are */
-.dashboard {
+.dashboard-employer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     height: 80%;
     width: 95%;
     border-radius: 2px;
-    background:  #bdd3bf;
-    border: 1px solid #499256;
+    background:  #F3FCF4;
+    border: none; /* unnecessary, but helpful for clarity's sake */
+}
+
+.dashboard-user {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 80%;
+    width: 95%;
+    border-radius: 2px;
+    background:  #F3FCF4;
+    border: none; /* unnecessary, but helpful for clarity's sake */
 }
 
 /* Grid items for .dashboard */
 .item-1 {
-    padding: 20px;
+
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 1; 
-    background: #86B68E;
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
 }
 
 
 .item-2 {
-    padding: 20px;
+
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3; 
-    background: #909b92;
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
 }
 
 .item-3 {
-    padding: 20px;
+
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 3;
     grid-row-end: 3; 
-    background: #d0d3d1;
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
 }
 
 .item-4 {
-    padding: 20px;
+
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 4; 
-    background: #a8b8ad;
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
 }
 
 .item-5 {
-    padding: 20px;
+
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 4; 
     background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
 }
 
 .card {

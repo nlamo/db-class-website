@@ -11,24 +11,96 @@
     <div class="dashboard-container">
         <p><u>Employer Dashboard</u></p><br>
 
+        <!-- TODO: Add a class in the grid for "maintaining" jobs -->
         <div class="dashboard-employer">
             
-            <!-- TODO: continue refining knowledge of grid items -->
-            <div class="item-1">
-                Lorem ipsum dolor sit amet.
+            <!-- For adminstrators to update the properties of given users -->
+            <div class="maintain-users">
+                <label for=""><u>User Maintenance</u></label><br><br>
+
+                <form>
+                    <label for="user-id">User ID</label><br>
+                    <input type="text" id="user-id" name ="user-id">
+                </form>
+                <form>
+                    <label for="first-name">First Name</label><br>
+                    <input type="text" id="first-name" name ="first-name">
+                </form>
+                <form>
+                    <label for="last-name">Last Name</label><br>
+                    <input type="text" id="last-name" name ="last-name">
+                </form>
+
+                <a class="button">Update</a><br>
             </div>
-            <div class="item-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ullam numquam aliquam odit laudantium eaque rerum ipsam iusto quisquam, possimus dolores facere in facilis autem, eum reiciendis error sequi quos cum veritatis? Aspernatur enim unde cupiditate hic, sequi quos magni.
+
+            <!-- For adminstrators to upgrade or downgrade their category -->
+            <!-- NOTE: Overriding the colours on the button classes used here -->
+            <div class="employer-categories">
+                <label for=""><u>Employer Categories</u></label><br><br>
+
+                <a class="button" style="background:rgb(67, 101, 165)";>
+                    PRIME
+                </a>
+                <a class="button" style="background:rgb(216, 188, 32);">
+                    GOLD
+                </a>
+                <!-- TODO: Add 'Prime' and 'Gold' -->
             </div>
-            <div class="item-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate blanditiis expedita eligendi, illo qui doloribus voluptas animi tempore eos laudantium. Cumque nemo corrupti adipisci doloribus a neque fugiat eos, nisi recusandae libero, dignissimos sunt repellendus accusantium ratione perferendis! Accusantium cumque eveniet hic corporis nihil eos maiores blanditiis ratione impedit voluptas dolore animi porro, quibusdam, eum eaque quo nesciunt, excepturi doloribus quos fugit enim. Cumque accusantium, eos molestiae dignissimos rem pariatur? Quae, enim. Voluptatum beatae ducimus iure facilis debitis reprehenderit vero.
+
+            <!-- For administrators to create job postings -->
+            <div class="post-jobs">
+                <div class="post-jobs-subgrid">
+                    <label for=""><u>Post Job</u></label>
+
+                    <form>
+                        <label for="job-id">Job ID</label><br>
+                        <input type="text" id="job-id" name ="job-id">
+                    </form>
+                    <form>
+                        <label for="employer-id">Employer ID</label><br>
+                        <input type="text" id="employer-id" name ="employer-id">
+                    </form>
+                    <form>
+                        <label for="job-title">Job Title</label><br>
+                        <input type="text" id="job-title" name ="job-title">
+                    </form>
+                    <form>
+                        <label for="job-category-id">Job Category ID</label><br>
+                        <input type="text" id="job-category-id" name ="job-category-id">
+                    </form>
+                    <form>
+                        <label for="date-posted">Date Posted</label><br>
+                        <input type="date" id="date-posted" name ="date-posted">
+                    </form>
+                    <form>
+                        <label for="salary">Salary</label><br>
+                        <input type="text" id="salary" name ="salary">
+                    </form>
+                    <form>
+                        <label for="start-date">Start Date</label><br>
+                        <input type="date" id="start-date" name ="start-date">
+                    </form>
+                    <form>
+                        <label for="employees-needed">No. of Employees Needed</label><br>
+                        <input type="text" id="employees-needed" name ="employees-needed">
+                    </form>
+                    <form>
+                        <label for="job-description">Job Description</label><br>
+                        <textarea name="job-description" id="job-descrption" cols="30" rows="10"></textarea>
+                    </form>
+    
+                    <!-- NOTE: Really shouldn't do this, but I adjusted the style of this button to override the .button defaults in styles.css -->
+                    <a class="button" style="width:200%; margin-top: 85px;">Submit</a><br>
+                </div>
             </div>
-            <div class="item-4">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis repudiandae accusantium ab dolores sunt illum enim, veritatis quidem doloribus debitis recusandae aliquam eaque praesentium doloremque saepe cupiditate molestiae reiciendis, amet atque iste et sit. Illum expedita consectetur laudantium possimus consequatur.
+
+            <!-- A summary of the current (most recent) application for any given job -->
+            <div class="application-summary">
+                <label for=""><u>Current Application Summary</u></label><br><br>
+                <textarea name="application-summary" id="application-summary" cols="45" rows="35"></textarea>
             </div>
-            <div class="item-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius sequi provident nostrum voluptate veniam ex accusantium quis odio minima ullam, sit, optio dolor enim vitae non officia dolorem sint numquam id quibusdam placeat autem minus tempore. Repellendus hic repudiandae est expedita tempora voluptatibus exercitationem laborum perferendis laboriosam assumenda iure, ad inventore odio quam vitae sed ipsum saepe. Assumenda saepe quo mollitia, porro perspiciatis harum unde! Ducimus quam iusto maiores est velit eos. Nam itaque delectus similique ea placeat? Vel optio omnis architecto unde, aut consequatur adipisci? Nemo quidem porro, ad molestias explicabo officiis! Quam fugit dolor doloribus quos! Consectetur impedit aliquid nesciunt facilis, placeat quam laboriosam nisi alias quod error quae in illum ratione assumenda commodi ab suscipit debitis.
-            </div>
+
         </div>
     </div>
 </body>

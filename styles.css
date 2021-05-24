@@ -44,7 +44,7 @@ form {
     justify-content: center;
 }
 
-
+/* Dashboard container, employer dashboard, user dashboard */
 .dashboard-container {
     display: flex;
     flex-direction: column;
@@ -80,7 +80,61 @@ form {
     border: none; /* unnecessary, but helpful for clarity's sake */
 }
 
-/* Grid items for .dashboard */
+/* Employer dashboard grid items */
+.maintain-users {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.employer-categories {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 4; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.post-jobs {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 5; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+/* Good opportunity to refactor and learn about how grid works in-depth */
+/* TODO: target subgrid itemsand clean up the display */
+.post-jobs-subgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.application-summary {
+
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+/* User dashboard grid items */
 .item-1 {
 
     grid-column-start: 1;

@@ -1,5 +1,3 @@
-<!-- TODO: For the employer and user dashboards, be sure to reuse the same CSS templated
-           for each dashboard - keep that code as clean and readable as possible -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +12,8 @@
         <div class="card">
             <p><u>Select User Type</u></p>
             <br>
-            <a class="button" href="employer/index.html">Admin</a>
-            <a class="button" href="user/index.html">User</a> 
+            <a class="button" href="employer/index.php">Admin</a>
+            <a class="button" href="user/index.php">User</a> 
         </div>
     </div>
 </body>

@@ -15,15 +15,15 @@
             <p><u>User Login</u></p>
 
             <form>
-                <label for="user">User</label><br>
-                <input type="text" id="user" name ="user">
-            </form>
-            <form>
-                <label for="password">Password</label><br>
-                <input type="text" id="password" name ="password">
+                <label>User</label><br>
+                <input type="text" name ="user"><br><br>
+
+                <label>Password</label><br>
+                <input type="password" name ="password"><br><br>
+
+                <input type="submit" class="button" name="submit" style="margin-left:6px;">
             </form>
             
-            <a class="button" href="#">Submit</a><br>
         </div>       
     </div>
 </body>

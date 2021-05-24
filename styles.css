@@ -31,6 +31,11 @@ p {
     padding: 20px 0px 15px 0px;
 }
 
+/* Just to add some space between the forms, really ugly otherwise */
+form > * {
+    margin-bottom: 10px;
+}
+
 /* Some of these reusable components may later be refactored into a utilities.css class.*/
 .container {
     padding-top: 50px;

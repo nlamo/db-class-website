@@ -1,14 +1,3 @@
-<!-- TODO: Add validation for employer login -->
-<?php
-    
-    if (isset($_POST['submit'])) {
-
-        $admin = htmlentities($_POST['admin']);
-        $password = htmlentities($_POST['password']);
-
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +10,7 @@
 <body>
     <div class="container">
         <div class="card">
-            <p><u>Employer Login</u></p>
+            <p><u>Employer Login</u></p><br>
             
             <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <label>Admin</label><br>
@@ -30,17 +19,40 @@
                 <label>Password</label><br>
                 <input type="password" name ="password"><br><br>
 
-                <input type="submit" class="button" name="submit" style="margin-left:6px;"><br>
+                <input type="submit" class="button" name="submit" style="margin-left:11px;"><br>
             </form>
 
-            <!-- Basic PHP to check whether anything has been entered, using vars at top. -->
-            <?php if(!empty($admin) && !empty($password)): ?>
-                <small style="text-align:center;">You have entered a username and a password.</small>
+            <!-- Very, very basic validation for username/password -->
+            <!-- Will remove the small user-message element otherwise -->
+            <?php if ( isset($_POST['submit']) && (empty($admin) || empty($password)) ): ?>
+                <small id="user-message" style="text-align:center;">Please enter a valid username and password.</small>
             <?php else: ?>
-                <small style="text-align:center;">Please enter a valid username and passsword.</small>
+                <script>
+                    var userMes = document.getElementById("user-message");
+                    userMes.remove();
+                </script>
             <?php endif; ?>
 
         </div>
+
+        <br><a href="../index.php">Return to Home</a>
     </div>
 </body>
 </html>
+
+<!-- NOTE: This provides the actual validation for the redirect-->
+<!-- TODO: Imrpove validation  -->
+<?php
+    
+    if (isset($_POST['submit'])) {
+
+        $admin = htmlentities($_POST['admin']);
+        $password = htmlentities($_POST['password']);
+
+        // testing 
+        if (!empty($admin) && !empty($password)) {
+            header("Location: dashboard-employer.html");
+            exit();
+        }
+    }
+?>

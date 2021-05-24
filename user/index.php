@@ -12,19 +12,49 @@
     <!-- TODO: Add functionality to verify credentials. (PHP) -->
     <div class="container">
         <div class="card">
-            <p><u>User Login</u></p>
+            <p><u>User Login</u></p><br>
 
-            <form>
+            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <label>User</label><br>
                 <input type="text" name ="user"><br><br>
 
                 <label>Password</label><br>
                 <input type="password" name ="password"><br><br>
 
-                <input type="submit" class="button" name="submit" style="margin-left:6px;">
+                <input type="submit" class="button" name="submit" style="margin-left:11px;">
             </form>
             
+            <!-- Very, very basic validation for username/password -->
+            <!-- Will remove the small user-message element otherwise -->
+            <?php if ( isset($_POST['submit']) && (empty($user) || empty($password)) ): ?>
+                <small id="user-message" style="text-align:center;">Please enter a valid username and password.</small>
+            <?php else: ?>
+                <script>
+                    var userMes = document.getElementById("user-message");
+                    userMes.remove();
+                </script>
+            <?php endif; ?>
+
         </div>       
     </div>
+
+    <br><a href="../index.php">Return to Home</a>
 </body>
 </html>
+
+<!-- NOTE: This provides the actual validation for the redirect-->
+<!-- TODO: Improve validation  -->
+<?php
+    
+    if (isset($_POST['submit'])) {
+
+        $user = htmlentities($_POST['user']);
+        $password = htmlentities($_POST['password']);
+
+        // testing 
+        if (!empty($user) && !empty($password)) {
+            header("Location: dashboard-user.html");
+            exit();
+        }
+    }
+?>

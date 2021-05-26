@@ -14,6 +14,7 @@
 
         <div class="dashboard-user">
          
+            <!-- TODO: Requets for data, will be output by job-data > textarea -->
             <div class="user-categories">
                 <u>Select User Category</u>
             </div>
@@ -24,6 +25,14 @@
 
             <div class="search-job-by-category">
                 <u>Search Job By Category</u>
+            </div>
+
+            <!-- TODO: Job data retrieved from MySQL DB will be output here -->
+            <div class="job-data">
+                <form>
+                    <label for="job-data"><u>Job Data</u></label><br><br>
+                    <textarea name="job-data" id="job-data" cols="48" rows="35"></textarea>
+                </form>
             </div>
 
             <!-- TODO: Use a subgrid, as with the employer dashboard -->

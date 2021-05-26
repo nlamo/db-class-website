@@ -45,8 +45,19 @@
     border-radius: 5px;
 }
 
-.apply-for-job {
+.job-data {
     grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.apply-for-job {
+    grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 4; 

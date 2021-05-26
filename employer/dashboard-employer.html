@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/grid-employer.css">
     <title>Employer Dashboard</title>
 </head>
 <body>
@@ -31,7 +32,7 @@
                     <input type="text" id="last-name" name ="last-name">
                 </form>
 
-                <a class="button">Update</a><br>
+                <input type="submit" class="button" value="Update";>
             </div>
 
             <!-- For adminstrators to upgrade or downgrade their category -->
@@ -39,12 +40,8 @@
             <div class="employer-categories">
                 <label for=""><u>Employer Categories</u></label><br><br>
 
-                <a class="button" style="background:rgb(67, 101, 165)";>
-                    PRIME
-                </a>
-                <a class="button" style="background:rgb(216, 188, 32);">
-                    GOLD
-                </a>
+                <input type="submit"class="button" value="PRIME" style="background:rgb(67, 101, 165)";>
+                <input type="submit" class="button" value="GOLD" style="background:rgb(216, 188, 32);">
                 <!-- TODO: Add 'Prime' and 'Gold' -->
             </div>
 
@@ -92,7 +89,7 @@
                     <br>
     
                     <!-- NOTE: Really shouldn't do this, but I adjusted the style of this button to override the .button defaults in styles.css -->
-                    <a class="button" style="width:200%; margin-top: 70px;">Submit</a><br>
+                    <input type="submit" class="button" style="width:200%; margin-top: 80px;"><br>
                 </div>
             </div>
 

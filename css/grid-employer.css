@@ -1,0 +1,64 @@
+
+/* Employer dashboard grid items */
+
+.dashboard-employer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 80%;
+    width: 95%;
+    border-radius: 2px;
+    background:  #F3FCF4;
+    border: none; /* unnecessary, but helpful for clarity's sake */
+}
+
+.maintain-users {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.employer-categories {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 4; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.post-jobs {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 5; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.post-jobs-subgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.application-summary {
+
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}

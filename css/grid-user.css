@@ -1,0 +1,90 @@
+
+/* User dashboard grid items */
+
+.dashboard-user {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 80%;
+    width: 95%;
+    border-radius: 2px;
+    background:  #F3FCF4;
+    border: none; /* unnecessary, but helpful for clarity's sake */
+}
+
+.user-categories {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 1; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.search-job-by-name {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 3; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.search-job-by-category {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 3;
+    grid-row-end: 4; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.apply-for-job {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.update-profile {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.withdraw-application {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+.delete-profile {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 4; 
+    background: #cfd6d2;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+}

@@ -105,3 +105,7 @@
     <br><a href="./index.php">Return to Admin Login</a>
 </body>
 </html>
+
+<?php
+    
+?>

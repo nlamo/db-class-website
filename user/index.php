@@ -38,12 +38,13 @@
         </div>       
     </div>
 
-    <br><a href="../index.php">Return to Home</a>
+    <br><a href="../index.html">Return to Home</a>
 </body>
 </html>
 
-<!-- NOTE: This provides the actual validation for the redirect-->
-<!-- TODO: Improve validation  -->
+<!-- NOTE:  This provides the actual validation for the redirect-->
+<!-- TODO:  Improve validation and refactor. Perhaps find a better way of dealing with the       
+            message than removing it with JavaScript. -->
 <?php
     
     if (isset($_POST['submit'])) {
@@ -53,7 +54,7 @@
 
         // testing 
         if (!empty($user) && !empty($password)) {
-            header("Location: dashboard-user.html");
+            header("Location: dashboard-user.php");
             exit();
         }
     }

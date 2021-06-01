@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/grid-employer.css">
+    <script src="../js/script.js" defer></script>
     <title>Employer Dashboard</title>
 </head>
 <body>
@@ -40,8 +41,8 @@
             <div class="employer-categories">
                 <label for=""><u>Employer Categories</u></label><br><br>
 
-                <input type="submit"class="button" value="PRIME" style="background:rgb(67, 101, 165)";>
-                <input type="submit" class="button" value="GOLD" style="background:rgb(216, 188, 32);">
+                <input type="submit" class="button" value="PRIME" style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!')">
+                <input type="submit" class="button" value="GOLD" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!')">
                 <!-- TODO: Add 'Prime' and 'Gold' -->
             </div>
 

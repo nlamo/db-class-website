@@ -10,3 +10,8 @@ TODO:
 - Make everything as clean and modular as possible so that it can be easily changed later.
 - Finally, get set up with the SSH tunnel and populate a dummy database on Concordia server.
 - Only *consider* making it responsive if absolutely everything else is done. Even then, no need.
+
+NOTE
+
+- Folder 'warm-up-project` is strictly for the the 'Warm-Up Project` and has no relationship to the 
+  main project website, code, etc.

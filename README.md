@@ -8,10 +8,10 @@ TODO:
 - Add PHP for the dashboards to talk to the localhost database (e.g. submit, udpdate, get, for each section).
 - Consider whether it might be worth it to actually have a proper MVC structure.
 - Make everything as clean and modular as possible so that it can be easily changed later.
-- Finally, get set up with the SSH tunnel and populate a dummy database on Concordia server.
 - Only *consider* making it responsive if absolutely everything else is done. Even then, no need.
 
 NOTE
 
 - Folder 'warm-up-project` is strictly for the the 'Warm-Up Project` and has no relationship to the 
   main project website, code, etc.
+- SSH tunnel is set up and I can successfully populate tables from MySQL Workbench. 

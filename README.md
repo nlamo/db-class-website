@@ -4,7 +4,7 @@ Website for the main project for the Files and Database course, COMP 5531.
 
 
 ********
-* TODO *
+  TODO 
 ********
 
 WARM-UP:
@@ -22,7 +22,7 @@ MAIN:
 
 
 ********
-* DONE *
+  DONE  
 ********
 
 - Added some basic PHP for insertions for the 'Warm-Up Project'

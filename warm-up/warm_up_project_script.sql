@@ -10,7 +10,7 @@ USE zic55311;
 
 CREATE TABLE `publisher` (
 	`publisher_id` INT NOT NULL,
-    `branch` INT,
+    `branches` INT,
     `company_name` VARCHAR(255),
     `telephone_number` VARCHAR(11),
     `address` VARCHAR(255),
@@ -60,7 +60,7 @@ CREATE TABLE `book` (
 	`ISBN` INT NOT NULL,
     `title` VARCHAR(255),
     `author_ID` INT NOT NULL,
-    `author_name` VARCHAR(255)
+    `author_name` VARCHAR(255),
     PRIMARY KEY (ISBN),
     FOREIGN KEY (author_ID) REFERENCES author (author_ID)
 );
@@ -74,8 +74,8 @@ CREATE TABLE `inventory`(
     `quantity_on_hand` INT,
     `year_to_date_qty_sold` INT,
     `last_update_date` DATETIME,
-    PRIMARY KEY(ISBN),
-    FOREIGN KEY(ISBN) REFERENCES book (ISBN)
+    PRIMARY KEY (ISBN),
+    FOREIGN KEY (ISBN) REFERENCES book (ISBN)
 );
 
 -- Like before, in the assignment we are told to use 'order number` but I have opted to 
@@ -90,7 +90,7 @@ CREATE TABLE `inventory`(
 CREATE TABLE `orders` (
 	`order_id` INT NOT NULL,
     `ISBN` INT NOT NULL,
-    `order_date` DATE,
+    `order_date` DATETIME,
     `quantity_ordered` INT,
 	`publisher_id` INT NOT NULL,
 	`branch_name` VARCHAR(255),
@@ -111,7 +111,7 @@ CREATE TABLE `customer` (
     `province` VARCHAR(2),
     `postal_code` VARCHAR(7),
     `email` VARCHAR(255),
-    `amount_of_cumulative_purchases` DECIMAL,
+    `amount_of_cumulative_purchases` DECIMAL(10, 2),
     PRIMARY KEY (customer_ID)
 );
 
@@ -120,9 +120,9 @@ CREATE TABLE `customer` (
 CREATE TABLE `reader_interest` (
 `customer_id` INT NOT NULL,
 `author_id` INT NOT NULL,
-PRIMARY KEY(customer_ID, author_ID),
-FOREIGN KEY(customer_id) REFERENCES customer (id),
-FOREIGN KEY(author_id) REFERENCES author (author_id)
+PRIMARY KEY (customer_ID, author_ID),
+FOREIGN KEY (customer_id) REFERENCES customer (customer_id),
+FOREIGN KEY (author_id) REFERENCES author (author_id)
 );
 
 
@@ -132,11 +132,11 @@ FOREIGN KEY(author_id) REFERENCES author (author_id)
 -- *****************************************************************
 
 -- Publisher
-INSERT INTO `publisher` VALUES (100, 1, "Penguin", "555-9090", "555 Penguin Way", "Montreal", "QC", "H5H H5H", "penguin@penguin.com", "https//:www.penguin.com",);
+INSERT INTO `publisher` VALUES (100, 1, "Penguin", "555-9090", "555 Penguin Way", "Montreal", "QC", "H5H H5H", "penguin@penguin.com", "https//:www.penguin.com");
 INSERT INTO `publisher` VALUES (101, 1, "Elsevier", "555-0101", "555 Elsev Way", "Montreal", "QC", "5H2 2H9", "elsevier@elsevier.com", "https://www.elsevier.ca/");
 INSERT INTO `publisher` VALUES (102, 1, "Harper Collins", "555-0202", "555 Vingt Quatres Way", "Montreal", "QC", "HN3 34N", "harpercollins@harpercollins.com", "https://www.harpercollins.ca/");
 INSERT INTO `publisher` VALUES (103, 1, "Oreilly", "555-0303", "555 Oreilly Ave", "Montreal", "QC", "H5H 61A", "oreillys@oreilly.com", "https://www.oreilly.com/");
-INSERT INTO `publisher` VALUES (104, 1, "Hachette Livre", "555-6622", "555 Avenue d'Hachette", "Montreal", "QC", "H5H 2I2", "hachette@hachette.com", "https//:www.hachette.com",);
+INSERT INTO `publisher` VALUES (104, 1, "Hachette Livre", "555-6622", "555 Avenue d'Hachette", "Montreal", "QC", "H5H 2I2", "hachette@hachette.com", "https//:www.hachette.com");
 INSERT INTO `publisher` VALUES (105, 1, "Macmillan", "808-5555", "626 Macmillan Ave", "Montreal", "QC", "2HT 2H9", "macmillan@macmillan.com", "https://www.macmillan.com/");
 INSERT INTO `publisher` VALUES (106, 1, "McGraw-Hill", "522-1122", "787 McGraw Road", "Montreal", "QC", "T2G 222", "mcgraw@mcgraw.com", "https://www.mheducation.com/");
 INSERT INTO `publisher` VALUES (107, 1, "Scholastic", "555-2211", "333 Scholastic Way", "Montreal", "QC", "S2S SHS", "scholastic@scholastic.com", "https://www.scholastic.com/");
@@ -156,16 +156,16 @@ INSERT INTO `publisher_head_office` VALUES(108, "555 Wiley Way");
 INSERT INTO `publisher_head_office` VALUES(109, "777 Oxford Ave");
 
 -- Branch
-INSERT INTO `publisher_branch` VALUES (1, "Still Branch", "Bill Randolf", "bilL@bill.com", "5554444", "555 Stark Way", "QC", "H2H 222");
-INSERT INTO `publisher_branch` VALUES (2, "Elder Branch", "Richard Feynman", "richard@phys.org", "5553333", "000 Vector Ave", "QC", "H2H 333");
-INSERT INTO `publisher_branch` VALUES (3, "Hollyboor Branch", "Bob Loblaw", "bob@bob.law", "5553333", "2091 Hollyboor Boulevard", "QC", "H2H 111");
-INSERT INTO `publisher_branch` VALUES (4, "Cathington Branch", "Stan Tradowitz", "stan@tradowitz.com", "5556666", "555 Cathington Way", "QC", "H2H B1B");
-INSERT INTO `publisher_branch` VALUES (5, "Enron Building", "Carlos Maximus", "carlos@maximalia.org", "5155151", "777 Max Way", "QC", "H2H 212");
-INSERT INTO `publisher_branch` VALUES (6, "Calder Branch", "Lucy ", "lucy@hollowplaza.org", "5550055", "2091 Egglington Road", "QC", "H1N N67");
-INSERT INTO `publisher_branch` VALUES (7, "Templeton Building", "Greg Stanley", "greg@templeton.org", "4124421", "21 Templeton Road", "QC", "H2H 122");
-INSERT INTO `publisher_branch` VALUES (8, "Stanley Center", "Harry Weatherman", "harry@stanley.center", "5523132", "910 Stanley Road", "QC", "H2H 31B");
-INSERT INTO `publisher_branch` VALUES (9, "Barrel Branch", "Moishe Bradley", "moishe@barrel.branch", "5331131", "772 Barrel Way", "QC", "H5B 212");
-INSERT INTO `publisher_branch` VALUES (10, "Elk Building", "Rick Stanfield", "rick@elk.building", "5553313", "24 Elk Road", "QC", "H1N N22");
+INSERT INTO `publisher_branch` VALUES (100, "Still Branch", "Bill Randolf", "bilL@bill.com", "5554444", "555 Stark Way", "QC", "H2H 222");
+INSERT INTO `publisher_branch` VALUES (101, "Elder Branch", "Richard Feynman", "richard@phys.org", "5553333", "000 Vector Ave", "QC", "H2H 333");
+INSERT INTO `publisher_branch` VALUES (102, "Hollyboor Branch", "Bob Loblaw", "bob@bob.law", "5553333", "2091 Hollyboor Boulevard", "QC", "H2H 111");
+INSERT INTO `publisher_branch` VALUES (103, "Cathington Branch", "Stan Tradowitz", "stan@tradowitz.com", "5556666", "555 Cathington Way", "QC", "H2H B1B");
+INSERT INTO `publisher_branch` VALUES (104, "Enron Building", "Carlos Maximus", "carlos@maximalia.org", "5155151", "777 Max Way", "QC", "H2H 212");
+INSERT INTO `publisher_branch` VALUES (105, "Calder Branch", "Lucy ", "lucy@hollowplaza.org", "5550055", "2091 Egglington Road", "QC", "H1N N67");
+INSERT INTO `publisher_branch` VALUES (106, "Templeton Building", "Greg Stanley", "greg@templeton.org", "4124421", "21 Templeton Road", "QC", "H2H 122");
+INSERT INTO `publisher_branch` VALUES (107, "Stanley Center", "Harry Weatherman", "harry@stanley.center", "5523132", "910 Stanley Road", "QC", "H2H 31B");
+INSERT INTO `publisher_branch` VALUES (108, "Barrel Branch", "Moishe Bradley", "moishe@barrel.branch", "5331131", "772 Barrel Way", "QC", "H5B 212");
+INSERT INTO `publisher_branch` VALUES (109, "Elk Building", "Rick Stanfield", "rick@elk.building", "5553313", "24 Elk Road", "QC", "H1N N22");
 
 -- Author
 INSERT INTO `author` VALUES (1, "Emily Dickinson");
@@ -181,40 +181,40 @@ INSERT INTO `author` VALUES (10, "Gabriel Garcia Marquez");
 INSERT INTO `author` VALUES (11, "Roberto Bolano");
 
 -- Book
-INSERT INTO `book` VALUES (1234567890123, "The complete poems", 1, "Emily Dickinson");
-INSERT INTO `book` VALUES (1234567890124, "Mrs. Dalloway", 2, "Virginia Woolf");
-INSERT INTO `book` VALUES (1234567890125, "The Sound and the Fury", 3, "William Faulkner");
-INSERT INTO `book` VALUES (1234567890126, "Under the Volcano", 4, "Malcom Lowry");
-INSERT INTO `book` VALUES (1234567890127, "Blood Meridian", 5, "Cormac McCarthy");
-INSERT INTO `book` VALUES (1234567890128, "The Brothers Karamazov", 6, "Fyodor Dostoevsky");
-INSERT INTO `book` VALUES (1234567890129, "War and Peace", 7, "Leo Tolstoy");
-INSERT INTO `book` VALUES (1234567890130, "Oryx and Crake", 8, "Margaret Atwood");
-INSERT INTO `book` VALUES (1234567890131, "100 Days of Solitude", 9, "Gabriel Garcia Marquez");
-INSERT INTO `book` VALUES (1234567890132, "The Savage Detectives", 10, "Roberto Bolano");
+INSERT INTO `book` VALUES (7890123, "The complete poems", 1, "Emily Dickinson");
+INSERT INTO `book` VALUES (7890124, "Mrs. Dalloway", 2, "Virginia Woolf");
+INSERT INTO `book` VALUES (7890125, "The Sound and the Fury", 3, "William Faulkner");
+INSERT INTO `book` VALUES (7890126, "Under the Volcano", 4, "Malcom Lowry");
+INSERT INTO `book` VALUES (7890127, "Blood Meridian", 5, "Cormac McCarthy");
+INSERT INTO `book` VALUES (7890128, "The Brothers Karamazov", 6, "Fyodor Dostoevsky");
+INSERT INTO `book` VALUES (7890129, "War and Peace", 7, "Leo Tolstoy");
+INSERT INTO `book` VALUES (7890130, "Oryx and Crake", 8, "Margaret Atwood");
+INSERT INTO `book` VALUES (7890131, "100 Days of Solitude", 9, "Gabriel Garcia Marquez");
+INSERT INTO `book` VALUES (7890132, "The Savage Detectives", 10, "Roberto Bolano");
 
 -- Inventory
-INSERT INTO `inventory` VALUES (1234567890123, 12.00, 19.99, 6, 201, '2021-04-13');
-INSERT INTO `inventory` VALUES (1234567890124, 14.00, 19.99, 2, 123, '2021-04-13');
-INSERT INTO `inventory` VALUES (1234567890125, 8.00, 19.99, 2, 47, '2021-03-22');
-INSERT INTO `inventory` VALUES (1234567890126, 11.00, 19.99, 2, 34, '2021-06-12');
-INSERT INTO `inventory` VALUES (1234567890127, 10.00, 19.99, 4, 250, '2021-06-13');
-INSERT INTO `inventory` VALUES (1234567890128, 12.99, 24.99, 3, 170, '2021-02-03');
-INSERT INTO `inventory` VALUES (1234567890129, 14.99, 22.99, 4, 442, '2021-02-03');
-INSERT INTO `inventory` VALUES (1234567890130, 8.00, 22.99, 2, 110, '2021-02-03');
-INSERT INTO `inventory` VALUES (1234567890131, 8.00, 18.99, 2, 152, '2021-01-10');
-INSERT INTO `inventory` VALUES (1234567890132, 12.00, 29.99, 1, 84, '2021-01-15');
+INSERT INTO `inventory` VALUES (7890123, 12.00, 19.99, 6, 201, '2021-04-13');
+INSERT INTO `inventory` VALUES (7890124, 14.00, 19.99, 2, 123, '2021-04-13');
+INSERT INTO `inventory` VALUES (7890125, 8.00, 19.99, 2, 47, '2021-03-22');
+INSERT INTO `inventory` VALUES (7890126, 11.00, 19.99, 2, 34, '2021-06-12');
+INSERT INTO `inventory` VALUES (7890127, 10.00, 19.99, 4, 250, '2021-06-13');
+INSERT INTO `inventory` VALUES (7890128, 12.99, 24.99, 3, 170, '2021-02-03');
+INSERT INTO `inventory` VALUES (7890129, 14.99, 22.99, 4, 442, '2021-02-03');
+INSERT INTO `inventory` VALUES (7890130, 8.00, 22.99, 2, 110, '2021-02-03');
+INSERT INTO `inventory` VALUES (7890131, 8.00, 18.99, 2, 152, '2021-01-10');
+INSERT INTO `inventory` VALUES (7890132, 12.00, 29.99, 1, 84, '2021-01-15');
 
 -- Orders
-INSERT INTO `orders` (100001, 1234567890123, "2021-06-13 10:00:00", 10, 100, 1);
-INSERT INTO `orders` (100002, 1234567890124, "2021-06-13 10:00:00", 10, 101, 2);
-INSERT INTO `orders` (100003, 1234567890125, "2021-06-13 10:00:00", 10, 102, 3);
-INSERT INTO `orders` (100004, 1234567890126, "2021-06-13 10:00:00", 10, 103, 4);
-INSERT INTO `orders` (100005, 1234567890127, "2021-06-13 10:00:00", 10, 104, 5);
-INSERT INTO `orders` (100006, 1234567890128, "2021-06-13 10:00:00", 10, 105, 6);
-INSERT INTO `orders` (100007, 1234567890129, "2021-06-13 10:00:00", 10, 106, 7);
-INSERT INTO `orders` (100008, 1234567890130, "2021-06-13 10:00:00", 10, 107, 8);
-INSERT INTO `orders` (100009, 1234567890131, "2021-06-13 10:00:00", 10, 108, 9);
-INSERT INTO `orders` (100010, 1234567890132, "2021-06-13 10:00:00", 10, 109, 10);
+INSERT INTO `orders` VALUES (100001, 7890123, "2021-06-13 10:00:00", 10, 100, "Still Branch");
+INSERT INTO `orders` VALUES (100002, 7890124, "2021-06-13 10:00:00", 12, 101, "Elder Branch");
+INSERT INTO `orders` VALUES (100003, 7890125, "2021-06-13 10:00:00", 8, 102, "Hollyboor Branch");
+INSERT INTO `orders` VALUES (100004, 7890126, "2021-03-19 10:00:00", 11, 103, "Cathington Branch");
+INSERT INTO `orders` VALUES (100005, 7890127, "2021-02-14 10:00:00", 13, 104, "Enron Building");
+INSERT INTO `orders` VALUES (100006, 7890128, "2021-02-14 10:00:00", 5, 105, "Calder Branch");
+INSERT INTO `orders` VALUES (100007, 7890129, "2021-02-14 10:00:00", 2, 106, "Templeton Building");
+INSERT INTO `orders` VALUES (100008, 7890130, "2021-01-22 10:00:00", 1, 107, "Stanley Center");
+INSERT INTO `orders` VALUES (100009, 7890131, "2021-01-22 10:00:00", 2, 108, "Barrel Branch");
+INSERT INTO `orders` VALUES (100010, 7890132, "2021-01-22 10:00:00", 5, 109, "Elk Building");
 
 -- Customer
 INSERT INTO `customer` VALUES (5001, "Ben", "Grabbitz", "5147132231", "555 Grabbitz Way", "Montreal", "QC", "H1H231", "ben@grabbitz.org", 306.45);

@@ -66,7 +66,6 @@ CREATE TABLE `book` (
 );
 
 -- `inventory` is completely dependent on `book`
-
 CREATE TABLE `inventory`(
     `ISBN` INT NOT NULL,
     `cost_price` FLOAT,
@@ -76,27 +75,6 @@ CREATE TABLE `inventory`(
     `last_update_date` DATETIME,
     PRIMARY KEY (ISBN),
     FOREIGN KEY (ISBN) REFERENCES book (ISBN)
-);
-
--- Like before, in the assignment we are told to use 'order number` but I have opted to 
--- use `order_id`, which is much clearer
-
--- The `order_id` uniquely identifies an order.
-
--- Each FOREIGN KEY, both (ISBN) and (publisher_id, branch_name), references the primary
--- of its respective table. 
-
-
-CREATE TABLE `orders` (
-	`order_id` INT NOT NULL,
-    `ISBN` INT NOT NULL,
-    `order_date` DATETIME,
-    `quantity_ordered` INT,
-	`publisher_id` INT NOT NULL,
-	`branch_name` VARCHAR(255),
-    PRIMARY KEY (order_id),
-    FOREIGN KEY (ISBN) REFERENCES book (ISBN),
-    FOREIGN KEY (publisher_id, branch_name) REFERENCES publisher_branch (publisher_id, branch_name)
 );
 
 -- Added a PRIMARY KEY called `customer_ID`, not in the requirements but it's better this way
@@ -113,6 +91,26 @@ CREATE TABLE `customer` (
     `email` VARCHAR(255),
     `amount_of_cumulative_purchases` DECIMAL(10, 2),
     PRIMARY KEY (customer_ID)
+);
+
+-- Like before, in the assignment we are told to use 'order number` but I have opted to 
+-- use `order_id`, which is much clearer
+
+-- There can be multiple books in an order, and an order might involve different branches
+-- Thus the primary key is (order_id, ISBN, publisher_id, branch_name)
+
+CREATE TABLE `orders` (
+	`order_id` INT NOT NULL,
+    `ISBN` INT NOT NULL,
+    `order_date` DATETIME,
+    `quantity_ordered` INT,
+	`publisher_id` INT NOT NULL,
+	`branch_name` VARCHAR(255),
+    `customer_id` INT NULL, -- OPTIONAL customer_id, referencing `customer`
+    PRIMARY KEY (order_id, ISBN, publisher_id, branch_name),
+    FOREIGN KEY (ISBN) REFERENCES book (ISBN),
+    FOREIGN KEY (publisher_id, branch_name) REFERENCES publisher_branch (publisher_id, branch_name),
+    FOREIGN KEY (customer_id) REFERENCES customer (customer_id)
 );
 
 -- Modify later -- this is used to create a link between customers and the authors they read, but more information would be useful
@@ -204,18 +202,6 @@ INSERT INTO `inventory` VALUES (7890130, 8.00, 22.99, 2, 110, '2021-02-03');
 INSERT INTO `inventory` VALUES (7890131, 8.00, 18.99, 2, 152, '2021-01-10');
 INSERT INTO `inventory` VALUES (7890132, 12.00, 29.99, 1, 84, '2021-01-15');
 
--- Orders
-INSERT INTO `orders` VALUES (100001, 7890123, "2021-06-13 10:00:00", 10, 100, "Still Branch");
-INSERT INTO `orders` VALUES (100002, 7890124, "2021-06-13 10:00:00", 12, 101, "Elder Branch");
-INSERT INTO `orders` VALUES (100003, 7890125, "2021-06-13 10:00:00", 8, 102, "Hollyboor Branch");
-INSERT INTO `orders` VALUES (100004, 7890126, "2021-03-19 10:00:00", 11, 103, "Cathington Branch");
-INSERT INTO `orders` VALUES (100005, 7890127, "2021-02-14 10:00:00", 13, 104, "Enron Building");
-INSERT INTO `orders` VALUES (100006, 7890128, "2021-02-14 10:00:00", 5, 105, "Calder Branch");
-INSERT INTO `orders` VALUES (100007, 7890129, "2021-02-14 10:00:00", 2, 106, "Templeton Building");
-INSERT INTO `orders` VALUES (100008, 7890130, "2021-01-22 10:00:00", 1, 107, "Stanley Center");
-INSERT INTO `orders` VALUES (100009, 7890131, "2021-01-22 10:00:00", 2, 108, "Barrel Branch");
-INSERT INTO `orders` VALUES (100010, 7890132, "2021-01-22 10:00:00", 5, 109, "Elk Building");
-
 -- Customer
 INSERT INTO `customer` VALUES (5001, "Ben", "Grabbitz", "5147132231", "555 Grabbitz Way", "Montreal", "QC", "H1H231", "ben@grabbitz.org", 306.45);
 INSERT INTO `customer` VALUES (5002, "Rick", "Calen", "5147394131", "555 Calen Way", "Montreal", "QC", "H1H23J", "rickcalen@calen.org", 1100.22);
@@ -227,6 +213,19 @@ INSERT INTO `customer` VALUES (5007, "Simin", "Sadeghi", "5147131292", "555 Sade
 INSERT INTO `customer` VALUES (5008, "Jacob", "Robertson", "5147131244", "555 Robertson Ave", "Montreal", "QC", "H1H2HJ", "robertson@fake.org", 6.95);
 INSERT INTO `customer` VALUES (5009, "Caleb", "Frank", "5147131255", "555 Frank Way", "Montreal", "QC", "H1H2H1", "caleb@frank.com", 8.47);
 INSERT INTO `customer` VALUES (5010, "Elisa", "Sandoz", "5147131255", "555 Sandoz Ave", "Montreal", "QC", "H1H2H2", "elisasandoz@sandoz.notreal", 230.02);
+
+-- Orders
+INSERT INTO `orders` VALUES (100001, 7890123, "2021-06-13 10:00:00", 10, 100, "Still Branch", NULL);
+INSERT INTO `orders` VALUES (100002, 7890124, "2021-06-13 10:00:00", 12, 101, "Elder Branch", NULL);
+INSERT INTO `orders` VALUES (100003, 7890125, "2021-06-13 10:00:00", 8, 102, "Hollyboor Branch", 5001);
+INSERT INTO `orders` VALUES (100004, 7890126, "2021-03-19 10:00:00", 11, 103, "Cathington Branch", NULL);
+INSERT INTO `orders` VALUES (100005, 7890127, "2021-02-14 10:00:00", 13, 104, "Enron Building", 5002);
+INSERT INTO `orders` VALUES (100006, 7890128, "2021-02-14 10:00:00", 5, 105, "Calder Branch", 5007);
+INSERT INTO `orders` VALUES (100007, 7890129, "2021-02-14 10:00:00", 2, 106, "Templeton Building", NULL);
+INSERT INTO `orders` VALUES (100008, 7890130, "2021-01-22 10:00:00", 1, 107, "Stanley Center", 5006);
+INSERT INTO `orders` VALUES (100009, 7890131, "2021-01-22 10:00:00", 2, 108, "Barrel Branch", NULL);
+INSERT INTO `orders` VALUES (100010, 7890132, "2021-01-22 10:00:00", 5, 109, "Elk Building", NULL);
+
 
 -- Reader interest
 INSERT INTO `reader_interest` VALUES (5001, 1);

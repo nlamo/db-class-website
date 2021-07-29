@@ -1,4 +1,4 @@
-<!-- Control logic for insertions into the database at port 3307 -->
+
 <?php
     $server = 'localhost';
     $user = 'username';

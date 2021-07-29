@@ -1,8 +1,4 @@
-<!-- Control logic for insertions into the remote database -->
-
-<!-- Add the correct inputs for the connection -->
-<!-- Such information was provided to each group member, of course -->
-
+<!-- Control logic for insertions into the database at port 3307 -->
 <?php
     $server = 'localhost';
     $user = 'username';

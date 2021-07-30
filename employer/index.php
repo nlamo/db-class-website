@@ -1,3 +1,29 @@
+<!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
+<?php
+
+    session_start();
+
+    if (isset($_POST['submit'])) {
+
+        $loginAttempt = true;
+        $employer = htmlentities($_POST['employer']);
+        $employerPassword = htmlentities($_POST['employerPassword']);
+
+        $_SESSION['employer'] = $employer;
+        $_SESSION['employerPassword'] = $employerPassword;
+
+        if (!empty($employer) && !empty($employerPassword)) {
+            header("Location: dashboard-employer.php");
+            exit();
+        }
+        else {
+            // using the loginAttempt SESSION variable as condition for login message error
+            $_SESSION['loginAttempt'] = $loginAttempt;
+            header("Location: index.php");
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,47 +39,34 @@
             <p><u>Employer Login</u></p><br>
             
             <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                <label>Admin</label><br>
-                <input type="text" name ="admin"><br><br>
+                <label>Username</label><br>
+                <input type="text" name ="employer"><br><br>
 
                 <label>Password</label><br>
-                <input type="password" name ="password"><br><br>
+                <input type="password" name="employerPassword"><br><br>
 
                 <input type="submit" class="button" name="submit" style="margin-left:11px;"><br>
             </form>
 
-            <!-- Very, very basic validation for username/password -->
-            <!-- Will remove the small user-message element otherwise -->
-            <?php if ( isset($_POST['submit']) && (empty($admin) || empty($password)) ): ?>
-                <small id="user-message" style="text-align:center;">Please enter a valid username and password.</small>
-            <?php else: ?>
-                <script>
-                    var userMes = document.getElementById("user-message");
-                    userMes.remove();
-                </script>
-            <?php endif; ?>
+            <!-- Login validation -->
+            <?php if (isset($_SESSION['loginAttempt'])): ?>
+                
+                <?php if ( empty($_SESSION['employer']) || empty($_SESSION['employerPassword']) ): ?>
 
+                    <small id="user-message" style="text-align:center;">Please enter a valid username and password.</small>
+
+                <?php else: ?>
+
+                    <script>
+                        var userMes = document.getElementById("user-message");
+                        userMes.remove();
+                    </script>
+
+                <?php endif; ?>
+            <?php endif; ?>  
         </div>
-
-        <br><a href="../index.html">Return to Home</a>
     </div>
+
+    <br><a href="../index.html">Return to Home</a>
 </body>
 </html>
-
-<!-- NOTE:  This provides the actual validation for the redirect-->
-<!-- TODO:  Improve validation and refactor. Perhaps find a better way of dealing with the       
-            message than removing it with JavaScript. -->
-<?php
-    
-    if (isset($_POST['submit'])) {
-
-        $admin = htmlentities($_POST['admin']);
-        $password = htmlentities($_POST['password']);
-
-        // testing 
-        if (!empty($admin) && !empty($password)) {
-            header("Location: dashboard-employer.php");
-            exit();
-        }
-    }
-?>

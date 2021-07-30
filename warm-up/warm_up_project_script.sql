@@ -9,7 +9,7 @@ USE zic55311;
 -- use `publisher_id`, which is much clearer
 
 CREATE TABLE `publisher` (
-	`publisher_id` INT NOT NULL,
+    `publisher_id` INT NOT NULL,
     `branches` INT,
     `company_name` VARCHAR(255),
     `telephone_number` VARCHAR(11),
@@ -36,8 +36,8 @@ CREATE TABLE `publisher_head_office` (
 );
 
 CREATE TABLE `publisher_branch` (
-	`publisher_id` INT NOT NULL,
-	`branch_name` VARCHAR(255),
+    `publisher_id` INT NOT NULL,
+    `branch_name` VARCHAR(255),
     `representative` VARCHAR(255),
     `representative_email` VARCHAR(255),
     `telephone_number` VARCHAR(11),
@@ -57,7 +57,7 @@ CREATE TABLE `author` (
 -- referential integrity: there needs to be an author before a book of that author can exist
 
 CREATE TABLE `book` (
-	`ISBN` INT NOT NULL,
+    `ISBN` INT NOT NULL,
     `title` VARCHAR(255),
     `author_ID` INT NOT NULL,
     `author_name` VARCHAR(255),
@@ -81,10 +81,10 @@ CREATE TABLE `inventory`(
 -- Added a PRIMARY KEY called `customer_ID`, not in the requirements but it's better this way
 
 CREATE TABLE `customer` (
-	`customer_ID` INT NOT NULL,
-	`first_name` VARCHAR(255),
+    `customer_ID` INT NOT NULL,
+    `first_name` VARCHAR(255),
     `last_name` VARCHAR(255),
-	`telephone_number` VARCHAR(11),
+    `telephone_number` VARCHAR(11),
     `address` VARCHAR(255),
     `city` VARCHAR(255),
     `province` VARCHAR(2),
@@ -101,12 +101,12 @@ CREATE TABLE `customer` (
 -- many books sold within a given order.
 
 CREATE TABLE `orders` (
-	`order_id` INT NOT NULL,
+    `order_id` INT NOT NULL,
     `ISBN` INT NOT NULL,
     `order_date` DATETIME,
     `quantity_ordered` INT,
-	`publisher_id` INT NOT NULL,
-	`branch_name` VARCHAR(255),
+    `publisher_id` INT NOT NULL,
+    `branch_name` VARCHAR(255),
     `customer_id` INT NULL, -- OPTIONAL customer_id, referencing `customer`
     PRIMARY KEY (order_id, ISBN),
     FOREIGN KEY (ISBN) REFERENCES book (ISBN),

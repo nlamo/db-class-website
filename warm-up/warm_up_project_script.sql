@@ -117,11 +117,11 @@ CREATE TABLE `orders` (
 -- Modify later -- this is used to create a link between customers and the authors they read, but more information would be useful
 
 CREATE TABLE `reader_interest` (
-`customer_id` INT NOT NULL,
-`author_id` INT NOT NULL,
-PRIMARY KEY (customer_ID, author_ID),
-FOREIGN KEY (customer_id) REFERENCES customer (customer_id),
-FOREIGN KEY (author_id) REFERENCES author (author_id)
+    `customer_id` INT NOT NULL,
+    `author_id` INT NOT NULL,
+    PRIMARY KEY (customer_ID, author_ID),
+    FOREIGN KEY (customer_id) REFERENCES customer (customer_id),
+    FOREIGN KEY (author_id) REFERENCES author (author_id)
 );
 
 

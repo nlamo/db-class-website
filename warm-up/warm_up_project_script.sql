@@ -7,10 +7,6 @@
 -- NOTE: All of the tables here are listed in the *order of their dependencies (references)* !
 --       As such, you can (and should) execute them in the order in which they are listed.
 
-
-CREATE DATABASE zic55311;
-USE zic55311;
-
 -- In the assignment we are told to use 'publisher number` but I have opted to 
 -- use `publisher_id`, which is much clearer
 
@@ -286,6 +282,7 @@ SELECT orders.*
 FROM orders
 WHERE DATE(orders.order_date) BETWEEN '2021-01-01' AND '2021-07-16';
 
+
 -- Query #6
 -- Find the titles of books that have the highest back order.
 SELECT book_title, backorder_quantity
@@ -298,6 +295,7 @@ FROM
     ORDER BY backorder_quantity DESC
 ) AS highest_back_order
 WHERE sum_rank = 1;
+
 
 -- Query #7
 -- Give details of books that are supplied by a given publisher.

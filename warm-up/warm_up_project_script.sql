@@ -29,7 +29,7 @@ CREATE TABLE `publisher` (
 --       Thing is, if I make it reference only `publisher`, then it's one-to-one, which is what I want
 
 CREATE TABLE `publisher_head_office` (
-	`publisher_id` INT NOT NULL,
+    `publisher_id` INT NOT NULL,
     `branch_name` VARCHAR(255),
     PRIMARY KEY (publisher_id),
     FOREIGN KEY (publisher_id) REFERENCES publisher (publisher_id)

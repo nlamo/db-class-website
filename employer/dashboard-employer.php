@@ -33,7 +33,9 @@
                     <input type="text" id="last-name" name ="last-name">
                 </form>
 
-                <input type="submit" class="button" value="Update";>
+                <button type="submit" class="button" value="Update";>
+                    Submit
+                </button>
             </div>
 
             <!-- For adminstrators to upgrade or downgrade their category -->
@@ -41,12 +43,15 @@
             <div class="employer-categories">
                 <label for=""><u>Employer Categories</u></label><br><br>
 
-                <input type="submit" class="button" value="PRIME" style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!')">
-                <input type="submit" class="button" value="GOLD" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!')">
-                <!-- TODO: Add 'Prime' and 'Gold' -->
+                <button type="submit" class="button"style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!')">
+                    PRIME
+                </button>
+                <button type="submit" class="button" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!')">
+                    GOLD
+                </button>
             </div>
 
-            <!-- For administrators to create job postings -->
+            <!-- For employers to create job postings -->
             <div class="post-jobs">
                 <div class="post-jobs-subgrid">
                     <label for=""><u>Post Job</u></label><br><br>
@@ -90,7 +95,7 @@
                     <br>
     
                     <!-- NOTE: Really shouldn't do this, but I adjusted the style of this button to override the .button defaults in styles.css -->
-                    <input type="submit" class="button" style="width:200%; margin-top: 80px;"><br>
+                    <button type="submit" class="button" style="width:200%; margin-top: 80px;">Submit</button><br>
                 </div>
             </div>
 
@@ -103,7 +108,7 @@
         </div>
     </div>
 
-    <br><a href="./index.php">Return to Admin Login</a>
+    <br><a href="./index.php">Return to Employer Login</a>
 </body>
 </html>
 

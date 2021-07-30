@@ -34,6 +34,11 @@
     <title>Employer Login Page</title>
 </head>
 <body>
+
+    <div class="container">
+        <h2>Web Career Portal</h2>
+    </div>
+
     <div class="container">
         <div class="card">
             <p><u>Employer Login</u></p><br>
@@ -45,7 +50,9 @@
                 <label>Password</label><br>
                 <input type="password" name="employerPassword"><br><br>
 
-                <input type="submit" class="button" name="submit" style="margin-left:11px;"><br>
+                <button type="submit" class="button" name="submit" style="margin-left:11px;">
+                    Submit
+                </button><br>
             </form>
 
             <!-- Login validation -->

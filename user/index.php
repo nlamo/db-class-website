@@ -35,7 +35,10 @@
 </head>
 <body>
 
-    <!-- TODO: Add functionality to verify credentials. (PHP) -->
+    <div class="container">
+        <h2>Web Career Portal</h2>
+    </div>
+
     <div class="container">
         <div class="card">
             <p><u>User Login</u></p><br>
@@ -47,7 +50,9 @@
                 <label>Password</label><br>
                 <input type="password" name="userPassword"><br><br>
 
-                <input type="submit" class="button" name="submit" style="margin-left:11px;">
+                <button type="submit" class="button" name="submit" style="margin-left:11px;">
+                    Submit
+                </button><br>
             </form>
             
             <!-- Login validation -->
@@ -69,6 +74,6 @@
         </div>       
     </div>
 
-    <br><a href="../index.html">Return to Home</a>
+    <br><a href="../index.html" style="a:hover:">Return to Home</a>
 </body>
 </html>

@@ -18,15 +18,14 @@ body {
     flex-direction: column;
 }
 
+h2 {
+    text-align: center;
+}
 a {
     display: flex;
     align-content: center;
     justify-content: center;
-}
-
-a:hover {
-    border: 2px solid  #2F4858;
-    filter: brightness(107%);
+    text-decoration: none;
 }
 
 p {
@@ -42,10 +41,28 @@ form > * {
     margin-bottom: 10px;
 }
 
+button {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+}
+
+button:hover {
+    border: 2px solid  #2F4858;
+    filter: brightness(107%);
+    cursor: pointer;
+}
+
 /* The 'buttons' I've created are actually input selectors, so I have to change the font here */
 input {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+input:hover {
+    border: 2px solid  #2F4858;
+    filter: brightness(107%);
+}
+
+
 /* -------------------------------------------------------------------------------------- */
 
 /* Dashboard container for employer & user */
@@ -94,15 +111,9 @@ input {
     align-items: center;
     margin: 20px 0px 20px 0px;
     color: #FFF;
-    text-decoration: none;
     border: none;
     height: 50px;
     width: 150px;
     border-radius: 12px;
     background: #5eaf6d;
-}
-
-input:hover {
-    border: 2px solid  #2F4858;
-    filter: brightness(107%);
 }

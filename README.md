@@ -7,8 +7,8 @@ Website for the main project for the 'Files and Databases' course, COMP 5531.
   TODO 
 ********
 
-- Create the ER diagram (with constraints!), the database relational schema, and the SQL database itself.
-- After creating the diagrams and SQL, normalize the database and modify everything accordingly.
+- Continue adding to the ER diagram (with constraints!), the database relational schema, and the SQL database itself.
+- After finalizing the diagrams and SQL, normalize the database and modify everything accordingly.
 - Greatly improve the user validation for login (authentication). Use SESSION variables for this. Consider hashing.
 - Follow all of the requirements strictly and ensure that the design of the database system proceeds logically.
 - Add PHP for the dashboards to talk to the localhost database (e.g. submit, update, get, for each section).

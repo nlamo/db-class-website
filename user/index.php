@@ -36,7 +36,7 @@
 <body>
 
     <div class="container">
-        <h2>Web Career Portal</h2>
+        <h2 class="career-portal-heading">Web Career Portal</h2>
     </div>
 
     <div class="container">
@@ -51,7 +51,7 @@
                 <input type="password" name="userPassword"><br><br>
 
                 <button type="submit" class="button" name="submit" style="margin-left:11px;">
-                    Submit
+                    Login
                 </button><br>
             </form>
             

@@ -9,7 +9,7 @@
     width: 95%;
     border-radius: 2px;
     background:  #F3FCF4;
-    border: none; /* unnecessary, but helpful for clarity's sake */
+    border: none;
 }
 
 .maintain-users {
@@ -17,9 +17,10 @@
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 1; 
-    background: #cfd6d2;
+    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    border: solid 1px;
     border-radius: 5px;
 }
 
@@ -28,9 +29,10 @@
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 4; 
-    background: #cfd6d2;
+    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    border: solid 1px;
     border-radius: 5px;
 }
 
@@ -39,9 +41,10 @@
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 5; 
-    background: #cfd6d2;
+    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    border: solid 1px;
     border-radius: 5px;
 }
 
@@ -49,16 +52,35 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-jobs-subgrid form textarea {
+    display: grid;
+    grid-column: 1 / span 2;
+    width: 200%;
+}
+
+.post-jobs-subgrid button {
+    display: grid;
+    grid-column: 1 / span 2;
+    width: auto;
+    margin-top: 50px;
+}
+
+#job-description-container {
+    margin-top: 20px;
 }
 
 .application-summary {
-
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 4; 
-    background: #cfd6d2;
+    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    border: solid 1px;
     border-radius: 5px;
 }

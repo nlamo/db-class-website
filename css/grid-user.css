@@ -9,7 +9,7 @@
     width: 95%;
     border-radius: 2px;
     background:  #F3FCF4;
-    border: none; /* unnecessary, but helpful for clarity's sake */
+    border: none;
 }
 
 .user-categories {
@@ -17,9 +17,10 @@
     grid-column-end: 1;
     grid-row-start: 1;
     grid-row-end: 1; 
-    background: #cfd6d2;
+    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    border: solid 1px;
     border-radius: 5px;
 }
 
@@ -28,9 +29,10 @@
     grid-column-end: 1;
     grid-row-start: 2;
     grid-row-end: 3; 
-    background: #cfd6d2;
+    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    border: solid 1px;
     border-radius: 5px;
 }
 
@@ -39,9 +41,10 @@
     grid-column-end: 1;
     grid-row-start: 3;
     grid-row-end: 4; 
-    background: #cfd6d2;
+    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    border: solid 1px;
     border-radius: 5px;
 }
 
@@ -50,9 +53,10 @@
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 4; 
-    background: #cfd6d2;
+    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    border: solid 1px;
     border-radius: 5px;
 }
 
@@ -61,9 +65,10 @@
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 4; 
-    background: #cfd6d2;
+    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    border: solid 1px;
     border-radius: 5px;
 }
 
@@ -72,9 +77,10 @@
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 2; 
-    background: #cfd6d2;
+    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    border: solid 1px;
     border-radius: 5px;
 }
 
@@ -83,9 +89,10 @@
     grid-column-end: 5;
     grid-row-start: 2;
     grid-row-end: 3; 
-    background: #cfd6d2;
+    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    border: solid 1px;
     border-radius: 5px;
 }
 
@@ -94,8 +101,9 @@
     grid-column-end: 5;
     grid-row-start: 3;
     grid-row-end: 4; 
-    background: #cfd6d2;
+    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    border: solid 1px;
     border-radius: 5px;
 }

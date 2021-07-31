@@ -51,7 +51,7 @@
                 <input type="password" name="employerPassword"><br><br>
 
                 <button type="submit" class="button" name="submit" style="margin-left:11px;">
-                    Submit
+                    Login
                 </button><br>
             </form>
 

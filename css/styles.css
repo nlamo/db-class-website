@@ -21,6 +21,7 @@ body {
 h2 {
     text-align: center;
 }
+
 a {
     display: flex;
     align-content: center;
@@ -62,6 +63,11 @@ input:hover {
     filter: brightness(107%);
 }
 
+textarea { 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px;
+    
+}
 
 /* -------------------------------------------------------------------------------------- */
 

@@ -32,7 +32,7 @@
             <div class="job-data">
                 <form>
                     <label for="job-data"><u>Job Data</u></label><br><br>
-                    <textarea name="job-data" id="job-data" cols="48" rows="35"></textarea>
+                    <textarea name="job-data" id="job-data" cols="48" rows="33"></textarea>
                 </form>
             </div>
 

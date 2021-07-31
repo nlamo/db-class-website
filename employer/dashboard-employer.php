@@ -53,9 +53,10 @@
 
             <!-- For employers to create job postings -->
             <div class="post-jobs">
-                <div class="post-jobs-subgrid">
-                    <label for=""><u>Post Job</u></label><br><br>
+                <label for=""><u>Post Job</u></label><br><br>
 
+                <div class="post-jobs-subgrid">
+        
                     <form>
                         <label for="job-id"><strong>Job ID</strong></label><br>
                         <input type="text" id="job-id" name ="job-id">
@@ -69,8 +70,8 @@
                         <input type="text" id="job-title" name ="job-title">
                     </form>
                     <form>
-                        <label for="job-category-id">Job Category ID</label><br>
-                        <input type="text" id="job-category-id" name ="job-category-id">
+                        <label for="job-category">Job Category</label><br>
+                        <input type="text" id="job-category" name ="job-category">
                     </form>
                     <form>
                         <label for="date-posted">Date Posted</label><br>
@@ -84,25 +85,25 @@
                         <label for="start-date">Start Date</label><br>
                         <input type="date" id="start-date" name ="start-date">
                     </form>
-                    <form>
-                        <label for="employees-needed">No. of Employees Needed</label><br>
-                        <input type="text" id="employees-needed" name ="employees-needed">
-                    </form>
-                    <form>
+
+                    <div>
+                        <!-- Empty div  -->
+                    </div>
+
+                    <form id="job-description-container">
                         <label for="job-description">Job Description</label><br>
                         <textarea name="job-description" id="job-descrption" cols="30" rows="10"></textarea>
                     </form>
                     <br>
     
-                    <!-- NOTE: Really shouldn't do this, but I adjusted the style of this button to override the .button defaults in styles.css -->
-                    <button type="submit" class="button" style="width:200%; margin-top: 80px;">Submit</button><br>
+                    <button type="submit" class="button">Submit</button><br>
                 </div>
             </div>
 
             <!-- A summary of the current (most recent) application for any given job -->
             <div class="application-summary">
                 <label for=""><u>Current Application Summary</u></label><br><br>
-                <textarea name="application-summary" id="application-summary" cols="45" rows="35"></textarea>
+                <textarea name="application-summary" id="application-summary" cols="40" rows="33"></textarea>
             </div>
 
         </div>

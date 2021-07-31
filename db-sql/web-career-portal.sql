@@ -19,6 +19,14 @@ CREATE TABLE `payment_method` (
     PRIMARY KEY (payment_method)
 );
 
+-- Creating the account separately so that we can associate multiple payment methods with a user
+CREATE TABLE `user_account` (
+    `username` VARCHAR(255),
+    `payment_method` VARCHAR(255),
+    PRIMARY KEY (username, payment_method),
+    FOREIGN KEY (username) REFERENCES user (username)
+);
+
 -- Each payment is unique, and the ID will determine everything, including username
 CREATE TABLE `payment` (
     `payment_ID` VARCHAR(255),
@@ -29,14 +37,6 @@ CREATE TABLE `payment` (
     PRIMARY KEY (payment_ID),
     FOREIGN KEY (username) REFERENCES payment_method (payment_method),
     FOREIGN KEY (payment_method) REFERENCES payment_method (payment_method)
-);
-
--- Creating the account separately so that we can associate multiple payment methods with a user
-CREATE TABLE `user_account` (
-    `username` VARCHAR(255),
-    `payment_method` VARCHAR(255),
-    PRIMARY KEY (username, payment_method),
-    FOREIGN KEY (username) REFERENCES user (username)
 );
 
 -- Only two job categories, so they'll always be unique here

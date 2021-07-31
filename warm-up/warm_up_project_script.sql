@@ -2,16 +2,12 @@
 --   Book, Customer, Publisher, Publisher-Branch, Inventory, Orders, Reader-Interest, Author - potentially more
 
 -- TODO: Change the data types for the ISBN keys??
---       Probably not crucial for the purposes of this assignment.
-
--- NOTE: All of the tables here are listed in the *order of their dependencies (references)* !
---       As such, you can (and should) execute them in the order in which they are listed.
 
 -- In the assignment we are told to use 'publisher number` but I have opted to 
 -- use `publisher_id`, which is much clearer
 
 CREATE TABLE `publisher` (
-    `publisher_id` INT NOT NULL,
+	`publisher_id` INT NOT NULL,
     `branches` INT,
     `company_name` VARCHAR(255),
     `telephone_number` VARCHAR(11),
@@ -24,19 +20,22 @@ CREATE TABLE `publisher` (
     PRIMARY KEY (publisher_id)
 );
 
--- I think the way to do this is to make it reference the PRIMARY KEY 'publisher_id' in
+-- Okay, I think the way to do this is to make it reference the PRIMARY KEY 'publisher_id' in
 -- 'publisher' and combine that with 'branch_name` to form the PRIMARY KEY of *this* table.
 
+-- TODO: Should `publisher_head_office` reference `publisher_branch`? Ask Parham on Monday.
+--       Thing is, if I make it reference only `publisher`, then it's one-to-one, which is what I want
+
 CREATE TABLE `publisher_head_office` (
-    `publisher_id` INT NOT NULL,
+	`publisher_id` INT NOT NULL,
     `branch_name` VARCHAR(255),
     PRIMARY KEY (publisher_id),
     FOREIGN KEY (publisher_id) REFERENCES publisher (publisher_id)
 );
 
 CREATE TABLE `publisher_branch` (
-    `publisher_id` INT NOT NULL,
-    `branch_name` VARCHAR(255),
+	`publisher_id` INT NOT NULL,
+	`branch_name` VARCHAR(255),
     `representative` VARCHAR(255),
     `representative_email` VARCHAR(255),
     `telephone_number` VARCHAR(11),
@@ -53,21 +52,23 @@ CREATE TABLE `author` (
     PRIMARY KEY (author_ID)
 );
 
+-- referential integrity: there needs to be an author before a book of that author can exist
+
 CREATE TABLE `book` (
-    `ISBN` INT NOT NULL,
+	`ISBN` INT NOT NULL,
     `title` VARCHAR(255),
     `author_ID` INT NOT NULL,
     `author_name` VARCHAR(255),
-    `cost_price` DECIMAL(10, 2),
-    `selling_price` DECIMAL(10, 2),
     PRIMARY KEY (ISBN),
     FOREIGN KEY (author_ID) REFERENCES author (author_ID)
 );
 
--- `inventory` is completely dependent on `book` (one-to-one)
+-- `inventory` is completely dependent on `book`
 
 CREATE TABLE `inventory`(
     `ISBN` INT NOT NULL,
+    `cost_price` FLOAT,
+    `selling_price` FLOAT,
     `quantity_on_hand` INT,
     `year_to_date_qty_sold` INT,
     `last_update_date` DATETIME,
@@ -78,10 +79,10 @@ CREATE TABLE `inventory`(
 -- Added a PRIMARY KEY called `customer_ID`, not in the requirements but it's better this way
 
 CREATE TABLE `customer` (
-    `customer_ID` INT NOT NULL,
-    `first_name` VARCHAR(255),
+	`customer_ID` INT NOT NULL,
+	`first_name` VARCHAR(255),
     `last_name` VARCHAR(255),
-    `telephone_number` VARCHAR(11),
+	`telephone_number` VARCHAR(11),
     `address` VARCHAR(255),
     `city` VARCHAR(255),
     `province` VARCHAR(2),
@@ -94,19 +95,17 @@ CREATE TABLE `customer` (
 -- Like before, in the assignment we are told to use 'order number` but I have opted to 
 -- use `order_id`, which is much clearer
 
--- NOTE: before I had the primary key including both `publisher_id` and `branch_name` but
---       it became clear that this was obviously ridiculous. All we need are an
---       `order_id` and an `ISBN` because there can be many books for each order.
+-- Primary key is composed of an `order_id` and an `ISBN`, because there can be may be 
+-- many books sold within a given order.
 
 CREATE TABLE `orders` (
-    `order_id` INT NOT NULL,
+	`order_id` INT NOT NULL,
     `ISBN` INT NOT NULL,
     `order_date` DATETIME,
     `quantity_ordered` INT,
-    `publisher_id` INT NOT NULL,
-    `branch_name` VARCHAR(255),
+	`publisher_id` INT NOT NULL,
+	`branch_name` VARCHAR(255),
     `customer_id` INT NULL, -- OPTIONAL customer_id, referencing `customer`
-    `is_back_order` BIT(1) DEFAULT b'0', -- value of 0: False, value of 1: True
     PRIMARY KEY (order_id, ISBN),
     FOREIGN KEY (ISBN) REFERENCES book (ISBN),
     FOREIGN KEY (publisher_id, branch_name) REFERENCES publisher_branch (publisher_id, branch_name),
@@ -122,6 +121,7 @@ PRIMARY KEY (customer_ID, author_ID),
 FOREIGN KEY (customer_id) REFERENCES customer (customer_id),
 FOREIGN KEY (author_id) REFERENCES author (author_id)
 );
+
 
 
 -- *****************************************************************
@@ -178,28 +178,28 @@ INSERT INTO `author` VALUES (10, "Gabriel Garcia Marquez");
 INSERT INTO `author` VALUES (11, "Roberto Bolano");
 
 -- Book
-INSERT INTO `book` VALUES (7890123, "The complete poems", 1, "Emily Dickinson", 12.00, 19.99);
-INSERT INTO `book` VALUES (7890124, "Mrs. Dalloway", 2, "Virginia Woolf", 14.00, 19.99);
-INSERT INTO `book` VALUES (7890125, "The Sound and the Fury", 3, "William Faulkner", 8.00, 19.99);
-INSERT INTO `book` VALUES (7890126, "Under the Volcano", 4, "Malcom Lowry", 11.00, 19.99);
-INSERT INTO `book` VALUES (7890127, "Blood Meridian", 5, "Cormac McCarthy", 10.00, 19.99);
-INSERT INTO `book` VALUES (7890128, "The Brothers Karamazov", 6, "Fyodor Dostoevsky", 12.99, 24.99);
-INSERT INTO `book` VALUES (7890129, "War and Peace", 7, "Leo Tolstoy", 14.99, 22.99);
-INSERT INTO `book` VALUES (7890130, "Oryx and Crake", 8, "Margaret Atwood", 8.00, 22.99);
-INSERT INTO `book` VALUES (7890131, "100 Days of Solitude", 9, "Gabriel Garcia Marquez", 8.00, 18.99);
-INSERT INTO `book` VALUES (7890132, "The Savage Detectives", 10, "Roberto Bolano", 12.00, 29.99);
+INSERT INTO `book` VALUES (7890123, "The complete poems", 1, "Emily Dickinson");
+INSERT INTO `book` VALUES (7890124, "Mrs. Dalloway", 2, "Virginia Woolf");
+INSERT INTO `book` VALUES (7890125, "The Sound and the Fury", 3, "William Faulkner");
+INSERT INTO `book` VALUES (7890126, "Under the Volcano", 4, "Malcom Lowry");
+INSERT INTO `book` VALUES (7890127, "Blood Meridian", 5, "Cormac McCarthy");
+INSERT INTO `book` VALUES (7890128, "The Brothers Karamazov", 6, "Fyodor Dostoevsky");
+INSERT INTO `book` VALUES (7890129, "War and Peace", 7, "Leo Tolstoy");
+INSERT INTO `book` VALUES (7890130, "Oryx and Crake", 8, "Margaret Atwood");
+INSERT INTO `book` VALUES (7890131, "100 Days of Solitude", 9, "Gabriel Garcia Marquez");
+INSERT INTO `book` VALUES (7890132, "The Savage Detectives", 10, "Roberto Bolano");
 
 -- Inventory
-INSERT INTO `inventory` VALUES (7890123, 6, 201, '2021-04-13');
-INSERT INTO `inventory` VALUES (7890124, 2, 123, '2021-04-13');
-INSERT INTO `inventory` VALUES (7890125, 2, 47, '2021-03-22');
-INSERT INTO `inventory` VALUES (7890126, 2, 34, '2021-06-12');
-INSERT INTO `inventory` VALUES (7890127, 4, 250, '2021-06-13');
-INSERT INTO `inventory` VALUES (7890128, 3, 170, '2021-02-03');
-INSERT INTO `inventory` VALUES (7890129, 4, 442, '2021-02-03');
-INSERT INTO `inventory` VALUES (7890130, 2, 110, '2021-02-03');
-INSERT INTO `inventory` VALUES (7890131, 2, 152, '2021-01-10');
-INSERT INTO `inventory` VALUES (7890132, 1, 84, '2021-01-15');
+INSERT INTO `inventory` VALUES (7890123, 12.00, 19.99, 6, 201, '2021-04-13');
+INSERT INTO `inventory` VALUES (7890124, 14.00, 19.99, 2, 123, '2021-04-13');
+INSERT INTO `inventory` VALUES (7890125, 8.00, 19.99, 2, 47, '2021-03-22');
+INSERT INTO `inventory` VALUES (7890126, 11.00, 19.99, 2, 34, '2021-06-12');
+INSERT INTO `inventory` VALUES (7890127, 10.00, 19.99, 4, 250, '2021-06-13');
+INSERT INTO `inventory` VALUES (7890128, 12.99, 24.99, 3, 170, '2021-02-03');
+INSERT INTO `inventory` VALUES (7890129, 14.99, 22.99, 4, 442, '2021-02-03');
+INSERT INTO `inventory` VALUES (7890130, 8.00, 22.99, 2, 110, '2021-02-03');
+INSERT INTO `inventory` VALUES (7890131, 8.00, 18.99, 2, 152, '2021-01-10');
+INSERT INTO `inventory` VALUES (7890132, 12.00, 29.99, 1, 84, '2021-01-15');
 
 -- Customer
 INSERT INTO `customer` VALUES (5001, "Ben", "Grabbitz", "5147132231", "555 Grabbitz Way", "Montreal", "QC", "H1H231", "ben@grabbitz.org", 306.45);
@@ -214,16 +214,16 @@ INSERT INTO `customer` VALUES (5009, "Caleb", "Frank", "5147131255", "555 Frank 
 INSERT INTO `customer` VALUES (5010, "Elisa", "Sandoz", "5147131255", "555 Sandoz Ave", "Montreal", "QC", "H1H2H2", "elisasandoz@sandoz.notreal", 230.02);
 
 -- Orders
-INSERT INTO `orders` VALUES (100001, 7890123, "2021-06-13 10:00:00", 10, 100, "Still Branch", NULL, 0);
-INSERT INTO `orders` VALUES (100002, 7890124, "2021-06-13 10:00:00", 12, 101, "Elder Branch", NULL, 0);
-INSERT INTO `orders` VALUES (100003, 7890125, "2021-06-13 10:00:00", 8, 102, "Hollyboor Branch", 5001, 1);
-INSERT INTO `orders` VALUES (100004, 7890126, "2021-03-19 10:00:00", 11, 103, "Cathington Branch", NULL, 0);
-INSERT INTO `orders` VALUES (100005, 7890127, "2021-02-14 10:00:00", 13, 104, "Enron Building", 5002, 1);
-INSERT INTO `orders` VALUES (100006, 7890128, "2021-02-14 10:00:00", 13, 105, "Calder Branch", 5007, 1);
-INSERT INTO `orders` VALUES (100007, 7890129, "2021-02-14 10:00:00", 2, 106, "Templeton Building", NULL, 0);
-INSERT INTO `orders` VALUES (100008, 7890130, "2021-01-22 10:00:00", 1, 107, "Stanley Center", 5006, 0);
-INSERT INTO `orders` VALUES (100009, 7890131, "2021-01-22 10:00:00", 2, 108, "Barrel Branch", NULL, 0);
-INSERT INTO `orders` VALUES (100010, 7890132, "2021-01-22 10:00:00", 5, 109, "Elk Building", NULL, 0);
+INSERT INTO `orders` VALUES (100001, 7890123, "2021-06-13 10:00:00", 10, 100, "Still Branch", NULL);
+INSERT INTO `orders` VALUES (100002, 7890124, "2021-06-13 10:00:00", 12, 101, "Elder Branch", NULL);
+INSERT INTO `orders` VALUES (100003, 7890125, "2021-06-13 10:00:00", 8, 102, "Hollyboor Branch", 5001);
+INSERT INTO `orders` VALUES (100004, 7890126, "2021-03-19 10:00:00", 11, 103, "Cathington Branch", NULL);
+INSERT INTO `orders` VALUES (100005, 7890127, "2021-02-14 10:00:00", 13, 104, "Enron Building", 5002);
+INSERT INTO `orders` VALUES (100006, 7890128, "2021-02-14 10:00:00", 5, 105, "Calder Branch", 5007);
+INSERT INTO `orders` VALUES (100007, 7890129, "2021-02-14 10:00:00", 2, 106, "Templeton Building", NULL);
+INSERT INTO `orders` VALUES (100008, 7890130, "2021-01-22 10:00:00", 1, 107, "Stanley Center", 5006);
+INSERT INTO `orders` VALUES (100009, 7890131, "2021-01-22 10:00:00", 2, 108, "Barrel Branch", NULL);
+INSERT INTO `orders` VALUES (100010, 7890132, "2021-01-22 10:00:00", 5, 109, "Elk Building", NULL);
 
 
 -- Reader interest
@@ -242,91 +242,3 @@ INSERT INTO `reader_interest` VALUES (5010, 1);
 -- *****************************************************************
 -- ************************** QUERIES ******************************
 -- *****************************************************************
-
--- Query #1
--- Get details of all books in stock.
-SELECT book.*
-FROM book, inventory
-WHERE book.ISBN = inventory.ISBN
-AND inventory.quantity_on_hand > 0;
-
-
--- Query #2
--- Get details of all back orders.
-SELECT orders.*
-FROM orders
-WHERE orders.is_back_order = b'1';
-
-
--- Query #3
--- For a given customer, get details of all his/her back orders.
-SELECT orders.*
-FROM orders
-WHERE orders.customer_id = 5002 
-AND orders.is_back_order = b'1';
-
-
--- Query #4
--- For a given customer, get details of all his/her purchases made during a specific period of time.
-SELECT orders.*
-FROM orders, customer
-WHERE orders.customer_id = customer.customer_id
-AND customer.first_name = 'Ben'
-AND customer.last_name = 'Grabbitz'
-AND DATE(orders.order_date) BETWEEN '2021-06-11' AND '2021-07-14';
-
-
--- Query #5 
--- Give a report of sales during a specific period of time.
-SELECT orders.*
-FROM orders
-WHERE DATE(orders.order_date) BETWEEN '2021-01-01' AND '2021-07-16';
-
-
--- Query #6
--- Find the titles of books that have the highest back order.
-SELECT book_title, backorder_quantity
-FROM
-(
-    SELECT book.title AS book_title, SUM(orders.quantity_ordered) AS backorder_quantity, RANK() OVER (ORDER BY SUM(orders.quantity_ordered) DESC) as sum_rank
-    FROM orders, book
-    WHERE orders.ISBN = book.ISBN AND orders.is_back_order = b'1'
-    GROUP BY book.title
-    ORDER BY backorder_quantity DESC
-) AS highest_back_order
-WHERE sum_rank = 1;
-
-
--- Query #7
--- Give details of books that are supplied by a given publisher.
-SELECT book.*
-FROM book, orders, publisher
-WHERE book.ISBN = orders.ISBN
-AND orders.publisher_ID = publisher.publisher_id
-AND publisher.company_name = 'Oreilly';
-
-
--- Query #8
--- For a given publisher, get details of the head office and all the branches for that publisher.
-SELECT publisher_head_office.*, publisher_branch.*
-FROM publisher, publisher_head_office, publisher_branch
-WHERE publisher_head_office.publisher_id = publisher.publisher_id 
-AND publisher_head_office.publisher_id = publisher_branch.publisher_id
-AND publisher.company_name = 'Oxford University Press';
-
-
--- Query #9
--- Give details of books that are in the inventory but for which there have never been 
--- specific purchases for those books.
-SELECT book.*
-FROM book, inventory
-WHERE book.ISBN = inventory.ISBN
-AND inventory.year_to_date_qty_sold = 0;
-
-
--- Query #10
--- Get details of all books that are in the inventory for a given author.
-SELECT book.*
-FROM book, inventory
-WHERE book.ISBN = inventory.ISBN
-AND book.author_name = "Roberto Bolano";

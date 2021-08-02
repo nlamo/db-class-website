@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="dashboard-container">
-        <p><u>User Dashboard</u></p><br>
+        <p><u><b>User Dashboard</b></u></p><br>
 
         <div class="dashboard-user">
          
@@ -32,7 +32,7 @@
             <div class="job-data">
                 <form>
                     <label for="job-data"><u>Job Data</u></label><br><br>
-                    <textarea name="job-data" id="job-data" cols="48" rows="33"></textarea>
+                    <textarea name="job-data" id="job-data" cols="48" rows="30"></textarea>
                 </form>
             </div>
 

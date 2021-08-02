@@ -74,6 +74,8 @@
         </div>
     </div>
 
-    <br><a href="../index.html">Return to Home</a>
+    <!-- TODO: Implement a simple and hardly-secure password retrieval procedure based on a security question -->
+    <br><br><a href="#" style="a:hover:">Forgot your password? Click here.</a>
+    <br><br><a href="../index.html">Return to Home</a>
 </body>
 </html>

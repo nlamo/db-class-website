@@ -11,7 +11,14 @@
 </head>
 <body>
     <div class="dashboard-container">
-        <p><u>Employer Dashboard</u></p><br>
+        <p><u><b>Employer Dashboard</b></u></p><br>
+
+        <!-- TODO: Add a contact page -->
+        <a href="#">
+            <button class="contact-button">
+                Need Help? Contact Us.
+            </button>
+        </a> 
 
         <!-- TODO: Add a class in the grid for "maintaining" jobs -->
         <div class="dashboard-employer">
@@ -43,10 +50,13 @@
             <div class="employer-categories">
                 <label for=""><u>Employer Categories</u></label><br><br>
 
-                <button type="submit" class="button"style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!')">
+                <small>Need more functionality? Upgrade!</small> 
+
+                <!-- TODO: Probably will want to give these IDs for the control logic that will be implemented -->
+                <button type="submit" class="button"style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!\n\nYou can now post up to five (5) jobs.\n\nYou will be charged $50 per month. Feel free to cancel anytime.')">
                     PRIME
                 </button>
-                <button type="submit" class="button" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!')">
+                <button type="submit" class="button" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!\n\nYou can now post an unlimited number of jobs.\n\nYou will be charged $100 per month. Feel free to cancel anytime.')">
                     GOLD
                 </button>
             </div>
@@ -103,7 +113,7 @@
             <!-- A summary of the current (most recent) application for any given job -->
             <div class="application-summary">
                 <label for=""><u>Current Application Summary</u></label><br><br>
-                <textarea name="application-summary" id="application-summary" cols="40" rows="33"></textarea>
+                <textarea name="application-summary" id="application-summary" cols="40" rows="31"></textarea>
             </div>
 
         </div>

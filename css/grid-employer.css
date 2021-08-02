@@ -84,3 +84,72 @@
     border: solid 1px;
     border-radius: 5px;
 }
+
+.update-jobs {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 5; 
+    background: #CAE4CD;
+    padding: 20px;
+    margin: 15px;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.update-jobs-subgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.update-jobs-subgrid form textarea {
+    display: grid;
+    grid-column: 1 / span 2;
+    width: 200%;
+}
+
+.update-jobs-subgrid button {
+    display: grid;
+    grid-column: 1 / span 2;
+    width: auto;
+    margin-top: 20px;
+}
+
+.update-applications {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    background: #CAE4CD;
+    padding: 20px;
+    margin: 15px;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.update-applications button {
+    margin-top: 26px;
+    width: 100%;
+}
+
+.help-and-contact {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    background: #CAE4CD;
+    padding: 20px;
+    margin: 15px;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.help-wrapper {
+    background: #FFF;
+    padding: 10px;
+    border: solid 1px orangered;
+    border-radius: 5px;
+}

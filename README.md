@@ -1,6 +1,6 @@
 # db-class-website
 
-Website for the main project for the 'Files and Databases' course, COMP 5531.
+Website/web application for the main project for our database course.
 
 
 ********
@@ -22,7 +22,7 @@ Website for the main project for the 'Files and Databases' course, COMP 5531.
   DONE  
 ********
 
-- Basic dashboards have been developed, but will likely be further modified and expanded.
+- The view (dashboard) for 'Employer' is basically complete, apart from minor changes.
 - Added some basic PHP for insertions for the 'Warm-Up Project'.
 - Set up the ssh tunnel at localhost, which is now fairly easy to use.
 - Successfully performed insertions into the remote database.

@@ -55,6 +55,6 @@
         </div>
     </div>
 
-    <br><a href="./index.php">Return to User Login</a>
+    <br><br><a href="./index.php">Return to User Login</a>
 </body>
 </html>

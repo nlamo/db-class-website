@@ -2,7 +2,13 @@
 
 -- Very simple beginnings of the database. Starting slow.
 
--- Username is the ID, and must always be unique, of course
+
+-- NOTE: `total_jobs_posted` will be used by an employer, and
+--       `total_applications_submitted` will be used by a user (who is looking for jobs);
+--        they are nothing more than counters
+
+--        this might look different after normalization
+
 CREATE TABLE 'user' (
     `username` VARCHAR(255),
     `user_type` VARCHAR(255), -- admin, employer, user
@@ -10,6 +16,9 @@ CREATE TABLE 'user' (
     `last_name` VARCHAR(255),
     `email_address` VARCHAR(255),
     `password` VARCHAR(255),
+    `security_answer` VARCHAR(255),
+    `total_jobs_posted` INT,
+    `total_applications_submitted` INT,
     PRIMARY KEY (username)
 );
 
@@ -42,19 +51,19 @@ CREATE TABLE `user_account` (
 -- Only two job categories, so they'll always be unique here
 CREATE TABLE `job_category` (
     `job_category` VARCHAR(255), -- Prime, Gold
-    `price` INT(2),
+    `price` INT,
     PRIMARY KEY (job_category)
 );
 
--- An ID is needed here
+-- Each job is unique, and so the ID will determine everything
 CREATE TABLE `job` (
     `job_ID` VARCHAR(255),
     `job_title` VARCHAR(255),
     `job_category` VARCHAR(255),
+    `job_salary` INT,
+    `job_description` VARCHAR(MAX), -- potentially much larger text
     `date_posted` DATE,
     `date_start` DATE,
-    `job_salary` INT(7)
-    `job_description` VARCHAR(MAX), -- potentially much larger text
     PRIMARY KEY (job_ID),
     FOREIGN KEY (job_category) REFERENCES job_category (job_category)
 );
@@ -63,6 +72,7 @@ CREATE TABLE `job` (
 CREATE TABLE `job_application` (
     `username` VARCHAR(255),
     `job_ID` VARCHAR(255),
+    `application_status` VARCHAR(255), -- accepted, rejected
     PRIMARY KEY (username, job_ID),
     FOREIGN KEY (username) REFERENCES user (username),
     FOREIGN KEY (job_ID) REFERENCES job (job_ID)
@@ -71,7 +81,7 @@ CREATE TABLE `job_application` (
 
 -- Additional notes to inform potential relations to be made:
 
--- We might need an employer relation:
+-- We *might* need an employer relation:
 --   we need a way to connect each job to a given employer
 --   this information will also eventually be included in each 'job'
 
@@ -82,5 +92,5 @@ CREATE TABLE `job_application` (
 --   history
 
 -- Solution? 
---   probably will have another entire dashbord that sits beneeat the user dashboard
+--   probably will have another entire dashbord that sits beneath the user dashboard
 --   maybe even a couple

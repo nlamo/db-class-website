@@ -137,7 +137,7 @@
 
                     <br><br>
 
-                    <small>In the top panel, you can post a new application. In second panel, you can modify any of the attributes of an already-posted job.</small>
+                    <small>In the top panel, you can post a new job. In the bottom panel, you can update any of the attributes of a posted job.</small>
 
                     <br><br>
 

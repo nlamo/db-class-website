@@ -66,7 +66,7 @@
     display: grid;
     grid-column: 1 / span 2;
     width: auto;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 #job-description-container {
@@ -130,8 +130,12 @@
     border-radius: 5px;
 }
 
+.update-applications textarea {
+    margin-top: 10px;
+}
+
 .update-applications button {
-    margin-top: 26px;
+    margin-top: 15px;
     width: 100%;
 }
 

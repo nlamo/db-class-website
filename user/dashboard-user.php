@@ -17,7 +17,7 @@
          
             <!-- TODO: Requets for data, will be output by job-data > textarea -->
             <div class="user-categories">
-                <u>Select User Category</u>
+                <u>User Category</u>
             </div>
 
             <div class="search-job-by-name">

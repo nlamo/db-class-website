@@ -58,6 +58,7 @@
 
 .post-jobs-subgrid form textarea {
     display: grid;
+    margin-top: 10px;
     grid-column: 1 / span 2;
     width: 200%;
 }
@@ -105,8 +106,9 @@
     align-items: center;
 }
 
-.update-jobs-subgrid form textarea {
+.update-jobs-subgrid textarea {
     display: grid;
+    margin-top: 10px;
     grid-column: 1 / span 2;
     width: 200%;
 }
@@ -132,10 +134,11 @@
 
 .update-applications textarea {
     margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .update-applications button {
-    margin-top: 15px;
+    margin-top: 20px;
     width: 100%;
 }
 

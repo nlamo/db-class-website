@@ -74,8 +74,13 @@
         </div>       
     </div>
 
-    <!-- TODO: Implement a simple and hardly-secure password retrieval procedure based on a security question -->
-    <br><br><a href="#" style="a:hover:">Forgot your password? Click here.</a>
-    <br><br><a href="../index.html" style="a:hover:">Return to Home</a>
+    <small>
+        <br><br><b><a href="./sign-up.php" style="a:hover:">New here? Sign up for an account.</a></b>
+        
+        <!-- TODO: Implement a simple and hardly-secure password retrieval procedure based on a security question -->
+        <br><br><a href="#" style="a:hover:">Forgot your password? Click here.</a>
+        <br><br><a href="../index.html" style="a:hover:">Return to Home</a>
+    </small>
+
 </body>
 </html>

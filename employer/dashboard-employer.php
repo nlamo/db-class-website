@@ -13,7 +13,7 @@
 
     <!-- First (1st) Employer Container/Dashboard -->
     <div class="dashboard-container">
-        <p><u><b>Employer Dashboard</b></u></p><br>
+        <h3>Employer Dashboard</h3><br>
 
         <a href="#">
             <button class="contact-button" onclick="alertBox('Having some difficulties?\n\nJust scroll down to the second panel.\n\nIn the leftmost column, you\'ll find contact information and some helpful guidelines.')">
@@ -25,7 +25,7 @@
             
             <!-- For adminstrators to update the properties of given users -->
             <div class="maintain-users">
-                <label><u>User Maintenance</u></label><br><br>
+                <h4>User Maintenance</h4><br><br>
 
                 <small>This is where you can update the user type of a given user.</small><br><br>
 
@@ -46,7 +46,7 @@
             <!-- For adminstrators to upgrade or downgrade their category -->
             <!-- NOTE: Overriding the colours on the button classes used here -->
             <div class="employer-categories">
-                <label><u>Employer Category</u></label><br><br>
+                <h4>Employer Category</h4><br><br>
 
                 <small>Want more functionality? Upgrade!</small> 
 
@@ -61,7 +61,7 @@
 
             <!-- For employers to create job postings -->
             <div class="post-jobs">
-                <label><u>Post Job</u></label><br><br>
+                <h4>Post Job</h4><br><br>
 
                 <div class="post-jobs-subgrid">
         
@@ -110,7 +110,7 @@
 
             <!-- A summary of the current (most recent) application for any given job -->
             <div class="application-summary">
-                <label><u>Current Application Summary</u></label><br><br>
+                <h4>Current Application Summary</h4><br><br>
                 <textarea name="application-summary" id="application-summary" cols="34" rows="31"></textarea>
             </div>
 
@@ -125,7 +125,7 @@
 
             <div class="help-and-contact">
 
-            <label><u>Help and Contact</u></label><br><br>
+            <h4>Help and Contact</h4><br><br>
 
                 <div class="help-wrapper">
         
@@ -164,7 +164,7 @@
                        if anything needs to change in the future. -->
 
             <div class="update-jobs">
-                <label><u>Update Job</u></label><br><br>
+                <h4>User Job</h4><br><br>
 
                 <div class="update-jobs-subgrid">
                 
@@ -213,7 +213,7 @@
 
             <!-- So that the employer can maintain/update job applications -->
             <div class="update-applications">
-                <label><u>Update Application</u></label><br><br>
+                <h4>Update Application</h4><br><br>
 
                 <form>
                     <label><strong>Job ID</strong></label><br>

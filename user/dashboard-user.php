@@ -13,7 +13,7 @@
 
     <!-- First (1st) User Container/Dashboard -->
     <div class="dashboard-container">
-        <p><u><b>User Dashboard</b></u></p><br>
+        <h3>User Dashboard</h3><br>
 
         <a href="#">
             <button class="contact-button" onclick="alertBox('Having some difficulties?\n\nJust scroll down to the second panel.\n\nIn the leftmost column, you\'ll find contact information and some helpful guidelines.')">
@@ -26,7 +26,7 @@
             <!-- TODO: Allow user to simply get all the jobs (full search) -->
             <!-- TODO: Requests for data, will be output by job-data > textarea -->
             <div class="search-job-by-category">
-                <u>Search By Category</u><br><br>
+                <h4>Search By Category</h4><br><br>
                 <small>Please enter the category of the job you're looking for:</small><br><br>
 
                 <form>
@@ -38,7 +38,7 @@
             </div>
 
             <div class="search-job-by-name">
-                <u>Search By Name</u><br><br>
+                <h4>Search By Name</h4><br><br>
                 <small>Please enter the name of the job you're looking for:</small><br><br>
 
                 <form>
@@ -52,13 +52,13 @@
             <!-- TODO: Job data retrieved from MySQL DB will be output here -->
             <div class="job-data">
                 <form>
-                    <label><u>Job Data</u></label><br><br>
+                    <h4>Job Data</h4><br><br>
                     <textarea name="job-data" id="job-data" cols="48" rows="30"></textarea>
                 </form>
             </div>
 
             <div class="apply-for-job">
-                <u>Apply for a Job</u><br><br>
+                <h4>Apply for a Job</h4><br><br>
 
                 <!-- NOTE: Username of the active user should be stored in a session variable and
                            should be used for making the application -->
@@ -78,7 +78,7 @@
             </div>
 
             <div class="maintain-status">
-                <u>Maintain Status</u><br><br>
+                <h4>Maintain Status</h4><br><br>
                 <small>Set application to active or inactive:</small><br><br>
                 
                 <form>
@@ -98,7 +98,7 @@
             </div>
 
             <div class="withdraw-application">
-                <u>Withdraw Application</u><br><br>
+                <h4>Withdraw Application</h4><br><br>
 
                 <form>
                     <label><strong>Job ID</strong></label><br>
@@ -124,7 +124,7 @@
 
             <div class="help-and-contact">
 
-                <label><u>Help and Contact</u></label><br><br>
+                 <h4>Help and Contact</h4><br><br>
 
                     <div class="help-wrapper">
 
@@ -159,7 +159,7 @@
                 </div>
 
             <div class="user-categories">
-                <u>User Categories</u><br><br>
+                <h4>User Category</h4><br><br>
 
                 <small>Want more functionality? Upgrade!</small><br><br>
 
@@ -176,7 +176,7 @@
             </div>
 
             <div class="update-user-profile">
-                <u>Update User Profile</u><br><br>
+                <h4>Update User Profile</h4><br><br>
 
                 <br>
                 
@@ -203,7 +203,9 @@
 
             
             <div class="delete-user-account">
-                <u>Delete User Account</u><br><br>
+
+                <h4>Delete User Account</h4><br><br>
+
                 <small>Are you <i>absolutely 100% certain that you really, truly wish to delete your precious user account?</i> </small><br><br>
 
                 <small>If you do choose to walk this dark path - that is, account deletion - then you should know that there is no turning back. This action is completely irrevocable.</small><br><br>

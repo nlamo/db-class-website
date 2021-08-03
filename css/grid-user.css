@@ -60,8 +60,11 @@
     border-radius: 5px;
 }
 
+.apply-for-job input {
+    width: 265px;
+}
+
 .maintain-status {
-    margin-bottom: 10px;
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 1;
@@ -69,6 +72,7 @@
     background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    margin-bottom: 0px;
     border: solid 1px;
     border-radius: 5px;
 }
@@ -82,6 +86,8 @@
 }
 
 .maintain-status button {
+    width: 50%;
+    height: 15%;
     margin-top: 5px;
 }
 
@@ -95,6 +101,7 @@
     margin: 15px;
     border: solid 1px;
     border-radius: 5px;
+    margin-top: 25px;
 }
 
 .withdraw-application label {
@@ -106,8 +113,8 @@
 }
 
 .withdraw-application button {
-    margin-top: 10px;
-    margin-bottom: 0px;
+    width: 50%;
+
 }
 
 .user-categories {
@@ -141,6 +148,9 @@
     border-radius: 5px;
 }
 
+.update-user-profile input {
+    width: 275px;
+}
 .update-user-profile button {
     margin-top: 90px;
 }

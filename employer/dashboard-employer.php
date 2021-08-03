@@ -26,15 +26,16 @@
             
             <!-- For adminstrators to update the properties of given users -->
             <div class="maintain-users">
-                <label for=""><u>User Maintenance</u></label><br><br>
+                <label><u>User Maintenance</u></label><br><br>
 
                 <small>This is where you can update the user type of a given user.</small><br><br>
+
                 <form>
-                    <label for="username"><strong>Username</strong></label><br>
+                    <label><strong>Username</strong></label><br>
                     <input type="text" id="username" name="username">
                 </form>
                 <form>
-                    <label for="user-type">User Type</label><br>
+                    <label>User Type</label><br>
                     <input type="text" id="user-type" name ="user-type">
                 </form>
 
@@ -46,7 +47,7 @@
             <!-- For adminstrators to upgrade or downgrade their category -->
             <!-- NOTE: Overriding the colours on the button classes used here -->
             <div class="employer-categories">
-                <label for=""><u>Employer Category</u></label><br><br>
+                <label><u>Employer Category</u></label><br><br>
 
                 <small>Want more functionality? Upgrade!</small> 
 
@@ -61,36 +62,36 @@
 
             <!-- For employers to create job postings -->
             <div class="post-jobs">
-                <label for=""><u>Post Job</u></label><br><br>
+                <label><u>Post Job</u></label><br><br>
 
                 <div class="post-jobs-subgrid">
         
                     <form>
-                        <label for="job-id"><strong>Job ID</strong></label><br>
+                        <label><strong>Job ID</strong></label><br>
                         <input type="text" id="job-id" name ="job-id">
                     </form>
                     <form>
-                        <label for="employer-id">Employer ID</label><br>
+                        <label>Employer ID</label><br>
                         <input type="text" id="employer-id" name ="employer-id">
                     </form>
                     <form>
-                        <label for="job-title">Job Title</label><br>
+                        <label>Job Title</label><br>
                         <input type="text" id="job-title" name ="job-title">
                     </form>
                     <form>
-                        <label for="job-category">Job Category</label><br>
+                        <label>Job Category</label><br>
                         <input type="text" id="job-category" name ="job-category">
                     </form>
                     <form>
-                        <label for="date-posted">Date Posted</label><br>
+                        <label>Date Posted</label><br>
                         <input type="date" id="date-posted" name ="date-posted">
                     </form>
                     <form>
-                        <label for="salary">Salary</label><br>
+                        <label>Salary</label><br>
                         <input type="text" id="salary" name ="salary">
                     </form>
                     <form>
-                        <label for="start-date">Start Date</label><br>
+                        <label>Start Date</label><br>
                         <input type="date" id="start-date" name ="start-date">
                     </form>
 
@@ -99,18 +100,18 @@
                     </div>
 
                     <form id="job-description-container">
-                        <label for="job-description">Job Description</label><br>
+                        <label>Job Description</label><br>
                         <textarea name="job-description" id="job-descrption" cols="30" rows="10"></textarea>
                     </form>
                     <br>
     
-                    <button type="submit" class="button">Submit</button><br>
+                    <button type="submit" class="button">Post Job</button><br>
                 </div>
             </div>
 
             <!-- A summary of the current (most recent) application for any given job -->
             <div class="application-summary">
-                <label for=""><u>Current Application Summary</u></label><br><br>
+                <label><u>Current Application Summary</u></label><br><br>
                 <textarea name="application-summary" id="application-summary" cols="34" rows="31"></textarea>
             </div>
 
@@ -125,7 +126,7 @@
 
             <div class="help-and-contact">
 
-            <label for=""><u>Help and Contact</u></label><br><br>
+            <label><u>Help and Contact</u></label><br><br>
 
                 <div class="help-wrapper">
         
@@ -164,36 +165,36 @@
                        if anything needs to change in the future. -->
 
             <div class="update-jobs">
-                <label for=""><u>Update Job</u></label><br><br>
+                <label><u>Update Job</u></label><br><br>
 
                 <div class="update-jobs-subgrid">
                 
                     <form>
-                        <label for="job-id"><strong>Job ID</strong></label><br>
+                        <label><strong>Job ID</strong></label><br>
                         <input type="text" id="job-id" name ="job-id">
                     </form>
                     <form>
-                        <label for="employer-id">Employer ID</label><br>
+                        <label>Employer ID</label><br>
                         <input type="text" id="employer-id" name ="employer-id">
                     </form>
                     <form>
-                        <label for="job-title">Job Title</label><br>
+                        <label>Job Title</label><br>
                         <input type="text" id="job-title" name ="job-title">
                     </form>
                     <form>
-                        <label for="job-category">Job Category</label><br>
+                        <label>Job Category</label><br>
                         <input type="text" id="job-category" name ="job-category">
                     </form>
                     <form>
-                        <label for="date-posted">Date Posted</label><br>
+                        <label>Date Posted</label><br>
                         <input type="date" id="date-posted" name ="date-posted">
                     </form>
                     <form>
-                        <label for="salary">Salary</label><br>
+                        <label>Salary</label><br>
                         <input type="text" id="salary" name ="salary">
                     </form>
                     <form>
-                        <label for="start-date">Start Date</label><br>
+                        <label>Start Date</label><br>
                         <input type="date" id="start-date" name ="start-date">
                     </form>
 
@@ -202,46 +203,44 @@
                     </div>
 
                     <form id="job-description-container">
-                        <label for="job-description">Job Description</label><br>
-                        <textarea name="job-description" id="job-descrption" cols="30" rows="10"></textarea>
+                        <label>Job Description</label><br>
+                        <textarea name="job-description" id="job-description" cols="30" rows="10"></textarea>
                     </form>
                     <br>
 
-                    <button type="submit" class="button">Submit</button><br>
+                    <button type="submit" class="button">Update Job</button><br>
                 </div>
             </div>
 
             <!-- So that the employer can maintain/update job applications -->
             <div class="update-applications">
-                <label for=""><u>Update Application</u></label><br><br>
+                <label><u>Update Application</u></label><br><br>
 
                 <form>
-                    <label for="job-id"><strong>Job ID</strong></label><br>
+                    <label><strong>Job ID</strong></label><br>
                     <input type="text" id="job-id" name ="job-id">
                 </form>
                 <form>
-                    <label for="user-id"><strong>Username</strong></label><br>
+                    <label><strong>Username</strong></label><br>
                     <input type="text" id="user-id" name ="user-id">
                 </form>
                 <form>
-                    <label for="user-id">Application Status</label><br>
+                    <label>Application Status</label><br>
                     <input type="text" id="user-id" name ="user-id">
                 </form>
 
                 <br>
 
                 <form>
-                    <label for="message-to-applicant">Message to Applicant</label><br>
+                    <label>Message to Applicant</label><br>
                     <textarea name="message-to-applicant" id="message-to-applicant" cols="34" rows="13"></textarea>
                 </form>
 
-                <button type="submit" class="button">Submit</button><br>
+                <button type="submit" class="button">Update Application</button><br>
             </div>
 
         </div>
-
     </div>
-
 
     <br><br><a href="./index.php">Return to Employer Login</a><br><br>
 </body>

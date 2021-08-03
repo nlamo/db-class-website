@@ -80,12 +80,16 @@ CREATE TABLE `job` (
     FOREIGN KEY (job_category) REFERENCES job_category (job_category)
 );
 
+-- NOTE: The notion of an application 'status' appears to have too many meanings in the --       --       requirements... For example, the fact that 'users' and 'employers' should 
+--       'maintain' the status of an applicaton is a bit unusual. Just a thought.
+
 CREATE TABLE `job_application` (
     `username` VARCHAR(255),
     `job_ID` VARCHAR(255),
-    `application` VARCHAR(255),
-    `application_status` VARCHAR(255), -- accepted, rejected
-    PRIMARY KEY (username, job_ID),
+    `application_no` INT, -- because we want the user to be able to submit multiple applications
+    `application_text` VARCHAR(255),
+    `application_status` VARCHAR(255), -- active, inactive, accepted, rejected
+    PRIMARY KEY (username, job_ID, application_no),
     FOREIGN KEY (username) REFERENCES user (username),
     FOREIGN KEY (job_ID) REFERENCES job (job_ID)
 );

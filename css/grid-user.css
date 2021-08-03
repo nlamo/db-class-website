@@ -12,11 +12,11 @@
     border: none;
 }
 
-.user-categories {
+.search-job-by-category {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 1;
-    grid-row-end: 1; 
+    grid-row-end: 2; 
     background: #CAE4CD;
     padding: 20px;
     margin: 15px;
@@ -28,7 +28,7 @@
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 2;
-    grid-row-end: 3; 
+    grid-row-end: 4; 
     background: #CAE4CD;
     padding: 20px;
     margin: 15px;
@@ -36,7 +36,7 @@
     border-radius: 5px;
 }
 
-.search-job-by-category {
+/* .user-categories {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 3;
@@ -46,7 +46,7 @@
     margin: 15px;
     border: solid 1px;
     border-radius: 5px;
-}
+} */
 
 .job-data {
     grid-column-start: 2;
@@ -72,22 +72,11 @@
     border-radius: 5px;
 }
 
-.update-profile {
+.maintain-status {
+    margin-bottom: 10px;
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 1;
-    grid-row-end: 2; 
-    background: #CAE4CD;
-    padding: 20px;
-    margin: 15px;
-    border: solid 1px;
-    border-radius: 5px;
-}
-
-.withdraw-application {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 2;
     grid-row-end: 3; 
     background: #CAE4CD;
     padding: 20px;
@@ -96,7 +85,19 @@
     border-radius: 5px;
 }
 
-.delete-profile {
+.maintain-status label {
+    font-size: .9rem;
+}
+
+.maintain-status input {
+    font-size: .8rem;
+}
+
+.maintain-status button {
+    margin-top: 5px;
+}
+
+.withdraw-application {
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 3;
@@ -106,4 +107,16 @@
     margin: 15px;
     border: solid 1px;
     border-radius: 5px;
+}
+
+.withdraw-application label {
+    font-size: .9rem;
+}
+
+.withdraw-application  input {
+    font-size: .8rem;
+}
+.withdraw-application button {
+    margin-top: 10px;
+    margin-bottom: 0px;
 }

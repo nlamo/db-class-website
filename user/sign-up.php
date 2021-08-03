@@ -14,11 +14,11 @@
     </div>
 
     <div class="container">
-        <div class="card" style="height: 700px; width: 400px;"> 
+        <div class="card" style="height: 700px; width: 450px;"> 
             <p><u>Create New Account</u></p><br>
 
             <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <label>Username</label><br>
+                <label>Username</label><br>
                 <input type="text" name ="user"><br><br>
 
                 <label>Password</label><br>
@@ -42,7 +42,6 @@
                     Create Account
                 </button><br>
             </form>
-            
         </div>       
     </div>
 

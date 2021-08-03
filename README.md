@@ -23,6 +23,8 @@ Website/web application for the main project for our database course.
 ********
 
 - The view (dashboard) for 'Employer' is basically complete, apart from minor changes.
+- Majority of view (dashboard) for 'User' is complete, several additions needed for 2nd panel.
+- Non-functional 'Create Account' view has been made.
 - Added some basic PHP for insertions for the 'Warm-Up Project'.
 - Set up the ssh tunnel at localhost, which is now fairly easy to use.
 - Successfully performed insertions into the remote database.

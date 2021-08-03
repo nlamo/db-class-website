@@ -10,51 +10,115 @@
     <title>User Dashboard</title>
 </head>
 <body>
+
+    <!-- First (1st) User Container/Dashboard -->
     <div class="dashboard-container">
         <p><u><b>User Dashboard</b></u></p><br>
 
         <div class="dashboard-user">
          
-            <!-- TODO: Requets for data, will be output by job-data > textarea -->
-            <div class="user-categories">
-                <u>User Category</u>
+            <!-- TODO: Allow user to simply get all the jobs (full search) -->
+            <!-- TODO: Requests for data, will be output by job-data > textarea -->
+            <div class="search-job-by-category">
+                <u>Search By Category</u><br><br>
+                <small>Please enter the category of the job you're looking for:</small><br><br>
+
+                <form>
+                    <label>Job Category</label><br>
+                    <input type="job-category" id="job-category" name ="job-category">
+                </form>
+
+                <button type="submit" class="button">Search</button><br>
             </div>
 
             <div class="search-job-by-name">
-                <u>Search Job By Name</u>
-            </div>
+                <u>Search By Name</u><br><br>
+                <small>Please enter the name of the job you're looking for:</small><br><br>
 
-            <div class="search-job-by-category">
-                <u>Search Job By Category</u>
+                <form>
+                    <label>Job Name</label><br>
+                    <input type="job-name" id="job-name" name ="job-name">
+                </form>
+
+                <button type="submit" class="button">Search</button><br>
             </div>
 
             <!-- TODO: Job data retrieved from MySQL DB will be output here -->
             <div class="job-data">
                 <form>
-                    <label for="job-data"><u>Job Data</u></label><br><br>
+                    <label><u>Job Data</u></label><br><br>
                     <textarea name="job-data" id="job-data" cols="48" rows="30"></textarea>
                 </form>
             </div>
 
-            <!-- TODO: Use a subgrid, as with the employer dashboard -->
             <div class="apply-for-job">
-                <u>Apply for a Job</u>
+                <u>Apply for a Job</u><br><br>
+
+                <!-- NOTE: Username of the active user should be stored in a session variable and
+                           should be used for making the application -->
+                <form>
+                    <label><strong>Job ID</strong></label><br>
+                    <input type="text" id="job-id" name ="job-id">
+                </form>
+
+                <br>
+                
+                <form>
+                    <label>Application</label><br>
+                    <textarea name="application" id="application" cols="28" rows="19" style="margin-top:10px;"></textarea>
+                </form>
+
+                <button type="submit" class="button" style="width:260px;">Submit Application</button><br>
             </div>
 
-            <div class="update-profile">
-                <u>Update Profile</u>
+            <div class="maintain-status">
+                <u>Maintain Status</u><br><br>
+                <small>Set application to active or inactive:</small><br><br>
+                
+                <form>
+                    <label><strong>Job ID</strong></label><br>
+                    <input type="text" id="job-id" name ="job-id">
+                </form>
+                <form>
+                    <label><strong>Application No.</strong></label><br>
+                    <input type="text" id="application-no" name ="application-no">
+                </form>
+                <form>
+                    <label>Status</label><br>
+                    <input type="text" id="application-status" name ="application-status">
+                </form>
+
+                <button type="submit" class="button">Update Status</button><br>
             </div>
 
             <div class="withdraw-application">
-                <u>Withdraw Application</u>
+                <u>Withdraw Application</u><br><br>
+
+                <form>
+                    <label><strong>Job ID</strong></label><br>
+                    <input type="text" id="job-id" name ="job-id">
+                </form>
+                <form>
+                    <label><strong>Application No.</strong></label><br>
+                    <input type="text" id="application-no" name ="application-no">
+                </form>
+
+                <button type="submit" class="button">Withdraw</button><br>
             </div>
 
-            <div class="delete-profile">
-                <u>Delete Profile</u>
-            </div>
         </div>
     </div>
 
-    <br><br><a href="./index.php">Return to User Login</a>
+    <br><br><br> 
+
+     <!-- Second (2nd) User Container/Dashboard -->
+     <div class="dashboard-container">
+
+        <div class="dashboard-user">
+
+        </div>
+    </div>
+
+    <br><br><a href="./index.php">Return to User Login</a><br><br>
 </body>
 </html>

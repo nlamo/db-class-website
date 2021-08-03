@@ -64,6 +64,10 @@
     width: 265px;
 }
 
+.apply-for-job button {
+    margin-top: 23px;
+}
+
 .maintain-status {
     grid-column-start: 4;
     grid-column-end: 5;

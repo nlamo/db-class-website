@@ -36,18 +36,6 @@
     border-radius: 5px;
 }
 
-/* .user-categories {
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 3;
-    grid-row-end: 4; 
-    background: #CAE4CD;
-    padding: 20px;
-    margin: 15px;
-    border: solid 1px;
-    border-radius: 5px;
-} */
-
 .job-data {
     grid-column-start: 2;
     grid-column-end: 3;
@@ -116,7 +104,57 @@
 .withdraw-application  input {
     font-size: .8rem;
 }
+
 .withdraw-application button {
     margin-top: 10px;
     margin-bottom: 0px;
 }
+
+.user-categories {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    background: #CAE4CD;
+    padding: 20px;
+    margin: 15px;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.user-categories button {
+    width: 300px;
+    height: 70px;
+    margin-top: 50px;
+
+}
+
+.update-user-profile {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    background: #CAE4CD;
+    padding: 20px;
+    margin: 15px;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.update-user-profile button {
+    margin-top: 90px;
+}
+
+.delete-user-account {
+    margin-bottom: 10px;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    background: #CAE4CD;
+    padding: 20px;
+    margin: 15px;
+    border: solid 1px;
+    border-radius: 5px;
+}
+

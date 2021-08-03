@@ -15,7 +15,6 @@
     <div class="dashboard-container">
         <p><u><b>Employer Dashboard</b></u></p><br>
 
-        <!-- TODO: Add a contact page -->
         <a href="#">
             <button class="contact-button" onclick="alertBox('Having some difficulties?\n\nJust scroll down to the second panel.\n\nIn the leftmost column, you\'ll find contact information and some helpful guidelines.')">
                 Need Help? Contact Us.
@@ -52,7 +51,7 @@
                 <small>Want more functionality? Upgrade!</small> 
 
                 <!-- TODO: Probably will want to give these IDs for the control logic that will be implemented -->
-                <button type="submit" class="button"style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!\n\nYou can now post up to five (5) jobs.\n\nYou will be charged $50 per month. Feel free to cancel anytime.')">
+                <button type="submit" class="button" style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!\n\nYou can now post up to five (5) jobs.\n\nYou will be charged $50 per month. Feel free to cancel anytime.')">
                     PRIME
                 </button>
                 <button type="submit" class="button" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!\n\nYou can now post an unlimited number of jobs.\n\nYou will be charged $100 per month. Feel free to cancel anytime.')">

@@ -28,6 +28,7 @@ CREATE TABLE 'user' (
     `security_answer` VARCHAR(255),
     `total_jobs_posted` INT,
     `total_applications_submitted` INT,
+    `status` VARCHAR(255), -- active, inactive ('active' should be default; for admin use)
     PRIMARY KEY (username),
     FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
 );

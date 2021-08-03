@@ -141,22 +141,3 @@
     margin-top: 20px;
     width: 100%;
 }
-
-.help-and-contact {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 4; 
-    background: #CAE4CD;
-    padding: 20px;
-    margin: 15px;
-    border: solid 1px;
-    border-radius: 5px;
-}
-
-.help-wrapper {
-    background: #FFF;
-    padding: 10px;
-    border: solid 1px orangered;
-    border-radius: 5px;
-}

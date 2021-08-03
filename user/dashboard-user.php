@@ -15,6 +15,12 @@
     <div class="dashboard-container">
         <p><u><b>User Dashboard</b></u></p><br>
 
+        <a href="#">
+            <button class="contact-button" onclick="alertBox('Having some difficulties?\n\nJust scroll down to the second panel.\n\nIn the leftmost column, you\'ll find contact information and some helpful guidelines.')">
+                Need Help? Contact Us.
+            </button>
+        </a> 
+
         <div class="dashboard-user">
          
             <!-- TODO: Allow user to simply get all the jobs (full search) -->
@@ -116,6 +122,103 @@
 
         <div class="dashboard-user">
 
+            <div class="help-and-contact">
+
+                <label><u>Help and Contact</u></label><br><br>
+
+                    <div class="help-wrapper">
+
+                        <small>'Search by Category' and 'Search by Name' allow for searching for jobs by category and name, respectively. Output is in the 'Job Data' textbox.</small>
+
+                        <br><br>
+
+                        <small>As an regular user/job hunter, you are able to easily change between 'Basic', 'Prime', and 'Gold' accounts. The default is 'Basic'.</small>
+
+                        <br><br>
+
+                        <small>In the top panel, you can easily apply for a new job.</small>
+
+                        <br><br>
+
+                        <small>To maintain the status of a given job you've applied for, you can easily set the job status to 'active' or 'inactive'.</i></small>
+
+                        <br><br>
+
+                        <small>To withdraw a specific application, you need only enter the ID of the job you applied for, as well as the application number.</small>
+
+                        <br><br>
+
+                        <small>Questions? Please feel free to reach out:</small>
+
+                        <br><br>
+
+                        <small>n_lamo@encs.concordia.ca</small>
+                        <small>f_attia@encs.concordia.ca</small>
+
+                    </div>
+                </div>
+
+            <div class="user-categories">
+                <u>User Categories</u><br><br>
+
+                <small>Want more functionality? Upgrade!</small><br><br>
+
+                <small> <i>You really should just upgrade.</i> There's not a lot you can really do unless you go 'Prime', so do that, at a minimum.</small> 
+
+                <button type="submit" class="button" style="background:grey;" onclick="alertBox('You have changed your subscription to basic.\n\nYou can view all of the jobs but you cannot apply.\n\nThis subscription is free.')">
+                    BASIC
+                <button type="submit" class="button" style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!\n\nYou can now view all jobs and apply for up to five (5) jobs.\n\nYou will be charged $10 per month. Feel free to cancel anytime.')">
+                    PRIME
+                </button>
+                <button type="submit" class="button" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!\n\nYou can now view all jobs and apply for an unlimited number of jobs.\n\nYou will be charged $20 per month. Feel free to cancel anytime.')">
+                    GOLD
+                </button>
+            </div>
+
+            <div class="update-user-profile">
+                <u>Update User Profile</u><br><br>
+
+                <br>
+                
+                <label>Password</label><br>
+                <input type="password" name="password"><br><br>
+
+                <label>First Name</label><br>
+                <input type="first-name" name="first-name"><br><br>
+
+                <label>Last Name</label><br>
+                <input type="last-name" name="last-name"><br><br>
+
+                <label>E-mail</label><br>
+                <input type="email" name="email"><br><br>
+
+                <label>Security Question:</label><br>
+                <div class="security-question">What is your favourite film of<br> all time?</div>
+     
+                <input type="security-answer" name="security-answer"><br><br>
+
+
+                <button type="submit" class="button" style="width:260px;">Update Profile</button><br>
+            </div>
+
+            
+            <div class="delete-user-account">
+                <u>Delete User Account</u><br><br>
+                <small>Are you <i>absolutely 100% certain that you really, truly wish to delete your precious user account?</i> </small><br><br>
+
+                <small>If you do choose to walk this dark path - that is, account deletion - then you should know that there is no turning back. This action is completely irrevocable.</small><br><br>
+                
+                <small>Basically, it will be as if you had never existed. We will miss you, but know that on life's path - during this great journey, where many follies are committed, and much anxiety and anomie subsumed under the assumption of personal validation and identification - there is always the opportunity for recourse, for redemption.</small><br><br>
+                
+                <small>What we mean to say is, er, that you're always welcome back if you discover your true path.</small><br><br>
+                
+                <form>
+                    <label>Enter 'Yes' to Delete Account</label><br>
+                    <input type="text" id="delete-user-account" name ="delete-user-account">
+                </form>
+
+                <button type="submit" class="button">Delete Account</button><br>
+            </div>
         </div>
     </div>
 

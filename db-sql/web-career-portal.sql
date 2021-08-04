@@ -5,6 +5,8 @@
 -- CREATE DATABASE zic55311_localhost;
 -- USE zic55311_localhost;
 
+USE zic55311;
+
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 -- NOTE: as you will see, a user can be an employer or not (using NULL for this)
@@ -176,26 +178,27 @@ INSERT INTO `job` VALUES (10, 10, 'Service', 'Retail Clerk', 27500, 'Do you love
 --       which will then update the `application_response` attribute value
 
 CREATE TABLE `job_application` (
+	`job_application_ID` INT,
     `username` VARCHAR(255),
     `job_ID` INT,
     `application_no` INT, -- because we want the user to be able to submit multiple applications
     `application_text` VARCHAR(1000),
     `application_status` VARCHAR(255), -- active, inactive, accepted, rejected
-    `application_response` VARCHAR(1000),
-    PRIMARY KEY (username, job_ID, application_no),
+    `application_response` VARCHAR(500),
+    PRIMARY KEY (job_application_ID),
     FOREIGN KEY (username) REFERENCES user (username),
     FOREIGN KEY (job_ID) REFERENCES job (job_ID)
 );
 
--- TUPLE (username, job_ID, application_no, application_text, application_status, application_response)
+-- TUPLE (job_application_ID, username, job_ID, application_no, application_text, application_status, application_response)
 
-INSERT INTO `job_application` VALUES ('zeba', 1, 1, 'I have 20+ years of Windows System administration, and am a quick learner. I have used Linux for 15 minutes, but then it crashed, and it caused me such anxiety that I went back to Microsoft. As a result of this, I started learning PowerShell to increase my self-esteem, but found that it was insufferable, so I started using bash in Ubuntu after setting up WSL. As such, I am indeed proficient in computer systems. My knowledge of networking is sufficient, as I am capable of running the commands ipconfig and ping. Please reach out soon!', 'active', NULL);
-INSERT INTO `job_application` VALUES ('zeba', 5, 1, 'I have 5+ years as a web developer, and I am a very fast learner. I continuously gravitate betweent the front and back-end, but I can\'t say that I\'m good at either. As such, I am full-stack. You will see that my stack is sufficiently stacked that I pack a real smack when it comes to applications that we all think are wack. Other than that... I have used Linux for 15 minutes, but then it crashed, and it caused me such anxiety that I went back to Microsoft. As a result of this, I started learning PowerShell to increase my self-esteem, but found that it was insufferable, so I started using bash in Ubuntu after setting up WSL. As such, I am indeed proficient in computer systems. My knowledge of networking is sufficient, as I am capable of running the commands ipconfig and ping. Please reach out soon!', 'active', NULL);
-INSERT INTO `job_application` VALUES ('damo', 4, 1, 'Many call me a splendid cook. I have worked many years as a barista, a prep cook, and a line cook. Reach out anytime', 'active', NULL);
-INSERT INTO `job_application` VALUES ('damo', 6, 1, 'Many call me a splendid cook. I have worked many years as a barista, a prep cook, and a line cook. Reach out anytime', 'active', NULL);
-INSERT INTO `job_application` VALUES ('gord', 1, 1, '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
-INSERT INTO `job_application` VALUES ('gord', 2, 1, '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
-INSERT INTO `job_application` VALUES ('gord', 3, 1, '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
+INSERT INTO `job_application` VALUES (1, 'zeba', 1, 1, 'I have 20+ years of Windows System administration, and am a quick learner. I have used Linux for 15 minutes, but then it crashed, and it caused me such anxiety that I went back to Microsoft. As a result of this, I started learning PowerShell to increase my self-esteem, but found that it was insufferable, so I started using bash in Ubuntu after setting up WSL. As such, I am indeed proficient in computer systems. My knowledge of networking is sufficient, as I am capable of running the commands ipconfig and ping. Please reach out soon!', 'active', NULL);
+INSERT INTO `job_application` VALUES (2, 'zeba', 5, 1, 'I have 5+ years as a web developer, and I am a very fast learner. I continuously gravitate betweent the front and back-end, but I can\'t say that I\'m good at either. As such, I am full-stack. You will see that my stack is sufficiently stacked that I pack a real smack when it comes to applications that we all think are wack. Other than that... I have used Linux for 15 minutes, but then it crashed, and it caused me such anxiety that I went back to Microsoft. As a result of this, I started learning PowerShell to increase my self-esteem, but found that it was insufferable, so I started using bash in Ubuntu after setting up WSL. As such, I am indeed proficient in computer systems. My knowledge of networking is sufficient, as I am capable of running the commands ipconfig and ping. Please reach out soon!', 'active', NULL);
+INSERT INTO `job_application` VALUES (3, 'damo', 4, 1, 'Many call me a splendid cook. I have worked many years as a barista, a prep cook, and a line cook. Reach out anytime', 'active', NULL);
+INSERT INTO `job_application` VALUES (4, 'damo', 6, 1, 'Many call me a splendid cook. I have worked many years as a barista, a prep cook, and a line cook. Reach out anytime', 'active', NULL);
+INSERT INTO `job_application` VALUES (5, 'gord', 1, 1, '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
+INSERT INTO `job_application` VALUES (6, 'gord', 2, 1, '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
+INSERT INTO `job_application` VALUES (7, 'gord', 3, 1, '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
 
 -- --------------------------------------------------------------------------------------------------------------------------------
 

@@ -1,6 +1,6 @@
 
 <?php
-    require('../config/database.php');
+    require('../php-config/database.php');
 
     if (isset($_POST['submit-publisher'])) {
         
@@ -48,7 +48,7 @@
 <body>
 
     <!-- All entries are VARCHAR **except** where noted -->
-    <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" >
+    <form method="POST" action="">
 
         <!-- INT -->
         <label><u>Publisher ID</u></label><br><br>

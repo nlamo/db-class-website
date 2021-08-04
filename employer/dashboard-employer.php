@@ -1,3 +1,9 @@
+<?php
+    // for outputting most recent application to the application-summary textarea
+    require('../php/get-current-application.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +117,55 @@
             <!-- A summary of the current (most recent) application for any given job -->
             <div class="application-summary">
                 <h4>Current Application Summary</h4><br><br>
-                <textarea name="application-summary" id="application-summary" cols="34" rows="31"></textarea>
+
+                <p name="application-summary" id="application-summary" cols="34" rows="31">
+
+                <?php while ($row = $applicationIdResult->fetch_assoc() ): ?>
+                    
+                    <?php
+                        echo 'Application ID: ';
+                        echo $row['job_application_ID'] . '<br><br>';
+                    ?>
+             
+                <?php endwhile; ?>
+
+                <?php while ($row = $applicationUsernameResult->fetch_assoc() ): ?>
+                    
+                    <?php 
+                        echo 'Username: ';
+                        echo $row['username'] . '<br>';
+                    ?><br>
+             
+                <?php endwhile; ?>
+
+                <?php while ($row = $applicationJobIdResult->fetch_assoc() ): ?>
+                    
+                    <?php
+                        echo 'Job ID: ';
+                        echo $row['job_ID'] . '<br><br>';
+                    ?>
+             
+                <?php endwhile; ?>
+
+                <?php while ($row = $applicationJobNoResult->fetch_assoc() ): ?>
+                    
+                    <?php
+                        echo 'Application Number: ';
+                        echo $row['application_no'] . '<br><br><br><br>';
+                    ?>
+             
+                <?php endwhile; ?>
+
+                <?php while ($row = $applicationTextResult->fetch_assoc() ): ?>
+                
+                    <?php 
+                        echo 'Application Content: ' . '<br><br>';
+                        echo $row['application_text'];
+                    ?><br>
+                 
+                <?php endwhile; ?>
+
+                </p>
             </div>
 
         </div>

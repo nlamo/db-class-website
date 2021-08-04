@@ -1,2 +1,2 @@
 # just to avoid pushing specific configuration details
-config/database.php
+php-config/database.php

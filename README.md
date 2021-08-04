@@ -24,6 +24,7 @@ Website/web application for the main project for our database course.
 
 - The UI (dashboard) for 'Employer' is basically complete, apart from minor changes.
 - The UI (dashboard) for 'User' is also basically complete, apart from bits of tweaking.
+- 'Current Application Summary' PHP successfully added/fully functional.
 - Non-functional 'Create Account' view has been made.
 - Added some basic PHP for insertions for the 'Warm-Up Project'.
 - Set up the ssh tunnel at localhost, which is now fairly easy to use.

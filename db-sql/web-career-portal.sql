@@ -1,15 +1,51 @@
 -- COMP 5531 - Web Career Portal
+-- Nicholas LaMothe, Fady Attia
 
--- NOTE: We create this because we potentially must associate a username with a given employer
---       and we also need to associate an employer with each job posting
+-- Just for testing on localhost server before going to the tunnel
+-- CREATE DATABASE zic55311_localhost;
+-- USE zic55311_localhost;
+
+-- --------------------------------------------------------------------------------------------------------------------------------
+
+-- NOTE: as you will see, a user can be an employer or not (using NULL for this)
+-- ALSO: for the purpose of this assignment, each user can only be associated with ONE employer
 CREATE TABLE `employer` (
-    `employer_ID` VARCHAR(255),
+    `employer_ID` INT,
     `name` VARCHAR(255),
-    `address` VARCHAR(255)
+    `address` VARCHAR(255),
     `phone` VARCHAR(255),
     `email` VARCHAR(255),
     PRIMARY KEY (employer_ID)
 );
+
+INSERT INTO `employer` VALUES (1, 'Alpha Computing', '515 Alpha Way', '555-515-5245', 'alphacomputing@alpha.org');
+INSERT INTO `employer` VALUES (2, 'Darryl Electronics', '654 Simba Way', '555-515-6216', 'darrylelectro@darrylelectro.com');
+INSERT INTO `employer` VALUES (3, 'Jimba Microprocessors', '721 Jimba Ave', '555-425-5215', 'jimbamicropro@jimba.net');
+INSERT INTO `employer` VALUES (4, 'Kettle Coffee', '421 Kettle Boulevard', '555-745-2910', 'kettle@kettlecoffeeisgood.ca');
+INSERT INTO `employer` VALUES (5, 'Stan\'s Bagels', '425 Bagel Road', '521-542-4919', 'stanley@stansbagels.com');
+INSERT INTO `employer` VALUES (6, 'Tony Pizzeria', '234 Tony Street', '512-492-1928', 'tony@tonypizzanow.org');
+INSERT INTO `employer` VALUES (7, 'Denton Photography', '555 Alpha Way', '555-234-8239', 'denton@dentonphoto.ca');
+INSERT INTO `employer` VALUES (8, 'Fine Refinishing', '7820 Wood Way', '514-849-2938', 'refinish@finewood.now');
+INSERT INTO `employer` VALUES (9, 'James Richardson Brandy', '514 Avenue Decadent', '512-481-2381', 'jrichardson@bestbrandies.org');
+INSERT INTO `employer` VALUES (10, 'Smoke Show', '290 Smoker Boulevard', '555-512-1932', 'smokeshow@smokeshowsmokeables.org');
+
+-- --------------------------------------------------------------------------------------------------------------------------------
+
+-- Six Categories w/ Price (Admin, User Basic, User Prime, User Gold, Employer Prime, Employer Gold,)
+CREATE TABLE `user_category` (
+    `user_category` VARCHAR(255),
+    `price` INT,
+    PRIMARY KEY (user_category)
+);
+
+INSERT INTO `user_category` VALUES ('Admin', 0);
+INSERT INTO `user_category` VALUES ('Employer Prime', 50);
+INSERT INTO `user_category` VALUES ('Employer Gold', 100);
+INSERT INTO `user_category` VALUES ('User Basic', 0);
+INSERT INTO `user_category` VALUES ('User Prime', 10);
+INSERT INTO `user_category` VALUES ('User Gold', 20);
+
+-- --------------------------------------------------------------------------------------------------------------------------------
 
 -- NOTE: `total_jobs_posted` will be used by an employer, and
 --       `total_applications_submitted` will be used by a user (who is looking for jobs);
@@ -18,9 +54,10 @@ CREATE TABLE `employer` (
 --        this might look different after normalization
 
 -- NOTE:  default from `employer_ID` is NULL in case the user is not an employer
-CREATE TABLE 'user' (
+CREATE TABLE `user` (
     `username` VARCHAR(255),
-    `employer_ID` VARCHAR(255) NULL,
+    `employer_ID` INT NULL,
+    `user_category` VARCHAR(255),
     `first_name` VARCHAR(255),
     `last_name` VARCHAR(255),
     `email` VARCHAR(255),
@@ -30,14 +67,40 @@ CREATE TABLE 'user' (
     `total_applications_submitted` INT,
     `status` VARCHAR(255), -- active, inactive ('active' should be default; for admin use)
     PRIMARY KEY (username),
-    FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
+    FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID),
+    FOREIGN KEY (user_category) REFERENCES user_category (user_category)
 );
+
+-- Regular users (administrators), need a new table for this also...
+INSERT INTO `user` VALUES ('n_lamo', NULL, 'Admin', 'Nicholas', 'LaMothe', 'n_lamo@encs.concordia.ca', 'steppenwolf', '2001: A Space Odyssey', 0, 0, 'active');
+INSERT INTO `user` VALUES ('f_attia', NULL, 'Admin', 'Fady', 'Attia', 'f_attia@encs.concordia.ca', 'password', 'Unknown', 0, 0, 'active');
+
+-- Regular users (looking for work)
+-- These user will have all made applications. zeba makes two (2), damo makes two (2), gord makes three (3), just to start.
+INSERT INTO `user` VALUES ('zeba', NULL, 'User Basic', 'Jim', 'James', 'jimmyjames@fake.org', 'jimmy', 'Unforgiven', 0, 2, 'active');
+INSERT INTO `user` VALUES ('damo', NULL, 'User Prime', 'Damo', 'Suzuki', 'damo@mysticalvoice.org', 'damo', 'Rashomon', 0, 2, 'active');
+INSERT INTO `user` VALUES ('gord', NULL, 'User Gold', 'Gord', 'Willard', 'gordwillard@fake.net', 'gordo', 'Munich', 0, 3, 'active');
+
+-- Employers (users match the first five employers)
+-- These employers will have all posted a single (1) job to start
+INSERT INTO `user` VALUES ('alpha', 1, 'Employer Prime', 'Ali', 'Grandich', 'aligrandy@alpha.org', 'alpha', 'Slackers', 1, 0, 'active');
+INSERT INTO `user` VALUES ('darryl', 2, 'Employer Prime', 'Darryl', 'Randal', 'darryl@fakeman.com', 'darryl', 'Clerks', 1, 0, 'active');
+INSERT INTO `user` VALUES ('jimba', 3, 'Employer Gold', 'Jim', 'Brando', 'jimbrando@faker.net', 'jimba', 'Akira', 1, 0, 'active');
+INSERT INTO `user` VALUES ('kettle', 4, 'Employer Gold', 'Sarah', 'Wilkinson', 'sandra@kettlecoffeeisgood.ca', 'sandra', 'Sleepless in Seattle', 1, 0, 'active');
+INSERT INTO `user` VALUES ('stanley', 5, 'Employer Gold', 'Stanley', 'Silverman', 'stanley@fakest.ca', 'stanley', 'The Conversation', 1, 0, 'active');
+
+-- --------------------------------------------------------------------------------------------------------------------------------
 
 -- Only two payment methods, so they'll always be unique here
 CREATE TABLE `payment_method` (
-    `payment_method` VARCHAR(255), -- chequing, credit
+    `payment_method` VARCHAR(255), -- Chequing, Credit
     PRIMARY KEY (payment_method)
 );
+
+INSERT INTO `payment_method` VALUES ('Chequing');
+INSERT INTO `payment_method` VALUES ('Credit');
+
+-- --------------------------------------------------------------------------------------------------------------------------------
 
 -- Creating the account separately so that we can associate multiple payment methods with a user
 CREATE TABLE `user_account` (
@@ -47,9 +110,26 @@ CREATE TABLE `user_account` (
     FOREIGN KEY (username) REFERENCES user (username)
 );
 
+INSERT INTO `user_account` VALUES ('n_lamo', 'Credit');
+INSERT INTO `user_account` VALUES ('f_attia', 'Credit');
+INSERT INTO `user_account` VALUES ('zeba', 'Credit');
+INSERT INTO `user_account` VALUES ('damo', 'Chequing');
+INSERT INTO `user_account` VALUES ('gord', 'Chequing');
+INSERT INTO `user_account` VALUES ('alpha', 'Credit');
+INSERT INTO `user_account` VALUES ('darryl', 'Credit');
+INSERT INTO `user_account` VALUES ('jimba', 'Credit');
+INSERT INTO `user_account` VALUES ('kettle', 'Chequing');
+INSERT INTO `user_account` VALUES ('stanley', 'Chequing');
+
+-- --------------------------------------------------------------------------------------------------------------------------------
+
+-- NOTE: There will be several other things regarding payments that we will likely have to implement
+--       It's not certain to me just how many, but it seems like we might need to have something like a 'user_account'
+--       relation in order to satisfy the requirements.
+
 -- Each payment is unique, and the ID will determine everything, including username
 CREATE TABLE `payment` (
-    `payment_ID` VARCHAR(255),
+    `payment_ID` INT,
     `username` VARCHAR(255) NOT NULL,
     `payment_total` INT(3),
     `payment_method` VARCHAR(255),
@@ -59,54 +139,70 @@ CREATE TABLE `payment` (
     FOREIGN KEY (payment_method) REFERENCES payment_method (payment_method)
 );
 
--- Only two job categories, so they'll always be unique here
-CREATE TABLE `job_category` (
-    `job_category` VARCHAR(255), -- Prime, Gold
-    `price` INT,
-    PRIMARY KEY (job_category)
-);
+-- --------------------------------------------------------------------------------------------------------------------------------
 
 -- Each job is unique, and so the ID will determine everything
 CREATE TABLE `job` (
-    `job_ID` VARCHAR(255),
-    `employer_ID` VARCHAR(255),
+    `job_ID` INT,
+    `employer_ID` INT,
     `job_category` VARCHAR(255),
     `title` VARCHAR(255),
     `salary` INT,
-    `description` VARCHAR(MAX), -- potentially much larger text
-    `date_posted` DATE,
+    `description` VARCHAR(2000), -- much larger text
     `date_start` DATE,
     PRIMARY KEY (job_ID),
-    FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID),
-    FOREIGN KEY (job_category) REFERENCES job_category (job_category)
+    FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
 );
 
--- NOTE: The notion of an application 'status' appears to have too many meanings in the --       --       requirements... For example, the fact that 'users' and 'employers' should 
---       'maintain' the status of an applicaton is a bit unusual. Just a thought.
+-- For the sake of simplicity, we're just starting off with 10 jobs (1-10), ordered by the first 10 employers (1-10) 
+INSERT INTO `job` VALUES (1, 1, 'IT', 'System Administrator', 80000, 'This role requires knowledge of the system administration of MS Windows based workstations. A high-degree of proficiency in cmd and Powershell is required, with knowledge of many basic commands, system utilities, security best practices, setting up and disassembling workstations, and the maintenance and supervision of accounts with a variety of permissions. Low-level security knowledge in assembly is considered a major asset.', '2021-08-30');
+INSERT INTO `job` VALUES (2, 2, 'Engineering', 'Electrical Engineer', 92000, 'This role requires knowledge of circuit design and a high-degree of familiarity with the major software tools used in designing circuit boards. A BSc in Electrical Engineering is required for this role; an MSc is considered a highly-valuable asset.', '2021-09-02');
+INSERT INTO `job` VALUES (3, 3, 'Engineering', 'Computer Architect', 120000, 'This position equires 10+ years of experience in the high-level design of computer architectures, including all of the major software tools required to be competitive in this field. Excellent knowledge of assembly and the C programming language required. Proficiency in LaTeX is seen as a valuble asset. This role is well-suited for someone with an MSc in Computer Science or Electrical Engineering. Exceptionally, we may take on new graduates, but this role ideally requires many years of experience working with a computer hardware manufacturer.', '2021,10-01');
+INSERT INTO `job` VALUES (4, 4, 'Food Preparation', 'Barista', 26000, 'The duties of this position are as follows: preparation of food items, coffee, specialty coffee beverages, cleaning duties (including dishwashing), and working the cash register.', '2021-09-14');
+INSERT INTO `job` VALUES (5, 5, 'IT', 'Web Developer', 50000, 'As the head web developer for Stan\'s Bagels, you will be required to maintain all activities surrounding the business web application. This includes managing, modifying, and improving the user interface, database, and all of the front/back-end control logic. Proficiency in HTML, CSS, JavaScript, and PHP is required. Knowledge of React and TypeScript are considered assets.', '2021-09-28');
+INSERT INTO `job` VALUES (6, 6, 'Food Preparation', 'Line Cook', 32000, 'As line cook, you will be responsible for all apects of food preparation (chopping vegetables, grating cheese, making dough, making sauce), cooking pizzas, answering telephone calls, working at the cash register, washing dishes, mopping the floors, cleaning the washroom, and maintaining a clean and orderly food preparation workspace in accordance with national food safety regulations. If you have a valid driver\'s license, then it is considered as an asset.', '2021-09-01');
+INSERT INTO `job` VALUES (7, 7, 'Photography', 'Wedding Photographer', 44000, 'For the role of Wedding Photographer, you will take amazing photos of people at their weddings! Ideally, the qualified candidate will be sociable and charismatic while still maintaining the distance and impartial eye required of a truly exceptional photographer. A formal education in photographer is considered as an asset, but we base our hiring decisions almost entirely on the portfolios of the photographer\'s we interview. We look forward to hearing from you!', '2021-09-15');
+INSERT INTO `job` VALUES (8, 8, 'Carpentry', 'Finishing Carpenter', 65000, 'We pride ourselves on our careful, classic finishing carpentry designs. Do you love the fine art of crafting beautiful works from wood? If so, please apply immediately. We are in the midst of searching for someone with several years of experience in fine wood handicraft, and we make no compromises in terms of quality, so please only apply if your capabilities match the work we do. Many examples are available on our website.', '2021-08-16');
+INSERT INTO `job` VALUES (9, 9, 'Service', 'Front of House', 45000, 'Are you accustomed to the finer pleasures of life, and do you know what it means to provide a truly wonderful experience as both host and guide? If this sounds like you, then please apply for our position as Front of House. We search for candidates who ideally have over a decade of experience in the fine dining industry. A deep and engaged knowledge of wines, brandies, and cognacs is essential to this position. We provide extensive training regarding the properties of our brandies and our plates, but a deep knowledge of the fine dining experience is essential for this role.', '2021-09-20');
+INSERT INTO `job` VALUES (10, 10, 'Service', 'Retail Clerk', 27500, 'Do you love to smoke? Do you know your smokeable accessories? Are you part of the culture? If all of these apply, come see us down at Smoke Show. Drop on in.', '2021-09-15');
+
+-- --------------------------------------------------------------------------------------------------------------------------------
+
+-- NOTE: The notion of an application 'status' appears to have too many meanings in the --       
+--       requirements... For example, the fact that 'users' and 'employers' should 
+--      'maintain' the status of an applicaton is a bit unusual. Just a thought.
+
+-- NOTE: When employer uses 'Update Application', s(he) will send a 'Message to Applicant'
+--       which will then update the `application_response` attribute value
 
 CREATE TABLE `job_application` (
     `username` VARCHAR(255),
-    `job_ID` VARCHAR(255),
+    `job_ID` INT,
     `application_no` INT, -- because we want the user to be able to submit multiple applications
-    `application_text` VARCHAR(255),
+    `application_text` VARCHAR(1000),
     `application_status` VARCHAR(255), -- active, inactive, accepted, rejected
+    `application_response` VARCHAR(1000),
     PRIMARY KEY (username, job_ID, application_no),
     FOREIGN KEY (username) REFERENCES user (username),
     FOREIGN KEY (job_ID) REFERENCES job (job_ID)
 );
 
--- Additional notes to inform potential relations to be made:
+-- TUPLE (username, job_ID, application_no, application_text, application_status, application_response)
 
--- We *might* need an employer relation:
---   we need a way to connect each job to a given employer
---   this information will also eventually be included in each 'job'
+INSERT INTO `job_application` VALUES ('zeba', 1, 1, 'I have 20+ years of Windows System administration, and am a quick learner. I have used Linux for 15 minutes, but then it crashed, and it caused me such anxiety that I went back to Microsoft. As a result of this, I started learning PowerShell to increase my self-esteem, but found that it was insufferable, so I started using bash in Ubuntu after setting up WSL. As such, I am indeed proficient in computer systems. My knowledge of networking is sufficient, as I am capable of running the commands ipconfig and ping. Please reach out soon!', 'active', NULL);
+INSERT INTO `job_application` VALUES ('zeba', 5, 1, 'I have 5+ years as a web developer, and I am a very fast learner. I continuously gravitate betweent the front and back-end, but I can\'t say that I\'m good at either. As such, I am full-stack. You will see that my stack is sufficiently stacked that I pack a real smack when it comes to applications that we all think are wack. Other than that... I have used Linux for 15 minutes, but then it crashed, and it caused me such anxiety that I went back to Microsoft. As a result of this, I started learning PowerShell to increase my self-esteem, but found that it was insufferable, so I started using bash in Ubuntu after setting up WSL. As such, I am indeed proficient in computer systems. My knowledge of networking is sufficient, as I am capable of running the commands ipconfig and ping. Please reach out soon!', 'active', NULL);
+INSERT INTO `job_application` VALUES ('damo', 4, 1, 'Many call me a splendid cook. I have worked many years as a barista, a prep cook, and a line cook. Reach out anytime', 'active', NULL);
+INSERT INTO `job_application` VALUES ('damo', 6, 1, 'Many call me a splendid cook. I have worked many years as a barista, a prep cook, and a line cook. Reach out anytime', 'active', NULL);
+INSERT INTO `job_application` VALUES ('gord', 1, 1, '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
+INSERT INTO `job_application` VALUES ('gord', 2, 1, '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
+INSERT INTO `job_application` VALUES ('gord', 3, 1, '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
+
+-- --------------------------------------------------------------------------------------------------------------------------------
 
 -- All users need access to:
 --   posted jobs
 --   applied jobs
 --   accepted jobs
 --   history
-
--- Solution? 
---   probably will have another entire dashbord that sits beneath the user dashboard
---   maybe even a couple
+--
+--   We might need additional relations to accommodate some of these views. We shall see.

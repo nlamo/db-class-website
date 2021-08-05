@@ -4,7 +4,11 @@
 
     // for posting a job
     require('../php/post-job.php');
+
+    // for updating a job
+    require('../php/update-job.php');
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,6 +77,7 @@
 
                 <!-- FORM: Post a job -->
                 <form method="POST" action="">
+
                     <div class="post-jobs-subgrid">
                         
                         <div>
@@ -234,40 +239,44 @@
             <div class="update-jobs">
                 <h4>Update Job</h4><br><br>
 
-                <div class="update-jobs-subgrid">
-                                
-                    <div>
-                        <label><strong>Job ID</strong></label><br>
-                        <input type="text" id="job-id" name="job-id">
-                    </div>
-                    <div>
-                        <label>Employer ID</label><br>
-                        <input type="text" id="employer-id" name="employer-id">
-                    </div>
-                    <div>
-                        <label>Job Category</label><br>
-                        <input type="text" id="job-category" name="job-category">
-                    </div>
-                    <div>
-                        <label>Job Title</label><br>
-                        <input type="text" id="job-title" name="job-title">
-                    </div>
-                    <div>
-                        <label>Salary</label><br>
-                        <input type="text" id="salary" name="salary">
-                    </div>
-                    <div>
-                        <label>Start Date</label><br>
-                        <input type="date" id="start-date" name="start-date">
-                    </div>
-                    <div id="job-description-container">
-                        <label>Job Description</label><br>
-                        <textarea name="job-description" id="job-description" cols="30" rows="10"></textarea>
-                    </div>
-                    <br>
+                <!-- FORM: Update a job -->
+                <form method="POST" action="">
 
-                    <button type="submit" class="button" name="update-job">Update Job</button><br>
-                </div>
+                    <div class="update-jobs-subgrid">
+                                    
+                        <div>
+                            <label><strong>Job ID</strong></label><br>
+                            <input type="text" id="job-id" name="job-id">
+                        </div>
+                        <div>
+                            <label>Employer ID</label><br>
+                            <input type="text" id="employer-id" name="employer-id">
+                        </div>
+                        <div>
+                            <label>Job Category</label><br>
+                            <input type="text" id="job-category" name="job-category">
+                        </div>
+                        <div>
+                            <label>Job Title</label><br>
+                            <input type="text" id="job-title" name="job-title">
+                        </div>
+                        <div>
+                            <label>Salary</label><br>
+                            <input type="text" id="salary" name="salary">
+                        </div>
+                        <div>
+                            <label>Start Date</label><br>
+                            <input type="date" id="start-date" name="start-date">
+                        </div>
+                        <div id="job-description-container">
+                            <label>Job Description</label><br>
+                            <textarea name="job-description" id="job-description" cols="30" rows="10"></textarea>
+                        </div>
+                        <br>
+
+                        <button type="submit" class="button" name="update-job">Update Job</button><br>
+                    </div>
+                </form>
             </div>
 
             <!-- So that the employer can maintain/update job applications -->

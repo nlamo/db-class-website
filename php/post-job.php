@@ -4,6 +4,8 @@
 
     // TODO: Make sure that a session variable is set that will then trigger a message
     //       to the user after the redirect!
+
+    // TODO: Add further validation in case fields are empty
     
     if (isset($_POST['submit-job'])) {
 

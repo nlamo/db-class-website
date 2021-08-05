@@ -143,6 +143,41 @@ textarea:hover {
     border: 2px solid #499256;
 }
 
+.card-sign-up {
+    background:#548a75;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+    height: 700px;
+    border-radius: 2px;
+    border: 2px solid #499256;
+}
+
+.card-sign-up p {
+    background: #FFF;
+    color: #253A28;
+    padding: 10px 75px 10px 75px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.card-sign-up input {
+    width: 300px;
+}
+
+.card-sign-up form {
+    justify-content: center;
+}
+
+.card-sign-up button {
+    width: 250px;
+    height: 75px;
+    margin-left: 25px;
+    border-color: #FFF;
+}
+
 .button {
     display: flex;
     justify-content: center;

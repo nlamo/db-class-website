@@ -24,7 +24,8 @@ Website/web application for the main project for our database course.
 
 - The UI (dashboard) for 'Employer' is basically complete, apart from minor changes.
 - The UI (dashboard) for 'User' is also basically complete, apart from bits of tweaking.
+- Styling for the sign-up form is likely complete. Might tweak it a bit more.
+- Non-functional 'Create Account' (sign-up.php) view has been made.
 - 'Current Application Summary' PHP successfully added/fully functional.
-- 'Post Job' PHP successfully added/fully functional. Will be tweaked to automatically include the ID of the current user (employer) running their session.
-- Non-functional 'Create Account' view has been made.
+- 'Post Job' PHP successfully added/fully functional. Should be tweaked to automatically include the ID of the current user (employer) running their session.
 - Set up the ssh tunnel at localhost, which is now fairly easy to use.

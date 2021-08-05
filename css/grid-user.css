@@ -7,9 +7,9 @@
     grid-template-rows: 1fr 1fr 1fr;
     height: 80%;
     width: 95%;
-    border-radius: 2px;
     background:  #F3FCF4;
     border: none;
+    border-radius: 2px;
 }
 
 .search-job-by-category {
@@ -17,9 +17,9 @@
     grid-column-end: 1;
     grid-row-start: 1;
     grid-row-end: 2; 
-    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;
 }
@@ -29,9 +29,9 @@
     grid-column-end: 1;
     grid-row-start: 2;
     grid-row-end: 4; 
-    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;
 }
@@ -41,9 +41,9 @@
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 4; 
-    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;
 }
@@ -53,9 +53,9 @@
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 4; 
-    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;
 }
@@ -73,10 +73,10 @@
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 3; 
-    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
     margin-bottom: 0px;
+    background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;
 }
@@ -100,12 +100,12 @@
     grid-column-end: 5;
     grid-row-start: 3;
     grid-row-end: 4; 
-    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    margin-top: 25px;
+    background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;
-    margin-top: 25px;
 }
 
 .withdraw-application label {
@@ -126,9 +126,9 @@
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 4; 
-    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;
 }
@@ -145,9 +145,9 @@
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 4; 
-    background: #CAE4CD;
     padding: 20px;
     margin: 15px;
+    background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;
 }
@@ -155,19 +155,19 @@
 .update-user-profile input {
     width: 275px;
 }
+
 .update-user-profile button {
     margin-top: 90px;
 }
 
 .delete-user-account {
-    margin-bottom: 10px;
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 4; 
-    background: #CAE4CD;
     padding: 20px;
-    margin: 15px;
+    margin: 15px 15px 10px 15px;
+    background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;
 }

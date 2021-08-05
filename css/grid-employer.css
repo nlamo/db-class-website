@@ -1,6 +1,5 @@
 
 /* Employer dashboard grid items */
-
 .dashboard-employer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -22,6 +21,11 @@
     margin: 15px;
     border: solid 1px;
     border-radius: 5px;
+}
+
+/* This is for each of the input boxes, as they are wrapped in simple divs */
+.maintain-users div {
+    margin-bottom: 5px;
 }
 
 .employer-categories {
@@ -48,6 +52,11 @@
     border-radius: 5px;
 }
 
+/* This is for each of the input boxes, as they are wrapped in simple divs */
+.post-jobs-subgrid div {
+    margin-bottom: 5px;
+}
+
 .post-jobs-subgrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -56,7 +65,7 @@
     align-items: center;
 }
 
-.post-jobs-subgrid form textarea {
+.post-jobs-subgrid textarea {
     display: grid;
     margin-top: 10px;
     grid-column: 1 / span 2;
@@ -67,7 +76,7 @@
     display: grid;
     grid-column: 1 / span 2;
     width: auto;
-    margin-top: 25px;
+    margin-top: 84px;
 }
 
 #job-description-container {
@@ -90,7 +99,7 @@
     height: 85%;
     padding: 10px;
     font-size: .8rem;
-    opacity: 10;
+    opacity: 1;
     border: 1px solid #000;
     color: #000;
     background: #FFFFFF;
@@ -116,6 +125,11 @@
     align-items: center;
 }
 
+/* This is for each of the input boxes, as they are wrapped in simple divs */
+.update-jobs-subgrid div {
+    margin-bottom: 5px;
+}
+
 .update-jobs-subgrid textarea {
     display: grid;
     margin-top: 10px;
@@ -127,7 +141,7 @@
     display: grid;
     grid-column: 1 / span 2;
     width: auto;
-    margin-top: 20px;
+    margin-top: 84px;
 }
 
 .update-applications {
@@ -140,6 +154,11 @@
     margin: 15px;
     border: solid 1px;
     border-radius: 5px;
+}
+
+/* This is for each of the input boxes, as they are wrapped in simple divs */
+.update-applications div {
+    margin-bottom: 6px;
 }
 
 .update-applications textarea {

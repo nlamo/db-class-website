@@ -8,6 +8,10 @@
 
      $applicationUsernameQuery = "SELECT username FROM job_application WHERE job_application_ID = (SELECT MAX(job_application_ID) FROM job_application)";
 
+     $applicantFirstNameQuery = "SELECT user.first_name FROM user, job_application WHERE (user.username = job_application.username) AND job_application_ID = (SELECT MAX(job_application_ID) FROM job_application)";
+
+     $applicantLastNameQuery = "SELECT user.last_name FROM user, job_application WHERE (user.username = job_application.username) AND job_application_ID = (SELECT MAX(job_application_ID) FROM job_application)";
+
      $applicationJobIdQuery = "SELECT job_ID FROM job_application WHERE job_application_ID = (SELECT MAX(job_application_ID) FROM job_application)";
 
      $applicationJobNoQuery = "SELECT application_no FROM job_application WHERE job_application_ID = (SELECT MAX(job_application_ID) FROM job_application)";
@@ -16,18 +20,20 @@
 
      $applicationIdResult = mysqli_query($conn, $applicationIdQuery);
      $applicationUsernameResult = mysqli_query($conn, $applicationUsernameQuery);
+     $applicantFirstNameResult = mysqli_query($conn, $applicantFirstNameQuery);
+     $applicantLastNameResult = mysqli_query($conn, $applicantLastNameQuery);
      $applicationJobIdResult= mysqli_query($conn, $applicationJobIdQuery);
      $applicationJobNoResult= mysqli_query($conn, $applicationJobNoQuery);
      $applicationTextResult = mysqli_query($conn, $applicationTextQuery);
     
-   // NOTE: This is for testing. Comment out when completely done.
+    // NOTE: This is for testing. Comment out when finished.
 
-   //   if ( ($applicationIdResult && $applicationUsernameResult && $applicationJobIdResult && $applicationJobNoResult && $applicationTextResult) == false) {
-   //      echo 'Query submission error: ' . mysqli_error($conn) . ' ';
-   //   } 
-   //   else {
-   //      echo 'Query successful.';
-   //   }
+    //  if ( ($applicationIdResult && $applicationUsernameResult && $applicationJobIdResult && $applicationJobNoResult && $applicationTextResult) == false) {
+    //     echo 'Query submission error: ' . mysqli_error($conn) . ' ';
+    //  } 
+    //  else {
+    //     echo 'Query successful.';
+    //  }
 
      require('../php-config/close-database.php');
 ?>

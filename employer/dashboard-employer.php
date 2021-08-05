@@ -2,6 +2,8 @@
     // for outputting most recent application to the application-summary textarea
     require('../php/get-current-application.php');
 
+    // for posting a job
+    require('../php/post-job.php');
 ?>
 
 <!DOCTYPE html>
@@ -35,14 +37,14 @@
 
                 <small>This is where you can update the user type of a given user.</small><br><br>
 
-                <form>
+                <div>
                     <label><strong>Username</strong></label><br>
                     <input type="text" id="username" name="username">
-                </form>
-                <form>
+                </div>
+                <div>
                     <label>User Type</label><br>
                     <input type="text" id="user-type" name ="user-type">
-                </form>
+                </div>
 
                 <button type="submit" class="button" value="Update";>
                     Submit
@@ -69,49 +71,44 @@
             <div class="post-jobs">
                 <h4>Post Job</h4><br><br>
 
-                <div class="post-jobs-subgrid">
-        
-                    <form>
-                        <label><strong>Job ID</strong></label><br>
-                        <input type="text" id="job-id" name ="job-id">
-                    </form>
-                    <form>
-                        <label>Employer ID</label><br>
-                        <input type="text" id="employer-id" name ="employer-id">
-                    </form>
-                    <form>
-                        <label>Job Title</label><br>
-                        <input type="text" id="job-title" name ="job-title">
-                    </form>
-                    <form>
-                        <label>Job Category</label><br>
-                        <input type="text" id="job-category" name ="job-category">
-                    </form>
-                    <form>
-                        <label>Date Posted</label><br>
-                        <input type="date" id="date-posted" name ="date-posted">
-                    </form>
-                    <form>
-                        <label>Salary</label><br>
-                        <input type="text" id="salary" name ="salary">
-                    </form>
-                    <form>
-                        <label>Start Date</label><br>
-                        <input type="date" id="start-date" name ="start-date">
-                    </form>
+                <!-- FORM: Post a job -->
+                <form method="POST" action="">
+                    <div class="post-jobs-subgrid">
+                        
+                        <div>
+                            <label><strong>Job ID</strong></label><br>
+                            <input type="text" id="job-id" name="job-id">
+                        </div>
+                        <div>
+                            <label>Employer ID</label><br>
+                            <input type="text" id="employer-id" name="employer-id">
+                        </div>
+                        <div>
+                            <label>Job Category</label><br>
+                            <input type="text" id="job-category" name="job-category">
+                        </div>
+                        <div>
+                            <label>Job Title</label><br>
+                            <input type="text" id="job-title" name="job-title">
+                        </div>
+                        <div>
+                            <label>Salary</label><br>
+                            <input type="text" id="salary" name="salary">
+                        </div>
+                        <div>
+                            <label>Start Date</label><br>
+                            <input type="date" id="start-date" name="start-date">
+                        </div>
+                        <div id="job-description-container">
+                            <label>Job Description</label><br>
+                            <textarea name="job-description" id="job-description" cols="30" rows="10"></textarea>
+                        </div>
+                        <br>
 
-                    <div>
-                        <!-- Empty div  -->
+                        <button type="submit" class="button" name="submit-job">Post Job</button><br>
                     </div>
-
-                    <form id="job-description-container">
-                        <label>Job Description</label><br>
-                        <textarea name="job-description" id="job-descrption" cols="30" rows="10"></textarea>
-                    </form>
-                    <br>
-    
-                    <button type="submit" class="button">Post Job</button><br>
-                </div>
+                </form>
+                
             </div>
 
             <!-- A summary of the current (most recent) application for any given job -->
@@ -120,54 +117,71 @@
 
                 <p name="application-summary" id="application-summary" cols="34" rows="31">
 
-                <?php while ($row = $applicationIdResult->fetch_assoc() ): ?>
-                    
-                    <?php
-                        echo 'Application ID: ';
-                        echo $row['job_application_ID'] . '<br><br>';
-                    ?>
-             
-                <?php endwhile; ?>
-
-                <?php while ($row = $applicationUsernameResult->fetch_assoc() ): ?>
-                    
-                    <?php 
-                        echo 'Username: ';
-                        echo $row['username'] . '<br>';
-                    ?><br>
-             
-                <?php endwhile; ?>
-
-                <?php while ($row = $applicationJobIdResult->fetch_assoc() ): ?>
-                    
-                    <?php
-                        echo 'Job ID: ';
-                        echo $row['job_ID'] . '<br><br>';
-                    ?>
-             
-                <?php endwhile; ?>
-
-                <?php while ($row = $applicationJobNoResult->fetch_assoc() ): ?>
-                    
-                    <?php
-                        echo 'Application Number: ';
-                        echo $row['application_no'] . '<br><br><br><br>';
-                    ?>
-             
-                <?php endwhile; ?>
-
-                <?php while ($row = $applicationTextResult->fetch_assoc() ): ?>
+                    <?php while ($row = $applicationIdResult->fetch_assoc() ): ?>
+                        
+                        <?php
+                            echo 'Application ID: ';
+                            echo $row['job_application_ID'] . '<br><br>';
+                        ?>
                 
-                    <?php 
-                        echo 'Application Content: ' . '<br><br>';
-                        echo $row['application_text'];
-                    ?><br>
-                 
-                <?php endwhile; ?>
+                    <?php endwhile; ?>
+
+                    <?php while ($row = $applicationUsernameResult->fetch_assoc() ): ?>
+                        
+                        <?php 
+                            echo 'Username: ';
+                            echo $row['username'] . '<br>';
+                        ?><br>
+                
+                    <?php endwhile; ?>
+
+                    <?php while ($row = $applicantFirstNameResult->fetch_assoc() ): ?>
+                        
+                        <?php 
+                            echo 'First name: ';
+                            echo $row['first_name'] . '<br>';
+                        ?><br>
+                
+                    <?php endwhile; ?>
+
+                    <?php while ($row = $applicantLastNameResult->fetch_assoc() ): ?>
+                        
+                        <?php 
+                            echo 'Last name: ';
+                            echo $row['last_name'] . '<br>';
+                        ?><br>
+                
+                    <?php endwhile; ?>
+
+                    <?php while ($row = $applicationJobIdResult->fetch_assoc() ): ?>
+                        
+                        <?php
+                            echo 'Job ID: ';
+                            echo $row['job_ID'] . '<br><br>';
+                        ?>
+                
+                    <?php endwhile; ?>
+
+                    <?php while ($row = $applicationJobNoResult->fetch_assoc() ): ?>
+                        
+                        <?php
+                            echo 'Application Number: ';
+                            echo $row['application_no'] . '<br><br><br><br>';
+                        ?>
+                
+                    <?php endwhile; ?>
+
+                    <?php while ($row = $applicationTextResult->fetch_assoc() ): ?>
+                    
+                        <?php 
+                            echo 'Application Content: ' . '<br><br>';
+                            echo $row['application_text'];
+                        ?><br>
+                    
+                    <?php endwhile; ?>
 
                 </p>
             </div>
-
         </div>
     </div>
 
@@ -183,7 +197,7 @@
 
                 <div class="help-wrapper">
         
-                    <small>The 'User Maintenance' section only allows you to change the user type, as this is a form of administrative permissions control.</small>
+                    <small>The 'User Maintenance' section only allows you to change the user type, as this is a div of administrative permissions control.</small>
 
                     <br><br>
 
@@ -221,47 +235,38 @@
                 <h4>Update Job</h4><br><br>
 
                 <div class="update-jobs-subgrid">
-                
-                    <form>
-                        <label><strong>Job ID</strong></label><br>
-                        <input type="text" id="job-id" name ="job-id">
-                    </form>
-                    <form>
-                        <label>Employer ID</label><br>
-                        <input type="text" id="employer-id" name ="employer-id">
-                    </form>
-                    <form>
-                        <label>Job Title</label><br>
-                        <input type="text" id="job-title" name ="job-title">
-                    </form>
-                    <form>
-                        <label>Job Category</label><br>
-                        <input type="text" id="job-category" name ="job-category">
-                    </form>
-                    <form>
-                        <label>Date Posted</label><br>
-                        <input type="date" id="date-posted" name ="date-posted">
-                    </form>
-                    <form>
-                        <label>Salary</label><br>
-                        <input type="text" id="salary" name ="salary">
-                    </form>
-                    <form>
-                        <label>Start Date</label><br>
-                        <input type="date" id="start-date" name ="start-date">
-                    </form>
-
+                                
                     <div>
-                        <!-- Empty div  -->
+                        <label><strong>Job ID</strong></label><br>
+                        <input type="text" id="job-id" name="job-id">
                     </div>
-
-                    <form id="job-description-container">
+                    <div>
+                        <label>Employer ID</label><br>
+                        <input type="text" id="employer-id" name="employer-id">
+                    </div>
+                    <div>
+                        <label>Job Category</label><br>
+                        <input type="text" id="job-category" name="job-category">
+                    </div>
+                    <div>
+                        <label>Job Title</label><br>
+                        <input type="text" id="job-title" name="job-title">
+                    </div>
+                    <div>
+                        <label>Salary</label><br>
+                        <input type="text" id="salary" name="salary">
+                    </div>
+                    <div>
+                        <label>Start Date</label><br>
+                        <input type="date" id="start-date" name="start-date">
+                    </div>
+                    <div id="job-description-container">
                         <label>Job Description</label><br>
                         <textarea name="job-description" id="job-description" cols="30" rows="10"></textarea>
-                    </form>
+                    </div>
                     <br>
 
-                    <button type="submit" class="button">Update Job</button><br>
+                    <button type="submit" class="button" name="update-job">Update Job</button><br>
                 </div>
             </div>
 
@@ -269,25 +274,25 @@
             <div class="update-applications">
                 <h4>Update Application</h4><br><br>
 
-                <form>
+                <div>
                     <label><strong>Job ID</strong></label><br>
                     <input type="text" id="job-id" name ="job-id">
-                </form>
-                <form>
+                </div>
+                <div>
                     <label><strong>Username</strong></label><br>
                     <input type="text" id="user-id" name ="user-id">
-                </form>
-                <form>
+                </div>
+                <div>
                     <label>Application Status</label><br>
                     <input type="text" id="user-id" name ="user-id">
-                </form>
+                </div>
 
                 <br>
 
-                <form>
+                <div>
                     <label>Message to Applicant</label><br>
                     <textarea name="message-to-applicant" id="message-to-applicant" cols="34" rows="13"></textarea>
-                </form>
+                </div>
 
                 <button type="submit" class="button">Update Application</button><br>
             </div>

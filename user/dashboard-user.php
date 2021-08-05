@@ -224,6 +224,7 @@
                 </form>
 
                 <button type="submit" class="button">Delete Account</button><br>
+                
             </div>
         </div>
     </div>

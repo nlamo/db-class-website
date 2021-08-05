@@ -30,6 +30,7 @@
         if (mysqli_query($conn, $sqlQuery)) {
             require('../php-config/close-database.php');
             header('Location: dashboard-employer.php');
+            exit();
         }
         else {
             require('../php-config/close-database.php');

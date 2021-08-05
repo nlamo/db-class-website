@@ -1,27 +1,9 @@
 <!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
+
 <?php
+    // some basic authentication for user login
+    require('../php/login-validation-employer.php');
 
-    session_start();
-
-    if (isset($_POST['submit'])) {
-
-        $loginAttempt = true;
-        $employer = htmlentities($_POST['employer']);
-        $employerPassword = htmlentities($_POST['employerPassword']);
-
-        $_SESSION['employer'] = $employer;
-        $_SESSION['employerPassword'] = $employerPassword;
-
-        if (!empty($employer) && !empty($employerPassword)) {
-            header("Location: dashboard-employer.php");
-            exit();
-        }
-        else {
-            // using the loginAttempt SESSION variable as condition for login message error
-            $_SESSION['loginAttempt'] = $loginAttempt;
-            header("Location: index.php");
-        }
-    }
 ?>
 
 <!DOCTYPE html>
@@ -43,12 +25,12 @@
         <div class="card">
             <p><u>Employer Login</u></p><br>
             
-            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <form method="POST" action="">
                 <label>Username</label><br>
-                <input type="text" name ="employer"><br><br>
+                <input type="text" name="employer"><br><br>
 
                 <label>Password</label><br>
-                <input type="password" name="employerPassword"><br><br>
+                <input type="password" name="employer-password"><br><br>
 
                 <button type="submit" class="button" name="submit" style="margin-left:11px;">
                     Login
@@ -58,18 +40,15 @@
             <!-- Login validation -->
             <?php if (isset($_SESSION['loginAttempt'])): ?>
                 
-                <?php if ( empty($_SESSION['employer']) || empty($_SESSION['employerPassword']) ): ?>
+                <small id="user-message" style="text-align:center;">Please enter a valid username and password.</small>
 
-                    <small id="user-message" style="text-align:center;">Please enter a valid username and password.</small>
+            <?php else: ?>
 
-                <?php else: ?>
+                <script>
+                    var userMes = document.getElementById("user-message");
+                    userMes.remove();
+                </script>
 
-                    <script>
-                        var userMes = document.getElementById("user-message");
-                        userMes.remove();
-                    </script>
-
-                <?php endif; ?>
             <?php endif; ?>  
         </div>
     </div>

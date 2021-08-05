@@ -91,6 +91,13 @@ INSERT INTO `user` VALUES ('jimba', 3, 'Employer Gold', 'Jim', 'Brando', 'jimbra
 INSERT INTO `user` VALUES ('kettle', 4, 'Employer Gold', 'Sarah', 'Wilkinson', 'sandra@kettlecoffeeisgood.ca', 'sandra', 'Sleepless in Seattle', 1, 0, 'active');
 INSERT INTO `user` VALUES ('stanley', 5, 'Employer Gold', 'Stanley', 'Silverman', 'stanley@fakest.ca', 'stanley', 'The Conversation', 1, 0, 'active');
 
+SELECT COUNT(*)
+FROM user
+WHERE user.username='alpha';
+
+SELECT COUNT(*)
+FROM user
+WHERE user.username='alphadas';
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 -- Only two payment methods, so they'll always be unique here

@@ -16,6 +16,9 @@
     // for updating a user's category only if s(he) is not admin
     require('../php/upgrade-employer-category.php');
 
+    // for updating an application (accepting/rejecting) and providing a response to applicant
+    require('../php/update-application.php');
+
 ?>
 
 
@@ -44,9 +47,9 @@
 
         <div class="dashboard-employer">
         
+            <!-- For adminstrators to update the properties of given users -->
             <form method="POST" action="">
-        
-                <!-- For adminstrators to update the properties of given users -->
+                
                 <div class="maintain-users">
                     <h4>User Maintenance</h4><br><br>
 
@@ -286,7 +289,7 @@
                         </div>
                         <div id="job-description-container">
                             <label>Job Description</label><br>
-                            <textarea name="job-description" id="job-description" cols="30" rows="10"></textarea>
+                            <textarea name="job-description" id="job-description" cols="30" rows="13"></textarea>
                         </div>
                         <br>
 
@@ -295,32 +298,40 @@
                 </form>
             </div>
 
-            <!-- So that the employer can maintain/update job applications -->
-            <div class="update-applications">
-                <h4>Update Application</h4><br><br>
+            <form method="POST" action="">
 
-                <div>
-                    <label><strong>Job ID</strong></label><br>
-                    <input type="text" id="job-id" name ="job-id">
-                </div>
-                <div>
-                    <label><strong>Username</strong></label><br>
-                    <input type="text" id="user-id" name ="user-id">
-                </div>
-                <div>
-                    <label>Application Status</label><br>
-                    <input type="text" id="user-id" name ="user-id">
+                <!-- So that the employer can maintain/update job applications -->
+                <div class="update-applications">
+                    <h4>Update Application</h4><br><br>
+
+                    <div>
+                        <label><strong>Job Application ID</strong></label><br>
+                        <input type="text" id="job-application-id" name="job-application-id">
+                    </div>
+                    <div>
+                        <label><strong>Job ID</strong></label><br>
+                        <input type="text" id="job-id" name="job-id">
+                    </div>
+                    <div>
+                        <label><strong>Username</strong></label><br>
+                        <input type="text" id="user-id" name="user">
+                    </div>
+                    <div>
+                        <label>Application Status</label><br>
+                        <input type="text" id="user-id" name="application-status">
+                    </div>
+
+                    <br>
+
+                    <div>
+                        <label>Message to Applicant</label><br>
+                        <textarea id="message-to-applicant" name="message-to-applicant" cols="34" rows="13"></textarea>
+                    </div>
+
+                    <button type="submit" class="button" name="update-application">Update Application</button><br>
                 </div>
 
-                <br>
-
-                <div>
-                    <label>Message to Applicant</label><br>
-                    <textarea name="message-to-applicant" id="message-to-applicant" cols="34" rows="13"></textarea>
-                </div>
-
-                <button type="submit" class="button">Update Application</button><br>
-            </div>
+            </form>
 
         </div>
     </div>

@@ -31,5 +31,6 @@ Website/web application for the main project for our database course.
 - 'Current Application Summary' PHP successfully added/fully functional.
 - 'Post Job' PHP successfully added/fully functional. Should be tweaked to automatically include the ID of the current user (employer) running their session.
 - 'Update Job' PHP is almost completely done, except for an issue where the previous date needs to be maintained upon new insertions.
+- 'Update Application' PHP is basically complete. As with the other ones, I still have to add some form of message printed to the user if data is incomplete.
 - 'Maintain Users' PHP is done, but it's not a particularly useful bit. 
 - 'Upgrade Category' for employers is finished, and is fully functional.

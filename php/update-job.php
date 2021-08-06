@@ -1,12 +1,13 @@
 <!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
 
 <?php
-    require('../php-config/database.php');
     
     // TODO: Almost 100% - just needs to maintain the previous date posted, as the default
     //       date for HTML is the start of the epoch. Checking if it's 'empty' is useless, as it //       will never be empty.
 
     if (isset($_POST['update-job'])) {
+
+        require('../php-config/database.php');
 
         $jobID = mysqli_real_escape_string($conn, $_POST['job-id']);
         $employerID = mysqli_real_escape_string($conn, $_POST['employer-id']);
@@ -59,5 +60,4 @@
         header('Location: dashboard-employer.php');
         exit();
     }
-
 ?>

@@ -22,11 +22,14 @@ Website/web application for the main project for our database course.
   DONE  
 ********
 
+- Set up the ssh tunnel at localhost, which is now fairly easy to use.
+- Styling for the sign-up form is likely complete. Might tweak it a bit more.
+- Non-functional 'Create Account' (sign-up.php) view has been made.
 - The UI (dashboard) for 'Employer' is basically complete, apart from minor changes.
 - The UI (dashboard) for 'User' is also basically complete, apart from bits of tweaking.
 - Login validation for user/employer mostly complete, including validating by user category.
-- Styling for the sign-up form is likely complete. Might tweak it a bit more.
-- Non-functional 'Create Account' (sign-up.php) view has been made.
 - 'Current Application Summary' PHP successfully added/fully functional.
 - 'Post Job' PHP successfully added/fully functional. Should be tweaked to automatically include the ID of the current user (employer) running their session.
-- Set up the ssh tunnel at localhost, which is now fairly easy to use.
+- 'Update Job' PHP is almost completely done, except for an issue where the previous date needs to be maintained upon new insertions.
+- 'Maintain Users' PHP is done, but it's not a particularly useful bit. 
+- 'Upgrade Category' for employers is finished, and is fully functional.

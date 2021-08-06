@@ -148,9 +148,9 @@ textarea:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 450px;
+    width: 500px;
     height: 700px;
-    background:#548a75;
+    background:#6aa78f;
     color: #FFF;
     border: 2px solid #499256;
     border-radius: 2px;
@@ -161,7 +161,8 @@ textarea:hover {
     margin-top: 30px;
     margin-bottom: 20px;
     background: #FFF;
-    color: #253A28;
+    color: #3a2f25;
+    border: 2px solid;
 }
 
 .card-sign-up input {
@@ -173,6 +174,7 @@ textarea:hover {
 }
 
 .card-sign-up button {
+    background: #1e4b26;
     width: 250px;
     height: 75px;
     margin-left: 25px;

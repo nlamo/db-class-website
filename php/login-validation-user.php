@@ -1,10 +1,10 @@
 <!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
 
 <?php
-    require('../php-config/database.php');
-
     
     if (isset($_POST['submit'])) {
+
+        require('../php-config/database.php');
 
         $loginAttempt = true;
         $loginSuccess = false;
@@ -32,12 +32,14 @@
 
         if (empty($user) || empty($userPassword)) {
             $_SESSION['loginAttempt'] = $loginAttempt;
+            require('../php-config/close-database.php');
             header("Location: index.php");
             exit();
         }
         
         if (!$userExistsResult || !$passwordIsCorrectResult) {
             $_SESSION['loginAttempt'] = $loginAttempt;
+            require('../php-config/close-database.php');
             header("Location: index.php");
             exit();
         }
@@ -51,10 +53,9 @@
             $_SESSION['user'] = $user;
             $_SESSION['userPassword'] = $userPassword;
 
+            require('../php-config/close-database.php');
             header("Location: dashboard-user.php");
             exit();
         }
     }
-
-    require('../php-config/close-database.php');
 ?>

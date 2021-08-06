@@ -9,6 +9,13 @@
 
     // for updating a job
     require('../php/update-job.php');
+
+    // for updating a user's category only if s(he) is not admin
+    require('../php/maintain-user.php');
+
+    // for updating a user's category only if s(he) is not admin
+    require('../php/upgrade-employer-category.php');
+
 ?>
 
 
@@ -36,43 +43,50 @@
         </a> 
 
         <div class="dashboard-employer">
-            
-            <!-- For adminstrators to update the properties of given users -->
-            <div class="maintain-users">
-                <h4>User Maintenance</h4><br><br>
+        
+            <form method="POST" action="">
+        
+                <!-- For adminstrators to update the properties of given users -->
+                <div class="maintain-users">
+                    <h4>User Maintenance</h4><br><br>
 
-                <small>This is where you can update the user type of a given user.</small><br><br>
+                    <small>This is where you can update the user category of a given user (unless the user is admin).</small><br><br>
 
-                <div>
-                    <label><strong>Username</strong></label><br>
-                    <input type="text" id="username" name="username">
+                    <div>
+                        <label><strong>Username</strong></label><br>
+                        <input type="text" id="username" name="user">
+                    </div>
+                    <div>
+                        <label>User Category</label><br>
+                        <input type="text" id="user-type" name ="user-category">
+                    </div>
+
+                    <button type="submit" class="button" name="maintain-submit">
+                        Submit
+                    </button>
                 </div>
-                <div>
-                    <label>User Type</label><br>
-                    <input type="text" id="user-type" name ="user-type">
+
+            </form>
+
+            <!-- For employers to upgrade or downgrade their category -->
+            <form method="POST" action="">
+
+                <div class="employer-categories">
+                    <h4>Employer Category</h4><br><br>
+
+                    <small>Want more functionality? Upgrade!</small> 
+
+                    <!-- TODO: Probably will want to give these IDs for the control logic that will be implemented -->
+                    <button type="submit" class="button" style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!\n\nYou can now post up to five (5) jobs.\n\nYou will be charged $50 per month. Feel free to cancel anytime.')" name="subscribe-to-prime">
+                        PRIME
+                    </button>
+                    <button type="submit" class="button" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!\n\nYou can now post an unlimited number of jobs.\n\nYou will be charged $100 per month. Feel free to cancel anytime.')" name="subscribe-to-gold">
+                        GOLD
+                    </button>
                 </div>
 
-                <button type="submit" class="button" value="Update";>
-                    Submit
-                </button>
-            </div>
-
-            <!-- For adminstrators to upgrade or downgrade their category -->
-            <!-- NOTE: Overriding the colours on the button classes used here -->
-            <div class="employer-categories">
-                <h4>Employer Category</h4><br><br>
-
-                <small>Want more functionality? Upgrade!</small> 
-
-                <!-- TODO: Probably will want to give these IDs for the control logic that will be implemented -->
-                <button type="submit" class="button" style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!\n\nYou can now post up to five (5) jobs.\n\nYou will be charged $50 per month. Feel free to cancel anytime.')" name="subscribe-to-prime">
-                    PRIME
-                </button>
-                <button type="submit" class="button" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!\n\nYou can now post an unlimited number of jobs.\n\nYou will be charged $100 per month. Feel free to cancel anytime.')" name="subscribe-to-gold">
-                    GOLD
-                </button>
-            </div>
-
+            </form>
+     
             <!-- For employers to create job postings -->
             <div class="post-jobs">
                 <h4>Post Job</h4><br><br>

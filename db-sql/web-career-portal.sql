@@ -83,6 +83,9 @@ INSERT INTO `user` VALUES ('zeba', NULL, 'User Basic', 'Jim', 'James', 'jimmyjam
 INSERT INTO `user` VALUES ('damo', NULL, 'User Prime', 'Damo', 'Suzuki', 'damo@mysticalvoice.org', 'damo', 'Rashomon', 0, 2, 'active');
 INSERT INTO `user` VALUES ('gord', NULL, 'User Gold', 'Gord', 'Willard', 'gordwillard@fake.net', 'gordo', 'Munich', 0, 3, 'active');
 
+SELECT * FROM user;
+SELECT * FROM job;
+
 -- Employers (users match the first five employers)
 -- These employers will have all posted a single (1) job to start
 INSERT INTO `user` VALUES ('alpha', 1, 'Employer Prime', 'Ali', 'Grandich', 'aligrandy@alpha.org', 'alpha', 'Slackers', 1, 0, 'active');
@@ -155,6 +158,8 @@ CREATE TABLE `job` (
     PRIMARY KEY (job_ID),
     FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
 );
+
+SELECT * from job;
 
 -- For the sake of simplicity, we're just starting off with 10 jobs (1-10), ordered by the first 10 employers (1-10) 
 INSERT INTO `job` VALUES (1, 1, 'IT', 'System Administrator', 80000, 'This role requires knowledge of the system administration of MS Windows based workstations. A high-degree of proficiency in cmd and Powershell is required, with knowledge of many basic commands, system utilities, security best practices, setting up and disassembling workstations, and the maintenance and supervision of accounts with a variety of permissions. Low-level security knowledge in assembly is considered a major asset.', '2021-08-30');

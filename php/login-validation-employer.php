@@ -1,10 +1,10 @@
 <!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
 
 <?php
-    require('../php-config/database.php');
-
     
     if (isset($_POST['submit'])) {
+
+        require('../php-config/database.php');
 
         $loginAttempt = true;
         $loginSuccess = false;
@@ -34,12 +34,14 @@
         
         if (empty($employer) || empty($employerPassword)) {
             $_SESSION['loginAttempt'] = $loginAttempt;
+            require('../php-config/close-database.php');
             header("Location: index.php");
             exit();
         }
         
         if (!$employerExistsResult || !$passwordIsCorrectResult) {
             $_SESSION['loginAttempt'] = $loginAttempt;
+            require('../php-config/close-database.php');
             header("Location: index.php");
             exit();
         }
@@ -50,13 +52,12 @@
             $loginSuccess = true;
             $_SESSION['loginAttempt'] = $loginAttempt;
             $_SESSION['loginSuccess'] = $loginSuccess;
-            $_SESSION['user'] = $user;
-            $_SESSION['userPassword'] = $userPassword;
+            $_SESSION['employer'] = $employer;
+            $_SESSION['employerPassword'] = $employerPassword;
 
+            require('../php-config/close-database.php');
             header("Location: dashboard-employer.php");
             exit();
         }
     }
-
-    require('../php-config/close-database.php');
 ?>

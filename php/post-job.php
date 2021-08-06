@@ -1,8 +1,6 @@
 <!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
 
 <?php
-    require('../php-config/database.php');
-
 
     // TODO: Make sure that a session variable is set that will then trigger a message
     //       to the user after the redirect!
@@ -10,6 +8,8 @@
     // TODO: Add further validation in case fields are empty
     
     if (isset($_POST['submit-job'])) {
+
+        require('../php-config/database.php');
 
         $jobID = mysqli_real_escape_string($conn, $_POST['job-id']);
         $employerID = mysqli_real_escape_string($conn, $_POST['employer-id']);
@@ -41,6 +41,4 @@
             exit();
         }
     }
-
-    require('../php-config/close-database.php');
 ?>

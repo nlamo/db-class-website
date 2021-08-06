@@ -10,9 +10,12 @@
         $user = mysqli_real_escape_string($conn, $_POST['user']);
         $userPassword = mysqli_real_escape_string($conn, $_POST['user-password']);
 
+        // NOTE: Correctness of password is defined both in terms of the correct user type
+        //       and correctness of the password itself.
+
         // Get count; if 1, then exists, if 0, then doesn't exist
         $userExistsQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$user'";
-        $passwordIsCorrectQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$user' AND user.password='$userPassword'";
+        $passwordIsCorrectQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$user' AND user.password='$userPassword' AND (user.user_category='Admin' OR user.user_category LIKE 'User%')";
 
         // Running the queries to get the counts
         $userExists = mysqli_query($conn, $userExistsQuery);
@@ -40,7 +43,9 @@
 
         if ($userExistsResult && $passwordIsCorrectResult) {
 
+            $loginAttempt = false;
             $loginSuccess = true;
+            $_SESSION['loginAttempt'] = $loginAttempt;
             $_SESSION['loginSuccess'] = $loginSuccess;
             $_SESSION['user'] = $user;
             $_SESSION['userPassword'] = $userPassword;

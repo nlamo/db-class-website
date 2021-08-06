@@ -10,9 +10,14 @@
         $employer = mysqli_real_escape_string($conn, $_POST['employer']);
         $employerPassword = mysqli_real_escape_string($conn, $_POST['employer-password']);
 
+
+        // NOTE: Correctness of password is defined both in terms of the correct user type
+        //       and correctness of the password itself.
+
         // Get count; if 1, then exists, if 0, then doesn't exist
         $employerExistsQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$employer'";
-        $passwordIsCorrectQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$employer' AND user.password='$employerPassword'";
+        $passwordIsCorrectQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$employer' AND user.password='$employerPassword' AND (user.user_category='Admin' OR user.user_category LIKE 'Employer%')";
+
 
         // Running the queries
         $employerExists = mysqli_query($conn, $employerExistsQuery);
@@ -40,10 +45,12 @@
 
         if ($employerExistsResult && $passwordIsCorrectResult) {
 
+            $loginAttempt = false;
             $loginSuccess = true;
+            $_SESSION['loginAttempt'] = $loginAttempt;
             $_SESSION['loginSuccess'] = $loginSuccess;
-            $_SESSION['employer'] = $employer;
-            $_SESSION['employerassword'] = $employerPassword;
+            $_SESSION['user'] = $user;
+            $_SESSION['userPassword'] = $userPassword;
 
             header("Location: dashboard-employer.php");
             exit();

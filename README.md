@@ -24,7 +24,7 @@ Website/web application for the main project for our database course.
 
 - The UI (dashboard) for 'Employer' is basically complete, apart from minor changes.
 - The UI (dashboard) for 'User' is also basically complete, apart from bits of tweaking.
-- Login validation for user/employer mostly complete. Still need to restrict permissions (admin/user/employer).
+- Login validation for user/employer mostly complete, including validating by user category.
 - Styling for the sign-up form is likely complete. Might tweak it a bit more.
 - Non-functional 'Create Account' (sign-up.php) view has been made.
 - 'Current Application Summary' PHP successfully added/fully functional.

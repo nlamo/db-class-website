@@ -38,11 +38,11 @@
             </form>
             
             <!-- Login validation -->
-            <?php if (isset($_SESSION['loginAttempt'])): ?>
+            <?php if (($_SESSION['loginAttempt'])): ?>
                 
                 <small id="user-message" style="text-align:center;">Please enter a valid username and password.</small>
 
-            <?php else: ?>
+            <?php elseif(!($_SESSION['loginAttempt'])): ?>
 
                 <script>
                     var userMes = document.getElementById("user-message");

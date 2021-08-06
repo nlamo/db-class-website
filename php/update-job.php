@@ -1,9 +1,10 @@
+<!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
+
 <?php
     require('../php-config/database.php');
     
-    // TODO: Almost 100% - just needs  to maintain the previous date posted, as the default
-    //       date for HTML is the start of the epoch, so it needs to store and maintain the 
-    //       previous date. Checking if it's 'empty' is useless, as it will never be empty.
+    // TODO: Almost 100% - just needs to maintain the previous date posted, as the default
+    //       date for HTML is the start of the epoch. Checking if it's 'empty' is useless, as it //       will never be empty.
 
     if (isset($_POST['update-job'])) {
 
@@ -53,7 +54,10 @@
             $sqlQuery = "UPDATE job SET job.date_start='$datePosted' WHERE job_ID='$jobID'";
             mysqli_query($conn, $sqlQuery);
         }
+
+        require('../php-config/close-database.php');
+        header('Location: dashboard-employer.php');
+        exit();
     }
 
-    require('../php-config/close-database.php');
 ?>

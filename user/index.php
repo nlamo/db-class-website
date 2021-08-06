@@ -1,6 +1,6 @@
-<!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
-
 <?php
+    session_start();
+
     // some basic authentication for user login
     require('../php/login-validation-user.php');
 
@@ -37,19 +37,23 @@
                 </button><br>
             </form>
             
-            <!-- Login validation -->
-            <?php if (($_SESSION['loginAttempt'])): ?>
+            <?php if (isset($_SESSION['loginAttempt'])): ?>
                 
-                <small id="user-message" style="text-align:center;">Please enter a valid username and password.</small>
+                <!-- Login validation -->
+                <?php if (($_SESSION['loginAttempt'])): ?>
+                    
+                    <small id="user-message" style="text-align:center;">Please enter a valid username and password.</small>
 
-            <?php elseif(!($_SESSION['loginAttempt'])): ?>
+                <?php elseif(!($_SESSION['loginAttempt'])): ?>
 
-                <script>
-                    var userMes = document.getElementById("user-message");
-                    userMes.remove();
-                </script>
+                    <script>
+                        var userMes = document.getElementById("user-message");
+                        userMes.remove();
+                    </script>
 
-            <?php endif; ?>  
+                <?php endif; ?>  
+            <?php endif; ?>
+
         </div>       
     </div>
 

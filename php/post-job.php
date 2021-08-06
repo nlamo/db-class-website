@@ -1,3 +1,5 @@
+<!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
+
 <?php
     require('../php-config/database.php');
 
@@ -34,7 +36,9 @@
         }
         else {
             require('../php-config/close-database.php');
+            header('Location: dashboard-employer.php');
             echo 'Query submission error: ' . mysqli_error($conn) . ' ';
+            exit();
         }
     }
 

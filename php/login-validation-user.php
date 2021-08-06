@@ -1,8 +1,9 @@
+<!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
+
 <?php
     require('../php-config/database.php');
 
-    session_start();
-
+    
     if (isset($_POST['submit'])) {
 
         $loginAttempt = true;

@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     // for outputting most recent application to the application-summary textarea
     require('../php/get-current-application.php');
 

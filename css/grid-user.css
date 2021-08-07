@@ -22,7 +22,7 @@
     padding: 10px;
     left: 75px;
     top: 50px;
-    background: orange;
+    background: #FFDD82;
     border-radius: 20px;
 }
 
@@ -187,7 +187,7 @@
 }
 
 .update-user-profile button {
-    margin-top: 90px;
+    margin-top: 30px;
 }
 
 .delete-user-account {

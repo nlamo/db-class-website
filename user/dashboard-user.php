@@ -1,7 +1,15 @@
 <?php
     session_start();
 
+    // gets all of the jobs in the database
     require('../php/search-all-jobs.php');
+
+    // for updating a user's category only if s(he) is not admin
+    require('../php/upgrade-user-category.php');
+
+    // for updating a user's profile (admin can also update from this view)
+    require('../php/update-user-profile.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +36,6 @@
         </a>
         
         <form method="POST" action="">
-            
             <a href="#">
                 <button class="search-all-jobs" name="search-all-jobs">
                     Search All Jobs!
@@ -73,21 +80,19 @@
                         
                     <?php if (isset($_SESSION['searchedForJobs'])): ?>
 
-                        <?php $counter = 0; ?>
-
                         <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
                             
+                            <!-- NOTE: Previously used a counter, but this would be inadequate if a given job (vis-a-vis job_ID) were to be removed, so $entry - 1 works better, for now at least... -->
+
                             <?php 
                                 echo 'Job ID: ' . $entry . '<br>';
-                                echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$counter] . '<br>';
-                                echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$counter] . '<br>';
-                                echo 'Title: ' . $_SESSION['jobTitleResultsArray'][$counter] . '<br>';
-                                echo 'Salary: ' . $_SESSION['jobSalaryResultsArray'][$counter] . '<br><br>';
-                                echo 'Job Description: ' . $_SESSION['jobDescriptionResultsArray'][$counter] . '<br><br>';
-                                echo 'Start Date: ' . $_SESSION['startDateResultsArray'][$counter] . '<br>';
+                                echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$entry - 1 ] . '<br>';
+                                echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$entry - 1] . '<br>';
+                                echo 'Title: ' . $_SESSION['jobTitleResultsArray'][$entry - 1] . '<br>';
+                                echo 'Salary: ' . $_SESSION['jobSalaryResultsArray'][$entry - 1] . '<br><br>';
+                                echo 'Job Description: ' . $_SESSION['jobDescriptionResultsArray'][$entry - 1] . '<br><br>';
+                                echo 'Start Date: ' . $_SESSION['startDateResultsArray'][$entry - 1] . '<br>';
                                 echo '<br>------------------------------------------------<br>';
-
-                                $counter++;
                             ?>
 
                             <br>
@@ -162,7 +167,9 @@
         </div>
     </div>
 
+
     <br><br><br> 
+
 
      <!-- Second (2nd) User Container/Dashboard -->
      <div class="dashboard-container">
@@ -171,81 +178,85 @@
 
             <div class="help-and-contact">
 
-                 <h4>Help and Contact</h4><br><br>
+                <h4>Help and Contact</h4><br><br>
 
-                    <div class="help-wrapper">
+                <div class="help-wrapper">
 
-                        <small>'Search by Category' and 'Search by Name' allow for searching for jobs by category and name, respectively. Output is in the 'Job Data' textbox.</small>
+                    <small>'Search by Category' and 'Search by Name' allow for searching for jobs by category and name, respectively. Output is in the 'Job Data' textbox.</small>
 
-                        <br><br>
+                    <br><br>
 
-                        <small>As an regular user/job hunter, you are able to easily change between 'Basic', 'Prime', and 'Gold' accounts. The default is 'Basic'.</small>
+                    <small>As an regular user/job hunter, you are able to easily change between 'Basic', 'Prime', and 'Gold' accounts. The default is 'Basic'.</small>
 
-                        <br><br>
+                    <br><br>
 
-                        <small>In the top panel, you can easily apply for a new job.</small>
+                    <small>In the top panel, you can easily apply for a new job.</small>
 
-                        <br><br>
+                    <br><br>
 
-                        <small>To maintain the status of a given job you've applied for, you can easily set the job status to 'active' or 'inactive'.</i></small>
+                    <small>To maintain the status of a given job you've applied for, you can easily set the job status to 'active' or 'inactive'.</i></small>
 
-                        <br><br>
+                    <br><br>
 
-                        <small>To withdraw a specific application, you need only enter the ID of the job you applied for, as well as the application number.</small>
+                    <small>To withdraw a specific application, you need only enter the ID of the job you applied for, as well as the application number.</small>
 
-                        <br><br>
+                    <br><br>
 
-                        <small>Questions? Please feel free to reach out:</small>
+                    <small>Questions? Please feel free to reach out:</small>
 
-                        <br><br>
+                    <br><br>
 
-                        <small>n_lamo@encs.concordia.ca</small>
-                        <small>f_attia@encs.concordia.ca</small>
+                    <small>n_lamo@encs.concordia.ca</small>
+                    <small>f_attia@encs.concordia.ca</small>
 
-                    </div>
                 </div>
-
-            <div class="user-categories">
-                <h4>User Category</h4><br><br>
-
-                <small>Want more functionality? Upgrade!</small><br><br>
-
-                <small> <i>You really should just upgrade.</i> There's not a lot you can really do unless you go 'Prime', so do that, at a minimum.</small> 
-
-                <button type="submit" class="button" style="background:grey;" onclick="alertBox('You have changed your subscription to basic.\n\nYou can view all of the jobs but you cannot apply.\n\nThis subscription is free.')" name="subscribe-to-basic">
-                    BASIC
-                <button type="submit" class="button" style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!\n\nYou can now view all jobs and apply for up to five (5) jobs.\n\nYou will be charged $10 per month. Feel free to cancel anytime.')" name="subscribe-to-prime">
-                    PRIME
-                </button>
-                <button type="submit" class="button" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!\n\nYou can now view all jobs and apply for an unlimited number of jobs.\n\nYou will be charged $20 per month. Feel free to cancel anytime.')" name="subscribe-to-gold">
-                    GOLD
-                </button>
             </div>
 
-            <div class="update-user-profile">
-                <h4>Update User Profile</h4><br><br>
+            <div class="user-categories">
 
-                <br>
+                <form method="POST" action="">
+                    <h4>User Category</h4><br><br>
+
+                    <small>Want more functionality? Upgrade!</small><br><br>
+
+                    <small> <i>You really should just upgrade.</i> There's not a lot you can really do unless you go 'Prime', so do that, at a minimum.</small> 
+
+                    <button type="submit" class="button" style="background:grey;" onclick="alertBox('You have changed your subscription to basic.\n\nYou can view all of the jobs but you cannot apply.\n\nThis subscription is free.')" name="subscribe-to-basic">
+                        BASIC
+                    <button type="submit" class="button" style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!\n\nYou can now view all jobs and apply for up to five (5) jobs.\n\nYou will be charged $10 per month. Feel free to cancel anytime.')" name="subscribe-to-prime">
+                        PRIME
+                    </button>
+                    <button type="submit" class="button" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!\n\nYou can now view all jobs and apply for an unlimited number of jobs.\n\nYou will be charged $20 per month. Feel free to cancel anytime.')" name="subscribe-to-gold">
+                        GOLD
+                    </button>      
+                </form>
+            </div>
                 
-                <label>Password</label><br>
-                <input type="password" name="password"><br><br>
+            <div class="update-user-profile">
+                <form method="POST" action="">
+                    <h4>Update User Profile</h4><br><br>
 
-                <label>First Name</label><br>
-                <input type="first-name" name="first-name"><br><br>
+                    <br>
+                    
+                    <label>First Name</label><br>
+                    <input type="first-name" name="first-name"><br><br>
 
-                <label>Last Name</label><br>
-                <input type="last-name" name="last-name"><br><br>
+                    <label>Last Name</label><br>
+                    <input type="last-name" name="last-name"><br><br>
 
-                <label>E-mail</label><br>
-                <input type="email" name="email"><br><br>
+                    <label>E-mail</label><br>
+                    <input type="email" name="email"><br><br>
 
-                <label>Security Question:</label><br>
-                <div class="security-question">What is your favourite film of<br> all time?</div>
-     
-                <input type="security-answer" name="security-answer"><br><br>
+                    <label>Password</label><br>
+                    <input type="password" name="password"><br><br>
 
+                    <label>Security Question:</label><br>
+                    <div class="security-question">What is your favourite film of<br> all time?</div>
+        
+                    <input type="security-answer" name="security-answer"><br><br>
 
-                <button type="submit" class="button" style="width:260px;">Update Profile</button><br>
+                    <button type="submit" class="button" style="width:260px;" name="update-user-profile">Update Profile</button><br>
+                </form>
             </div>
 
             
@@ -269,6 +280,7 @@
                 <button type="submit" class="button">Delete Account</button><br>
                 
             </div>
+            
         </div>
     </div>
 

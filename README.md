@@ -35,3 +35,4 @@ Website/web application for the main project for our database course.
 - 'Maintain Users' PHP is done, but it's not a particularly useful bit. 
 - 'Upgrade Category' for employers is finished, and is fully functional
 - 'Search All Jobs' is complete, fully functional.
+- 'Upgrade User Category' and 'Update User Profile' have been completed, apart from a bit of sanitization perhaps.

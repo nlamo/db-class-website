@@ -13,7 +13,7 @@
     // for updating a user's category only if s(he) is not admin
     require('../php/maintain-user.php');
 
-    // for updating a user's category only if s(he) is not admin
+    // for updating an employer's category only if s(he) is not admin
     require('../php/upgrade-employer-category.php');
 
     // for updating an application (accepting/rejecting) and providing a response to applicant

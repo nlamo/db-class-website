@@ -1,6 +1,9 @@
 <?php
     session_start();
 
+    // unsetting session variable if persisting from the user dashboard view
+    unset($_SESSION['searchedForJobs']);
+    
     // some basic authentication for user login
     require('../php/login-validation-user.php');
 

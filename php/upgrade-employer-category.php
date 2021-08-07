@@ -3,7 +3,7 @@
 <?php
     
     // You can change any category *except for* admin
-
+    
     if (isset($_POST['subscribe-to-prime'])) {
 
         require('../php-config/database.php');

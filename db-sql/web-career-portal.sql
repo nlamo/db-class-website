@@ -73,6 +73,8 @@ CREATE TABLE `user` (
     FOREIGN KEY (user_category) REFERENCES user_category (user_category)
 );
 
+SELECT * FROM user;
+
 -- Regular users (administrators), need a new table for this also...
 INSERT INTO `user` VALUES ('n_lamo', NULL, 'Admin', 'Nicholas', 'LaMothe', 'n_lamo@encs.concordia.ca', 'steppenwolf', '2001: A Space Odyssey', 0, 0, 'active');
 INSERT INTO `user` VALUES ('f_attia', NULL, 'Admin', 'Fady', 'Attia', 'f_attia@encs.concordia.ca', 'password', 'Unknown', 0, 0, 'active');

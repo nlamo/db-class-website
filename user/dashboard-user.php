@@ -114,7 +114,7 @@
                         <!-- USER: searched jobs by category -->
                         <?php if (isset($_SESSION['searchedJobsByCategory'])): ?>
 
-                            <?php $counter = 0 ?>
+                            <?php $counter = 0; ?>
 
                             <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
 
@@ -140,7 +140,7 @@
                         <!-- USER: searched jobs by name -->
                         <?php if (isset($_SESSION['searchedJobsByName'])): ?>
 
-                            <?php $counter = 0 ?>
+                            <?php $counter = 0; ?>
 
                             <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
 

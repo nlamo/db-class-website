@@ -11,3 +11,7 @@ function jobPostedSuccessfully() {
 function updatedSuccessfully() {
     alert('Job post successful!');
 }
+
+function accountCreated() {
+    alert('Account successfully created!');
+}

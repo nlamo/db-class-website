@@ -205,6 +205,7 @@ INSERT INTO `job_application` VALUES (5, 'gord', 1, 1, '20+ years experience in 
 INSERT INTO `job_application` VALUES (6, 'gord', 2, 1, '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
 INSERT INTO `job_application` VALUES (7, 'gord', 3, 1, '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
 
+SELECT * FROM job_application;
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 -- All users need access to:

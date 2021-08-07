@@ -1,6 +1,7 @@
 <?php
     session_start();
 
+    require('../php/search-all-jobs.php');
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,16 @@
             <button class="contact-button" onclick="alertBox('Having some difficulties?\n\nJust scroll down to the second panel.\n\nIn the leftmost column, you\'ll find contact information and some helpful guidelines.')">
                 Need Help? Contact Us.
             </button>
-        </a> 
+        </a>
+        
+        <form method="POST" action="">
+            
+            <a href="#">
+                <button class="search-all-jobs" name="search-all-jobs">
+                    Search All Jobs!
+                </button>
+            </a> 
+        </form> 
 
         <div class="dashboard-user">
          
@@ -58,7 +68,35 @@
             <div class="job-data">
                 <form>
                     <h4>Job Data</h4><br><br>
-                    <textarea name="job-data" id="job-data" cols="48" rows="30"></textarea>
+
+                    <p name="job-data" id="job-data">
+                        
+                    <?php if (isset($_SESSION['searchedForJobs'])): ?>
+
+                        <?php $counter = 0; ?>
+
+                        <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
+                            
+                            <?php 
+                                echo 'Job ID: ' . $entry . '<br>';
+                                echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$counter] . '<br>';
+                                echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$counter] . '<br>';
+                                echo 'Title: ' . $_SESSION['jobTitleResultsArray'][$counter] . '<br>';
+                                echo 'Salary: ' . $_SESSION['jobSalaryResultsArray'][$counter] . '<br><br>';
+                                echo 'Job Description: ' . $_SESSION['jobDescriptionResultsArray'][$counter] . '<br><br>';
+                                echo 'Start Date: ' . $_SESSION['startDateResultsArray'][$counter] . '<br>';
+                                echo '<br>------------------------------------------------<br>';
+
+                                $counter++;
+                            ?>
+
+                            <br>
+
+                        <?php endforeach; ?>
+
+                    <?php endif; ?>
+
+                    </p>
                 </form>
             </div>
 

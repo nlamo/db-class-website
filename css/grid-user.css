@@ -12,6 +12,20 @@
     border-radius: 2px;
 }
 
+/* Similar values to .contact-button in utilties from styles.css */
+.search-all-jobs {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    padding: 10px;
+    left: 75px;
+    top: 50px;
+    background: orange;
+    border-radius: 20px;
+}
+
 .search-job-by-category {
     grid-column-start: 1;
     grid-column-end: 1;
@@ -46,6 +60,22 @@
     background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;
+}
+
+.job-data p {
+    display: block;
+    white-space: nowrap;
+    overflow: auto;
+    text-align:justify;
+    justify-content: start;
+    height: 500px;
+    width: 400px;
+    padding: 10px;
+    opacity: 1;
+    background: #FFFFFF;
+    font-size: .8rem;
+    color: #000;
+    border: 1px solid #000;
 }
 
 .apply-for-job {

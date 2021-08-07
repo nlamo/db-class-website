@@ -26,7 +26,7 @@
     border-radius: 20px;
 }
 
-.search-job-by-category {
+.search-jobs-by-category {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 1;
@@ -38,7 +38,7 @@
     border-radius: 5px;
 }
 
-.search-job-by-name {
+.search-jobs-by-name {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 2;
@@ -95,7 +95,7 @@
 }
 
 .apply-for-job button {
-    margin-top: 23px;
+    margin-top: 33px;
 }
 
 .maintain-status {

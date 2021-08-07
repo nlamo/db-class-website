@@ -2,17 +2,19 @@
 
 <?php
 
-    if (isset($_POST['search-all-jobs'])) {
+    if (isset($_POST['search-jobs-by-category'])) {
         
         require('../php-config/database.php');
 
         // unset other variables related to job display
-        unset($_SESSION['searchedJobsByCategory']);
+        unset($_SESSION['searchedForJobs']);
         unset($_SESSION['searchedJobsByName']);
 
-        $searchedForJobs = true;
-        $allJobsQuery = "SELECT * FROM job";
-        $allJobsQueryResult = mysqli_query($conn, $allJobsQuery);
+        $jobCategory = mysqli_real_escape_string($conn, $_POST['job-category']);
+
+        $searchedJobsByCategory = true;
+        $jobsByCategoryQuery = "SELECT * FROM job WHERE job.job_category='$jobCategory'";
+        $jobsByCategoryQueryResult = mysqli_query($conn, $jobsByCategoryQuery);
 
         // Arrays to store each of the properties for each job...
         // I am sure there's probably a better way to do this.
@@ -28,7 +30,7 @@
         // Necessary to use fetch_assoc() or fetch_array() to get results before
         // having them stored in a SESSION variable for use on the webpage.
 
-        while ($row = $allJobsQueryResult->fetch_assoc() ) {
+        while ($row = $jobsByCategoryQueryResult->fetch_assoc() ) {
 
             array_push($jobIDResultsArray, $row['job_ID']);
             array_push($employerIDResultsArray, $row['employer_ID']);
@@ -39,7 +41,7 @@
             array_push($startDateResultsArray, $row['date_start']);
         }
           
-        $_SESSION['searchedForJobs'] = $searchedForJobs;
+        $_SESSION['searchedJobsByCategory'] = $searchedJobsByCategory;
 
         $_SESSION['jobIDResultsArray'] = $jobIDResultsArray;
         $_SESSION['employerIDResultsArray'] = $employerIDResultsArray;

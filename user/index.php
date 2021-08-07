@@ -3,6 +3,8 @@
 
     // unsetting session variable if persisting from the user dashboard view
     unset($_SESSION['searchedForJobs']);
+    unset($_SESSION['searchedJobsByCategory']);
+    unset($_SESSION['searchedJobsByName']);
     
     // some basic authentication for user login
     require('../php/login-validation-user.php');

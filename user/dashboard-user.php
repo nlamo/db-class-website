@@ -4,12 +4,17 @@
     // gets all of the jobs in the database
     require('../php/search-all-jobs.php');
 
+    // gets all jobs of a specific category type
+    require('../php/search-jobs-by-category.php');
+
+    // gets all jobs of a specific job title/name
+    require('../php/search-jobs-by-name.php');
+
     // for updating a user's category only if s(he) is not admin
     require('../php/upgrade-user-category.php');
 
-    // for updating a user's profile (admin can also update from this view)
+    // for updating a user's profile (admin is permitted)
     require('../php/update-user-profile.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -47,28 +52,32 @@
          
             <!-- TODO: Allow user to simply get all the jobs (full search) -->
             <!-- TODO: Requests for data, will be output by job-data > textarea -->
-            <div class="search-job-by-category">
-                <h4>Search By Category</h4><br><br>
-                <small>Please enter the category of the job you're looking for:</small><br><br>
+            <div class="search-jobs-by-category">
 
-                <form>
+                <form method="POST" action="">
+                    <h4>Search By Category</h4><br><br>
+                    <small>Please enter the category of the jobs you're looking for:</small><br><br>
+
                     <label>Job Category</label><br>
-                    <input type="job-category" id="job-category" name ="job-category">
-                </form>
+                    <input type="job-category" id="job-category" name="job-category">
+            
+                    <button type="submit" class="button" name="search-jobs-by-category">Search</button><br>
+                </form> 
 
-                <button type="submit" class="button">Search</button><br>
             </div>
 
-            <div class="search-job-by-name">
-                <h4>Search By Name</h4><br><br>
-                <small>Please enter the name of the job you're looking for:</small><br><br>
+            <div class="search-jobs-by-name">
 
-                <form>
+                <form method="POST" action="">
+                    <h4>Search By Name</h4><br><br>
+                    <small>Please enter the name of the jobs you're looking for:</small><br><br>
+
                     <label>Job Name</label><br>
-                    <input type="job-name" id="job-name" name ="job-name">
-                </form>
+                    <input type="job-name" id="job-name" name="job-name">
 
-                <button type="submit" class="button">Search</button><br>
+                    <button type="submit" class="button" name="search-jobs-by-name">Search</button><br>
+                </form> 
+
             </div>
 
             <!-- TODO: Job data retrieved from MySQL DB will be output here -->
@@ -77,29 +86,82 @@
                     <h4>Job Data</h4><br><br>
 
                     <p name="job-data" id="job-data">
-                        
-                    <?php if (isset($_SESSION['searchedForJobs'])): ?>
+                     
+                        <!-- USER: searched for all jobs -->
+                        <?php if (isset($_SESSION['searchedForJobs'])): ?>
 
-                        <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
-                            
-                            <!-- NOTE: Previously used a counter, but this would be inadequate if a given job (vis-a-vis job_ID) were to be removed, so $entry - 1 works better, for now at least... -->
+                            <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
+                                
+                                <!-- NOTE: Previously used a counter, but this would be inadequate if a given job (vis-a-vis job_ID) were to be removed, so $entry - 1 works better, for now at least... -->
 
-                            <?php 
-                                echo 'Job ID: ' . $entry . '<br>';
-                                echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$entry - 1 ] . '<br>';
-                                echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$entry - 1] . '<br>';
-                                echo 'Title: ' . $_SESSION['jobTitleResultsArray'][$entry - 1] . '<br>';
-                                echo 'Salary: ' . $_SESSION['jobSalaryResultsArray'][$entry - 1] . '<br><br>';
-                                echo 'Job Description: ' . $_SESSION['jobDescriptionResultsArray'][$entry - 1] . '<br><br>';
-                                echo 'Start Date: ' . $_SESSION['startDateResultsArray'][$entry - 1] . '<br>';
-                                echo '<br>------------------------------------------------<br>';
-                            ?>
+                                <?php 
+                                    echo 'Job ID: ' . $entry . '<br>';
+                                    echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$entry - 1 ] . '<br>';
+                                    echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$entry - 1] . '<br>';
+                                    echo 'Title: ' . $_SESSION['jobTitleResultsArray'][$entry - 1] . '<br>';
+                                    echo 'Salary: ' . $_SESSION['jobSalaryResultsArray'][$entry - 1] . '<br><br>';
+                                    echo 'Job Description: ' . $_SESSION['jobDescriptionResultsArray'][$entry - 1] . '<br><br>';
+                                    echo 'Start Date: ' . $_SESSION['startDateResultsArray'][$entry - 1] . '<br>';
+                                    echo '<br>------------------------------------------------<br>';
+                                ?>
 
-                            <br>
+                                <br>
 
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
 
-                    <?php endif; ?>
+                        <?php endif; ?>
+
+                        <!-- USER: searched jobs by category -->
+                        <?php if (isset($_SESSION['searchedJobsByCategory'])): ?>
+
+                            <?php $counter = 0 ?>
+
+                            <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
+
+                                <?php 
+                                    echo 'Job ID: ' . $entry . '<br>';
+                                    echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$counter] . '<br>';
+                                    echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$counter] . '<br>';
+                                    echo 'Title: ' . $_SESSION['jobTitleResultsArray'][$counter] . '<br>';
+                                    echo 'Salary: ' . $_SESSION['jobSalaryResultsArray'][$counter] . '<br><br>';
+                                    echo 'Job Description: ' . $_SESSION['jobDescriptionResultsArray'][$counter] . '<br><br>';
+                                    echo 'Start Date: ' . $_SESSION['startDateResultsArray'][$counter] . '<br>';
+                                    echo '<br>------------------------------------------------<br>';
+
+                                    $counter++;
+                                ?>
+
+                                <br>
+
+                            <?php endforeach; ?>
+
+                        <?php endif; ?>
+
+                        <!-- USER: searched jobs by name -->
+                        <?php if (isset($_SESSION['searchedJobsByName'])): ?>
+
+                            <?php $counter = 0 ?>
+
+                            <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
+
+                                <?php 
+                                    echo 'Job ID: ' . $entry . '<br>';
+                                    echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$counter] . '<br>';
+                                    echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$counter] . '<br>';
+                                    echo 'Title: ' . $_SESSION['jobTitleResultsArray'][$counter] . '<br>';
+                                    echo 'Salary: ' . $_SESSION['jobSalaryResultsArray'][$counter] . '<br><br>';
+                                    echo 'Job Description: ' . $_SESSION['jobDescriptionResultsArray'][$counter] . '<br><br>';
+                                    echo 'Start Date: ' . $_SESSION['startDateResultsArray'][$counter] . '<br>';
+                                    echo '<br>------------------------------------------------<br>';
+
+                                    $counter++;
+                                ?>
+
+                                <br>
+
+                            <?php endforeach; ?>
+
+                        <?php endif; ?>
 
                     </p>
                 </form>

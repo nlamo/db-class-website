@@ -64,12 +64,12 @@
 
 .job-data p {
     display: block;
-    white-space: nowrap;
     overflow: auto;
-    text-align:justify;
+    word-wrap: break-word;
     justify-content: start;
     height: 500px;
     width: 400px;
+    max-width: 400px;
     padding: 10px;
     opacity: 1;
     background: #FFFFFF;

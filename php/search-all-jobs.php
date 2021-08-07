@@ -1,9 +1,11 @@
 <!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
 
-<?php
+<!-- TODO: Simple task, need to unset the session variables that produce this display
+           upon navigating from this page to another. The user will have to hit the 
+           button (make another request) in any case.       
+-->
 
-    // TODO: Make the p element that accepts the text able to accommodate the PHP strings
-    //       that are passed from the arrays... this should be easy enough, I hope.
+<?php
 
     if (isset($_POST['search-all-jobs'])) {
         

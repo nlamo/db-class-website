@@ -7,14 +7,12 @@ Website/web application for the main project for our database course.
   TODO 
 ********
 
+- Fix the 'Current Application Summary' view to specify the maximum ID (most recent addition) *for the employer running the session*.
 - Continue adding to the ER diagram (with constraints!), the database relational schema, and the SQL database itself.
-- After finalizing the diagrams and SQL, normalize the database and modify everything accordingly.
-- Greatly improve the user validation for login (authentication). Use SESSION variables for this. Consider hashing.
-- Follow all of the requirements strictly and ensure that the design of the database system proceeds logically.
+- Normalize the database concurrently with the addition of new relations. Consider trade-offs in design after normalization process, e.g. if decomposing the database is too costly (time-wise).
 - Add PHP for the dashboards to talk to the localhost database (e.g. submit, update, get, for each section).
 - Find out whether it will be necessary to host the website itself on the web server set up for us.
 - Make everything as clean/modular as possible. Use multiple PHP files and include them where relevant
-- Consider whether it might useful to have a proper MVC structure, i.e. PHP OOP.
 - Make some final modifications to the styling to make it modern, stylish, and user-friendly.
 - Only *consider* making it responsive if absolutely everything else is done. Even then, no need.
 

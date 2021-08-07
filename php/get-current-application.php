@@ -1,3 +1,8 @@
+<!-- TODO: I think I will have to update this so that it displays the most recent application
+           for a given employer, which will require using the user SESSION variable to check
+           for their employer, which then can be used to narrow the MAX() value from that set.
+-->
+
 <?php
      require('../php-config/database.php');
 

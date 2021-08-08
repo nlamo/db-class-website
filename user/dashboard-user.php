@@ -303,7 +303,7 @@
                     <label>Security Question:</label><br>
                     <div class="security-question">What is your favourite film of<br> all time?</div>
         
-                    <input type="security-answer" name="security-answer"><br><br>
+                    <input type="text" name="security-answer"><br><br>
 
                     <button type="submit" class="button" style="width:260px;" name="update-user-profile">Update Profile</button><br>
                 </form>

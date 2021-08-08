@@ -1,10 +1,11 @@
 <?php
     session_start();
 
-    // unsetting session variable if persisting from the user dashboard view
+    // unsetting session variable if persisting from the dashboard/sign-up views
     unset($_SESSION['searchedForJobs']);
     unset($_SESSION['searchedJobsByCategory']);
     unset($_SESSION['searchedJobsByName']);
+    unset($_SESSION['passwordResult']);
     
     // some basic authentication for user login
     require('../php/login-validation-user.php');
@@ -63,10 +64,10 @@
     </div>
 
     <small>
-        <br><br><b><a href="./sign-up.php" style="a:hover:">New here? Sign up for an account.</a></b>
+        <br><br><b><a href="./user-sign-up.php" style="a:hover:">New here? Sign up for an account.</a></b>
         
-        <!-- TODO: Implement a simple and hardly-secure password retrieval procedure based on a security question -->
-        <br><br><a href="#" style="a:hover:">Forgot your password? Click here.</a>
+        <br><br><a href="user-password-retrieval.php" style="a:hover:">Forgot your password? Click here.</a>
+        
         <br><br><a href="../index.html" style="a:hover:">Return to Home</a>
     </small>
 

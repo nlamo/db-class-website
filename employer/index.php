@@ -4,6 +4,7 @@
     // unsetting session variable if relevant (e.g. used in dashboard view)
     unset($_SESSION['isAdmin']);
     unset($_SESSION['employer']);
+    unset($_SESSION['passwordResult']);
 
     // some basic authentication for user login
     require('../php/login-validation-employer.php');
@@ -62,8 +63,8 @@
     </div>
 
     <small>
-        <!-- TODO: Implement a simple and hardly-secure password retrieval procedure based on a security question -->
-        <br><br><a href="#" style="a:hover:">Forgot your password? Click here.</a>
+        <br><br><a href="employer-password-retrieval.php" style="a:hover:">Forgot your password? Click here.</a>
+        
         <br><br><a href="../index.html">Return to Home</a>
     </small>
 

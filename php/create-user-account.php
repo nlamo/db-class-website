@@ -32,7 +32,7 @@
         }
         else {
             require('../php-config/close-database.php');
-            header('Location: sign-up.php');
+            header('Location: user-sign-up.php');
             exit();
         }
     }

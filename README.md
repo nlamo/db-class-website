@@ -21,10 +21,11 @@ Website/web application for the main project for our database course.
 
 - Set up the ssh tunnel at localhost, which is now fairly easy to use.
 - Styling for the sign-up form is likely complete. Might tweak it a bit more.
-- 'Create New Account' page has been completed (for user).
 - The UI (dashboard) for 'Employer' is basically complete, apart from minor changes.
 - The UI (dashboard) for 'User' is also basically complete, apart from bits of tweaking.
+- 'Create New Account' page has been completed (for user).
 - Login validation for user/employer mostly complete, including validating by user category.
+- 'Password Retrieval' pages created for user/employer, admin can function on both.
 - 'Current Application Summary' PHP successfully added/fully functional.
 - Added new attributes to the 'job_application' SQL and removed the ability to submit more than one application per job. User views have been updated accordingly.
 - 'Current Application Summary' improved to restrict the most recent application as dependant on whether the session is running for an admin or an employer. In case of employer, it will take the most recently submitted application for all applications submitted to that employer.

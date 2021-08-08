@@ -172,7 +172,8 @@
                         
                         <?php 
                             echo 'Last name: ';
-                            echo $row['last_name'] . '<br>';
+                            echo $row['last_name'] . '<br><br>';
+                            echo '------------------------<br>';
                         ?><br>
                 
                     <?php endwhile; ?>
@@ -186,11 +187,20 @@
                 
                     <?php endwhile; ?>
 
-                    <?php while ($row = $applicationJobNoResult->fetch_assoc() ): ?>
+                    <?php while ($row = $applicationEmployerNameResult->fetch_assoc() ): ?>
                         
                         <?php
-                            echo 'Application Number: ';
-                            echo $row['application_no'] . '<br><br><br><br>';
+                            echo 'Employer Name: ';
+                            echo $row['employer_name'] . '<br><br>';
+                        ?>
+                
+                    <?php endwhile; ?>
+
+                    <?php while ($row = $applicationJobNameResult->fetch_assoc() ): ?>
+                        
+                        <?php
+                            echo 'Job Name: ';
+                            echo $row['job_name'] . '<br><br>';
                         ?>
                 
                     <?php endwhile; ?>

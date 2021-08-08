@@ -176,16 +176,12 @@
                     <label><strong>Job ID</strong></label><br>
                     <input type="text" id="job-id" name ="job-id">
                 </form>
-                <form>
-                    <label><strong>Application No.</strong></label><br>
-                    <input type="text" id="application-no" name ="application-no">
-                </form>
-
+    
                 <br>
 
                 <form>
                     <label>Application</label><br>
-                    <textarea name="application" id="application" cols="28" rows="16" style="margin-top:10px;"></textarea>
+                    <textarea name="application" id="application" cols="28" rows="18" style="margin-top:10px;"></textarea>
                 </form>
 
                 <button type="submit" class="button" style="width:260px;">Submit Application</button><br>
@@ -200,10 +196,6 @@
                     <input type="text" id="job-id" name ="job-id">
                 </form>
                 <form>
-                    <label><strong>Application No.</strong></label><br>
-                    <input type="text" id="application-no" name ="application-no">
-                </form>
-                <form>
                     <label>Status</label><br>
                     <input type="text" id="application-status" name ="application-status">
                 </form>
@@ -212,17 +204,13 @@
             </div>
 
             <div class="withdraw-application">
-                <h4>Withdraw Application</h4><br><br>
+                <h4>Withdraw Application</h4><br><br><br>
 
                 <form>
                     <label><strong>Job ID</strong></label><br>
                     <input type="text" id="job-id" name ="job-id">
                 </form>
-                <form>
-                    <label><strong>Application No.</strong></label><br>
-                    <input type="text" id="application-no" name ="application-no">
-                </form>
-
+       
                 <button type="submit" class="button">Withdraw</button><br>
             </div>
 

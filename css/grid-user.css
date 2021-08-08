@@ -31,6 +31,7 @@
     grid-column-end: 1;
     grid-row-start: 1;
     grid-row-end: 2; 
+    height: 290px;
     padding: 20px;
     margin: 15px;
     background: #CAE4CD;
@@ -48,6 +49,10 @@
     background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;
+}
+
+.search-jobs-by-name button {
+    margin-top: 10px;
 }
 
 .job-data {
@@ -94,8 +99,9 @@
     width: 265px;
 }
 
+
 .apply-for-job button {
-    margin-top: 33px;
+    margin-top: 40px;
 }
 
 .maintain-status {
@@ -103,6 +109,7 @@
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 3; 
+    height: 310px;
     padding: 20px;
     margin: 15px;
     margin-bottom: 0px;
@@ -122,7 +129,7 @@
 .maintain-status button {
     width: 50%;
     height: 15%;
-    margin-top: 5px;
+    margin-top: 20px;
 }
 
 .withdraw-application {
@@ -130,6 +137,7 @@
     grid-column-end: 5;
     grid-row-start: 3;
     grid-row-end: 4; 
+    height: 250px;
     padding: 20px;
     margin: 15px;
     margin-top: 25px;
@@ -148,6 +156,7 @@
 
 .withdraw-application button {
     width: 50%;
+    margin-top: 37px;
 
 }
 

@@ -1,6 +1,10 @@
 <?php
     session_start();
 
+    // unsetting session variable if relevant (e.g. used in dashboard view)
+    unset($_SESSION['isAdmin']);
+    unset($_SESSION['employer']);
+
     // some basic authentication for user login
     require('../php/login-validation-employer.php');
 

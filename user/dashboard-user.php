@@ -15,6 +15,9 @@
 
     // for updating a user's profile (admin is permitted)
     require('../php/update-user-profile.php');
+
+    // to apply for a job
+    require('../php/apply-for-job.php');
 ?>
 
 <!DOCTYPE html>
@@ -167,24 +170,23 @@
                 </form>
             </div>
 
+     
             <div class="apply-for-job">
-                <h4>Apply for a Job</h4><br><br>
 
-                <!-- NOTE: Username of the active user should be stored in a session variable and
-                           should be used for making the application -->
-                <form>
+                <form method="POST" action="">
+                    <h4>Apply for a Job</h4><br><br>
+            
                     <label><strong>Job ID</strong></label><br>
-                    <input type="text" id="job-id" name ="job-id">
-                </form>
-    
-                <br>
+                    <input type="text" id="job-id" name="job-id">
 
-                <form>
+                    <br><br><br>
+                
                     <label>Application</label><br>
-                    <textarea name="application" id="application" cols="28" rows="18" style="margin-top:10px;"></textarea>
+                    <textarea id="application" name="application-text" cols="28" rows="17" style="margin-top:10px;"></textarea>
+            
+                    <button type="submit" class="button" name="apply-for-job" style="width:260px;">Submit Application</button><br>
                 </form>
-
-                <button type="submit" class="button" style="width:260px;">Submit Application</button><br>
+                
             </div>
 
             <div class="maintain-status">
@@ -193,11 +195,11 @@
                 
                 <form>
                     <label><strong>Job ID</strong></label><br>
-                    <input type="text" id="job-id" name ="job-id">
+                    <input type="text" id="job-id" name="job-id">
                 </form>
                 <form>
                     <label>Status</label><br>
-                    <input type="text" id="application-status" name ="application-status">
+                    <input type="text" id="application-status" name="application-status">
                 </form>
 
                 <button type="submit" class="button">Update Status</button><br>
@@ -208,7 +210,7 @@
 
                 <form>
                     <label><strong>Job ID</strong></label><br>
-                    <input type="text" id="job-id" name ="job-id">
+                    <input type="text" id="job-id" name="job-id">
                 </form>
        
                 <button type="submit" class="button">Withdraw</button><br>

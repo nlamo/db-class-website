@@ -7,6 +7,7 @@ Website/web application for the main project for our database course.
   TODO 
 ********
 
+- Implement AUTO_INCREMENT in all of the relevant primary keys, and in the PHP, etc.
 - Develop the payments system and consider how that will play out.
 - Create new views for the user so that they can see their applications, responses, etc. as set out in the requirements.
 - Continue adding to the ER diagram (with constraints!), the database relational schema, and the SQL database itself.
@@ -37,3 +38,4 @@ Website/web application for the main project for our database course.
 - 'Search All Jobs' is complete, fully functional.
 - 'Upgrade User Category' and 'Update User Profile' have been completed, apart from a bit of sanitization perhaps.
 - 'Search Jobs By Category' and 'Search Jobs By Name' have been implemented.
+- 'Apply for a Job' is now fully implemented for users.

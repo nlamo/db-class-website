@@ -158,8 +158,6 @@ CREATE TABLE `job` (
     FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
 );
 
-SELECT * from job;
-
 -- For the sake of simplicity, we're just starting off with 10 jobs (1-10), ordered by the first 10 employers (1-10) 
 INSERT INTO `job` VALUES (1, 1, 'IT', 'System Administrator', 80000, 'This role requires knowledge of the system administration of MS Windows based workstations. A high-degree of proficiency in cmd and Powershell is required, with knowledge of many basic commands, system utilities, security best practices, setting up and disassembling workstations, and the maintenance and supervision of accounts with a variety of permissions. Low-level security knowledge in assembly is considered a major asset.', '2021-08-30');
 INSERT INTO `job` VALUES (2, 2, 'Engineering', 'Electrical Engineer', 92000, 'This role requires knowledge of circuit design and a high-degree of familiarity with the major software tools used in designing circuit boards. A BSc in Electrical Engineering is required for this role; an MSc is considered a highly-valuable asset.', '2021-09-02');
@@ -184,7 +182,7 @@ INSERT INTO `job` VALUES (10, 10, 'Service', 'Retail Clerk', 27500, 'Do you love
 -- NOTE: I added job_name, employer_ID, and employer_name. It makes some queries far easier, but it removes the possibility of 3NF as there are now transitive dependencies. Design trade-off, I say!!
 
 CREATE TABLE `job_application` (
-	`job_application_ID` INT,
+	`job_application_ID` INT AUTO_INCREMENT,
     `username` VARCHAR(255),
     `job_ID` INT,
     `job_name` VARCHAR(255),

@@ -10,7 +10,7 @@ USE zic55311;
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE `employer` (
-    `employer_ID` INT,
+    `employer_ID` INT AUTO_INCREMENT,
     `name` VARCHAR(255),
     `address` VARCHAR(255),
     `phone` VARCHAR(255),
@@ -71,8 +71,10 @@ CREATE TABLE `user` (
     FOREIGN KEY (user_category) REFERENCES user_category (user_category)
 );
 
+SELECT * FROM user;
+
 -- Regular users (administrators), need a new table for this also...
-INSERT INTO `user` VALUES ('n_lamo', NULL, 'Admin', 'Nicholas', 'LaMothe', 'n_lamo@encs.concordia.ca', 'steppenwolf', '2001: A Space Odyssey', 0, 0, 'active');
+INSERT INTO `user` VALUES ('n_lamo', NULL, 'Admin', 'Nicholas', 'LaMothe', 'n_lamo@encs.concordia.ca', 'steppenwolf', 'Vertigo', 0, 0, 'active');
 INSERT INTO `user` VALUES ('f_attia', NULL, 'Admin', 'Fady', 'Attia', 'f_attia@encs.concordia.ca', 'password', 'Unknown', 0, 0, 'active');
 
 -- Regular users (looking for work)
@@ -80,9 +82,6 @@ INSERT INTO `user` VALUES ('f_attia', NULL, 'Admin', 'Fady', 'Attia', 'f_attia@e
 INSERT INTO `user` VALUES ('zeba', NULL, 'User Basic', 'Jim', 'James', 'jimmyjames@fake.org', 'jimmy', 'Unforgiven', 0, 2, 'active');
 INSERT INTO `user` VALUES ('damo', NULL, 'User Prime', 'Damo', 'Suzuki', 'damo@mysticalvoice.org', 'damo', 'Rashomon', 0, 2, 'active');
 INSERT INTO `user` VALUES ('gord', NULL, 'User Gold', 'Gord', 'Willard', 'gordwillard@fake.net', 'gordo', 'Munich', 0, 3, 'active');
-
-SELECT * FROM user;
-SELECT * FROM job;
 
 -- Employers (users match the first five employers)
 -- These employers will have all posted a single (1) job to start
@@ -94,7 +93,7 @@ INSERT INTO `user` VALUES ('stanley', 5, 'Employer Gold', 'Stanley', 'Silverman'
 
 SELECT COUNT(*) AS returnValue FROM user WHERE user.username='n_lamo' AND user.user_category='Admin';
 -- --------------------------------------------------------------------------------------------------------------------------------
-
+SELECT * FROM user;
 -- Only two payment methods, so they'll always be unique here
 CREATE TABLE `payment_method` (
     `payment_method` VARCHAR(255), -- Chequing, Credit
@@ -133,9 +132,9 @@ INSERT INTO `user_account` VALUES ('stanley', 'Chequing');
 
 -- Each payment is unique, and the ID will determine everything, including username
 CREATE TABLE `payment` (
-    `payment_ID` INT,
-    `username` VARCHAR(255) NOT NULL,
-    `payment_total` INT(3),
+    `payment_ID` INT AUTO_INCREMENT,
+    `username` VARCHAR(255),
+    `payment_total` INT,
     `payment_method` VARCHAR(255),
     `withdrawal_type` VARCHAR(255), -- manual, auto
     PRIMARY KEY (payment_ID),
@@ -147,7 +146,7 @@ CREATE TABLE `payment` (
 
 -- Each job is unique, and so the ID will determine everything
 CREATE TABLE `job` (
-    `job_ID` INT,
+    `job_ID` INT AUTO_INCREMENT,
     `employer_ID` INT,
     `job_category` VARCHAR(255),
     `title` VARCHAR(255),
@@ -207,6 +206,7 @@ INSERT INTO `job_application` VALUES (5, 'gord', 1, 'System Administrator', 1, '
 INSERT INTO `job_application` VALUES (6, 'gord', 2, 'Electrical Engineer', 2, 'Darryl Electronics', '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
 INSERT INTO `job_application` VALUES (7, 'gord', 3, 'Computer Architect', 3, 'Jimba Microprocessors', '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
 
+
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 -- TEST QUERIES / JUST FOR WORKING ON THE PHP/FUNCTIONALITY
@@ -237,6 +237,14 @@ AND job_application_ID = (SELECT job_application.job_application_ID
 						  AND user.username = 'alpha'
 						  ORDER BY job_application.job_application_ID 
 						  DESC LIMIT 0, 1);
+
+DELETE FROM job_application WHERE job_application_ID = 1;
+DELETE FROM user WHERE user.username = 'damo';
+
+ALTER TABLE employer MODIFY employer_ID INT AUTO_INCREMENT;
+
+SELECT * FROM user;
+UPDATE user SET user.user_category='User Basic', user.first_name='Damo', user.last_name='Suzuki', user.password='damo', user.email='damo@mysticalvoice.org', user.security_answer='Rashomon', user.total_jobs_posted=0, user.total_applications_submitted=2, user.status='active' WHERE user.username='damo';
 
 -- --------------------------------------------------------------------------------------------------------------------------------
 

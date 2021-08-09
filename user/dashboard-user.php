@@ -10,14 +10,25 @@
     // gets all jobs of a specific job title/name
     require('../php/search-jobs-by-name.php');
 
+    // to apply for a job
+    require('../php/apply-for-job.php');
+
+    // for changing the status of the user (active/inactive)
+    require('../php/maintain-application-status.php');
+
+    // to remove an application the user has submitted
+    require('../php/withdraw-application.php');
+
     // for updating a user's category only if s(he) is not admin
     require('../php/upgrade-user-category.php');
 
     // for updating a user's profile (admin is permitted)
     require('../php/update-user-profile.php');
 
-    // to apply for a job
-    require('../php/apply-for-job.php');
+    // to delete your user account
+    require('../php/delete-user-account.php');
+
+
 ?>
 
 <!DOCTYPE html>
@@ -165,7 +176,6 @@
                     </p>
                 </form>
             </div>
-
      
             <div class="apply-for-job">
 
@@ -186,30 +196,31 @@
             </div>
 
             <div class="maintain-status">
-                <h4>Maintain Status</h4><br><br>
-                <small>Set application to active or inactive:</small><br><br>
-                
-                <form>
-                    <label><strong>Job ID</strong></label><br>
-                    <input type="text" id="job-id" name="job-id">
-                </form>
-                <form>
+
+                <form method="POST" action="">
+                    <h4>Maintain Status</h4><br><br>
+                    <small>Set application to active or inactive:</small><br><br>
+                    
+                    <label><strong>Job Application ID</strong></label><br>
+                    <input type="text" id="job-application-id" name="job-application-id"><br>
+
                     <label>Status</label><br>
                     <input type="text" id="application-status" name="application-status">
-                </form>
 
-                <button type="submit" class="button">Update Status</button><br>
+                    <button type="submit" class="button" name="update-status">Update Status</button><br>
+                </form>
             </div>
 
             <div class="withdraw-application">
-                <h4>Withdraw Application</h4><br><br><br>
 
-                <form>
-                    <label><strong>Job ID</strong></label><br>
-                    <input type="text" id="job-id" name="job-id">
+                <form method="POST" action="">
+                    <h4>Withdraw Application</h4><br><br><br>
+
+                    <label><strong>Job Application ID</strong></label><br>
+                    <input type="text" id="job-application-id" name="job-application-id">
+        
+                    <button type="submit" class="button" name="withdraw-application">Withdraw</button><br>
                 </form>
-       
-                <button type="submit" class="button">Withdraw</button><br>
             </div>
 
         </div>
@@ -310,22 +321,20 @@
             
             <div class="delete-user-account" style="height: 607px;">
 
-                <h4>Delete User Account</h4><br><br>
+                <form method="POST" action="">
+                    <h4>Delete User Account</h4><br><br>
 
-                <small>Are you <i>absolutely 100% certain that you really, truly wish to delete your precious user account?</i> </small><br><br>
+                    <small>Are you <i>absolutely 100% certain that you really, truly wish to delete your precious user account? If you do choose to walk this dark path - that is, account deletion - then you should know that there is no turning back. This action is completely irrevocable.</i></small><br><br>
 
-                <small>If you do choose to walk this dark path - that is, account deletion - then you should know that there is no turning back. This action is completely irrevocable.</small><br><br>
-                
-                <small>Basically, it will be as if you had never existed. We will miss you, but know that on life's path - during this great journey, where many follies are committed, and much anxiety and anomie subsumed under the assumption of personal validation and identification - there is always the opportunity for recourse, for redemption.</small><br><br>
-                
-                <small>What we mean to say is, er, that you're always welcome back if you discover your true path.</small><br><br>
-                
-                <form>
+                    <small>Basically, it will be as if you had never existed. We will miss you, but know that on life's path - during this great journey, where many follies are committed, and much anxiety and anomie subsumed under the assumption of personal validation and identification - there is always the opportunity for recourse, for redemption.</small><br><br>
+
+                    <small>What we mean to say is, er, that you're always welcome back if you discover your true path.</small><br><br><br>
+
                     <label>Enter 'Yes' to Delete Account</label><br>
-                    <input type="text" id="delete-user-account" name ="delete-user-account">
-                </form>
+                    <input type="text" name="confirm-decision" style="margin-top: 15px;"><br><br>
 
-                <button type="submit" class="button">Delete Account</button><br>
+                    <button type="submit" class="button" name="delete-account">Delete Account</button><br>
+                </form>
                 
             </div>
             

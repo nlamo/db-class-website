@@ -97,12 +97,10 @@
                 <!-- FORM: Post a job -->
                 <form method="POST" action="">
 
+                    <small>Here, you can post a job. An ID will be automatically created, but you will need to enter your employer ID.</small><br><br><br>
+
                     <div class="post-jobs-subgrid">
                         
-                        <div>
-                            <label><strong>Job ID</strong></label><br>
-                            <input type="text" id="job-id" name="job-id">
-                        </div>
                         <div>
                             <label>Employer ID</label><br>
                             <input type="text" id="employer-id" name="employer-id">
@@ -122,6 +120,9 @@
                         <div>
                             <label>Start Date</label><br>
                             <input type="date" id="start-date" name="start-date">
+                        </div>
+                        <div>
+                            <!-- Empty div -->
                         </div>
                         <div id="job-description-container">
                             <label>Job Description</label><br>
@@ -268,7 +269,8 @@
             <div class="update-jobs" style="height: 650px;">
                 <h4>Update Job</h4><br><br>
 
-                <!-- FORM: Update a job -->
+                <small>Here, you can update a job. You will need the specific job ID as well as your employer ID.</small><br><br><br>
+
                 <form method="POST" action="">
 
                     <div class="update-jobs-subgrid">

@@ -80,7 +80,7 @@
 }
 
 #job-description-container {
-    margin-top: 65px;
+    margin-top: 20px;
 }
 
 .application-summary {
@@ -141,7 +141,7 @@
     display: grid;
     grid-column: 1 / span 2;
     width: auto;
-    margin-top: 35px;
+    margin-top: 22px;
 }
 
 .update-applications {
@@ -162,11 +162,12 @@
 }
 
 .update-applications textarea {
+    height: 240px;
     margin-top: 10px;
     margin-bottom: 15px;
 }
 
 .update-applications button {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
 }

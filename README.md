@@ -39,3 +39,4 @@ Website/web application for the main project for our database course.
 - 'Upgrade User Category' and 'Update User Profile' have been completed, apart from a bit of sanitization perhaps.
 - 'Search Jobs By Category' and 'Search Jobs By Name' have been implemented.
 - 'Apply for a Job' is now fully implemented for users.
+- Users can now use 'Update Application Status', 'Withdraw Application', and 'Delete User Account'

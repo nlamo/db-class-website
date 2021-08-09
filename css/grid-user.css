@@ -127,8 +127,6 @@
 }
 
 .maintain-status button {
-    width: 50%;
-    height: 15%;
     margin-top: 20px;
 }
 
@@ -156,8 +154,7 @@
 
 .withdraw-application button {
     width: 50%;
-    margin-top: 37px;
-
+    margin-top: 25px;
 }
 
 .user-categories {
@@ -209,5 +206,9 @@
     background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;
+}
+
+.delete-user-account button {
+    margin-top: -5px;
 }
 

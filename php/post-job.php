@@ -11,7 +11,8 @@
 
         require('../php-config/database.php');
 
-        $jobID = mysqli_real_escape_string($conn, $_POST['job-id']);
+        // job_ID is AUTO_INCREMENT and so it is given DEFAULT value
+
         $employerID = mysqli_real_escape_string($conn, $_POST['employer-id']);
         $jobCategory = mysqli_real_escape_string($conn, $_POST['job-category']);
         $jobTitle = mysqli_real_escape_string($conn, $_POST['job-title']);
@@ -26,7 +27,7 @@
 
         $datePosted = mysqli_real_escape_string($conn, $dateYMD);
 
-        $sqlQuery = "INSERT INTO job(job_ID, employer_ID, job_category, title, salary, description, date_start) VALUES ('$jobID', '$employerID', '$jobCategory', '$jobTitle', '$salaryPosted', '$descriptionPosted', '$datePosted')";
+        $sqlQuery = "INSERT INTO job(job_ID, employer_ID, job_category, title, salary, description, date_start) VALUES (DEFAULT, '$employerID', '$jobCategory', '$jobTitle', '$salaryPosted', '$descriptionPosted', '$datePosted')";
 
 
         if (mysqli_query($conn, $sqlQuery)) {

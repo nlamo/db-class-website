@@ -1,6 +1,7 @@
 <!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
 
-<!-- The purpose of this part of the application is still nebulous.. It works, but does it have a point? Was trying to fulfill a requirement, but haphazardly. -->
+<!-- TODO: Modify this to change the status of a given user (active/inactive), for admin use only! -->
+
 <?php
 
     if (isset($_POST['maintain-submit'])) {

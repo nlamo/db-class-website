@@ -111,7 +111,6 @@
                                 <br>
 
                             <?php endforeach; ?>
-
                         <?php endif; ?>
 
                         <!-- USER: searched jobs by category -->
@@ -137,7 +136,6 @@
                                 <br>
 
                             <?php endforeach; ?>
-
                         <?php endif; ?>
 
                         <!-- USER: searched jobs by name -->
@@ -163,9 +161,7 @@
                                 <br>
 
                             <?php endforeach; ?>
-
                         <?php endif; ?>
-
                     </p>
                 </form>
             </div>
@@ -312,7 +308,7 @@
             </div>
 
             
-            <div class="delete-user-account">
+            <div class="delete-user-account" style="height: 607px;">
 
                 <h4>Delete User Account</h4><br><br>
 

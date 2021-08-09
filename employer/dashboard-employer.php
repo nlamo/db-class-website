@@ -225,7 +225,7 @@
     <div class="dashboard-container">
         <div class="dashboard-employer">
 
-            <div class="help-and-contact">
+            <div class="help-and-contact" style="height: 650px;">
 
             <h4>Help and Contact</h4><br><br>
 
@@ -265,7 +265,7 @@
                        have been changed to lessen the chance of weird interdependencies 
                        if anything needs to change in the future. -->
 
-            <div class="update-jobs">
+            <div class="update-jobs" style="height: 650px;">
                 <h4>Update Job</h4><br><br>
 
                 <!-- FORM: Update a job -->
@@ -311,7 +311,7 @@
             <form method="POST" action="">
 
                 <!-- So that the employer can maintain/update job applications -->
-                <div class="update-applications">
+                <div class="update-applications" style="height: 650px;">
                     <h4>Update Application</h4><br><br>
 
                     <div>

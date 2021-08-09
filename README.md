@@ -7,7 +7,7 @@ Website/web application for the main project for our database course.
   TODO 
 ********
 
-- Implement AUTO_INCREMENT in all of the relevant primary keys, and in the PHP, etc.
+- IMPORTANT: Modify the 'Maintain Users' section in the employer dashboard to be for admin use only, such that an admin can change a user's status to active/inactive. Add the appropriate logic for login.
 - Develop the payments system and consider how that will play out.
 - Create new views for the user so that they can see their applications, responses, etc. as set out in the requirements.
 - Continue adding to the ER diagram (with constraints!), the database relational schema, and the SQL database itself.

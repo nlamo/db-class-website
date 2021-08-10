@@ -155,7 +155,7 @@ CREATE TABLE `job` (
     FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
 );
 
--- For the sake of simplicity, we're just starting off with 10 jobs (1-10), ordered by the first 10 employers (1-10) 
+-- For the sake of simplicity, we're just starting off with 10 jobs (1-10), ordered by the first 10 employers (1-10)
 INSERT INTO `job` VALUES (1, 1, 'IT', 'System Administrator', 80000, 'This role requires knowledge of the system administration of MS Windows based workstations. A high-degree of proficiency in cmd and Powershell is required, with knowledge of many basic commands, system utilities, security best practices, setting up and disassembling workstations, and the maintenance and supervision of accounts with a variety of permissions. Low-level security knowledge in assembly is considered a major asset.', '2021-08-30');
 INSERT INTO `job` VALUES (2, 2, 'Engineering', 'Electrical Engineer', 92000, 'This role requires knowledge of circuit design and a high-degree of familiarity with the major software tools used in designing circuit boards. A BSc in Electrical Engineering is required for this role; an MSc is considered a highly-valuable asset.', '2021-09-02');
 INSERT INTO `job` VALUES (3, 3, 'Engineering', 'Computer Architect', 120000, 'This position equires 10+ years of experience in the high-level design of computer architectures, including all of the major software tools required to be competitive in this field. Excellent knowledge of assembly and the C programming language required. Proficiency in LaTeX is seen as a valuble asset. This role is well-suited for someone with an MSc in Computer Science or Electrical Engineering. Exceptionally, we may take on new graduates, but this role ideally requires many years of experience working with a computer hardware manufacturer.', '2021,10-01');
@@ -169,8 +169,8 @@ INSERT INTO `job` VALUES (10, 10, 'Service', 'Retail Clerk', 27500, 'Do you love
 
 -- --------------------------------------------------------------------------------------------------------------------------------
 
--- NOTE: The notion of an application 'status' appears to have too many meanings in the --       
---       requirements... For example, the fact that 'users' and 'employers' should 
+-- NOTE: The notion of an application 'status' appears to have too many meanings in the --
+--       requirements... For example, the fact that 'users' and 'employers' should
 --      'maintain' the status of an applicaton is a bit unusual. Just a thought.
 
 -- NOTE: When employer uses 'Update Application', s(he) will send a 'Message to Applicant'
@@ -179,7 +179,7 @@ INSERT INTO `job` VALUES (10, 10, 'Service', 'Retail Clerk', 27500, 'Do you love
 -- NOTE: I added job_name, employer_ID, and employer_name. It makes some queries far easier, but it removes the possibility of 3NF as there are now transitive dependencies. Design trade-off, I say!!
 
 CREATE TABLE `job_application` (
-	`job_application_ID` INT AUTO_INCREMENT,
+    `job_application_ID` INT AUTO_INCREMENT,
     `username` VARCHAR(255),
     `job_ID` INT,
     `job_name` VARCHAR(255),
@@ -218,22 +218,22 @@ SELECT user.security_answer AS securityAnswer
 FROM user
 WHERE user.username = 'zeba';
 
--- Gets the most recent application for the employer logged in! 
+-- Gets the most recent application for the employer logged in!
 SELECT *
 FROM job_application, user
 WHERE job_application.employer_ID = user.employer_ID
 AND user.username = 'alpha'
-ORDER BY job_application.job_application_ID 
+ORDER BY job_application.job_application_ID
 DESC LIMIT 0, 1;
 
-SELECT user.first_name 
+SELECT user.first_name
 FROM user, job_application
 WHERE user.username = job_application.username
 AND job_application_ID = (SELECT job_application.job_application_ID
 						  FROM job_application, user
 						  WHERE job_application.employer_ID = user.employer_ID
 						  AND user.username = 'alpha'
-						  ORDER BY job_application.job_application_ID 
+						  ORDER BY job_application.job_application_ID
 						  DESC LIMIT 0, 1);
 
 DELETE FROM job_application WHERE job_application_ID = 1;
@@ -279,4 +279,3 @@ INSERT INTO `job` VALUES (DEFAULT, 1, 'IT', 'Network Analyst', 110000, 'Here at 
 
 -- iv.
 UPDATE `job_application` SET application_status='accepted', application_response='It is with pleasure that you contacting you to provide a job offer. Based on your credentials, experience, and your performance on the tests, we believe that you have the requisite qualifications for this positions. We are so certain of this that we intend to offer you $120000 per year for this position. Please provide us with your response within a week\'s time' WHERE (job_application_ID = 7 AND username = 'gord' AND job_ID = 3);
-

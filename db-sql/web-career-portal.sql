@@ -71,8 +71,6 @@ CREATE TABLE `user` (
     FOREIGN KEY (user_category) REFERENCES user_category (user_category)
 );
 
-SELECT * FROM user;
-
 -- Regular users (administrators), need a new table for this also...
 INSERT INTO `user` VALUES ('n_lamo', NULL, 'Admin', 'Nicholas', 'LaMothe', 'n_lamo@encs.concordia.ca', 'steppenwolf', 'Vertigo', 0, 0, 'active');
 INSERT INTO `user` VALUES ('f_attia', NULL, 'Admin', 'Fady', 'Attia', 'f_attia@encs.concordia.ca', 'password', 'Unknown', 0, 0, 'active');
@@ -255,3 +253,30 @@ UPDATE user SET user.user_category='User Basic', user.first_name='Damo', user.la
 --   history
 --
 --   We might need additional relations to accommodate some of these views. We shall see.
+
+-- --------------------------------------------------------------------------------------------------------------------------------
+
+-- SQL QUERIES FOR ASSIGNMENT
+-- Simply just examples, not to be used for the database as such
+
+-- IMPORTANT NOTE: Might adopt a 'SET NULL' policy for deletions from 'user' and 'employer'
+--                 such that these names ('username' and 'employer_ID') become null in child rows upon deletion of parent table
+
+-- i.
+INSERT INTO `employer` VALUES (DEFAULT, 'Business Name', '555 Falsehood Boulevard', '555-515-2314', 'businessname@notreal.fake');
+UPDATE `employer` SET employer.name = 'Different Business Name' WHERE employer.name = 'Business Name';
+SELECT * FROM `employer` WHERE employer.name = 'Different Business Name';
+DELETE FROM `employer` WHERE employer.name = 'Different Business Name';
+
+-- ii.
+INSERT INTO `employer` VALUES (DEFAULT, 'Different Business Name', '555 Falsehood Boulevard', '555-515-2314', 'businessname@notreal.fake');
+UPDATE `employer` SET employer.email = 'differentbusiness@fake.notreal' WHERE employer.name = 'Different Business Name';
+SELECT * FROM `employer` WHERE employer.email = 'differentbusiness@fake.notreal';
+DELETE FROM `employer` WHERE employer.email = 'differentbusiness@fake.notreal';
+
+-- iii.
+INSERT INTO `job` VALUES (DEFAULT, 1, 'IT', 'Network Analyst', 110000, 'Here at Alpha Computing, we are on the lookout for a network analyst who posesses at least 10 years of experience in networking solutiosn. A MSc in Computer Science, Information Technology, or Cybersecurity is required.', '2021-09-07');
+
+-- iv.
+UPDATE `job_application` SET application_status='accepted', application_response='It is with pleasure that you contacting you to provide a job offer. Based on your credentials, experience, and your performance on the tests, we believe that you have the requisite qualifications for this positions. We are so certain of this that we intend to offer you $120000 per year for this position. Please provide us with your response within a week\'s time' WHERE (job_application_ID = 7 AND username = 'gord' AND job_ID = 3);
+

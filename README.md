@@ -21,6 +21,7 @@ Website/web application for the main project for our database course.
 
 - Set up the ssh tunnel at localhost, which is now fairly easy to use.
 - Styling for the sign-up form is likely complete. Might tweak it a bit more.
+- A 'Project Overview' document has been provided to provide reasonable assumptions and describe the functionality of the application.
 - The UI (dashboard) for 'Employer' is basically complete, apart from minor changes.
 - The UI (dashboard) for 'User' is also basically complete, apart from bits of tweaking.
 - 'Create New Account' page has been completed (for user).
@@ -33,7 +34,7 @@ Website/web application for the main project for our database course.
 - 'Update Job' PHP is almost completely done, except for an issue where the previous date needs to be maintained upon new insertions.
 - 'Update Application' PHP is basically complete. As with the other ones, I still have to add some form of message printed to the user if data is incomplete.
 - 'Maintain User Status' section has been completed and is functional. Allows changing a user/employer's status only if current session user is admin.
-- 'Upgrade Category' for employers is finished, and is fully functional.
+- 'Upgrade Category' for employers is finished, and is fully functional
 - 'Search All Jobs' is complete, fully functional.
 - 'Upgrade User Category' and 'Update User Profile' have been completed, apart from a bit of sanitization perhaps.
 - 'Search Jobs By Category' and 'Search Jobs By Name' have been implemented.

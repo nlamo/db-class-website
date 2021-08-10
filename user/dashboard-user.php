@@ -48,7 +48,7 @@
 
     <!-- First (1st) User Container/Dashboard -->
     <div class="dashboard-container">
-        <h3>User Dashboard</h3><br>
+        <h3><?php echo ($_SESSION['user']);?>'s Dashboard</h3><br>
 
         <a href="#">
             <button class="contact-button" onclick="alertBox('Having some difficulties?\n\nJust scroll down to the second panel.\n\nIn the leftmost column, you\'ll find contact information and some helpful guidelines.')">

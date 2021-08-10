@@ -24,7 +24,8 @@ Website/web application for the main project for our database course.
 - A 'Project Overview' document has been provided to provide reasonable assumptions and describe the functionality of the application.
 - The UI (dashboard) for 'Employer' is basically complete, apart from minor changes.
 - The UI (dashboard) for 'User' is also basically complete, apart from bits of tweaking.
-- 'Create New Account' page has been completed (for user).
+- 'Create New Account' page has been completed for employer.
+- 'Create New Account' page has been completed for user.
 - Login validation for user/employer mostly complete, including validating by user category.
 - 'Password Retrieval' pages created for user/employer, admin can function on both.
 - 'Current Application Summary' PHP successfully added/fully functional.

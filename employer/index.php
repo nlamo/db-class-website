@@ -65,6 +65,8 @@
     </div>
 
     <small>
+        <br><br><b><a href="./employer-sign-up.php" style="a:hover:">New here? Sign up for an account.</a></b>
+
         <br><br><a href="employer-password-retrieval.php" style="a:hover:">Forgot your password? Click here.</a>
         
         <br><br><a href="../index.html">Return to Home</a>

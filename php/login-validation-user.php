@@ -14,8 +14,8 @@
         // NOTE: Correctness of password is defined both in terms of the correct user type
         //       and correctness of the password itself.
 
-        // Get count; if 1, then exists, if 0, then doesn't exist
-        $userExistsQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$user'";
+        // User 'exists' if it is in the database AND has a status of 'active'
+        $userExistsQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$user' AND user.status='active'";
         $passwordIsCorrectQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$user' AND user.password='$userPassword' AND (user.user_category='Admin' OR user.user_category LIKE 'User%')";
 
         // Running the queries to get the counts

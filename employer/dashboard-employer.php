@@ -11,7 +11,7 @@
     require('../php/update-job.php');
 
     // for updating a user's category only if s(he) is not admin
-    require('../php/maintain-user.php');
+    require('../php/maintain-user-status.php');
 
     // for updating an employer's category only if s(he) is not admin
     require('../php/upgrade-employer-category.php');
@@ -30,6 +30,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/grid-employer.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
     <script src="../js/script.js" defer></script>
     <title>Employer Dashboard</title>
 </head>
@@ -53,15 +55,15 @@
                 <div class="maintain-users">
                     <h4>User Maintenance</h4><br><br>
 
-                    <small>This is where you can update the user category of a given user (unless the user is admin).</small><br><br>
+                    <small>Administrative use only: change user status. Change to 'active' or 'inactive'.</small><br><br>
 
                     <div>
                         <label><strong>Username</strong></label><br>
-                        <input type="text" id="username" name="user">
+                        <input type="text" id="user" name="user">
                     </div>
                     <div>
-                        <label>User Category</label><br>
-                        <input type="text" id="user-type" name ="user-category">
+                        <label>User Status</label><br>
+                        <input type="text" name="user-status">
                     </div>
 
                     <button type="submit" class="button" name="maintain-submit">

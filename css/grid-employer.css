@@ -1,3 +1,8 @@
+.dashboard-container h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.3rem;
+    color: #003300;
+}
 
 /* Employer dashboard grid items */
 .dashboard-employer {

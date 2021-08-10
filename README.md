@@ -7,7 +7,6 @@ Website/web application for the main project for our database course.
   TODO 
 ********
 
-- IMPORTANT: Modify the 'Maintain Users' section in the employer dashboard to be for admin use only, such that an admin can change a user's status to active/inactive. Add the appropriate logic for login.
 - Develop the payments system and consider how that will play out.
 - Create new views for the user so that they can see their applications, responses, etc. as set out in the requirements.
 - Continue adding to the ER diagram (with constraints!), the database relational schema, and the SQL database itself.
@@ -33,10 +32,10 @@ Website/web application for the main project for our database course.
 - 'Post Job' PHP successfully added/fully functional. Should be tweaked to automatically include the ID of the current user (employer) running their session.
 - 'Update Job' PHP is almost completely done, except for an issue where the previous date needs to be maintained upon new insertions.
 - 'Update Application' PHP is basically complete. As with the other ones, I still have to add some form of message printed to the user if data is incomplete.
-- 'Maintain Users' PHP is done, but it's not a particularly useful bit. 
+- 'Maintain User Status' section has been completed and is functional. Allows changing a user/employer's status only if current session user is admin.
 - 'Upgrade Category' for employers is finished, and is fully functional
 - 'Search All Jobs' is complete, fully functional.
 - 'Upgrade User Category' and 'Update User Profile' have been completed, apart from a bit of sanitization perhaps.
 - 'Search Jobs By Category' and 'Search Jobs By Name' have been implemented.
 - 'Apply for a Job' is now fully implemented for users.
-- Users can now use 'Update Application Status', 'Withdraw Application', and 'Delete User Account'
+- 'Update Application Status', 'Withdraw Application', and 'Delete User Account' have been implemented.

@@ -119,6 +119,12 @@ textarea:hover {
 
 }
 
+.container h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    color: #003300;
+}
+
 .card {
     display: flex;
     flex-direction: column;

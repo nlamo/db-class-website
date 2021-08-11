@@ -42,3 +42,4 @@ Website/web application for the main project for our database course.
 - 'Search Jobs By Category' and 'Search Jobs By Name' have been implemented.
 - 'Apply for a Job' is now fully implemented for users.
 - 'Update Application Status', 'Withdraw Application', and 'Delete User Account' have been implemented.
+- 'Add Payment Option' for both employers and users.

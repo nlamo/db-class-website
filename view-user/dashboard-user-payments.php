@@ -1,7 +1,10 @@
 <?php 
 
-    session_start()
+    session_start();
 
+    // code for adding a payment option to a user account
+    require('../php/add-user-payment-option.php');
+    
 ?>
 
 <!DOCTYPE html>
@@ -22,39 +25,35 @@
     <div class="dashboard-container">
         <h3><?php echo (htmlspecialchars($_SESSION['user']));?>'s payments</h3><br>
 
-        <div class="dashboard-user">   
+
+        <div class="dashboard-user"> 
+
+            <form class="payment-information-panel" method="POST" action="">   
+            
+                <h4>Enter Payment Information</h4>
+
+                <div class="card-info-container">
+                    <label>Payment Method (Chequing or Credit)</label>
+                    <input type="text" name="payment-method">
+
+                    <label>Cardholder Name</label>
+                    <input type="text" name="cardholder-name">
                 
-            <div class="payment-type-panel">
+                    <label>Card Number</label>
+                    <input type="text" name="card-number">
 
-                <h4>Choose Payment Type</h4>
+                    <label>Date of Expiration</label>
+                    <input type="date" name="expiration-date">
+            
+                    <label>Withdrawal Type</label>
+                    <input type="text" name="withdrawal-type"><br>
+                </div>
 
-                <button class="button">
-                        Chequing 
-                </button>
-
-                <button class="button">
-                    Credit 
-                </button>
-            </div>
-
-            <div class="payment-information-panel">
-
-                <h4>Enter Payment Information</h4><br>
-
-                <label>Cardholder Name</label>
-                <input type="text" name="cardholder-name">
+                <div class="lone-button">
+                    <button type="submit" class="button" id="payment-option-button" name="add-payment-option">Add Payment Option</button>
+                </div>
                 
-                <label>Card Number</label>
-                <input type="text" name="card-number">
-
-                <label>Date of Expiration</label>
-                <input type="date" name="expiration-date">
-        
-                <label>Withdrawal Type</label>
-                <input type="text" name="withdrawal-type"><br><br>
-        
-                <button class="button">Add Payment Type</button>
-            </div>
+            </form>
 
             <div class="account-status-panel">
             
@@ -66,16 +65,19 @@
             </div>
 
             <div class="remove-payment-panel">
+                <form method="POST" action="">
+                    <h4>Remove Payment</h4><br>
                 
-                <h4>Remove Payment</h4><br>
-            
-                <label>Payment ID</label>
-                <input type="text" name="cardholder-name">
+                    <label>Payment ID</label>
+                    <input type="text" name="cardholder-name">
 
-                <button class="button" name="remove-payment">Remove Payment</button>
+                    <button type="submit" class="button" name="remove-payment">Remove Payment Option</button>
+                </form>
             </div>
+            
         </div>
     </div>
+
 
     <br><br><a href="./dashboard-user.php">Return to User Dashboard</a><br><br>
 

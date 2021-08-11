@@ -1,6 +1,9 @@
 <?php 
 
-    session_start()
+    session_start();
+
+    // code for adding a payment option to an employer account
+    require('../php/add-employer-payment-option.php');
 
 ?>
 
@@ -22,39 +25,34 @@
     <div class="dashboard-container">
         <h3><?php echo (htmlspecialchars($_SESSION['employer']));?>'s payments</h3><br>
 
-        <div class="dashboard-employer">   
+        <div class="dashboard-employer"> 
+
+            <form class="payment-information-panel" method="POST" action="">   
             
-            <div class="payment-type-panel">
+                <h4>Enter Payment Information</h4>
 
-                <h4>Choose Payment Type</h4>
+                <div class="card-info-container">
+                    <label>Payment Method (Chequing or Credit)</label>
+                    <input type="text" name="payment-method">
 
-                <button class="button">
-                     Chequing 
-                </button>
+                    <label>Cardholder Name</label>
+                    <input type="text" name="cardholder-name">
+                
+                    <label>Card Number</label>
+                    <input type="text" name="card-number">
 
-                <button class="button">
-                    Credit 
-                </button>
-            </div>
+                    <label>Date of Expiration</label>
+                    <input type="date" name="expiration-date">
+            
+                    <label>Withdrawal Type</label>
+                    <input type="text" name="withdrawal-type"><br>
+                </div>
 
-            <div class="payment-information-panel">
-
-                <h4>Enter Payment Information</h4><br>
-
-                <label>Cardholder Name</label>
-                <input type="text" name="cardholder-name">
-              
-                <label>Card Number</label>
-                <input type="text" name="card-number">
-
-                <label>Date of Expiration</label>
-                <input type="date" name="expiration-date">
-        
-                <label>Withdrawal Type</label>
-                <input type="text" name="withdrawal-type"><br><br>
-       
-                <button class="button" name="add-payment-type">Add Payment Type</button>
-            </div>
+                <div class="lone-button">
+                    <button type="submit" class="button" id="payment-option-button" name="add-payment-option">Add Payment Option</button>
+                </div>
+                
+            </form>
 
             <div class="account-status-panel">
             
@@ -66,14 +64,16 @@
             </div>
 
             <div class="remove-payment-panel">
+                <form method="POST" action="">
+                    <h4>Remove Payment</h4><br>
                 
-                <h4>Remove Payment</h4><br>
-            
-                <label>Payment ID</label>
-                <input type="text" name="cardholder-name">
+                    <label>Payment ID</label>
+                    <input type="text" name="cardholder-name">
 
-                <button class="button" name="remove-payment">Remove Payment</button>
+                    <button type="submit" class="button" name="remove-payment">Remove Payment Option</button>
+                </form>
             </div>
+            
         </div>
     </div>
 

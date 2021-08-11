@@ -91,7 +91,7 @@ INSERT INTO `user` VALUES ('stanley', 5, 'Employer Gold', 'Stanley', 'Silverman'
 
 SELECT COUNT(*) AS returnValue FROM user WHERE user.username='n_lamo' AND user.user_category='Admin';
 -- --------------------------------------------------------------------------------------------------------------------------------
-SELECT * FROM user;
+
 -- Only two payment methods, so they'll always be unique here
 CREATE TABLE `payment_method` (
     `payment_method` VARCHAR(255), -- Chequing, Credit
@@ -101,6 +101,7 @@ CREATE TABLE `payment_method` (
 INSERT INTO `payment_method` VALUES ('Chequing');
 INSERT INTO `payment_method` VALUES ('Credit');
 
+SELECT * FROM payment_method;
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 -- Creating the account separately so that we can associate multiple payment methods with a user
@@ -129,16 +130,23 @@ INSERT INTO `user_account` VALUES ('stanley', 'Chequing');
 --       relation in order to satisfy the requirements.
 
 -- Each payment is unique, and the ID will determine everything, including username
-CREATE TABLE `payment` (
-    `payment_ID` INT AUTO_INCREMENT,
+CREATE TABLE `payment_information` (
+    `payment_information_ID` INT AUTO_INCREMENT,
     `username` VARCHAR(255),
-    `payment_total` INT,
-    `payment_method` VARCHAR(255),
-    `withdrawal_type` VARCHAR(255), -- manual, auto
-    PRIMARY KEY (payment_ID),
-    FOREIGN KEY (username) REFERENCES payment_method (payment_method),
+    `cardholder_name` VARCHAR(255),
+    `card_number` VARCHAR(255),
+    `expiration_date` DATE,
+    `payment_method` VARCHAR(255), -- Chequing, Credit
+    `withdrawal_type` VARCHAR(255), -- Manual, Automatic
+    PRIMARY KEY (payment_information_ID),
+    FOREIGN KEY (username) REFERENCES user (username),
     FOREIGN KEY (payment_method) REFERENCES payment_method (payment_method)
 );
+
+INSERT INTO payment_information VALUES (DEFAULT, 'alpha', 'Ali Grandich', '48398180284081', '2021-09-01', 'Chequing', 'Automatic');
+
+SELECT * FROM payment_information;
+DELETE FROM payment_information WHERE username='alpha';
 
 -- --------------------------------------------------------------------------------------------------------------------------------
 
@@ -213,6 +221,7 @@ SELECT * FROM job;
 SELECT * FROM employer;
 SELECT * FROM user;
 SELECT * FROM job_application;
+SELECT * FROM payment_information;
 
 SELECT user.security_answer AS securityAnswer
 FROM user

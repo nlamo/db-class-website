@@ -11,25 +11,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/grid-user.css">
+    <link rel="stylesheet" href="../css/grid-employer.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
-    <title>User Payments</title>
+    <title>Employer Payments</title>
 </head>
 <body>
 
     <!-- Employer Payments Dashboard -->
     <div class="dashboard-container">
-        <h3><?php echo (htmlspecialchars($_SESSION['user']));?>'s payments</h3><br>
+        <h3><?php echo (htmlspecialchars($_SESSION['employer']));?>'s payments</h3><br>
 
-        <div class="dashboard-user">   
-                
+        <div class="dashboard-employer">   
+            
             <div class="payment-type-panel">
 
                 <h4>Choose Payment Type</h4>
 
                 <button class="button">
-                        Chequing 
+                     Chequing 
                 </button>
 
                 <button class="button">
@@ -41,19 +41,19 @@
 
                 <h4>Enter Payment Information</h4><br>
 
-                <label>Cardholder Name</label><br>
+                <label>Cardholder Name</label>
                 <input type="text" name="cardholder-name">
-                
-                <label>Card Number</label><br>
+              
+                <label>Card Number</label>
                 <input type="text" name="card-number">
 
-                <label>Date of Expiration</label><br>
+                <label>Date of Expiration</label>
                 <input type="date" name="expiration-date">
         
-                <label>Withdrawal Type</label><br>
+                <label>Withdrawal Type</label>
                 <input type="text" name="withdrawal-type"><br><br>
-        
-                <button class="button">Add Payment Type</button>
+       
+                <button class="button" name="add-payment-type">Add Payment Type</button>
             </div>
 
             <div class="account-status-panel">
@@ -67,7 +67,7 @@
 
             <div class="remove-payment-panel">
                 
-                <h4>Remove Payment</h4><br><br>
+                <h4>Remove Payment</h4><br>
             
                 <label>Payment ID</label>
                 <input type="text" name="cardholder-name">
@@ -77,7 +77,7 @@
         </div>
     </div>
 
-    <br><br><a href="./dashboard-user.php">Return to User Dashboard</a><br><br>
+    <br><br><a href="./dashboard-employer.php">Return to Employer Dashboard</a><br><br>
 
 </body>
 </html>

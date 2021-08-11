@@ -278,6 +278,7 @@
     justify-content: center;
     color: #003300;
     padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 .payment-information-panel input {
@@ -291,10 +292,14 @@
 .payment-information-panel button {
     width: 500px;
     height: 60px;
-    margin-top: 35px;
+    margin-top: 70px;
     margin-left: 90px;
     background: #447C66;
     font-size: 1rem;
+}
+
+.payment-information-panel button:hover {
+    border: 2px solid #FFF;
 }
 
 .account-status-panel {
@@ -345,6 +350,7 @@
     justify-content: center;
     align-items: center;
     height: 40px;
+    margin-bottom: 10px;
 }
 
 .remove-payment-panel label {
@@ -363,8 +369,12 @@
 .remove-payment-panel button {
     width: 250px;
     height: 40px;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-left: 30px;
     background: #447C66;
     font-size: 1rem;
+}
+
+.remove-payment-panel button:hover {
+    border: 2px solid #FFF;
 }

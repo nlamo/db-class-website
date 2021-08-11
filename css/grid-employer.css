@@ -176,3 +176,155 @@
     width: 100%;
     margin-top: 10px;
 }
+
+/* Payments Dashboard */
+.payment-type-panel {
+    justify-content: center;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    padding: 20px;
+    margin: 15px;
+    background: #9DCCBF;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.payment-type-panel h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.payment-type-panel button {
+    width: 250px;
+    height: 160px;
+    margin-left: 25px;
+    margin-top: 70px;
+    font-size: 1.25rem;
+    border-radius: 2.5rem;
+    background: #7296A7;
+    font-family: 'Raleway', sans-serif;;
+}
+
+.payment-type-panel button:hover {
+    filter: brightness(120%);
+}
+
+.payment-information-panel {
+    justify-content: center;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 5; 
+    padding: 20px;
+    margin: 15px;
+    border: solid 1px;
+    border-radius: 5px;
+    background: #9DCCBF;
+}
+
+.payment-information-panel h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.payment-information-panel label {
+    display: flex;
+    justify-content: center;
+    color: #003300;
+    padding-top: 20px;
+}
+
+.payment-information-panel input {
+    display: inline-block;
+    width: 400px;
+    height: 30px;
+    margin-left: 140px;
+    font-size: 1rem;
+}
+
+.payment-information-panel button {
+    width: 500px;
+    height: 60px;
+    margin-top: 35px;
+    margin-left: 90px;
+    background: #447C66;
+    font-size: 1rem;
+}
+
+.account-status-panel {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3; 
+    height: 300px;
+    padding: 20px;
+    margin: 15px;
+    background: #9DCCBF;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.account-status-panel h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.account-status-panel p {
+    height: 70%;
+    padding: 10px;
+    opacity: 1;
+    background: #FFFFFF;
+    font-size: .8rem;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.remove-payment-panel {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 4; 
+    height: 275px;
+    padding: 20px;
+    margin: 15px;
+    background: #9DCCBF;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.remove-payment-panel h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.remove-payment-panel label {
+    display: flex;
+    justify-content: center;
+    color: #003300;
+}
+
+.remove-payment-panel input {
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 55px;
+}
+
+.remove-payment-panel button {
+    width: 250px;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 30px;
+    background: #447C66;
+    font-size: 1rem;
+}

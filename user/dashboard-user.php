@@ -234,6 +234,12 @@
 
      <!-- Second (2nd) User Container/Dashboard -->
      <div class="dashboard-container">
+     
+        <a href="./dashboard-user-payments.php">
+            <button class="payment-button">
+                Payments
+            </button>
+        </a> 
 
         <div class="dashboard-user">
 

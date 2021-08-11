@@ -228,6 +228,12 @@
     <div class="dashboard-container">
         <div class="dashboard-employer">
 
+        <a href="./dashboard-employer-payments.php">
+            <button class="payment-button">
+                Payments
+            </button>
+        </a> 
+
             <div class="help-and-contact" style="height: 650px;">
 
             <h4>Help and Contact</h4><br><br>

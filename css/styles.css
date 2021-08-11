@@ -116,7 +116,6 @@ textarea:hover {
     flex-direction: column;
     justify-content: center;
     padding-top: 50px;
-
 }
 
 .container h2 {
@@ -240,6 +239,20 @@ textarea:hover {
     padding: 10px;
     right: 70px;
     top: 50px;
+}
+
+/* NOTE: this is used for both dashboards */
+.payment-button {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    padding: 10px;
+    right: 70px;
+    top: 30px;
+    background: #6aa78f;
+    color: #FFF;
 }
 
 /* NOTE: this is used for both dashboards */

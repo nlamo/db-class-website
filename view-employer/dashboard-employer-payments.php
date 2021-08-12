@@ -46,6 +46,9 @@
             
                     <label>Withdrawal Type</label>
                     <input type="text" name="withdrawal-type"><br>
+
+                    <label>Account Balance</label>
+                    <input type="text" name="account-balance"><br>
                 </div>
 
                 <div class="lone-button">

@@ -8,12 +8,15 @@
 
         require('../php-config/database.php');
 
-        $employer = mysqli_real_escape_string($conn, $_SESSION['employer']);
+        if ( !($_SESSION['hasFrozenAccount']) ) 
+        {
+            $employer = mysqli_real_escape_string($conn, $_SESSION['employer']);
 
-        $sqlQuery = "UPDATE user SET user.user_category='Employer Prime' WHERE user.username='$employer' AND user.user_category LIKE 'Employer%' ";
-
-        mysqli_query($conn, $sqlQuery);
-  
+            $sqlQuery = "UPDATE user SET user.user_category='Employer Prime' WHERE user.username='$employer' AND user.user_category LIKE 'Employer%' ";
+    
+            mysqli_query($conn, $sqlQuery);
+        }
+ 
         require('../php-config/close-database.php');
         header('Location: dashboard-employer.php');
         exit();
@@ -23,12 +26,15 @@
 
         require('../php-config/database.php');
 
-        $employer = mysqli_real_escape_string($conn, $_SESSION['employer']);
+        if ( !($_SESSION['hasFrozenAccount']) ) 
+        {
+            $employer = mysqli_real_escape_string($conn, $_SESSION['employer']);
 
-        $sqlQuery = "UPDATE user SET user.user_category='Employer Gold' WHERE user.username='$employer' AND user.user_category LIKE 'Employer%' ";
+            $sqlQuery = "UPDATE user SET user.user_category='Employer Gold' WHERE user.username='$employer' AND user.user_category LIKE 'Employer%' ";
 
-        mysqli_query($conn, $sqlQuery);
-
+            mysqli_query($conn, $sqlQuery);
+        }
+        
         require('../php-config/close-database.php');
         header('Location: dashboard-employer.php');
         exit();

@@ -43,3 +43,4 @@ Website/web application for the main project for our database course.
 - 'Apply for a Job' is now fully implemented for users.
 - 'Update Application Status', 'Withdraw Application', and 'Delete User Account' have been implemented.
 - 'Add Payment Option' for both employers and users.
+- Logic to ensure that 'frozen' accounts do not have access to dashboard services (except for editing account, in the case of 'user')

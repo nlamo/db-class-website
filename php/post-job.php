@@ -11,35 +11,36 @@
 
         require('../php-config/database.php');
 
-        // job_ID is AUTO_INCREMENT and so it is given DEFAULT value
+        
+        if ( !($_SESSION['hasFrozenAccount']) )
+        {
+            // job_ID is AUTO_INCREMENT and so it is given DEFAULT value
+            $employerID = mysqli_real_escape_string($conn, $_POST['employer-id']);
+            $jobCategory = mysqli_real_escape_string($conn, $_POST['job-category']);
+            $jobTitle = mysqli_real_escape_string($conn, $_POST['job-title']);
+            $salaryPosted = mysqli_real_escape_string($conn, $_POST['salary']);
+            $descriptionPosted = mysqli_real_escape_string($conn, $_POST['job-description']);
 
-        $employerID = mysqli_real_escape_string($conn, $_POST['employer-id']);
-        $jobCategory = mysqli_real_escape_string($conn, $_POST['job-category']);
-        $jobTitle = mysqli_real_escape_string($conn, $_POST['job-title']);
-        $salaryPosted = mysqli_real_escape_string($conn, $_POST['salary']);
-        $descriptionPosted = mysqli_real_escape_string($conn, $_POST['job-description']);
+            // convert date to timestamp
+            $dateTimestamp = strtotime($_POST['start-date']);
 
-        // convert date to timestamp
-        $dateTimestamp = strtotime($_POST['start-date']);
+            // convert date to MySQL-compliant format
+            $dateYMD = date("Y-m-d H:i:s", $dateTimestamp);
 
-        // convert date to MySQL-complaint format
-        $dateYMD = date("Y-m-d H:i:s", $dateTimestamp);
+            $datePosted = mysqli_real_escape_string($conn, $dateYMD);
 
-        $datePosted = mysqli_real_escape_string($conn, $dateYMD);
+            $sqlQuery = "INSERT INTO job(job_ID, employer_ID, job_category, title, salary, description, date_start) VALUES (DEFAULT, '$employerID', '$jobCategory', '$jobTitle', '$salaryPosted', '$descriptionPosted', '$datePosted')";
 
-        $sqlQuery = "INSERT INTO job(job_ID, employer_ID, job_category, title, salary, description, date_start) VALUES (DEFAULT, '$employerID', '$jobCategory', '$jobTitle', '$salaryPosted', '$descriptionPosted', '$datePosted')";
+            mysqli_query($conn, $sqlQuery);
 
-
-        if (mysqli_query($conn, $sqlQuery)) {
             require('../php-config/close-database.php');
             header('Location: dashboard-employer.php');
             exit();
+            
         }
-        else {
-            require('../php-config/close-database.php');
-            header('Location: dashboard-employer.php');
-            echo 'Query submission error: ' . mysqli_error($conn) . ' ';
-            exit();
-        }
+    
+        require('../php-config/close-database.php');
+        header('Location: dashboard-employer.php');
+        exit();
     }
 ?>

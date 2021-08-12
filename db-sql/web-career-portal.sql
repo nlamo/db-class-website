@@ -7,8 +7,6 @@
 
 USE zic55311;
 
--- --------------------------------------------------------------------------------------------------------------------------------
-
 CREATE TABLE `employer` (
     `employer_ID` INT AUTO_INCREMENT,
     `name` VARCHAR(255),
@@ -18,19 +16,6 @@ CREATE TABLE `employer` (
     PRIMARY KEY (employer_ID)
 );
 
-INSERT INTO `employer` VALUES (1, 'Alpha Computing', '515 Alpha Way', '555-515-5245', 'alphacomputing@alpha.org');
-INSERT INTO `employer` VALUES (2, 'Darryl Electronics', '654 Simba Way', '555-515-6216', 'darrylelectro@darrylelectro.com');
-INSERT INTO `employer` VALUES (3, 'Jimba Microprocessors', '721 Jimba Ave', '555-425-5215', 'jimbamicropro@jimba.net');
-INSERT INTO `employer` VALUES (4, 'Kettle Coffee', '421 Kettle Boulevard', '555-745-2910', 'kettle@kettlecoffeeisgood.ca');
-INSERT INTO `employer` VALUES (5, 'Stan\'s Bagels', '425 Bagel Road', '521-542-4919', 'stanley@stansbagels.com');
-INSERT INTO `employer` VALUES (6, 'Tony Pizzeria', '234 Tony Street', '512-492-1928', 'tony@tonypizzanow.org');
-INSERT INTO `employer` VALUES (7, 'Denton Photography', '555 Alpha Way', '555-234-8239', 'denton@dentonphoto.ca');
-INSERT INTO `employer` VALUES (8, 'Fine Refinishing', '7820 Wood Way', '514-849-2938', 'refinish@finewood.now');
-INSERT INTO `employer` VALUES (9, 'James Richardson Brandy', '514 Avenue Decadent', '512-481-2381', 'jrichardson@bestbrandies.org');
-INSERT INTO `employer` VALUES (10, 'Smoke Show', '290 Smoker Boulevard', '555-512-1932', 'smokeshow@smokeshowsmokeables.org');
-
--- --------------------------------------------------------------------------------------------------------------------------------
-
 -- Six Categories w/ Price (Admin, User Basic, User Prime, User Gold, Employer Prime, Employer Gold,)
 CREATE TABLE `user_category` (
     `user_category` VARCHAR(255),
@@ -38,20 +23,9 @@ CREATE TABLE `user_category` (
     PRIMARY KEY (user_category)
 );
 
-INSERT INTO `user_category` VALUES ('Admin', 0);
-INSERT INTO `user_category` VALUES ('Employer Prime', 50);
-INSERT INTO `user_category` VALUES ('Employer Gold', 100);
-INSERT INTO `user_category` VALUES ('User Basic', 0);
-INSERT INTO `user_category` VALUES ('User Prime', 10);
-INSERT INTO `user_category` VALUES ('User Gold', 20);
-
--- --------------------------------------------------------------------------------------------------------------------------------
-
 -- NOTE: `total_jobs_posted` will be used by an employer, and
 --       `total_applications_submitted` will be used by a user (who is looking for jobs);
 --        they are nothing more than counters
-
---        this might look different after normalization
 
 -- NOTE:  default from `employer_ID` is NULL in case the user is not an employer
 CREATE TABLE `user` (
@@ -71,6 +45,91 @@ CREATE TABLE `user` (
     FOREIGN KEY (user_category) REFERENCES user_category (user_category)
 );
 
+-- Only two payment methods, so they'll always be unique here
+CREATE TABLE `payment_method` (
+    `payment_method` VARCHAR(255), -- Chequing, Credit
+    PRIMARY KEY (payment_method)
+);
+
+-- Each payment is unique, and the ID will determine everything, including username
+CREATE TABLE `payment_account` (
+    `payment_account_ID` INT AUTO_INCREMENT,
+    `username` VARCHAR(255),
+    `cardholder_name` VARCHAR(255),
+    `card_number` VARCHAR(255),
+    `expiration_date` DATE,
+    `payment_method` VARCHAR(255), -- Chequing, Credit
+    `withdrawal_type` VARCHAR(255), -- Manual, Automatic
+    `balance` INT,
+    `status` VARCHAR(255), -- Settled, Frozen
+    PRIMARY KEY (payment_account_ID),
+    FOREIGN KEY (username) REFERENCES user (username),
+    FOREIGN KEY (payment_method) REFERENCES payment_method (payment_method)
+);
+
+-- Creating the account separately so that we can associate multiple payment methods with a user
+CREATE TABLE `user_account` (
+    `username` VARCHAR(255),
+    `payment_account_ID` INT,
+    PRIMARY KEY (username, payment_account_ID),
+    FOREIGN KEY (username) REFERENCES user (username)
+);
+
+-- Each job is unique, and so the ID will determine everything
+CREATE TABLE `job` (
+    `job_ID` INT AUTO_INCREMENT,
+    `employer_ID` INT,
+    `job_category` VARCHAR(255),
+    `title` VARCHAR(255),
+    `salary` INT,
+    `description` VARCHAR(2000), -- much larger text
+    `date_start` DATE,
+    PRIMARY KEY (job_ID),
+    FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
+);
+
+-- NOTE: When employer uses 'Update Application', s(he) will send a 'Message to Applicant'
+--       which will then update the `application_response` attribute value
+
+-- NOTE: I added job_name, employer_ID, and employer_name. It makes some queries far easier, but it removes the possibility of 3NF as there are now transitive dependencies. Design trade-off, I say!!
+CREATE TABLE `job_application` (
+    `job_application_ID` INT AUTO_INCREMENT,
+    `username` VARCHAR(255),
+    `job_ID` INT,
+    `job_name` VARCHAR(255),
+    `employer_ID` INT,
+    `employer_name` VARCHAR(255),
+    `application_text` VARCHAR(1000),
+    `application_status` VARCHAR(255), -- active, inactive, accepted, rejected
+    `application_response` VARCHAR(500),
+    PRIMARY KEY (job_application_ID),
+    FOREIGN KEY (username) REFERENCES user (username),
+    FOREIGN KEY (job_ID) REFERENCES job (job_ID),
+    FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
+);
+
+-- --------------------------------------------------------------------------------------------------------------------------------
+
+-- INSERTION QUERIES (BASELINE DATA FOR THE DATABASE)
+
+INSERT INTO `employer` VALUES (1, 'Alpha Computing', '515 Alpha Way', '555-515-5245', 'alphacomputing@alpha.org');
+INSERT INTO `employer` VALUES (2, 'Darryl Electronics', '654 Simba Way', '555-515-6216', 'darrylelectro@darrylelectro.com');
+INSERT INTO `employer` VALUES (3, 'Jimba Microprocessors', '721 Jimba Ave', '555-425-5215', 'jimbamicropro@jimba.net');
+INSERT INTO `employer` VALUES (4, 'Kettle Coffee', '421 Kettle Boulevard', '555-745-2910', 'kettle@kettlecoffeeisgood.ca');
+INSERT INTO `employer` VALUES (5, 'Stan\'s Bagels', '425 Bagel Road', '521-542-4919', 'stanley@stansbagels.com');
+INSERT INTO `employer` VALUES (6, 'Tony Pizzeria', '234 Tony Street', '512-492-1928', 'tony@tonypizzanow.org');
+INSERT INTO `employer` VALUES (7, 'Denton Photography', '555 Alpha Way', '555-234-8239', 'denton@dentonphoto.ca');
+INSERT INTO `employer` VALUES (8, 'Fine Refinishing', '7820 Wood Way', '514-849-2938', 'refinish@finewood.now');
+INSERT INTO `employer` VALUES (9, 'James Richardson Brandy', '514 Avenue Decadent', '512-481-2381', 'jrichardson@bestbrandies.org');
+INSERT INTO `employer` VALUES (10, 'Smoke Show', '290 Smoker Boulevard', '555-512-1932', 'smokeshow@smokeshowsmokeables.org');
+
+INSERT INTO `user_category` VALUES ('Admin', 0);
+INSERT INTO `user_category` VALUES ('Employer Prime', 50);
+INSERT INTO `user_category` VALUES ('Employer Gold', 100);
+INSERT INTO `user_category` VALUES ('User Basic', 0);
+INSERT INTO `user_category` VALUES ('User Prime', 10);
+INSERT INTO `user_category` VALUES ('User Gold', 20);
+
 -- Regular users (administrators), need a new table for this also...
 INSERT INTO `user` VALUES ('n_lamo', NULL, 'Admin', 'Nicholas', 'LaMothe', 'n_lamo@encs.concordia.ca', 'steppenwolf', 'Vertigo', 0, 0, 'active');
 INSERT INTO `user` VALUES ('f_attia', NULL, 'Admin', 'Fady', 'Attia', 'f_attia@encs.concordia.ca', 'password', 'Unknown', 0, 0, 'active');
@@ -89,79 +148,10 @@ INSERT INTO `user` VALUES ('jimba', 3, 'Employer Gold', 'Jim', 'Brando', 'jimbra
 INSERT INTO `user` VALUES ('kettle', 4, 'Employer Gold', 'Sarah', 'Wilkinson', 'sandra@kettlecoffeeisgood.ca', 'sandra', 'Sleepless in Seattle', 1, 0, 'active');
 INSERT INTO `user` VALUES ('stanley', 5, 'Employer Gold', 'Stanley', 'Silverman', 'stanley@fakest.ca', 'stanley', 'The Conversation', 1, 0, 'active');
 
-SELECT COUNT(*) AS returnValue FROM user WHERE user.username='n_lamo' AND user.user_category='Admin';
--- --------------------------------------------------------------------------------------------------------------------------------
-
--- Only two payment methods, so they'll always be unique here
-CREATE TABLE `payment_method` (
-    `payment_method` VARCHAR(255), -- Chequing, Credit
-    PRIMARY KEY (payment_method)
-);
-
 INSERT INTO `payment_method` VALUES ('Chequing');
 INSERT INTO `payment_method` VALUES ('Credit');
 
-SELECT * FROM payment_method;
--- --------------------------------------------------------------------------------------------------------------------------------
-
--- Creating the account separately so that we can associate multiple payment methods with a user
-CREATE TABLE `user_account` (
-    `username` VARCHAR(255),
-    `payment_method` VARCHAR(255),
-    PRIMARY KEY (username, payment_method),
-    FOREIGN KEY (username) REFERENCES user (username)
-);
-
-INSERT INTO `user_account` VALUES ('n_lamo', 'Credit');
-INSERT INTO `user_account` VALUES ('f_attia', 'Credit');
-INSERT INTO `user_account` VALUES ('zeba', 'Credit');
-INSERT INTO `user_account` VALUES ('damo', 'Chequing');
-INSERT INTO `user_account` VALUES ('gord', 'Chequing');
-INSERT INTO `user_account` VALUES ('alpha', 'Credit');
-INSERT INTO `user_account` VALUES ('darryl', 'Credit');
-INSERT INTO `user_account` VALUES ('jimba', 'Credit');
-INSERT INTO `user_account` VALUES ('kettle', 'Chequing');
-INSERT INTO `user_account` VALUES ('stanley', 'Chequing');
-
--- --------------------------------------------------------------------------------------------------------------------------------
-
--- NOTE: There will be several other things regarding payments that we will likely have to implement
---       It's not certain to me just how many, but it seems like we might need to have something like a 'user_account'
---       relation in order to satisfy the requirements.
-
--- Each payment is unique, and the ID will determine everything, including username
-CREATE TABLE `payment_information` (
-    `payment_information_ID` INT AUTO_INCREMENT,
-    `username` VARCHAR(255),
-    `cardholder_name` VARCHAR(255),
-    `card_number` VARCHAR(255),
-    `expiration_date` DATE,
-    `payment_method` VARCHAR(255), -- Chequing, Credit
-    `withdrawal_type` VARCHAR(255), -- Manual, Automatic
-    PRIMARY KEY (payment_information_ID),
-    FOREIGN KEY (username) REFERENCES user (username),
-    FOREIGN KEY (payment_method) REFERENCES payment_method (payment_method)
-);
-
-INSERT INTO payment_information VALUES (DEFAULT, 'alpha', 'Ali Grandich', '48398180284081', '2021-09-01', 'Chequing', 'Automatic');
-
-SELECT * FROM payment_information;
-DELETE FROM payment_information WHERE username='alpha';
-
--- --------------------------------------------------------------------------------------------------------------------------------
-
--- Each job is unique, and so the ID will determine everything
-CREATE TABLE `job` (
-    `job_ID` INT AUTO_INCREMENT,
-    `employer_ID` INT,
-    `job_category` VARCHAR(255),
-    `title` VARCHAR(255),
-    `salary` INT,
-    `description` VARCHAR(2000), -- much larger text
-    `date_start` DATE,
-    PRIMARY KEY (job_ID),
-    FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
-);
+INSERT INTO `payment_account` VALUES (DEFAULT, 'alpha', 'Ali Grandich', '48398180284081', '2021-09-01', 'Chequing', 'Automatic');
 
 -- For the sake of simplicity, we're just starting off with 10 jobs (1-10), ordered by the first 10 employers (1-10)
 INSERT INTO `job` VALUES (1, 1, 'IT', 'System Administrator', 80000, 'This role requires knowledge of the system administration of MS Windows based workstations. A high-degree of proficiency in cmd and Powershell is required, with knowledge of many basic commands, system utilities, security best practices, setting up and disassembling workstations, and the maintenance and supervision of accounts with a variety of permissions. Low-level security knowledge in assembly is considered a major asset.', '2021-08-30');
@@ -175,35 +165,7 @@ INSERT INTO `job` VALUES (8, 8, 'Carpentry', 'Finishing Carpenter', 65000, 'We p
 INSERT INTO `job` VALUES (9, 9, 'Service', 'Front of House', 45000, 'Are you accustomed to the finer pleasures of life, and do you know what it means to provide a truly wonderful experience as both host and guide? If this sounds like you, then please apply for our position as Front of House. We search for candidates who ideally have over a decade of experience in the fine dining industry. A deep and engaged knowledge of wines, brandies, and cognacs is essential to this position. We provide extensive training regarding the properties of our brandies and our plates, but a deep knowledge of the fine dining experience is essential for this role.', '2021-09-20');
 INSERT INTO `job` VALUES (10, 10, 'Service', 'Retail Clerk', 27500, 'Do you love to smoke? Do you know your smokeable accessories? Are you part of the culture? If all of these apply, come see us down at Smoke Show. Drop on in.', '2021-09-15');
 
--- --------------------------------------------------------------------------------------------------------------------------------
-
--- NOTE: The notion of an application 'status' appears to have too many meanings in the --
---       requirements... For example, the fact that 'users' and 'employers' should
---      'maintain' the status of an applicaton is a bit unusual. Just a thought.
-
--- NOTE: When employer uses 'Update Application', s(he) will send a 'Message to Applicant'
---       which will then update the `application_response` attribute value
-
--- NOTE: I added job_name, employer_ID, and employer_name. It makes some queries far easier, but it removes the possibility of 3NF as there are now transitive dependencies. Design trade-off, I say!!
-
-CREATE TABLE `job_application` (
-    `job_application_ID` INT AUTO_INCREMENT,
-    `username` VARCHAR(255),
-    `job_ID` INT,
-    `job_name` VARCHAR(255),
-    `employer_ID` INT,
-    `employer_name` VARCHAR(255),
-    `application_text` VARCHAR(1000),
-    `application_status` VARCHAR(255), -- active, inactive, accepted, rejected
-    `application_response` VARCHAR(500),
-    PRIMARY KEY (job_application_ID),
-    FOREIGN KEY (username) REFERENCES user (username),
-    FOREIGN KEY (job_ID) REFERENCES job (job_ID),
-    FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
-);
-
--- TUPLE (job_application_ID, username, job_ID, job_name, employer_ID, employer_name, application_no, application_text, application_status, application_response)
-
+-- TUPLE (job_application_ID, username, job_ID, job_name, employer_ID, employer_name, application_text, application_status, application_response)
 INSERT INTO `job_application` VALUES (1, 'zeba', 1, 'System Administrator', 1, 'Alpha Computing', 'I have 20+ years of Windows System administration, and am a quick learner. I have used Linux for 15 minutes, but then it crashed, and it caused me such anxiety that I went back to Microsoft. As a result of this, I started learning PowerShell to increase my self-esteem, but found that it was insufferable, so I started using bash in Ubuntu after setting up WSL. As such, I am indeed proficient in computer systems. My knowledge of networking is sufficient, as I am capable of running the commands ipconfig and ping. Please reach out soon!', 'active', NULL);
 INSERT INTO `job_application` VALUES (2, 'zeba', 5, 'Web Developer', 5, 'Stan\'s Bagels', 'I have 5+ years as a web developer, and I am a very fast learner. I continuously gravitate betweent the front and back-end, but I can\'t say that I\'m good at either. As such, I am full-stack. You will see that my stack is sufficiently stacked that I pack a real smack when it comes to applications that we all think are wack. Other than that... I have used Linux for 15 minutes, but then it crashed, and it caused me such anxiety that I went back to Microsoft. As a result of this, I started learning PowerShell to increase my self-esteem, but found that it was insufferable, so I started using bash in Ubuntu after setting up WSL. As such, I am indeed proficient in computer systems. My knowledge of networking is sufficient, as I am capable of running the commands ipconfig and ping. Please reach out soon!', 'active', NULL);
 INSERT INTO `job_application` VALUES (3, 'damo', 4, 'Barista', 4, 'Kettle Coffee', 'Many call me a splendid cook. I have worked many years as a barista, a prep cook, and a line cook. Reach out anytime', 'active', NULL);
@@ -211,8 +173,6 @@ INSERT INTO `job_application` VALUES (4, 'damo', 6, 'Line Cook', 6, 'Tony Pizzer
 INSERT INTO `job_application` VALUES (5, 'gord', 1, 'System Administrator', 1, 'Alpha Computing', '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
 INSERT INTO `job_application` VALUES (6, 'gord', 2, 'Electrical Engineer', 2, 'Darryl Electronics', '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
 INSERT INTO `job_application` VALUES (7, 'gord', 3, 'Computer Architect', 3, 'Jimba Microprocessors', '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
-
-
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 -- TEST QUERIES / JUST FOR WORKING ON THE PHP/FUNCTIONALITY
@@ -221,7 +181,7 @@ SELECT * FROM job;
 SELECT * FROM employer;
 SELECT * FROM user;
 SELECT * FROM job_application;
-SELECT * FROM payment_information;
+SELECT * FROM payment_account;
 
 SELECT user.security_answer AS securityAnswer
 FROM user
@@ -253,6 +213,7 @@ ALTER TABLE employer MODIFY employer_ID INT AUTO_INCREMENT;
 SELECT * FROM user;
 UPDATE user SET user.user_category='User Basic', user.first_name='Damo', user.last_name='Suzuki', user.password='damo', user.email='damo@mysticalvoice.org', user.security_answer='Rashomon', user.total_jobs_posted=0, user.total_applications_submitted=2, user.status='active' WHERE user.username='damo';
 
+SELECT COUNT(*) AS returnValue FROM user WHERE user.username='n_lamo' AND user.user_category='Admin';
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 -- All users need access to:
@@ -291,9 +252,9 @@ UPDATE `job_application` SET application_status='accepted', application_response
 
 -- v.
 
---vi.
+-- vi.
 
---vii.
+-- vii.
 
 INSERT INTO `user` VALUES ('new_user', NULL, 'User Basic', 'UserFirstName', 'UserLastName', 'UserEmail','Password12!','MySecurityAnswer',0,0,'active');
 UPDATE `user` SET user.first_name = 'Updated first_name' WHERE user.first_name = 'UserFirstName';
@@ -301,7 +262,7 @@ SELECT * FROM `user` WHERE user.first_name = 'Updated first_name';
 DELETE FROM `user` WHERE user.first_name = 'Updated first_name';
 
 
---viii.
+-- viii.
 SELECT * 
 FROM job;
 

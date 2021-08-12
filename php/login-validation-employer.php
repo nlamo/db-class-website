@@ -22,21 +22,26 @@
        
         $isAdminQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$employer' AND user.user_category='Admin'";
 
+        // Check if the user has a frozen payment account
+        $hasFrozenAccountQuery = "SELECT COUNT(*) AS returnValue FROM payment_account WHERE payment_account.username='$employer' AND payment_account.status='Frozen'";
 
         // Running the queries
         $employerExists = mysqli_query($conn, $employerExistsQuery);
         $passwordIsCorrect = mysqli_query($conn, $passwordIsCorrectQuery);
         $isAdmin = mysqli_query($conn, $isAdminQuery);
+        $hasFrozenAccount = mysqli_query($conn, $hasFrozenAccountQuery);
 
         // Doing this thing...
         $employerRow = $employerExists->fetch_assoc();
         $passwordRow = $passwordIsCorrect->fetch_assoc();
         $adminRow = $isAdmin->fetch_assoc();
+        $frozenAccountRow = $hasFrozenAccount->fetch_assoc();
         
         // Getting the results... 
         $employerExistsResult = $employerRow['returnValue'];
         $passwordIsCorrectResult = $passwordRow['returnValue'];
         $isAdminResult = $adminRow['returnValue'];
+        $hasFrozenAccountResult = $frozenAccountRow['returnValue'];
         
 
         if (empty($employer) || empty($employerPassword)) {
@@ -61,6 +66,7 @@
             $_SESSION['loginSuccess'] = $loginSuccess;
             $_SESSION['employer'] = $employer;
             $_SESSION['employerPassword'] = $employerPassword;
+            $_SESSION['hasFrozenAccount'] = $hasFrozenAccountResult;
 
             // special check for admin, who can also log in as "employer"
             if ($isAdminResult) {

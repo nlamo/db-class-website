@@ -67,14 +67,6 @@ CREATE TABLE `payment_account` (
     FOREIGN KEY (payment_method) REFERENCES payment_method (payment_method)
 );
 
--- Creating the account separately so that we can associate multiple payment methods with a user
-CREATE TABLE `user_account` (
-    `username` VARCHAR(255),
-    `payment_account_ID` INT,
-    PRIMARY KEY (username, payment_account_ID),
-    FOREIGN KEY (username) REFERENCES user (username)
-);
-
 -- Each job is unique, and so the ID will determine everything
 CREATE TABLE `job` (
     `job_ID` INT AUTO_INCREMENT,
@@ -182,6 +174,8 @@ SELECT * FROM employer;
 SELECT * FROM user;
 SELECT * FROM job_application;
 SELECT * FROM payment_account;
+
+UPDATE payment_account SET username='alpha' WHERE payment_account_ID=3;
 
 SELECT user.security_answer AS securityAnswer
 FROM user

@@ -44,3 +44,6 @@ Website/web application for the main project for our database course.
 - 'Update Application Status', 'Withdraw Application', and 'Delete User Account' have been implemented.
 - 'Add Payment Option' for both employers and users.
 - Logic to ensure that 'frozen' accounts do not have access to dashboard services (except for editing account, in the case of 'user')
+- 'Edit Option' for payments added.
+- 'Remove Payment' option added. 
+- 'Account Status' output for settled accounts/frozen accounts.

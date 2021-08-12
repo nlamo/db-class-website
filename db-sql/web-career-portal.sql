@@ -67,6 +67,16 @@ CREATE TABLE `payment_account` (
     FOREIGN KEY (payment_method) REFERENCES payment_method (payment_method)
 );
 
+-- Each payment is associated with a payment account and a particular user category
+CREATE TABLE `payment` (
+    `payment_ID` INT AUTO_INCREMENT,
+    `payment_account_ID` INT,
+    `user_category` VARCHAR(255),
+    PRIMARY KEY (payment_ID),
+    FOREIGN KEY (payment_account_ID) REFERENCES payment_account (payment_account_ID),
+    FOREIGN KEY (user_category) REFERENCES user_category (user_category)
+);
+
 -- Each job is unique, and so the ID will determine everything
 CREATE TABLE `job` (
     `job_ID` INT AUTO_INCREMENT,
@@ -257,9 +267,8 @@ DELETE FROM `user` WHERE user.first_name = 'Updated first_name';
 
 
 -- viii.
-SELECT * 
+SELECT *
 FROM job;
 
 -- ix.
 INSERT INTO `job_application` VALUES (9, 'new_user', 4, 'Barista', 4, 'Kettle Coffee', 'Barista has always been my passion. The art of creating something form basic ingredients is a wow for me', 'active', NULL);
-

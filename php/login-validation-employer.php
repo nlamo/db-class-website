@@ -1,7 +1,7 @@
 <!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
 
 <?php
-    
+
     if (isset($_POST['submit'])) {
 
         require('../php-config/database.php');
@@ -17,12 +17,12 @@
 
         // Employer 'exists' if it is in the database AND has a status of 'active'
         $employerExistsQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$employer' AND user.status='active'";
-        
+
         $passwordIsCorrectQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$employer' AND user.password='$employerPassword' AND (user.user_category='Admin' OR user.user_category LIKE 'Employer%')";
-       
+
         $isAdminQuery = "SELECT COUNT(*) AS returnValue FROM user WHERE user.username='$employer' AND user.user_category='Admin'";
 
-        // Check if the user has a frozen payment account
+        // Check if the employer has a frozen payment account
         $hasFrozenAccountQuery = "SELECT COUNT(*) AS returnValue FROM payment_account WHERE payment_account.username='$employer' AND payment_account.status='Frozen'";
 
         // Running the queries
@@ -36,13 +36,13 @@
         $passwordRow = $passwordIsCorrect->fetch_assoc();
         $adminRow = $isAdmin->fetch_assoc();
         $frozenAccountRow = $hasFrozenAccount->fetch_assoc();
-        
-        // Getting the results... 
+
+        // Getting the results...
         $employerExistsResult = $employerRow['returnValue'];
         $passwordIsCorrectResult = $passwordRow['returnValue'];
         $isAdminResult = $adminRow['returnValue'];
         $hasFrozenAccountResult = $frozenAccountRow['returnValue'];
-        
+
 
         if (empty($employer) || empty($employerPassword)) {
             $_SESSION['loginAttempt'] = $loginAttempt;
@@ -50,7 +50,7 @@
             header("Location: index.php");
             exit();
         }
-        
+
         if (!$employerExistsResult || !$passwordIsCorrectResult) {
             $_SESSION['loginAttempt'] = $loginAttempt;
             require('../php-config/close-database.php');

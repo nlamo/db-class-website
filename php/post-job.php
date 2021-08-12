@@ -6,13 +6,13 @@
     //       to the user after the redirect!
 
     // TODO: Add further validation in case fields are empty
-    
+
     if (isset($_POST['submit-job'])) {
 
         require('../php-config/database.php');
 
-        
-        if ( !($_SESSION['hasFrozenAccount']) )
+
+        if (!($_SESSION['hasFrozenAccount']))
         {
             // job_ID is AUTO_INCREMENT and so it is given DEFAULT value
             $employerID = mysqli_real_escape_string($conn, $_POST['employer-id']);
@@ -36,9 +36,9 @@
             require('../php-config/close-database.php');
             header('Location: dashboard-employer.php');
             exit();
-            
+
         }
-    
+
         require('../php-config/close-database.php');
         header('Location: dashboard-employer.php');
         exit();

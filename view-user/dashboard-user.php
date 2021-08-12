@@ -27,8 +27,6 @@
 
     // to delete your user account
     require('../php/delete-user-account.php');
-
-
 ?>
 
 <!DOCTYPE html>
@@ -55,17 +53,17 @@
                 Need Help? Contact Us.
             </button>
         </a>
-        
+
         <form method="POST" action="">
             <a href="#">
                 <button class="search-all-jobs" name="search-all-jobs">
                     Search All Jobs!
                 </button>
-            </a> 
-        </form> 
+            </a>
+        </form>
 
         <div class="dashboard-user">
-         
+
             <!-- TODO: Allow user to simply get all the jobs (full search) -->
             <!-- TODO: Requests for data, will be output by job-data > textarea -->
             <div class="search-jobs-by-category">
@@ -76,14 +74,13 @@
 
                     <label>Job Category</label><br>
                     <input type="job-category" id="job-category" name="job-category">
-            
+
                     <button type="submit" class="button" name="search-jobs-by-category">Search</button><br>
-                </form> 
+                </form>
 
             </div>
 
             <div class="search-jobs-by-name">
-
                 <form method="POST" action="">
                     <h4>Search By Name</h4><br><br>
                     <small>Please enter the name of the jobs you're looking for:</small><br><br>
@@ -92,8 +89,7 @@
                     <input type="job-name" id="job-name" name="job-name">
 
                     <button type="submit" class="button" name="search-jobs-by-name">Search</button><br>
-                </form> 
-
+                </form>
             </div>
 
             <!-- TODO: Job data retrieved from MySQL DB will be output here -->
@@ -102,15 +98,15 @@
                     <h4>Job Data</h4><br><br>
 
                     <p name="job-data" id="job-data">
-                     
+
                         <!-- USER: searched for all jobs -->
                         <?php if (isset($_SESSION['searchedForJobs'])): ?>
 
                             <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
-                                
+
                                 <!-- NOTE: Previously used a counter, but this would be inadequate if a given job (vis-a-vis job_ID) were to be removed, so $entry - 1 works better, for now at least... -->
 
-                                <?php 
+                                <?php
                                     echo 'Job ID: ' . $entry . '<br>';
                                     echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$entry - 1 ] . '<br>';
                                     echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$entry - 1] . '<br>';
@@ -133,7 +129,7 @@
 
                             <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
 
-                                <?php 
+                                <?php
                                     echo 'Job ID: ' . $entry . '<br>';
                                     echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$counter] . '<br>';
                                     echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$counter] . '<br>';
@@ -158,7 +154,7 @@
 
                             <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
 
-                                <?php 
+                                <?php
                                     echo 'Job ID: ' . $entry . '<br>';
                                     echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$counter] . '<br>';
                                     echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$counter] . '<br>';
@@ -178,31 +174,28 @@
                     </p>
                 </form>
             </div>
-     
-            <div class="apply-for-job">
 
+            <div class="apply-for-job">
                 <form method="POST" action="">
                     <h4>Apply for a Job</h4><br><br>
-            
+
                     <label><strong>Job ID</strong></label><br>
                     <input type="text" id="job-id" name="job-id">
 
                     <br><br><br>
-                
+
                     <label>Application</label><br>
                     <textarea id="application" name="application-text" cols="28" rows="17" style="margin-top:10px;"></textarea>
-            
+
                     <button type="submit" class="button" name="apply-for-job" style="width:260px;">Submit Application</button><br>
                 </form>
-                
             </div>
 
             <div class="maintain-status">
-
                 <form method="POST" action="">
                     <h4>Maintain Status</h4><br><br>
                     <small>Set application to active or inactive:</small><br><br>
-                    
+
                     <label><strong>Job Application ID</strong></label><br>
                     <input type="text" id="job-application-id" name="job-application-id"><br>
 
@@ -214,13 +207,12 @@
             </div>
 
             <div class="withdraw-application">
-
                 <form method="POST" action="">
                     <h4>Withdraw Application</h4><br><br><br>
 
                     <label><strong>Job Application ID</strong></label><br>
                     <input type="text" id="job-application-id" name="job-application-id">
-        
+
                     <button type="submit" class="button" name="withdraw-application">Withdraw</button><br>
                 </form>
             </div>
@@ -229,17 +221,17 @@
     </div>
 
 
-    <br><br><br> 
+    <br><br><br>
 
 
      <!-- Second (2nd) User Container/Dashboard -->
      <div class="dashboard-container">
-     
+
         <a href="./dashboard-user-payments.php">
             <button class="payment-button">
                 Payments
             </button>
-        </a> 
+        </a>
 
         <div class="dashboard-user">
 
@@ -286,7 +278,7 @@
 
                     <small>Want more functionality? Upgrade!</small><br><br>
 
-                    <small> <i>You really should just upgrade.</i> There's not a lot you can really do unless you go 'Prime', so do that, at a minimum.</small> 
+                    <small> <i>You really should just upgrade.</i> There's not a lot you can really do unless you go 'Prime', so do that, at a minimum.</small>
 
                     <button type="submit" class="button" style="background:grey;" onclick="alertBox('You have changed your subscription to basic.\n\nYou can view all of the jobs but you cannot apply.\n\nThis subscription is free.')" name="subscribe-to-basic">
                         BASIC
@@ -295,16 +287,16 @@
                     </button>
                     <button type="submit" class="button" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!\n\nYou can now view all jobs and apply for an unlimited number of jobs.\n\nYou will be charged $20 per month. Feel free to cancel anytime.')" name="subscribe-to-gold">
                         GOLD
-                    </button>      
+                    </button>
                 </form>
             </div>
-                
+
             <div class="update-user-profile">
                 <form method="POST" action="">
                     <h4>Update User Profile</h4><br><br>
 
                     <br>
-                    
+
                     <label>First Name</label><br>
                     <input type="first-name" name="first-name"><br><br>
 
@@ -319,16 +311,15 @@
 
                     <label>Security Question:</label><br>
                     <div class="security-question">What is your favourite film of<br> all time?</div>
-        
+
                     <input type="text" name="security-answer"><br><br>
 
                     <button type="submit" class="button" style="width:260px;" name="update-user-profile">Update Profile</button><br>
                 </form>
             </div>
 
-            
-            <div class="delete-user-account" style="height: 607px;">
 
+            <div class="delete-user-account" style="height: 607px;">
                 <form method="POST" action="">
                     <h4>Delete User Account</h4><br><br>
 
@@ -343,9 +334,8 @@
 
                     <button type="submit" class="button" name="delete-account">Delete Account</button><br>
                 </form>
-                
             </div>
-            
+
         </div>
     </div>
 

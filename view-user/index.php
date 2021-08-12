@@ -6,10 +6,9 @@
     unset($_SESSION['searchedJobsByCategory']);
     unset($_SESSION['searchedJobsByName']);
     unset($_SESSION['passwordResult']);
-    
+
     // some basic authentication for user login
     require('../php/login-validation-user.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -44,12 +43,12 @@
                     Login
                 </button><br>
             </form>
-            
+
             <?php if (isset($_SESSION['loginAttempt'])): ?>
-                
+
                 <!-- Login validation -->
                 <?php if (($_SESSION['loginAttempt'])): ?>
-                    
+
                     <small id="user-message" style="text-align:center;">Please enter a valid username and password.</small>
 
                 <?php elseif(!($_SESSION['loginAttempt'])): ?>
@@ -59,17 +58,17 @@
                         userMes.remove();
                     </script>
 
-                <?php endif; ?>  
+                <?php endif; ?>
             <?php endif; ?>
 
-        </div>       
+        </div>
     </div>
 
     <small>
         <br><br><b><a href="./user-sign-up.php" style="a:hover:">New here? Sign up for an account.</a></b>
-        
+
         <br><br><a href="user-password-retrieval.php" style="a:hover:">Forgot your password? Click here.</a>
-        
+
         <br><br><a href="../index.html" style="a:hover:">Return to Home</a>
     </small>
 

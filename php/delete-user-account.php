@@ -6,7 +6,7 @@
     //            But there is good reason. If I chose to use ON CASCADE DELETE for
     //            child tables if I were to DELETE a given user account, then it would
     //            remove important records and potentially break the logic in some cases.
-    //            As such, nullifying the user makes the most sense. 
+    //            As such, nullifying the user makes the most sense.
 
     if (isset($_POST['delete-account'])) {
 
@@ -16,7 +16,7 @@
         $theAffirmative = 'Yes';
         $user = mysqli_real_escape_string($conn, $_SESSION['user']);
 
-        if ( (strcmp($confirmDecision, $theAffirmative) === 0) && !empty($user)) 
+        if ( (strcmp($confirmDecision, $theAffirmative) === 0) && !empty($user) ) 
         {
             $sqlQuery = "UPDATE user SET employer_ID=NULL, user_category=NULL, first_name=NULL, last_name=NULL, email=NULL, password=NULL, security_answer=NULL, total_jobs_posted=NULL, total_applications_submitted=NULL, status='inactive' WHERE user.username='$user'";
 
@@ -25,7 +25,7 @@
             header('Location: index.php');
             exit();
         }
-        else 
+        else
         {
             // Print an error of some kind
         }

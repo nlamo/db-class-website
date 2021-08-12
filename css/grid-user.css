@@ -35,7 +35,7 @@
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 1;
-    grid-row-end: 2; 
+    grid-row-end: 2;
     height: 290px;
     padding: 20px;
     margin: 15px;
@@ -48,7 +48,7 @@
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 2;
-    grid-row-end: 4; 
+    grid-row-end: 4;
     padding: 20px;
     margin: 15px;
     background: #CAE4CD;
@@ -64,7 +64,7 @@
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
-    grid-row-end: 4; 
+    grid-row-end: 4;
     padding: 20px;
     margin: 15px;
     background: #CAE4CD;
@@ -92,7 +92,7 @@
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
-    grid-row-end: 4; 
+    grid-row-end: 4;
     padding: 20px;
     margin: 15px;
     background: #CAE4CD;
@@ -104,7 +104,6 @@
     width: 265px;
 }
 
-
 .apply-for-job button {
     margin-top: 26px;
 }
@@ -113,7 +112,7 @@
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 1;
-    grid-row-end: 3; 
+    grid-row-end: 3;
     height: 310px;
     padding: 20px;
     margin: 15px;
@@ -139,7 +138,7 @@
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 3;
-    grid-row-end: 4; 
+    grid-row-end: 4;
     height: 250px;
     padding: 20px;
     margin: 15px;
@@ -166,7 +165,7 @@
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
-    grid-row-end: 4; 
+    grid-row-end: 4;
     padding: 20px;
     margin: 15px;
     background: #CAE4CD;
@@ -185,7 +184,7 @@
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
-    grid-row-end: 4; 
+    grid-row-end: 4;
     padding: 20px;
     margin: 15px;
     background: #CAE4CD;
@@ -205,7 +204,7 @@
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 1;
-    grid-row-end: 4; 
+    grid-row-end: 4;
     padding: 20px;
     margin: 15px 15px 10px 15px;
     background: #CAE4CD;
@@ -230,7 +229,7 @@
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 1;
-    grid-row-end: 5; 
+    grid-row-end: 5;
     width: 560px;
     padding: 20px;
     margin: 15px;
@@ -286,7 +285,7 @@
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
-    grid-row-end: 5; 
+    grid-row-end: 5;
     width: 560px;
     padding: 20px;
     margin: 15px;
@@ -343,7 +342,7 @@
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 1;
-    grid-row-end: 3; 
+    grid-row-end: 3;
     height: 300px;
     padding: 20px;
     margin: 15px;
@@ -373,7 +372,7 @@
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 3;
-    grid-row-end: 4; 
+    grid-row-end: 4;
     height: 275px;
     padding: 20px;
     margin: 15px;

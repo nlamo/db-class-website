@@ -1,7 +1,7 @@
 <!-- Using POST/REDIRECT/GET pattern to prevent form resubmission requests -->
 
 <?php
-    
+
     // TODO: Almost 100% - just needs to maintain the previous date posted, as the default
     //       date for HTML is the start of the epoch. Checking if it's 'empty' is useless, as it //       will never be empty.
 
@@ -9,8 +9,8 @@
 
         require('../php-config/database.php');
 
-        
-        if ( !($_SESSION['hasFrozenAccount']) ) 
+
+        if (!($_SESSION['hasFrozenAccount'])) 
         {
             $jobID = mysqli_real_escape_string($conn, $_POST['job-id']);
             $employerID = mysqli_real_escape_string($conn, $_POST['employer-id']);
@@ -59,7 +59,7 @@
                 mysqli_query($conn, $sqlQuery);
             }
         }
-       
+
         require('../php-config/close-database.php');
         header('Location: dashboard-employer.php');
         exit();

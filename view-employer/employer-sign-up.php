@@ -1,8 +1,6 @@
-<?php 
-
+<?php
     // creating a new employer account
     require('../php/create-employer-account.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +21,7 @@
 
     <div class="container">
 
-        <div class="card-sign-up-employer"> 
+        <div class="card-sign-up-employer">
             <p>Create New Account</p><br>
 
             <form method="POST" action="">
@@ -47,14 +45,14 @@
 
                 <label>Security Question:</label><br>
                 <div class="security-question">What is your favourite film of<br> all time?</div>
-     
+
                 <input type="text" name="security-answer"><br><br>
 
                 <button type="submit" class="button" name="create-employer-account">
                     Create Account
                 </button><br>
-            </form> 
-        </div>       
+            </form>
+        </div>
     </div>
 
     <small>

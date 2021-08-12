@@ -3,11 +3,11 @@
 <?php
 
     if (isset($_POST['search-all-jobs'])) {
-        
+
         require('../php-config/database.php');
 
-        
-        if ( !($_SESSION['hasFrozenAccount']) ) {
+
+        if (!($_SESSION['hasFrozenAccount'])) {
 
             // unset other variables related to job display
             unset($_SESSION['searchedJobsByCategory']);
@@ -26,7 +26,7 @@
             $jobTitleResultsArray = array();
             $jobSalaryResultsArray = array();
             $jobDescriptionResultsArray = array();
-            $startDateResultsArray = array();    
+            $startDateResultsArray = array();
 
             // Necessary to use fetch_assoc() or fetch_array() to get results before
             // having them stored in a SESSION variable for use on the webpage.
@@ -41,7 +41,7 @@
                 array_push($jobDescriptionResultsArray, $row['description']);
                 array_push($startDateResultsArray, $row['date_start']);
             }
-            
+
             $_SESSION['searchedForJobs'] = $searchedForJobs;
 
             $_SESSION['jobIDResultsArray'] = $jobIDResultsArray;

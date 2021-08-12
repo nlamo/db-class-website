@@ -1,5 +1,4 @@
 <?php
-
     session_start();
 
     // code to retrieve a forgotten password by answering a security question
@@ -22,8 +21,8 @@
     <title>User Forgot Password</title>
 </head>
 <body>
-    
-<div class="container">
+
+    <div class="container">
         <h2 class="career-portal-heading">Web Career Portal</h2>
     </div>
 
@@ -37,21 +36,21 @@
 
                 <label>Security Question:</label><br>
                 <div class="security-question">What is your favourite film of<br> all time?</div>
-        
+
                 <input type="text" name="security-answer"><br><br>
 
                 <button type="submit" class="button" name="get-password" style="margin-left:11px;">
                     Get Password
                 </button><br>
             </form>
-            
+
             <?php if (isset($_SESSION['passwordResult'])): ?>
-                
+
                 <?php echo '<small>Here is your password... securely:  <b>' . $yourPassword . '</b></small>'?>
 
             <?php endif; ?>
 
-        </div>       
+        </div>
     </div>
 
     <small>

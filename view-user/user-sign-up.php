@@ -1,8 +1,6 @@
-<?php 
-
+<?php
     // creating a new user account
     require('../php/create-user-account.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +21,7 @@
 
     <div class="container">
 
-        <div class="card-sign-up"> 
+        <div class="card-sign-up">
             <p>Create New Account</p><br>
 
             <form method="POST" action="">
@@ -44,14 +42,14 @@
 
                 <label>Security Question:</label><br>
                 <div class="security-question">What is your favourite film of<br> all time?</div>
-     
+
                 <input type="text" name="security-answer"><br><br>
 
                 <button type="submit" class="button" name="create-user-account">
                     Create Account
                 </button><br>
-            </form> 
-        </div>       
+            </form>
+        </div>
     </div>
 
     <small>

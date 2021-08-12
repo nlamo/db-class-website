@@ -5,7 +5,7 @@
         require('../php-config/database.php');
 
 
-        if ( isset($_POST['payment-method']) && isset($_POST['cardholder-name']) && isset($_POST['card-number']) && isset($_POST['withdrawal-type']) && isset($_POST['account-balance'])) {
+        if ( isset($_POST['payment-method']) && isset($_POST['cardholder-name']) && isset($_POST['card-number']) && isset($_POST['withdrawal-type']) && isset($_POST['account-balance']) ) {
 
             $employer = mysqli_real_escape_string($conn, $_SESSION['employer']);
             $cardholderName = mysqli_real_escape_string($conn, $_POST['cardholder-name']);
@@ -24,11 +24,11 @@
             $expirationDate = mysqli_real_escape_string($conn, $expirationDateYMD);
 
             // setting value of account status based on balance
-            if ($accountBalance < 0) 
+            if ($accountBalance < 0)
             {
                 $accountStatus = 'Frozen';
             }
-            else 
+            else
             {
                 $accountStatus = 'Settled';
             }

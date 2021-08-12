@@ -288,3 +288,23 @@ INSERT INTO `job` VALUES (DEFAULT, 1, 'IT', 'Network Analyst', 110000, 'Here at 
 
 -- iv.
 UPDATE `job_application` SET application_status='accepted', application_response='It is with pleasure that you contacting you to provide a job offer. Based on your credentials, experience, and your performance on the tests, we believe that you have the requisite qualifications for this positions. We are so certain of this that we intend to offer you $120000 per year for this position. Please provide us with your response within a week\'s time' WHERE (job_application_ID = 7 AND username = 'gord' AND job_ID = 3);
+
+-- v.
+
+--vi.
+
+--vii.
+
+INSERT INTO `user` VALUES ('new_user', NULL, 'User Basic', 'UserFirstName', 'UserLastName', 'UserEmail','Password12!','MySecurityAnswer',0,0,'active');
+UPDATE `user` SET user.first_name = 'Updated first_name' WHERE user.first_name = 'UserFirstName';
+SELECT * FROM `user` WHERE user.first_name = 'Updated first_name';
+DELETE FROM `user` WHERE user.first_name = 'Updated first_name';
+
+
+--viii.
+SELECT * 
+FROM job;
+
+-- ix.
+INSERT INTO `job_application` VALUES (9, 'new_user', 4, 'Barista', 4, 'Kettle Coffee', 'Barista has always been my passion. The art of creating something form basic ingredients is a wow for me', 'active', NULL);
+

@@ -3,6 +3,20 @@
 Website/web application for the main project for our database course.
 
 
+************
+  OVERVIEW 
+************
+
+This application is a 'Job Career Portal' that allows employers and users (jobseekers) to post, search, modify, and apply for jobs. Users are able to create or delete their own accounts, in addition to updating their profiles or retrieving their passwords via not-so-secure mechanisms (security is not part of this assignment, heads up). Employers are likewise able to create accounts will all of the same options except for account modification.
+
+An employer can change their subscription category, post jobs, edit already existing posting, and update applications (including a message that ideally is sent back to the applicant). Additionally, the employer dashboard displays the most recent job application *for that given employer*. The exception here is for administrators, who can access all posts of the system, and will, at a glance, simply see the most recent application *for all job applications sent*.
+
+A user can easily search all jobs, search jobs by category (i.e. IT, Engineering), or search jobs by name (e.g. Web Developer, Barista). All job searches are displayed in a panel on the screen. Users can apply for any job, maintain the status of their application (e.g. make it 'active' or 'inactive'), and withdraw an application that they have already sent. As with the employer type, a regular user can upgrade their user category, update their user profile, and "delete" their user account.
+
+Each end user has a payments panel, which allows users to add, update, and remove payments methods. Additionally, users/employers will be shown whether their account is frozen, which is indicative of a negative balance. When a user's account is frozen, the logic is in place such that none of the useful application functionality is accessible to that user.
+
+There are certainly bugs and it needs some further validation/work, but it's not bad for a school project.
+
 ********
   TODO 
 ********

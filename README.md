@@ -4,7 +4,7 @@ Website/web application for the main project for our database course.
 
 
 ************
-  OVERVIEW 
+  OVERVIEW
 ************
 
 This application is a 'Job Career Portal' that allows employers and users (jobseekers) to post, search, modify, and apply for jobs. Users are able to create or delete their own accounts, in addition to updating their profiles or retrieving their passwords via not-so-secure mechanisms (security is not part of this assignment, heads up). Employers are likewise able to create accounts will all of the same options except for account modification.
@@ -18,12 +18,10 @@ Each end user has a payments panel, which allows users to add, update, and remov
 There are certainly bugs and it needs some further validation/work, but it's not bad for a school project.
 
 ********
-  TODO 
+  TODO
 ********
 
-- Develop the payments system and consider how that will play out.
 - Create new views for the user so that they can see their applications, responses, etc. as set out in the requirements.
-- Continue adding to the ER diagram (with constraints!), the database relational schema, and the SQL database itself.
 - Normalize the database concurrently with the addition of new relations. Consider trade-offs in design after normalization process, e.g. if decomposing the database is too costly (time-wise).
 - Consider in real-time the design trade-offs where it makes more sense to keep certain relations in 2NF (e.g. ease of writing certain queries).
 - Find out whether it will be necessary to host the website itself on the web server set up for us.
@@ -36,6 +34,7 @@ There are certainly bugs and it needs some further validation/work, but it's not
 - Set up the ssh tunnel at localhost, which is now fairly easy to use.
 - Styling for the sign-up form is likely complete. Might tweak it a bit more.
 - A 'Project Overview' document has been provided to provide reasonable assumptions and describe the functionality of the application.
+- ER diagram and high-level schema are virtually complete.
 - The UI (dashboard) for 'Employer' is basically complete, apart from minor changes.
 - The UI (dashboard) for 'User' is also basically complete, apart from bits of tweaking.
 - The UIs for payments for 'Employer' and 'User' have been created.
@@ -59,5 +58,5 @@ There are certainly bugs and it needs some further validation/work, but it's not
 - 'Add Payment Option' for both employers and users.
 - Logic to ensure that 'frozen' accounts do not have access to dashboard services (except for editing account, in the case of 'user')
 - 'Edit Option' for payments added.
-- 'Remove Payment' option added. 
+- 'Remove Payment' option added.
 - 'Account Status' output for settled accounts/frozen accounts.

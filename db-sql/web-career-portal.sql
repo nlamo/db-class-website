@@ -72,6 +72,7 @@ CREATE TABLE `payment` (
     `payment_ID` INT AUTO_INCREMENT,
     `payment_account_ID` INT,
     `user_category` VARCHAR(255),
+    `total` INT,
     PRIMARY KEY (payment_ID),
     FOREIGN KEY (payment_account_ID) REFERENCES payment_account (payment_account_ID),
     FOREIGN KEY (user_category) REFERENCES user_category (user_category)

@@ -37,6 +37,8 @@
                 <h4>New Option</h4>
 
                 <div class="card-info-container">
+                    <br><small>Please fill out all of the fields in order to add a new payment option to your account.</small><br>
+
                     <label>Payment Method (Chequing or Credit)</label>
                     <input type="text" name="payment-method">
 

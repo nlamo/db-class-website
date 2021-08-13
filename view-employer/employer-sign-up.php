@@ -9,6 +9,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <script src="../js/script.js" defer></script>
     <title>User Sign-Up</title>
@@ -16,11 +18,10 @@
 <body>
 
     <div class="container">
-        <h2 class="career-portal-heading">Web Career Portal</h2>
+        <h2 class="career-portal-heading">: : Web Career Portal : :</h2>
     </div>
 
     <div class="container">
-
         <div class="card-sign-up-employer">
             <p>Create New Account</p><br>
 

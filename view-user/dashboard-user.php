@@ -102,9 +102,9 @@
                         <!-- USER: searched for all jobs -->
                         <?php if (isset($_SESSION['searchedForJobs'])): ?>
 
+                            <?php $counter = 0; ?>
+                            
                             <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
-
-                                <?php $counter = 0; ?>
 
                                 <?php
                                     echo 'Job ID: ' . htmlspecialchars($entry) . '<br>';

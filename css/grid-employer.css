@@ -204,7 +204,7 @@
     border: 1px solid #000;
 }
 
-.applications-accepted-by-employer {
+.applications-received-by-employer {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
@@ -217,7 +217,7 @@
     border-radius: 5px;
 }
 
-.applications-accepted-by-employer p {
+.applications-received-by-employer p {
     display: inline-block;
     overflow: auto;
     word-wrap: break-word;
@@ -232,7 +232,7 @@
 }
 
 
-.applications-rejected-by-employer {
+.applications-accepted-by-employer {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
@@ -245,7 +245,7 @@
     border-radius: 5px;
 }
 
-.applications-rejected-by-employer p {
+.applications-accepted-by-employer p {
     display: inline-block;
     overflow: auto;
     word-wrap: break-word;

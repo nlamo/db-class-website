@@ -110,15 +110,7 @@ CREATE TABLE `job_application` (
     FOREIGN KEY (job_ID) REFERENCES job (job_ID),
     FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
 );
-
-
-SELECT * FROM job_application;
-SELECT job_application.job_application_ID, job_application.job_ID, job_application.job_name, job_application.employer_name
-FROM job_application, user
-WHERE job_application.employer_ID = (SELECT user.employer_ID
-									 FROM user
-									 WHERE user.username = 'alpha');
-                                     
+              
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 -- INSERTION QUERIES (BASELINE DATA FOR THE DATABASE)
@@ -227,6 +219,24 @@ SELECT * FROM user;
 UPDATE user SET user.user_category='User Basic', user.first_name='Damo', user.last_name='Suzuki', user.password='damo', user.email='damo@mysticalvoice.org', user.security_answer='Rashomon', user.total_jobs_posted=0, user.total_applications_submitted=2, user.status='active' WHERE user.username='damo';
 
 SELECT COUNT(*) AS returnValue FROM user WHERE user.username='n_lamo' AND user.user_category='Admin';
+
+SELECT * FROM job_application;
+SELECT DISTINCT job_application.job_application_ID, job_application.job_ID, job_application.job_name, job_application.employer_name
+FROM job_application, user
+WHERE job_application.employer_ID = (SELECT user.employer_ID
+									 FROM user
+									 WHERE user.username = 'alpha');
+                                     
+SELECT DISTINCT job.job_ID, job.employer_ID, job.title
+FROM job, user
+WHERE job.employer_ID = (SELECT user.employer_ID
+						 FROM user
+						 WHERE user.username = 'alpha') 
+ORDER BY job.job_ID;
+                         
+SELECT * 
+FROM job
+WHERE job.employer_ID=1;
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 -- All users need access to:

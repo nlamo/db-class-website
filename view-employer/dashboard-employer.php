@@ -19,8 +19,14 @@
     // for updating an application (accepting/rejecting) and providing a response to applicant
     require('../php/update-application.php');
 
-    // showing all of the jobs posted by the employer
-    require('../php/jobs-posted-by-employer.php');
+    // jobs posted by the employer
+    require('../php/employer-jobs-posted.php');
+
+    // applications received by the employer
+    require('../php/employer-applications-received.php');
+
+    // applications accepted by the employer
+    require('../php/employer-applications-accepted.php');
 ?>
 
 
@@ -356,6 +362,10 @@
         </div>
     </div>
 
+
+    <br><br><br>
+
+
     <!-- Third (3rd) Employer Container/Dashboard -->
     <div class="dashboard-container">
 
@@ -365,15 +375,38 @@
                 <h4>Jobs Posted By Employer</h4><br><br><br>
 
                 <p>
-                    <?php foreach ($_SESSION['jobApplicationIDResultsArray'] as $entry): ?>
+                    <?php $counter = 0; ?>
+                
+                    <?php foreach ($_SESSION['postedJobIDResultsArray'] as $entry): ?>
 
-                        <?php $counter = 0; ?>
+                        <?php
+                            echo 'Job ID: ' . htmlspecialchars($entry) . '<br>';
+                            echo 'Employer ID: ' . htmlspecialchars($_SESSION['postedEmployerIDResultsArray'][$counter]) . '<br>';
+                            echo 'Job Name: ' . htmlspecialchars($_SESSION['postedJobNameResultsArray'][$counter]) . '<br>';
+                            echo '<br>------------------------------------------------<br>';
+
+                            $counter++;
+                        ?>
+
+                        <br>
+
+                    <?php endforeach; ?>
+                </p>
+            </div>
+
+            <div class="applications-received-by-employer">
+                <h4>Applications Received By Employer</h4><br><br><br>
+                
+                <p>
+                    <?php $counter = 0; ?>
+
+                    <?php foreach ($_SESSION['receivedJobApplicationIDResultsArray'] as $entry): ?>
 
                         <?php
                             echo 'Job Application ID: ' . htmlspecialchars($entry) . '<br>';
-                            echo 'Job ID: ' . htmlspecialchars($_SESSION['jobIDResultsArray'][$counter]) . '<br>';
-                            echo 'Job Name: ' . htmlspecialchars($_SESSION['jobNameResultsArray'][$counter]) . '<br>';
-                            echo 'Employer Name: ' . htmlspecialchars($_SESSION['employerNameResultsArray'][$counter]) . '<br>';
+                            echo 'Job ID: ' . htmlspecialchars($_SESSION['receivedJobIDResultsArray'][$counter]) . '<br>';
+                            echo 'Job Name: ' . htmlspecialchars($_SESSION['receivedJobNameResultsArray'][$counter]) . '<br>';
+                            echo 'Employer Name: ' . htmlspecialchars($_SESSION['receivedEmployerNameResultsArray'][$counter]) . '<br>';
                             echo '<br>------------------------------------------------<br>';
 
                             $counter++;
@@ -387,17 +420,25 @@
 
             <div class="applications-accepted-by-employer">
                 <h4>Applications Accepted By Employer</h4><br><br><br>
-                
-                <p>
-
-                </p>
-            </div>
-
-            <div class="applications-rejected-by-employer">
-                <h4>Applications Rejected By Employer</h4><br><br><br>
 
                 <p>
+                    <?php $counter = 0; ?>
 
+                    <?php foreach ($_SESSION['acceptedJobApplicationIDResultsArray'] as $entry): ?>
+
+                        <?php
+                            echo 'Job Application ID: ' . htmlspecialchars($entry) . '<br>';
+                            echo 'Job ID: ' . htmlspecialchars($_SESSION['acceptedJobIDResultsArray'][$counter]) . '<br>';
+                            echo 'Username: ' . htmlspecialchars($_SESSION['acceptedUsernameResultsArray'][$counter]) . '<br>';
+                            echo 'Employer Name: ' . htmlspecialchars($_SESSION['acceptedEmployerNameResultsArray'][$counter]) . '<br>';
+                            echo '<br>------------------------------------------------<br>';
+
+                            $counter++;
+                        ?>
+
+                        <br>
+
+                    <?php endforeach; ?>
                 </p>
             </div>
 

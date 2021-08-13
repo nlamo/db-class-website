@@ -177,6 +177,88 @@
     margin-top: 10px;
 }
 
+.jobs-posted-by-employer {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    width: 475px;
+    padding: 20px;
+    margin: 15px;
+    background: #CAE4CD;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.jobs-posted-by-employer p {
+    display: inline-block;
+    overflow: auto;
+    word-wrap: break-word;
+    width: 100%;
+    height: 85%;
+    padding: 20px;
+    opacity: 1;
+    background: #FFFFFF;
+    font-size: .8rem;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.applications-accepted-by-employer {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    width: 475px;
+    padding: 20px;
+    margin: 15px;
+    background: #CAE4CD;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.applications-accepted-by-employer p {
+    display: inline-block;
+    overflow: auto;
+    word-wrap: break-word;
+    width: 100%;
+    height: 85%;
+    padding: 20px;
+    opacity: 1;
+    background: #FFFFFF;
+    font-size: .8rem;
+    color: #000;
+    border: 1px solid #000;
+}
+
+
+.applications-rejected-by-employer {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 4; 
+    width: 475px;
+    padding: 20px;
+    margin: 15px;
+    background: #CAE4CD;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.applications-rejected-by-employer p {
+    display: inline-block;
+    overflow: auto;
+    word-wrap: break-word;
+    width: 100%;
+    height: 85%;
+    padding: 20px;
+    opacity: 1;
+    background: #FFFFFF;
+    font-size: .8rem;
+    color: #000;
+    border: 1px solid #000;
+}
+
 /* Payments Dashboard */
 
 /* NOTE: this is used for both the 'add payment' and 'edit payment' sections */

@@ -48,6 +48,7 @@ There are certainly bugs and it needs some further validation/work, but it's not
 - 'Post Job' PHP successfully added/fully functional. Should be tweaked to automatically include the ID of the current user (employer) running their session.
 - 'Update Job' PHP is almost completely done, except for an issue where the previous date needs to be maintained upon new insertions.
 - 'Update Application' PHP is basically complete. As with the other ones, I still have to add some form of message printed to the user if data is incomplete.
+- 'Jobs Posted by Employer' (history) added to the employer dashboard.
 - 'Maintain User Status' section has been completed and is functional. Allows changing a user/employer's status only if current session user is admin.
 - 'Upgrade Category' for employers is finished, and is fully functional
 - 'Search All Jobs' is complete, fully functional.

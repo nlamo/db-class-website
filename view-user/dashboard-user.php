@@ -104,17 +104,19 @@
 
                             <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
 
-                                <!-- NOTE: Previously used a counter, but this would be inadequate if a given job (vis-a-vis job_ID) were to be removed, so $entry - 1 works better, for now at least... -->
+                                <?php $counter = 0; ?>
 
                                 <?php
-                                    echo 'Job ID: ' . $entry . '<br>';
-                                    echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$entry - 1 ] . '<br>';
-                                    echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$entry - 1] . '<br>';
-                                    echo 'Title: ' . $_SESSION['jobTitleResultsArray'][$entry - 1] . '<br>';
-                                    echo 'Salary: ' . $_SESSION['jobSalaryResultsArray'][$entry - 1] . '<br><br>';
-                                    echo 'Job Description: ' . $_SESSION['jobDescriptionResultsArray'][$entry - 1] . '<br><br>';
-                                    echo 'Start Date: ' . $_SESSION['startDateResultsArray'][$entry - 1] . '<br>';
+                                    echo 'Job ID: ' . htmlspecialchars($entry) . '<br>';
+                                    echo 'Employer ID: ' . htmlspecialchars($_SESSION['employerIDResultsArray'][$counter]) . '<br>';
+                                    echo 'Job Category: ' . htmlspecialchars($_SESSION['jobCategoryResultsArray'][$counter]) . '<br>';
+                                    echo 'Title: ' . htmlspecialchars($_SESSION['jobTitleResultsArray'][$counter]) . '<br>';
+                                    echo 'Salary: ' . htmlspecialchars($_SESSION['jobSalaryResultsArray'][$counter]) . '<br><br>';
+                                    echo 'Job Description: ' . htmlspecialchars($_SESSION['jobDescriptionResultsArray'][$counter]) . '<br><br>';
+                                    echo 'Start Date: ' . htmlspecialchars($_SESSION['startDateResultsArray'][$counter]) . '<br>';
                                     echo '<br>------------------------------------------------<br>';
+
+                                    $counter++;
                                 ?>
 
                                 <br>
@@ -130,13 +132,13 @@
                             <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
 
                                 <?php
-                                    echo 'Job ID: ' . $entry . '<br>';
-                                    echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$counter] . '<br>';
-                                    echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$counter] . '<br>';
-                                    echo 'Title: ' . $_SESSION['jobTitleResultsArray'][$counter] . '<br>';
-                                    echo 'Salary: ' . $_SESSION['jobSalaryResultsArray'][$counter] . '<br><br>';
-                                    echo 'Job Description: ' . $_SESSION['jobDescriptionResultsArray'][$counter] . '<br><br>';
-                                    echo 'Start Date: ' . $_SESSION['startDateResultsArray'][$counter] . '<br>';
+                                    echo 'Job ID: ' . htmlspecialchars($entry) . '<br>';
+                                    echo 'Employer ID: ' . htmlspecialchars($_SESSION['employerIDResultsArray'][$counter]) . '<br>';
+                                    echo 'Job Category: ' . htmlspecialchars($_SESSION['jobCategoryResultsArray'][$counter]) . '<br>';
+                                    echo 'Title: ' . htmlspecialchars($_SESSION['jobTitleResultsArray'][$counter]) . '<br>';
+                                    echo 'Salary: ' . htmlspecialchars($_SESSION['jobSalaryResultsArray'][$counter]) . '<br><br>';
+                                    echo 'Job Description: ' . htmlspecialchars($_SESSION['jobDescriptionResultsArray'][$counter]) . '<br><br>';
+                                    echo 'Start Date: ' . htmlspecialchars($_SESSION['startDateResultsArray'][$counter]) . '<br>';
                                     echo '<br>------------------------------------------------<br>';
 
                                     $counter++;
@@ -155,13 +157,13 @@
                             <?php foreach ($_SESSION['jobIDResultsArray'] as $entry): ?>
 
                                 <?php
-                                    echo 'Job ID: ' . $entry . '<br>';
-                                    echo 'Employer ID: ' . $_SESSION['employerIDResultsArray'][$counter] . '<br>';
-                                    echo 'Job Category: ' . $_SESSION['jobCategoryResultsArray'][$counter] . '<br>';
-                                    echo 'Title: ' . $_SESSION['jobTitleResultsArray'][$counter] . '<br>';
-                                    echo 'Salary: ' . $_SESSION['jobSalaryResultsArray'][$counter] . '<br><br>';
-                                    echo 'Job Description: ' . $_SESSION['jobDescriptionResultsArray'][$counter] . '<br><br>';
-                                    echo 'Start Date: ' . $_SESSION['startDateResultsArray'][$counter] . '<br>';
+                                     echo 'Job ID: ' . htmlspecialchars($entry) . '<br>';
+                                     echo 'Employer ID: ' . htmlspecialchars($_SESSION['employerIDResultsArray'][$counter]) . '<br>';
+                                     echo 'Job Category: ' . htmlspecialchars($_SESSION['jobCategoryResultsArray'][$counter]) . '<br>';
+                                     echo 'Title: ' . htmlspecialchars($_SESSION['jobTitleResultsArray'][$counter]) . '<br>';
+                                     echo 'Salary: ' . htmlspecialchars($_SESSION['jobSalaryResultsArray'][$counter]) . '<br><br>';
+                                     echo 'Job Description: ' . htmlspecialchars($_SESSION['jobDescriptionResultsArray'][$counter]) . '<br><br>';
+                                     echo 'Start Date: ' . htmlspecialchars($_SESSION['startDateResultsArray'][$counter]) . '<br>';
                                     echo '<br>------------------------------------------------<br>';
 
                                     $counter++;

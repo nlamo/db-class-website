@@ -111,6 +111,14 @@ CREATE TABLE `job_application` (
     FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
 );
 
+
+SELECT * FROM job_application;
+SELECT job_application.job_application_ID, job_application.job_ID, job_application.job_name, job_application.employer_name
+FROM job_application, user
+WHERE job_application.employer_ID = (SELECT user.employer_ID
+									 FROM user
+									 WHERE user.username = 'alpha');
+                                     
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 -- INSERTION QUERIES (BASELINE DATA FOR THE DATABASE)

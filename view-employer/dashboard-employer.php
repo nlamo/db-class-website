@@ -18,6 +18,9 @@
 
     // for updating an application (accepting/rejecting) and providing a response to applicant
     require('../php/update-application.php');
+
+    // showing all of the jobs posted by the employer
+    require('../php/jobs-posted-by-employer.php');
 ?>
 
 
@@ -222,6 +225,7 @@
 
     <!-- Second (2nd) Employer Container/Dashboard -->
     <div class="dashboard-container">
+
         <div class="dashboard-employer">
 
         <a href="./dashboard-employer-payments.php">
@@ -348,6 +352,54 @@
                 </div>
 
             </form>
+
+        </div>
+    </div>
+
+    <!-- Third (3rd) Employer Container/Dashboard -->
+    <div class="dashboard-container">
+
+        <div class="dashboard-employer">
+
+            <div class="jobs-posted-by-employer">
+                <h4>Jobs Posted By Employer</h4><br><br><br>
+
+                <p>
+                    <?php foreach ($_SESSION['jobApplicationIDResultsArray'] as $entry): ?>
+
+                        <?php $counter = 0; ?>
+
+                        <?php
+                            echo 'Job Application ID: ' . htmlspecialchars($entry) . '<br>';
+                            echo 'Job ID: ' . htmlspecialchars($_SESSION['jobIDResultsArray'][$counter]) . '<br>';
+                            echo 'Job Name: ' . htmlspecialchars($_SESSION['jobNameResultsArray'][$counter]) . '<br>';
+                            echo 'Employer Name: ' . htmlspecialchars($_SESSION['employerNameResultsArray'][$counter]) . '<br>';
+                            echo '<br>------------------------------------------------<br>';
+
+                            $counter++;
+                        ?>
+
+                        <br>
+
+                    <?php endforeach; ?>
+                </p>
+            </div>
+
+            <div class="applications-accepted-by-employer">
+                <h4>Applications Accepted By Employer</h4><br><br><br>
+                
+                <p>
+
+                </p>
+            </div>
+
+            <div class="applications-rejected-by-employer">
+                <h4>Applications Rejected By Employer</h4><br><br><br>
+
+                <p>
+
+                </p>
+            </div>
 
         </div>
     </div>

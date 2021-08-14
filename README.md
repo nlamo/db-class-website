@@ -15,16 +15,8 @@ A user can easily search all jobs, search jobs by category (e.g. IT, Engineering
 
 Each end user has a payments panel, which allows users to add, update, and remove payments methods. Additionally, users/employers will be shown whether their account is frozen, which is indicative of a negative balance. When a user's account is frozen, the logic is in place such that none of the useful application functionality is accessible to that user.
 
-There are certainly bugs and it needs some further validation/work, but it's not bad for a school project.
+Finally, from the payments panel, employers and users can navigate to a simple 'payment' screen, whereby a payment will be made. If the account of that given user has a balance that is insufficient, then the query will not be made and the end user will be notified.
 
-********
-  TODO
-********
-
-- Allow employers/users to make payments.
-- Normalize the database concurrently with the addition of new relations. Consider trade-offs in design after normalization process, e.g. if decomposing the database is too costly (time-wise).
-- Find out whether it will be necessary to host the website itself on the web server set up for us.
-- Make some final modifications to the styling to make it modern, stylish, and user-friendly.
 
 ********
   DONE  
@@ -61,8 +53,9 @@ There are certainly bugs and it needs some further validation/work, but it's not
 - 'User Applications Accepted' (history) added to the user dashboard.
 - 'User Applications Rejected' (history) added to the user dashboard.
 - 'Add Payment Option' for both employers and users.
-- Logic to ensure that 'frozen' accounts do not have access to dashboard services (except for editing account, in the case of 'user')
+- Logic to ensure that 'frozen' accounts do not have access to dashboard services (except for editing the account, in the case of 'user', and viewing history for employer/user)
 - 'Edit Option' for payments added.
 - 'Remove Payment' option added.
 - 'Account Status' output for settled accounts/frozen accounts.
+- 'Make Payment' for employers and users. Logic to check account balance.
 - Added alerts for successful/failed insertions.

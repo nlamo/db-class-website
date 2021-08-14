@@ -504,3 +504,53 @@
 .remove-payment-panel button:hover {
     border: 2px solid #FFF;
 }
+
+.payment-dashboard {
+    display: flex;
+    height: 80%;
+    width: 85%;
+    background:  #F3FCF4;
+    border: none;
+    border-radius: 2px;
+}
+
+.user-make-payment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    margin: 15px;
+    border: solid 1px;
+    border-radius: 5px;
+    background: #9DCCBF;
+    font-size: .8rem;
+}
+
+.user-make-payment h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    font-size: 1rem;
+}
+
+.user-make-payment label {
+    text-align: center;
+    font-size: .9rem;
+    font-weight: 900;
+}
+
+.user-make-payment input {
+    height: 30px;
+
+}
+
+#payment-option-button {
+    font-size: 1rem
+}
+
+#payment-option-button:hover {
+    border: 2px solid #FFF;
+}
+

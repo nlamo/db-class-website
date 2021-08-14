@@ -110,7 +110,8 @@ CREATE TABLE `job_application` (
     FOREIGN KEY (job_ID) REFERENCES job (job_ID),
     FOREIGN KEY (employer_ID) REFERENCES employer (employer_ID)
 );
-              
+
+
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 -- INSERTION QUERIES (BASELINE DATA FOR THE DATABASE)

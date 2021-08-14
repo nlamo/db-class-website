@@ -53,6 +53,12 @@
 
         <div class="dashboard-employer">
 
+            <a href="./employer-payment.php">
+                <button class="payment-button" style="top: 50px;">
+                    Make Payment
+                </button>
+            </a>
+                
             <form class="payment-information-panel" method="POST" action="">
 
                 <h4>New Option</h4>

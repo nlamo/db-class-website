@@ -19,11 +19,21 @@
             {
                 $sqlQuery = "UPDATE payment_account SET payment_account.username=NULL, payment_account.cardholder_name=NULL, payment_account.card_number=NULL, payment_account.expiration_date=DEFAULT, payment_account.payment_method=NULL, payment_account.withdrawal_type=NULL, payment_account.balance=NULL, payment_account.status=NULL WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$user'";
 
-                mysqli_query($conn, $sqlQuery);
+                if (mysqli_query($conn, $sqlQuery)) {
+                    $_SESSION['querySuccessful'] = true;
+                }
+                else {
+                    $_SESSION['querySuccessful'] = false;
+                }
+                
                 require('../php-config/close-database.php');
                 header('Location: dashboard-user-payments.php');
                 exit();
             }
+        }
+        else 
+        {
+            $_SESSION['querySuccessful'] = false;
         }
 
         require('../php-config/close-database.php');

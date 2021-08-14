@@ -233,10 +233,23 @@ WHERE job.employer_ID = (SELECT user.employer_ID
 						 FROM user
 						 WHERE user.username = 'alpha') 
 ORDER BY job.job_ID;
-                         
+              
+SELECT * FROM job WHERE job.employer_ID = 1;
+
 SELECT * 
 FROM job
 WHERE job.employer_ID=1;
+
+SELECT * 
+FROM job_application
+WHERE job_application.employer_ID = (SELECT user.employer_ID 
+                                     FROM user
+									 WHERE user.username = 'alpha')
+AND job_application.application_status = 'accepted';
+						
+SELECT DISTINCT job_application.job_application_ID, job_application.job_ID, job_application.job_name, job_application.username
+FROM job_application
+WHERE job_application.username='zeba';
 -- --------------------------------------------------------------------------------------------------------------------------------
 
 -- All users need access to:

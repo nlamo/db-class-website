@@ -5,7 +5,7 @@
         require('../php-config/database.php');
 
 
-        if ( isset($_POST['payment-method']) && isset($_POST['cardholder-name']) && isset($_POST['card-number']) && isset($_POST['withdrawal-type']) && isset($_POST['account-balance']) ) {
+        if ( !empty($_POST['payment-method']) && !empty($_POST['cardholder-name']) && !empty($_POST['card-number']) && !empty($_POST['withdrawal-type']) && !empty($_POST['account-balance']) ) {
 
             $employer = mysqli_real_escape_string($conn, $_SESSION['employer']);
             $cardholderName = mysqli_real_escape_string($conn, $_POST['cardholder-name']);
@@ -35,11 +35,20 @@
 
             $sqlQuery = "INSERT INTO payment_account(payment_account_ID, username, cardholder_name, card_number, expiration_date, payment_method, withdrawal_type, balance, status) VALUES (DEFAULT, '$employer', '$cardholderName', '$cardNumber', '$expirationDate', '$paymentMethod', '$withdrawalType', '$accountBalance', '$accountStatus')";
 
-            mysqli_query($conn, $sqlQuery);
+            if (mysqli_query($conn, $sqlQuery)) {
+                $_SESSION['querySuccessful'] = true;
+            }
+            else {
+                $_SESSION['querySuccessful'] = false;
+            }
 
             require('../php-config/close-database.php');
             header('Location: dashboard-employer-payments.php');
             exit();
+        }
+        else
+        {
+            $_SESSION['querySuccessful'] = false;
         }
 
         require('../php-config/close-database.php');

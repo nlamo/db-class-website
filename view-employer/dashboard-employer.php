@@ -45,6 +45,27 @@
 </head>
 <body>
 
+    <!-- NOTE: for printing a message if a query has succeeded/failed -->
+    <?php if (isset($_SESSION['querySuccessful'])): ?> 
+        
+        <?php if ($_SESSION['querySuccessful'] == true): ?>
+            
+            <?php 
+                echo '<script>setTimeout(function() { alert("Query successful!"); }, 400)</script>';
+                unset($_SESSION['querySuccessful']);
+            ?>
+        
+        <?php else: ?>
+            
+            <?php 
+                echo '<script>setTimeout(function() { alert("Query failed."); }, 400)</script>';
+                unset($_SESSION['querySuccessful']);
+            ?>
+
+        <?php endif; ?>
+
+    <?php endif; ?>
+
     <!-- First (1st) Employer Container/Dashboard -->
     <div class="dashboard-container">
         <h3><?php echo (htmlspecialchars($_SESSION['employer']));?>'s dashboard</h3><br>
@@ -328,30 +349,22 @@
 
                 <!-- So that the employer can maintain/update job applications -->
                 <div class="update-applications" style="height: 650px;">
-                    <h4>Update Application</h4><br><br>
+                    <h4>Update Application</h4><br><br><br>
 
                     <div>
                         <label><strong>Job Application ID</strong></label><br>
                         <input type="text" id="job-application-id" name="job-application-id">
                     </div>
                     <div>
-                        <label><strong>Job ID</strong></label><br>
-                        <input type="text" id="job-id" name="job-id">
-                    </div>
-                    <div>
-                        <label><strong>Username</strong></label><br>
-                        <input type="text" id="user-id" name="user">
-                    </div>
-                    <div>
                         <label>Application Status</label><br>
                         <input type="text" id="user-id" name="application-status">
                     </div>
 
-                    <br>
+                    <br><br>
 
                     <div>
                         <label>Message to Applicant</label><br>
-                        <textarea id="message-to-applicant" name="message-to-applicant" cols="34" rows="13"></textarea>
+                        <textarea id="message-to-applicant" name="message-to-applicant" cols="34"></textarea>
                     </div>
 
                     <button type="submit" class="button" name="update-application">Update Application</button><br>
@@ -446,9 +459,6 @@
     </div>
 
     <br><br><a href="./index.php">Return to Employer Login</a><br><br>
+
 </body>
 </html>
-
-<?php
-
-?>

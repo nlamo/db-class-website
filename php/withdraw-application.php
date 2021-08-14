@@ -16,8 +16,18 @@
             if (!empty($jobApplicationID) && !empty($user))
             {
                 $sqlQuery = "UPDATE job_application SET username=NULL, job_ID=NULL, job_name=NULL, employer_ID=NULL, employer_name=NULL, application_text=NULL, application_status=NULL, application_response=NULL WHERE (job_application.job_application_ID='$jobApplicationID' AND job_application.username='$user')";
-
-                mysqli_query($conn, $sqlQuery);
+          
+                if (mysqli_query($conn, $sqlQuery)) {
+                    $_SESSION['querySuccessful'] = true;
+                }
+                else {
+                    $_SESSION['querySuccessful'] = false;
+                }
+    
+            }
+            else
+            {
+                $_SESSION['querySuccessful'] = false;
             }
         }
 

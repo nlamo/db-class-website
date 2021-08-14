@@ -13,7 +13,17 @@
         if (!empty($user) && !empty($userStatus)) {
 
             $sqlQuery = "UPDATE user SET user.status='$userStatus' WHERE user.username='$user' AND user.user_category != 'Admin' ";
-            mysqli_query($conn, $sqlQuery);
+
+            if (mysqli_query($conn, $sqlQuery)) {
+                $_SESSION['querySuccessful'] = true;
+            }
+            else {
+                $_SESSION['querySuccessful'] = false;
+            }
+        }
+        else 
+        {
+            $_SESSION['querySuccessful'] = false;
         }
 
         require('../php-config/close-database.php');

@@ -9,11 +9,10 @@
     
     if (isset($_POST['apply-for-job'])) {
 
+        require('../php-config/database.php');
 
-        if (isset($_POST['job-id']) && isset($_POST['application-text'])) 
+        if (!empty($_POST['job-id']) && !empty($_POST['application-text'])) 
         {
-            require('../php-config/database.php');
-
 
             if ( !($_SESSION['hasFrozenAccount']) ) {
 
@@ -42,8 +41,13 @@
                 $employerNameRowResult = $employerNameRow['employerName'];
         
                 $sqlQuery = "INSERT INTO job_application (job_application_ID, username, job_ID, job_name, employer_ID, employer_name, application_text, application_status, application_response) VALUES (DEFAULT, '$user', '$jobID', '$jobNameRowResult', '$employerIDRowResult', '$employerNameRowResult', '$applicationText', 'active', '')";
-        
-                mysqli_query($conn, $sqlQuery);
+                
+                if (mysqli_query($conn, $sqlQuery)) {
+                    $_SESSION['querySuccessful'] = true;
+                }
+                else {
+                    $_SESSION['querySuccessful'] = false;
+                }
     
                 require('../php-config/close-database.php');
                 header('Location: dashboard-user.php');
@@ -53,9 +57,15 @@
         
             require('../php-config/close-database.php');
             header('Location: dashboard-user.php');
-            echo 'Query submission error: ' . mysqli_error($conn) . ' ';
             exit();     
 
+        }
+        else 
+        {
+            $_SESSION['querySuccessful'] = false;
+            require('../php-config/close-database.php');
+            header('Location: dashboard-user.php');
+            exit();  
         }
     }
 ?>

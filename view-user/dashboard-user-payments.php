@@ -25,7 +25,28 @@
 </head>
 <body>
 
-    <!-- Employer Payments Dashboard -->
+    <!-- NOTE: for printing a message if a query has succeeded/failed -->
+    <?php if (isset($_SESSION['querySuccessful'])): ?> 
+        
+        <?php if ($_SESSION['querySuccessful'] == true): ?>
+            
+            <?php 
+                echo '<script>setTimeout(function() { alert("Query successful!"); }, 400)</script>';
+                unset($_SESSION['querySuccessful']);
+            ?>
+        
+        <?php else: ?>
+            
+            <?php 
+                echo '<script>setTimeout(function() { alert("Query failed."); }, 400)</script>';
+                unset($_SESSION['querySuccessful']);
+            ?>
+
+        <?php endif; ?>
+
+    <?php endif; ?>
+
+    <!-- User Payments Dashboard -->
     <div class="dashboard-container">
         <h3><?php echo (htmlspecialchars($_SESSION['user']));?>'s payments</h3><br>
 

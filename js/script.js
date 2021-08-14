@@ -3,15 +3,10 @@ function alertBox(message) {
     alert(message);
 }
 
-// Specific alerts to decrease workload, and just for clarity
-function jobPostedSuccessfully() {
-    alert('Update successful!');
+function querySuccessful() {
+    alert('Query successful!');
 }
 
-function updatedSuccessfully() {
-    alert('Job post successful!');
-}
-
-function accountCreated() {
-    alert('Account successfully created!');
+function queryFailed() {
+    alert('Query failed.');
 }

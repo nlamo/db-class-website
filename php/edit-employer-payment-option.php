@@ -24,45 +24,83 @@
 
         $expirationDate = mysqli_real_escape_string($conn, $expirationDateYMD);
 
-        if (!empty($accountID) && !empty($paymentMethod)) {
-            $sqlQuery = "UPDATE payment_account SET payment_account.payment_method='$paymentMethod' WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$employer'";
-            mysqli_query($conn, $sqlQuery);
-        }
+        // NOTE: This 'logic' is fine for the time being, but realistically, there is an issue. If one of the queries returns false, and sets the SESSION variable, it can still by overriden by a successful query to follow. Since there's only one alert() that is triggered, this could produce a 'false positive' of sorts. Nevertheless, all of the queries are working.
 
-        if (!empty($accountID) && !empty($cardholderName)) {
-            $sqlQuery = "UPDATE payment_account SET payment_account.cardholder_name='$cardholderName' WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$employer'";
-            mysqli_query($conn, $sqlQuery);
-        }
-
-        if (!empty($accountID) && !empty($cardNumber)) {
-            $sqlQuery = "UPDATE payment_account SET payment_account.card_number='$cardNumber' WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$employer'";
-            mysqli_query($conn, $sqlQuery);
-        }
-
-        if (!empty($accountID) && !empty($expirationDate)) {
-            $sqlQuery = "UPDATE payment_account SET payment_account.expiration_date='$expirationDate' WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$employer'";
-            mysqli_query($conn, $sqlQuery);
-        }
-
-        if (!empty($accountID) && !empty($withdrawalType)) {
-            $sqlQuery = "UPDATE payment_account SET payment_account.withdrawal_type='$withdrawalType' WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$employer'";
-            mysqli_query($conn, $sqlQuery);
-        }
-
-        if (!empty($accountID) && !empty($accountBalance)) {
-
-            // setting value of account status based on balance
-            if ($accountBalance < 0) 
-            {
-                $accountStatus = 'Frozen';
+        if (!empty($accountID) || !empty($paymentMethod) || !empty($cardholderName) || !empty($cardNumber) || !empty($withdrawalType) || !empty($accountBalance) )
+        {
+            
+            if (!empty($accountID) && !empty($paymentMethod)) {
+                $sqlQuery = "UPDATE payment_account SET payment_account.payment_method='$paymentMethod' WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$employer'";
+                
+                if (mysqli_query($conn, $sqlQuery)) {
+                    $_SESSION['querySuccessful'] = true;
+                }
+                else {
+                    $_SESSION['querySuccessful'] = false;
+                }
             }
-            else 
-            {
-                $accountStatus = 'Settled';
+    
+            if (!empty($accountID) && !empty($cardholderName)) {
+                $sqlQuery = "UPDATE payment_account SET payment_account.cardholder_name='$cardholderName' WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$employer'";
+                
+                if (mysqli_query($conn, $sqlQuery)) {
+                    $_SESSION['querySuccessful'] = true;
+                }
+                else {
+                    $_SESSION['querySuccessful'] = false;
+                }
             }
-
-            $sqlQuery = "UPDATE payment_account SET payment_account.balance='$accountBalance' WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$employer'";
-            mysqli_query($conn, $sqlQuery);
+    
+            if (!empty($accountID) && !empty($cardNumber)) {
+                $sqlQuery = "UPDATE payment_account SET payment_account.card_number='$cardNumber' WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$employer'";
+                
+                if (mysqli_query($conn, $sqlQuery)) {
+                    $_SESSION['querySuccessful'] = true;
+                }
+                else {
+                    $_SESSION['querySuccessful'] = false;
+                }
+            }
+    
+            if (!empty($accountID) && !empty($expirationDate)) {
+                $sqlQuery = "UPDATE payment_account SET payment_account.expiration_date='$expirationDate' WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$employer'";
+                
+                if (mysqli_query($conn, $sqlQuery)) {
+                    $_SESSION['querySuccessful'] = true;
+                }
+                else {
+                    $_SESSION['querySuccessful'] = false;
+                }
+            }
+    
+            if (!empty($accountID) && !empty($withdrawalType)) {
+                $sqlQuery = "UPDATE payment_account SET payment_account.withdrawal_type='$withdrawalType' WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$employer'";
+                
+                if (mysqli_query($conn, $sqlQuery)) {
+                    $_SESSION['querySuccessful'] = true;
+                }
+                else {
+                    $_SESSION['querySuccessful'] = false;
+                }
+            }
+    
+            if (!empty($accountID) && !empty($accountBalance)) {
+    
+                // setting value of account status based on balance
+                if ($accountBalance < 0) {
+                    $accountStatus = 'Frozen';
+                }
+                else {
+                    $accountStatus = 'Settled';
+                }
+    
+                $sqlQuery = "UPDATE payment_account SET payment_account.balance='$accountBalance' WHERE payment_account.payment_account_ID='$accountID' AND payment_account.username='$employer'";
+                mysqli_query($conn, $sqlQuery);
+            }
+        }
+        else 
+        {
+            $_SESSION['querySuccessful'] = false;
         }
       
         require('../php-config/close-database.php');

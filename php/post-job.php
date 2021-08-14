@@ -31,7 +31,12 @@
 
             $sqlQuery = "INSERT INTO job(job_ID, employer_ID, job_category, title, salary, description, date_start) VALUES (DEFAULT, '$employerID', '$jobCategory', '$jobTitle', '$salaryPosted', '$descriptionPosted', '$datePosted')";
 
-            mysqli_query($conn, $sqlQuery);
+            if (mysqli_query($conn, $sqlQuery)) {
+                $_SESSION['querySuccessful'] = true;
+            }
+            else {
+                $_SESSION['querySuccessful'] = false;
+            }
 
             require('../php-config/close-database.php');
             header('Location: dashboard-employer.php');

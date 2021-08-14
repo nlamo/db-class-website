@@ -22,7 +22,6 @@ There are certainly bugs and it needs some further validation/work, but it's not
 ********
 
 - Allow employers/users to make payments.
-- Add alerts for *all* of the features of the application... (success/failure)
 - Normalize the database concurrently with the addition of new relations. Consider trade-offs in design after normalization process, e.g. if decomposing the database is too costly (time-wise).
 - Find out whether it will be necessary to host the website itself on the web server set up for us.
 - Make some final modifications to the styling to make it modern, stylish, and user-friendly.
@@ -66,3 +65,4 @@ There are certainly bugs and it needs some further validation/work, but it's not
 - 'Edit Option' for payments added.
 - 'Remove Payment' option added.
 - 'Account Status' output for settled accounts/frozen accounts.
+- Added alerts for successful/failed insertions.

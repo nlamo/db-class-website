@@ -27,6 +27,15 @@
 
     // to delete your user account
     require('../php/delete-user-account.php');
+
+    // applications sent by the user
+    require('../php/user-applications-sent.php');
+
+    // user applications that have been accepted
+    require('../php/user-applications-accepted.php');
+
+    // user applications that have been rejected
+    require('../php/user-applications-rejected.php');
 ?>
 
 <!DOCTYPE html>
@@ -336,6 +345,91 @@
 
                     <button type="submit" class="button" name="delete-account">Delete Account</button><br>
                 </form>
+            </div>
+
+        </div>
+    </div>
+
+
+    <br><br><br>
+
+     <!-- Third (3rd) User Container/Dashboard -->
+    <div class="dashboard-container">
+
+        <div class="dashboard-user">
+
+            <div class="user-applications-sent">
+                <h4>Applications Sent By User</h4><br><br><br>
+                
+                <p>
+                    <?php $counter = 0; ?>
+
+                    <?php foreach ($sentJobApplicationIDResults as $entry): ?>
+
+                        <?php
+                            echo 'Job Application ID: ' . htmlspecialchars($entry) . '<br>';
+                            echo 'Job ID: ' . htmlspecialchars($sentJobIDResults[$counter]) . '<br>';
+                            echo 'Job Name: ' . htmlspecialchars($sentJobNameResults[$counter]) . '<br>';
+                            echo 'Username: ' . htmlspecialchars($sentUsernameResults[$counter]) . '<br>';
+                            echo '<br>------------------------------------------------<br>';
+
+                            $counter++;
+                        ?>
+
+                        <br>
+
+                    <?php endforeach; ?>
+                </p>
+            </div>
+
+            <div class="user-applications-accepted">
+                <h4>Applications Accepted</h4><br><br><br>
+
+                <p>
+                    <?php $counter = 0; ?>
+
+                    <?php foreach ($acceptedJobApplicationIDResults as $entry): ?>
+
+                        <?php
+                            echo 'Job Application ID: ' . htmlspecialchars($entry) . '<br>';
+                            echo 'Job ID: ' . htmlspecialchars($acceptedJobIDResults[$counter]) . '<br>';
+                            echo 'Job Name: ' . htmlspecialchars($acceptedJobNameResults[$counter]) . '<br>';
+                            echo 'Username: ' . htmlspecialchars($acceptedUsernameResults[$counter]) . '<br><br>';
+                            echo 'Application Response: ' . htmlspecialchars($acceptedApplicationResponseResults[$counter]) . '<br>';
+                            echo '<br>------------------------------------------------<br>';
+
+                            $counter++;
+                        ?>
+
+                        <br>
+
+                    <?php endforeach; ?>
+                </p>
+            </div>
+
+            <div class="user-applications-rejected">
+                <h4>Applications Rejected</h4><br><br><br>
+                
+                <p>
+                    <?php $counter = 0; ?>
+
+                    <?php foreach ($rejectedJobApplicationIDResults as $entry): ?>
+
+                        <?php
+                            echo 'Job Application ID: ' . htmlspecialchars($entry) . '<br>';
+                            echo 'Job ID: ' . htmlspecialchars($rejectedJobIDResults[$counter]) . '<br>';
+                            echo 'Job Name: ' . htmlspecialchars($rejectedJobNameResults[$counter]) . '<br>';
+                            echo 'Username: ' . htmlspecialchars($rejectedUsernameResults[$counter]) . '<br><br>';
+                            echo 'Application Response: ' . htmlspecialchars($rejectedApplicationResponseResults[$counter]) . '<br>';
+                            echo '<br>------------------------------------------------<br>';
+
+                            $counter++;
+                        ?>
+
+                        <br>
+
+                    <?php endforeach; ?>
+                </p>
             </div>
 
         </div>

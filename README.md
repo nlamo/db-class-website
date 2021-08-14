@@ -21,9 +21,9 @@ There are certainly bugs and it needs some further validation/work, but it's not
   TODO
 ********
 
-- Create new views for the user so that they can see their applications, responses, etc. as set out in the requirements.
+- Allow employers/users to make payments.
+- Add alerts for *all* of the features of the application... (success/failure)
 - Normalize the database concurrently with the addition of new relations. Consider trade-offs in design after normalization process, e.g. if decomposing the database is too costly (time-wise).
-- Consider in real-time the design trade-offs where it makes more sense to keep certain relations in 2NF (e.g. ease of writing certain queries).
 - Find out whether it will be necessary to host the website itself on the web server set up for us.
 - Make some final modifications to the styling to make it modern, stylish, and user-friendly.
 
@@ -58,6 +58,9 @@ There are certainly bugs and it needs some further validation/work, but it's not
 - 'Search Jobs By Category' and 'Search Jobs By Name' have been implemented.
 - 'Apply for a Job' is now fully implemented for users.
 - 'Update Application Status', 'Withdraw Application', and 'Delete User Account' have been implemented.
+- 'User Applications Sent' (history) added to the user dashboard.
+- 'User Applications Accepted' (history) added to the user dashboard.
+- 'User Applications Rejected' (history) added to the user dashboard.
 - 'Add Payment Option' for both employers and users.
 - Logic to ensure that 'frozen' accounts do not have access to dashboard services (except for editing account, in the case of 'user')
 - 'Edit Option' for payments added.

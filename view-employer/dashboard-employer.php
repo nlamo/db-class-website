@@ -124,14 +124,10 @@
                 <!-- FORM: Post a job -->
                 <form method="POST" action="">
 
-                    <small>Here, you can post a job. An ID will be automatically created, but you will need to enter your employer ID.</small><br><br><br>
+                    <small>Here, you can post a job. A 'job_ID' will be automatically created, and your 'employer_ID' is checked.</small><br><br><br>
 
                     <div class="post-jobs-subgrid">
 
-                        <div>
-                            <label>Employer ID</label><br>
-                            <input type="text" id="employer-id" name="employer-id">
-                        </div>
                         <div>
                             <label>Job Category</label><br>
                             <input type="text" id="job-category" name="job-category">
@@ -148,12 +144,10 @@
                             <label>Start Date</label><br>
                             <input type="date" id="start-date" name="start-date">
                         </div>
-                        <div>
-                            <!-- Empty div -->
-                        </div>
+
                         <div id="job-description-container">
                             <label>Job Description</label><br>
-                            <textarea name="job-description" id="job-description" cols="30" rows="10"></textarea>
+                            <textarea name="job-description" id="job-description" cols="30" rows="12"></textarea>
                         </div>
                         <br>
 
@@ -304,7 +298,7 @@
             <div class="update-jobs" style="height: 650px;">
                 <h4>Update Job</h4><br><br>
 
-                <small>Here, you can update a job. You will need the specific job ID as well as your employer ID.</small><br><br><br>
+                <small>Here, you can update a job. You will need the specific 'job_ID' and your 'employer_ID' is checked.</small><br><br><br>
 
                 <form method="POST" action="">
 
@@ -313,10 +307,6 @@
                         <div>
                             <label><strong>Job ID</strong></label><br>
                             <input type="text" id="job-id" name="job-id">
-                        </div>
-                        <div>
-                            <label>Employer ID</label><br>
-                            <input type="text" id="employer-id" name="employer-id">
                         </div>
                         <div>
                             <label>Job Category</label><br>
@@ -333,6 +323,9 @@
                         <div>
                             <label>Start Date</label><br>
                             <input type="date" id="start-date" name="start-date">
+                        </div>
+                        <div>
+                            <!-- Empty div -->
                         </div>
                         <div id="job-description-container">
                             <label>Job Description</label><br>

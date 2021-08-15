@@ -15,11 +15,17 @@
         if (!($_SESSION['hasFrozenAccount']))
         {
             // job_ID is AUTO_INCREMENT and so it is given DEFAULT value
-            $employerID = mysqli_real_escape_string($conn, $_POST['employer-id']);
             $jobCategory = mysqli_real_escape_string($conn, $_POST['job-category']);
             $jobTitle = mysqli_real_escape_string($conn, $_POST['job-title']);
             $salaryPosted = mysqli_real_escape_string($conn, $_POST['salary']);
             $descriptionPosted = mysqli_real_escape_string($conn, $_POST['job-description']);
+
+            $employerIDQuery = "SELECT employer_ID AS returnValue FROM user WHERE user.username='$employer'";
+
+            $employerIDQueryReturn = mysqli_query($conn, $employerIDQuery);
+            $employerIDRow = $employerIDQueryReturn->fetch_assoc();
+            $employerID = $employerIDRow['returnValue'];
+            $employerID = mysqli_real_escape_string($conn, $employerID);
 
             // convert date to timestamp
             $dateTimestamp = strtotime($_POST['start-date']);

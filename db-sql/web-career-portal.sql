@@ -323,18 +323,10 @@ AND job.title = 'System Administrator';
 
 -- vi.
 -- Report of posted jobs by an employer during a specific period of time (job title, date posted, short description, number of needed employees, number of accepted offers)
-
--- TODO: WORK IN PROGRESS!
-
-SELECT job.title, job.date_start, job.description,
-       COUNT(job_application.job_application_ID) AS no_of_applications,
-       COUNT(job_application.application_status) AS no_of_applications_accepted
+SELECT DISTINCT job.title, job.date_start, job.description, job_application.application_status
 FROM job, job_application
-WHERE job.job_ID = job_application.job_ID
-AND job_application.application_status = (SELECT application_status
-                                          FROM job_application
-										  WHERE application_status = 'accepted'
-										  AND employer_ID = 1);
+WHERE date_start BETWEEN '2021-06-01' AND '2021-08-31'
+AND job_application.application_status = 'accepted';
 
 -- vii.
 -- Create/delete/edit/display a category by an employer
@@ -371,8 +363,13 @@ total_jobs_posted=NULL, total_applications_submitted=NULL, status='inactive' WHE
 
 -- xiii
 -- Report of applied jobs by an employee during a specific period of time (job title, date applied, short description, status)
+SELECT job_application.job_name, job_application.application_text, job_application.application_status
+FROM job_application, job
+WHERE job_application.job_ID = job.job_ID
+AND job.date_start BETWEEN '2021-06-01' AND '2021-08-31'
+AND job_application.username = 'gord';
 
-
+SELECT * FROM job_application;
 -- xiv.
 -- Add/delete/edit a method of payment by a user.
 INSERT INTO `payment_account` VALUES (DEFAULT, 'alpha', 'Ali Grandich', '4839818028408122', '2021-09-01', 'Chequing', 'Automatic', 8400, 'Settled');

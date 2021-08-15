@@ -305,3 +305,34 @@ FROM job;
 
 -- ix.
 INSERT INTO `job_application` VALUES (9, 'new_user', 4, 'Barista', 4, 'Kettle Coffee', 'Barista has always been my passion. The art of creating something form basic ingredients is a wow for me', 'active', NULL);
+
+-- x. 
+
+--xi.
+
+UPDATE `job_application` SET application_status='inactive', application_response= NULL  WHERE (job_application_ID = 7 AND username = 'gord' AND job_ID = 3);
+
+--xii.
+
+--xiv.
+INSERT INTO `payment_account` VALUES (DEFAULT, 'alpha', 'Ali Grandich', '48398180284081', '2021-09-01', 'Chequing', 'Automatic');
+UPDATE 'payment_account' SET payment_account.payment_method ='Credit' WHERE payment_account.payment_method = 'Chequing'AND payment_account.username = 'alpha';
+SELECT * FROM 'payment_account' WHERE payment_account.payment_method = 'Credit' AND payment_account.username = 'alpha';
+DELETE FROM 'payment_account' WHERE payment_account.payment_method = 'Credit' AND payment_account.username = 'alpha';
+
+--xv. 
+
+INSERT INTO `payment_account` VALUES (DEFAULT, 'alpha', 'Ali Grandich', '48398180284081', '2021-09-01', 'Chequing', 'Automatic');
+UPDATE 'payment_account' SET payment_account.withdrawal_type ='Manual' WHERE payment_account.withdrawal_type = 'Automatic' ANDpayment_account.username = 'alpha';
+SELECT * FROM 'payment_account' WHERE payment_account.withdrawal_type = 'Manual' AND payment_account.username = 'alpha';
+DELETE FROM 'payment_account' WHERE payment_account.withdrawal_type= 'Manual' AND payment_account.username = 'alpha';
+
+--xvi.
+
+
+--xvii.
+
+--xviii.
+
+
+

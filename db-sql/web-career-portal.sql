@@ -114,6 +114,7 @@ CREATE TABLE `job_application` (
 
 -- --------------------------------------------------------------------------------------------------------------------------------
 
+
 -- INSERTION QUERIES (BASELINE DATA FOR THE DATABASE)
 
 INSERT INTO `employer` VALUES (1, 'Alpha Computing', '515 Alpha Way', '555-515-5245', 'alphacomputing@alpha.org');
@@ -177,7 +178,10 @@ INSERT INTO `job_application` VALUES (4, 'damo', 6, 'Line Cook', 6, 'Tony Pizzer
 INSERT INTO `job_application` VALUES (5, 'gord', 1, 'System Administrator', 1, 'Alpha Computing', '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
 INSERT INTO `job_application` VALUES (6, 'gord', 2, 'Electrical Engineer', 2, 'Darryl Electronics', '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
 INSERT INTO `job_application` VALUES (7, 'gord', 3, 'Computer Architect', 3, 'Jimba Microprocessors', '20+ years experience in computer architecture, including advanced knowledge of assembly, C/C++, Fortran, Pascal, and Python. Advanced knowledge of mathematics and linear algebra. Ample experience working with low-level circuitry, microprocessors, and embedded systems. 5+ years experience working on computer graphics in C++.', 'active', NULL);
+
+
 -- --------------------------------------------------------------------------------------------------------------------------------
+
 
 -- TEST QUERIES / JUST FOR WORKING ON THE PHP/FUNCTIONALITY
 
@@ -251,17 +255,10 @@ AND job_application.application_status = 'accepted';
 SELECT DISTINCT job_application.job_application_ID, job_application.job_ID, job_application.job_name, job_application.username
 FROM job_application
 WHERE job_application.username='zeba';
--- --------------------------------------------------------------------------------------------------------------------------------
 
--- All users need access to:
---   posted jobs
---   applied jobs
---   accepted jobs
---   history
---
---   We might need additional relations to accommodate some of these views. We shall see.
 
 -- --------------------------------------------------------------------------------------------------------------------------------
+
 
 -- SQL QUERIES FOR ASSIGNMENT
 -- Simply just examples, not to be used for the database as such
@@ -270,69 +267,109 @@ WHERE job_application.username='zeba';
 --                 such that these names ('username' and 'employer_ID') become null in child rows upon deletion of parent table
 
 -- i.
+-- Create/delete/edit/display an employer
 INSERT INTO `employer` VALUES (DEFAULT, 'Business Name', '555 Falsehood Boulevard', '555-515-2314', 'businessname@notreal.fake');
 UPDATE `employer` SET employer.name = 'Different Business Name' WHERE employer.name = 'Business Name';
 SELECT * FROM `employer` WHERE employer.name = 'Different Business Name';
 DELETE FROM `employer` WHERE employer.name = 'Different Business Name';
 
 -- ii.
+-- Create/delete/edit/display a category by an employer
 INSERT INTO `employer` VALUES (DEFAULT, 'Different Business Name', '555 Falsehood Boulevard', '555-515-2314', 'businessname@notreal.fake');
 UPDATE `employer` SET employer.email = 'differentbusiness@fake.notreal' WHERE employer.name = 'Different Business Name';
 SELECT * FROM `employer` WHERE employer.email = 'differentbusiness@fake.notreal';
 DELETE FROM `employer` WHERE employer.email = 'differentbusiness@fake.notreal';
 
 -- iii.
+-- Post a new job by an employer
 INSERT INTO `job` VALUES (DEFAULT, 1, 'IT', 'Network Analyst', 110000, 'Here at Alpha Computing, we are on the lookout for a network analyst who posesses at least 10 years of experience in networking solutiosn. A MSc in Computer Science, Information Technology, or Cybersecurity is required.', '2021-09-07');
 
 -- iv.
+-- Provide a job offer for an employee by an employerr
 UPDATE `job_application` SET application_status='accepted', application_response='It is with pleasure that you contacting you to provide a job offer. Based on your credentials, experience, and your performance on the tests, we believe that you have the requisite qualifications for this positions. We are so certain of this that we intend to offer you $120000 per year for this position. Please provide us with your response within a week\'s time' WHERE (job_application_ID = 7 AND username = 'gord' AND job_ID = 3);
 
 -- v.
+-- Report of a posted job by an employer (job title, job description, date posted, list of employees applied to job, status of each application)
+SELECT job.title, job.description, job.date_start, job_application.username, job_application.application_status
+FROM `job`, `job_application`
+WHERE job.job_ID = job_application.job_ID
+AND job.title = 'System Administrator';
 
 -- vi.
+-- Report of posted jobs by an employer during a specific period of time (job title, date posted, short description, number of needed employees, number of accepted offers)
+
+-- TODO: WORK IN PROGRESS!
+
+SELECT job.title, job.date_start, job.description,
+       COUNT(job_application.job_application_ID) AS no_of_applications,
+       COUNT(job_application.application_status) AS no_of_applications_accepted
+FROM job, job_application
+WHERE job.job_ID = job_application.job_ID
+AND job_application.application_status = (SELECT application_status
+                                          FROM job_application
+										  WHERE application_status = 'accepted'
+										  AND employer_ID = 1);
 
 -- vii.
-
+-- Create/delete/edit/display a category by an employer
 INSERT INTO `user` VALUES ('new_user', NULL, 'User Basic', 'UserFirstName', 'UserLastName', 'UserEmail','Password12!','MySecurityAnswer',0,0,'active');
 UPDATE `user` SET user.first_name = 'Updated first_name' WHERE user.first_name = 'UserFirstName';
 SELECT * FROM `user` WHERE user.first_name = 'Updated first_name';
 DELETE FROM `user` WHERE user.first_name = 'Updated first_name';
 
-
 -- viii.
+-- Search for a job by an employee
 SELECT *
-FROM job;
+FROM `job`
+WHERE job.employer_ID = 1
+AND job.title = 'Technical Support';
 
 -- ix.
-INSERT INTO `job_application` VALUES (9, 'new_user', 4, 'Barista', 4, 'Kettle Coffee', 'Barista has always been my passion. The art of creating something form basic ingredients is a wow for me', 'active', NULL);
+-- Apply for a job by an employee
+INSERT INTO `job_application` VALUES (DEFAULT, 'zeba', 4, 'Barista', 4, 'Kettle Coffee', 'Barista has always been my passion. The art of creating something form basic ingredients is a wow for me.', 'active', NULL);
 
 -- x. 
+-- Accept/deny a job offer by an employee
+UPDATE `job_application` SET username=NULL, job_ID=NULL, job_name=NULL, employer_ID=NULL, employer_name=NULL, application_text=NULL, application_status=NULL, application_response=NULL 
+WHERE (job_application.job_application_ID=4 AND job_application.username='damo');
 
---xi.
+-- xi.
+-- Withdraw from an applied job by an employee 
+UPDATE `job_application` SET username=NULL, job_ID=NULL, job_name=NULL, employer_ID=NULL, employer_name=NULL, application_text=NULL, application_status=NULL, 
+application_response=NULL WHERE (job_application.job_application_ID=7 AND job_application.username=gord);
 
-UPDATE `job_application` SET application_status='inactive', application_response= NULL  WHERE (job_application_ID = 7 AND username = 'gord' AND job_ID = 3);
+-- xii.
+-- Delete a profile by an employee (NOTE: we use a SET NULL policy for this)
+UPDATE `user` SET employer_ID=NULL, user_category=NULL, first_name=NULL, last_name=NULL, email=NULL, password=NULL, security_answer=NULL, 
+total_jobs_posted=NULL, total_applications_submitted=NULL, status='inactive' WHERE user.username='damo';
 
---xii.
-
---xiv.
+-- xiv.
+-- Add/delete/edit a method of payment by a user.
 INSERT INTO `payment_account` VALUES (DEFAULT, 'alpha', 'Ali Grandich', '48398180284081', '2021-09-01', 'Chequing', 'Automatic');
-UPDATE 'payment_account' SET payment_account.payment_method ='Credit' WHERE payment_account.payment_method = 'Chequing'AND payment_account.username = 'alpha';
-SELECT * FROM 'payment_account' WHERE payment_account.payment_method = 'Credit' AND payment_account.username = 'alpha';
-DELETE FROM 'payment_account' WHERE payment_account.payment_method = 'Credit' AND payment_account.username = 'alpha';
+UPDATE `payment_account` SET payment_account.payment_method ='Credit' WHERE payment_account.payment_method = 'Chequing'AND payment_account.username = 'alpha';
+SELECT * FROM `payment_account` WHERE payment_account.payment_method = 'Credit' AND payment_account.username = 'alpha';
+DELETE FROM `payment_account` WHERE payment_account.payment_method = 'Credit' AND payment_account.username = 'alpha';
 
---xv. 
-
+-- xv. 
+-- Add/delete/edit an automatic payment by a user.
 INSERT INTO `payment_account` VALUES (DEFAULT, 'alpha', 'Ali Grandich', '48398180284081', '2021-09-01', 'Chequing', 'Automatic');
-UPDATE 'payment_account' SET payment_account.withdrawal_type ='Manual' WHERE payment_account.withdrawal_type = 'Automatic' ANDpayment_account.username = 'alpha';
-SELECT * FROM 'payment_account' WHERE payment_account.withdrawal_type = 'Manual' AND payment_account.username = 'alpha';
-DELETE FROM 'payment_account' WHERE payment_account.withdrawal_type= 'Manual' AND payment_account.username = 'alpha';
+UPDATE `payment_account` SET payment_account.withdrawal_type ='Manual' WHERE payment_account.withdrawal_type = 'Automatic' AND payment_account.username = 'alpha';
+SELECT * FROM `payment_account` WHERE payment_account.withdrawal_type = 'Manual' AND payment_account.username = 'alpha';
+DELETE FROM `payment_account` WHERE payment_account.withdrawal_type= 'Manual' AND payment_account.username = 'alpha';
 
---xvi.
+-- xvi.
+-- Make a manual payment by a user.
+INSERT INTO `payment` VALUES (DEFAULT, 1, 'User Prime', 20);
 
+-- xvii.
+-- Report of all users by the administrator for employers or employees (Name, email, category, status, balance)
+SELECT user.first_name, user.last_name, user.email, user.user_category, user.status, payment_account.balance
+FROM `user`, `payment_account`
+WHERE user.username = payment_account.username;
 
---xvii.
-
---xviii.
-
+-- xviii.
+-- Report of all outstanding balance accounts (e.g. where money is owing, where there is debt)
+SELECT * FROM payment_account
+WHERE balance < 0;
 
 

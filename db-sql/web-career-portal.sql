@@ -153,10 +153,28 @@ INSERT INTO `user` VALUES ('jimba', 3, 'Employer Gold', 'Jim', 'Brando', 'jimbra
 INSERT INTO `user` VALUES ('kettle', 4, 'Employer Gold', 'Sarah', 'Wilkinson', 'sandra@kettlecoffeeisgood.ca', 'sandra', 'Sleepless in Seattle', 1, 0, 'active');
 INSERT INTO `user` VALUES ('stanley', 5, 'Employer Gold', 'Stanley', 'Silverman', 'stanley@fakest.ca', 'stanley', 'The Conversation', 1, 0, 'active');
 
+-- Adding some more regular users, for good measure
+INSERT INTO `user` VALUES ('cali', NULL, 'User Basic', 'Karen', 'Alderich', 'karena@fake.org', 'karen', 'Superbad', 0, 1, 'active');
+INSERT INTO `user` VALUES ('nana', NULL, 'User Prime', 'Kitty', 'Gray', 'kgray@united.com', 'kitty', 'Chocolat', 0, 0, 'active');
+INSERT INTO `user` VALUES ('ebb', NULL, 'User Gold', 'Richard', 'Ebbingsworth', 'richardebbingsworth@fake.net', 'ebb', 'Knives Out', 0, 1, 'active');
+
 INSERT INTO `payment_method` VALUES ('Chequing');
 INSERT INTO `payment_method` VALUES ('Credit');
 
-INSERT INTO `payment_account` VALUES (DEFAULT, 'alpha', 'Ali Grandich', '48398180284081', '2021-09-01', 'Chequing', 'Automatic');
+INSERT INTO `payment_account` VALUES (DEFAULT, 'alpha', 'Ali Grandich', '48398180284081', '2021-09-01', 'Chequing', 'Automatic', 9402, 'Settled');
+INSERT INTO `payment_account` VALUES (DEFAULT, 'darryl', 'Darryl Randal', '4820842093338402', '2022-02-01', 'Credit', 'Manual', 20391, 'Settled');
+INSERT INTO `payment_account` VALUES (DEFAULT, 'gord', 'Gord Willard', '4820842082932223', '2022-04-28', 'Chequing', 'Manual', 4820, 'Settled');
+INSERT INTO `payment_account` VALUES (DEFAULT, 'gord', 'Gord Willard', '40028302938209402', '2022-04-28', 'Credit', 'Manual', 603, 'Settled');
+INSERT INTO `payment_account` VALUES (DEFAULT, 'stanley', 'Stanley Silverman', '4820492938482882', '2022-06-28', 'Chequing', 'Manual', 302, 'Settled');
+INSERT INTO `payment_account` VALUES (DEFAULT, 'stanley', 'Stanley Silverman', '4829029384029382', '2022-06-28', 'Credit', 'Automatic', 48920, 'Settled');
+INSERT INTO `payment_account` VALUES (DEFAULT, 'j_randal', 'James Randal', '47809483209482830', '2022-06-19', 'Chequing', 'Manual', 294, 'Settled');
+INSERT INTO `payment_account` VALUES (DEFAULT, 'kettle', 'Sarah Wilkinson', '4002832899293323', '2022-01-29', 'Credit', 'Manual', 2201, 'Settled');
+
+INSERT INTO `payment` VALUES (DEFAULT, 2, 'Employer Prime', 50);
+INSERT INTO `payment` VALUES (DEFAULT, 6, 'Employer Prime', 50);
+INSERT INTO `payment` VALUES (DEFAULT, 7, 'User Prime', 20);
+INSERT INTO `payment` VALUES (DEFAULT, 9, 'User Prime', 20);
+INSERT INTO `payment` VALUES (DEFAULT, 12, 'Employer Gold', 100);
 
 -- For the sake of simplicity, we're just starting off with 10 jobs (1-10), ordered by the first 10 employers (1-10)
 INSERT INTO `job` VALUES (1, 1, 'IT', 'System Administrator', 80000, 'This role requires knowledge of the system administration of MS Windows based workstations. A high-degree of proficiency in cmd and Powershell is required, with knowledge of many basic commands, system utilities, security best practices, setting up and disassembling workstations, and the maintenance and supervision of accounts with a variety of permissions. Low-level security knowledge in assembly is considered a major asset.', '2021-08-30');
@@ -185,11 +203,14 @@ INSERT INTO `job_application` VALUES (7, 'gord', 3, 'Computer Architect', 3, 'Ji
 
 -- TEST QUERIES / JUST FOR WORKING ON THE PHP/FUNCTIONALITY
 
-SELECT * FROM job;
 SELECT * FROM employer;
+SELECT * FROM user_category;
 SELECT * FROM user;
-SELECT * FROM job_application;
+SELECT * FROM payment_method;
 SELECT * FROM payment_account;
+SELECT * FROM payment;
+SELECT * FROM job;
+SELECT * FROM job_application;
 
 UPDATE payment_account SET username='alpha' WHERE payment_account_ID=3;
 
@@ -282,11 +303,16 @@ DELETE FROM `employer` WHERE employer.email = 'differentbusiness@fake.notreal';
 
 -- iii.
 -- Post a new job by an employer
-INSERT INTO `job` VALUES (DEFAULT, 1, 'IT', 'Network Analyst', 110000, 'Here at Alpha Computing, we are on the lookout for a network analyst who posesses at least 10 years of experience in networking solutiosn. A MSc in Computer Science, Information Technology, or Cybersecurity is required.', '2021-09-07');
+INSERT INTO `job` VALUES (DEFAULT, 1, 'IT', 'Network Analyst', 110000, 'Here at Alpha Computing, we are on the lookout for a network analyst who posesses at least 
+10 years of experience in networking solutiosn. A MSc in Computer Science, Information Technology, or Cybersecurity is required.', '2021-09-07');
 
 -- iv.
 -- Provide a job offer for an employee by an employerr
-UPDATE `job_application` SET application_status='accepted', application_response='It is with pleasure that you contacting you to provide a job offer. Based on your credentials, experience, and your performance on the tests, we believe that you have the requisite qualifications for this positions. We are so certain of this that we intend to offer you $120000 per year for this position. Please provide us with your response within a week\'s time' WHERE (job_application_ID = 7 AND username = 'gord' AND job_ID = 3);
+UPDATE `job_application` SET application_status='accepted', 
+application_response='It is with pleasure that you contacting you to provide a job offer. Based on your credentials, experience, 
+and your performance on the tests, we believe that you have the requisite qualifications for this positions. We are so certain of 
+this that we intend to offer you $120000 per year for this position. Please provide us with your response within a week\'s time' 
+WHERE (job_application_ID = 7 AND username = 'gord' AND job_ID = 3);
 
 -- v.
 -- Report of a posted job by an employer (job title, job description, date posted, list of employees applied to job, status of each application)
@@ -312,7 +338,7 @@ AND job_application.application_status = (SELECT application_status
 
 -- vii.
 -- Create/delete/edit/display a category by an employer
-INSERT INTO `user` VALUES ('new_user', NULL, 'User Basic', 'UserFirstName', 'UserLastName', 'UserEmail','Password12!','MySecurityAnswer',0,0,'active');
+INSERT INTO `user` VALUES ('new_user', NULL, 'User Basic', 'UserFirstName', 'UserLastName', 'UserEmail' ,'Password12!' ,'MySecurityAnswer', 0, 0,'active');
 UPDATE `user` SET user.first_name = 'Updated first_name' WHERE user.first_name = 'UserFirstName';
 SELECT * FROM `user` WHERE user.first_name = 'Updated first_name';
 DELETE FROM `user` WHERE user.first_name = 'Updated first_name';
@@ -321,45 +347,51 @@ DELETE FROM `user` WHERE user.first_name = 'Updated first_name';
 -- Search for a job by an employee
 SELECT *
 FROM `job`
-WHERE job.employer_ID = 1
-AND job.title = 'Technical Support';
+WHERE job.title = 'Technical Support';
 
 -- ix.
 -- Apply for a job by an employee
-INSERT INTO `job_application` VALUES (DEFAULT, 'zeba', 4, 'Barista', 4, 'Kettle Coffee', 'Barista has always been my passion. The art of creating something form basic ingredients is a wow for me.', 'active', NULL);
+INSERT INTO `job_application` VALUES (DEFAULT, 'zeba', 4, 'Barista', 4, 'Kettle Coffee', 
+'Barista has always been my passion. The art of creating something form basic ingredients is a wow for me.', 'active', NULL);
 
 -- x. 
 -- Accept/deny a job offer by an employee
-UPDATE `job_application` SET username=NULL, job_ID=NULL, job_name=NULL, employer_ID=NULL, employer_name=NULL, application_text=NULL, application_status=NULL, application_response=NULL 
-WHERE (job_application.job_application_ID=4 AND job_application.username='damo');
+UPDATE `job_application` SET application_status='accepted' WHERE (job_application.job_application_ID = 4 AND job_application.username = 'damo');
+UPDATE `job_application` SET application_status='rejected' WHERE (job_application.job_application_ID = 4 AND job_application.username = 'damo');
 
 -- xi.
 -- Withdraw from an applied job by an employee 
 UPDATE `job_application` SET username=NULL, job_ID=NULL, job_name=NULL, employer_ID=NULL, employer_name=NULL, application_text=NULL, application_status=NULL, 
-application_response=NULL WHERE (job_application.job_application_ID=7 AND job_application.username=gord);
+application_response=NULL WHERE (job_application.job_application_ID = 8 AND job_application.username = 'zeba');
 
 -- xii.
--- Delete a profile by an employee (NOTE: we use a SET NULL policy for this)
+-- Delete a profile by an employee
 UPDATE `user` SET employer_ID=NULL, user_category=NULL, first_name=NULL, last_name=NULL, email=NULL, password=NULL, security_answer=NULL, 
-total_jobs_posted=NULL, total_applications_submitted=NULL, status='inactive' WHERE user.username='damo';
+total_jobs_posted=NULL, total_applications_submitted=NULL, status='inactive' WHERE user.username='j_randal';
+
+-- xiii
+-- Report of applied jobs by an employee during a specific period of time (job title, date applied, short description, status)
+
 
 -- xiv.
 -- Add/delete/edit a method of payment by a user.
-INSERT INTO `payment_account` VALUES (DEFAULT, 'alpha', 'Ali Grandich', '48398180284081', '2021-09-01', 'Chequing', 'Automatic');
-UPDATE `payment_account` SET payment_account.payment_method ='Credit' WHERE payment_account.payment_method = 'Chequing'AND payment_account.username = 'alpha';
+INSERT INTO `payment_account` VALUES (DEFAULT, 'alpha', 'Ali Grandich', '4839818028408122', '2021-09-01', 'Chequing', 'Automatic', 8400, 'Settled');
+UPDATE `payment_account` SET payment_account.payment_method ='Credit' WHERE payment_account.payment_method = 'Chequing' AND payment_account.username = 'alpha';
 SELECT * FROM `payment_account` WHERE payment_account.payment_method = 'Credit' AND payment_account.username = 'alpha';
-DELETE FROM `payment_account` WHERE payment_account.payment_method = 'Credit' AND payment_account.username = 'alpha';
+UPDATE `payment_account` SET username = NULL, cardholder_name = NULL, card_number = NULL, expiration_date = NULL, payment_method = NULL, withdrawal_type = NULL,
+balance = NULL, status = NULL WHERE payment_account_ID = 13;
 
 -- xv. 
--- Add/delete/edit an automatic payment by a user.
-INSERT INTO `payment_account` VALUES (DEFAULT, 'alpha', 'Ali Grandich', '48398180284081', '2021-09-01', 'Chequing', 'Automatic');
+-- Add/delete/edit an automatic payment by a user
+INSERT INTO `payment_account` VALUES (DEFAULT, 'alpha', 'Ali Grandich', '48398180284081', '2021-09-01', 'Chequing', 'Automatic', 2200, 'Settled');
 UPDATE `payment_account` SET payment_account.withdrawal_type ='Manual' WHERE payment_account.withdrawal_type = 'Automatic' AND payment_account.username = 'alpha';
 SELECT * FROM `payment_account` WHERE payment_account.withdrawal_type = 'Manual' AND payment_account.username = 'alpha';
-DELETE FROM `payment_account` WHERE payment_account.withdrawal_type= 'Manual' AND payment_account.username = 'alpha';
+UPDATE `payment_account` SET username = NULL, cardholder_name = NULL, card_number = NULL, expiration_date = NULL, payment_method = NULL, withdrawal_type = NULL,
+balance = NULL, status = NULL WHERE payment_account_ID = 14 AND payment_account.withdrawal_type = 'Automatic';
 
 -- xvi.
 -- Make a manual payment by a user.
-INSERT INTO `payment` VALUES (DEFAULT, 1, 'User Prime', 20);
+INSERT INTO `payment` VALUES (DEFAULT, 1, 'User Gold', 20);
 
 -- xvii.
 -- Report of all users by the administrator for employers or employees (Name, email, category, status, balance)

@@ -1,12 +1,3 @@
--- COMP 5531 - Web Career Portal
--- Nicholas LaMothe, Fady Attia
-
--- Just for testing on localhost server before going to the tunnel
--- CREATE DATABASE zic55311_localhost;
--- USE zic55311_localhost;
-
-USE zic55311;
-
 CREATE TABLE `employer` (
     `employer_ID` INT AUTO_INCREMENT,
     `name` VARCHAR(255),

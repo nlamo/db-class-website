@@ -2,6 +2,8 @@
 
 Website/web application for the main project for our database course.
 
+Built with HTML/CSS/PHP/SQL - WAMP stack, technically - and a very small amount of JavaScript.
+
 
 ************
   OVERVIEW

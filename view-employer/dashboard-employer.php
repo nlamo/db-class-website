@@ -101,21 +101,23 @@
             </form>
 
             <!-- For employers to upgrade or downgrade their category -->
-            <form method="POST" action="">
+         
                 <div class="employer-categories">
-                    <h4>Employer Category</h4><br><br>
+                    <form method="POST" action="">
+                        <h4>Employer Category</h4><br><br>
 
-                    <small>Want more functionality? Upgrade!</small>
+                        <small>Want more functionality? Upgrade!</small>
 
-                    <!-- TODO: Probably will want to give these IDs for the control logic that will be implemented -->
-                    <button type="submit" class="button" style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!\n\nYou can now post up to five (5) jobs.\n\nYou will be charged $50 per month. Feel free to cancel anytime.')" name="subscribe-to-prime">
-                        PRIME
-                    </button>
-                    <button type="submit" class="button" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!\n\nYou can now post an unlimited number of jobs.\n\nYou will be charged $100 per month. Feel free to cancel anytime.')" name="subscribe-to-gold">
-                        GOLD
-                    </button>
+                        <!-- TODO: Probably will want to give these IDs for the control logic that will be implemented -->
+                        <button type="submit" class="button" style="background:rgb(67, 101, 165);" onclick="alertBox('You have changed your subscription to prime!\n\nYou can now post up to five (5) jobs.\n\nYou will be charged $50 per month. Feel free to cancel anytime.')" name="subscribe-to-prime">
+                            PRIME
+                        </button>
+                        <button type="submit" class="button" style="background:rgb(216, 188, 32);" onclick="alertBox('You have changed your subscription to gold!\n\nYou can now post an unlimited number of jobs.\n\nYou will be charged $100 per month. Feel free to cancel anytime.')" name="subscribe-to-gold">
+                            GOLD
+                        </button>
+                    </form>
                 </div>
-            </form>
+     
 
             <!-- For employers to create job postings -->
             <div class="post-jobs">
@@ -247,13 +249,13 @@
     <!-- Second (2nd) Employer Container/Dashboard -->
     <div class="dashboard-container">
 
-        <div class="dashboard-employer">
-
         <a href="./dashboard-employer-payments.php">
             <button class="payment-button">
                 Payments
             </button>
         </a>
+
+        <div class="dashboard-employer">
 
             <div class="help-and-contact" style="height: 650px;">
 

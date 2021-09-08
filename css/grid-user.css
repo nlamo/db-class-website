@@ -137,12 +137,12 @@
 .withdraw-application {
     grid-column-start: 4;
     grid-column-end: 5;
-    grid-row-start: 3;
+    grid-row-start: 2;
     grid-row-end: 4;
     height: 250px;
     padding: 20px;
     margin: 15px;
-    margin-top: 25px;
+    margin-top: 60px;
     background: #CAE4CD;
     border: solid 1px;
     border-radius: 5px;

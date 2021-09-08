@@ -17,10 +17,26 @@ Each end user has a payments panel, which allows users to add, update, and remov
 
 Finally, from the payments panel, employers and users can navigate to a simple 'payment' screen, whereby a payment will be made. If the account of that given user has a balance that is insufficient, then the query will not be made and the end user will be notified.
 
+**********
+  IMAGES
+**********
 
-********
-  DONE  
-********
+![Choose User Type](img/screen1.JPG)
+![Employer Login](img/screen2.JPG)
+![Employer Dashboard 1st](img/screen3.JPG)
+![Employer Dashboard 2nd](img/screen4.JPG)
+![Employer Dashboard 3rd](img/screen5.JPG)
+![User Dashboard 1st](img/screen6.JPG)
+![User Dashboard 2nd](img/screen7.JPG)
+![User Dashboard 3rd](img/screen8.JPG)
+![User Payment Dashboard](img/screen9.JPG)
+![User Payments](img/screen10.JPG)
+![Forgot Password](img/screen11.JPG)
+![Create Account](img/screen12.JPG)
+
+*************************
+  REQUIREMENTS COMPLETED  
+*************************
 
 - Set up the ssh tunnel at localhost, which is now fairly easy to use.
 - Styling for the sign-up form is likely complete. Might tweak it a bit more.

@@ -1,10 +1,10 @@
 <!-- Control logic for insertions into the database at port 3307 -->
 
 <?php
-    $server = 'servername';
+    $server = 'localhost';
     $user = 'username';
     $password = 'password';
-    $schema = 'schemaname';
+    $schema = 'web_career_portal';
     $port = 3306;
 
     $conn = mysqli_connect($server, $user, $password, $schema, $port);

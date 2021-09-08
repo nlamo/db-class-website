@@ -1,3 +1,6 @@
+-- CREATE DATABASE `web_career_portal`;
+-- USE`web_career_portal`;
+
 CREATE TABLE `employer` (
     `employer_ID` INT AUTO_INCREMENT,
     `name` VARCHAR(255),
@@ -158,14 +161,11 @@ INSERT INTO `payment_account` VALUES (DEFAULT, 'gord', 'Gord Willard', '48208420
 INSERT INTO `payment_account` VALUES (DEFAULT, 'gord', 'Gord Willard', '40028302938209402', '2022-04-28', 'Credit', 'Manual', 603, 'Settled');
 INSERT INTO `payment_account` VALUES (DEFAULT, 'stanley', 'Stanley Silverman', '4820492938482882', '2022-06-28', 'Chequing', 'Manual', 302, 'Settled');
 INSERT INTO `payment_account` VALUES (DEFAULT, 'stanley', 'Stanley Silverman', '4829029384029382', '2022-06-28', 'Credit', 'Automatic', 48920, 'Settled');
-INSERT INTO `payment_account` VALUES (DEFAULT, 'j_randal', 'James Randal', '47809483209482830', '2022-06-19', 'Chequing', 'Manual', 294, 'Settled');
 INSERT INTO `payment_account` VALUES (DEFAULT, 'kettle', 'Sarah Wilkinson', '4002832899293323', '2022-01-29', 'Credit', 'Manual', 2201, 'Settled');
 
 INSERT INTO `payment` VALUES (DEFAULT, 2, 'Employer Prime', 50);
 INSERT INTO `payment` VALUES (DEFAULT, 6, 'Employer Prime', 50);
-INSERT INTO `payment` VALUES (DEFAULT, 7, 'User Prime', 20);
 INSERT INTO `payment` VALUES (DEFAULT, 9, 'User Prime', 20);
-INSERT INTO `payment` VALUES (DEFAULT, 12, 'Employer Gold', 100);
 
 -- For the sake of simplicity, we're just starting off with 10 jobs (1-10), ordered by the first 10 employers (1-10)
 INSERT INTO `job` VALUES (1, 1, 'IT', 'System Administrator', 80000, 'This role requires knowledge of the system administration of MS Windows based workstations. A high-degree of proficiency in cmd and Powershell is required, with knowledge of many basic commands, system utilities, security best practices, setting up and disassembling workstations, and the maintenance and supervision of accounts with a variety of permissions. Low-level security knowledge in assembly is considered a major asset.', '2021-08-30');

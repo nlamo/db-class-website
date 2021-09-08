@@ -21,7 +21,7 @@ Finally, from the payments panel, employers and users can navigate to a simple '
   IMAGES
 **********
 
-![Choose User Type](img/screen1.JPG)
+![Choose User Type](img/screen1.jpg)
 ![Employer Login](img/screen2.JPG)
 ![Employer Dashboard 1st](img/screen3.JPG)
 ![Employer Dashboard 2nd](img/screen4.JPG)

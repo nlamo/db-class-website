@@ -36,9 +36,9 @@ Finally, from the payments panel, employers and users can navigate to a simple '
 ![Forgot Password](img/screen11.JPG)
 ![Create Account](img/screen12.JPG)
 
-*************************
-  REQUIREMENTS COMPLETED  
-*************************
+****************************
+  REQUIREMENTS IMPLEMENTED 
+****************************
 
 - Set up the ssh tunnel at localhost, which is now fairly easy to use.
 - Styling for the sign-up form is likely complete. Might tweak it a bit more.
